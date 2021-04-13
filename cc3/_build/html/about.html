@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>About &mdash; CC3 Blender Tools 0.2.2 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="author" title="About these documents" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="CC3 / iClone Blender Tools Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> CC3 Blender Tools
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing">Installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#removal">Removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating">Updating</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Import &amp; Export Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Build Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefs.html">Preferences Panel</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC3 Blender Tools</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>About</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/about.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="about">
+<h1>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h1>
+<p>This add-on is primarily for importing and automatically setting up materials for Character Creator 3 and iClone character exports.</p>
+<a class="reference internal image-reference" href="_images/cc3_about.jpg"><img alt="Alternative text" src="_images/cc3_about.jpg" style="width: 600px;" /></a>
+<p>Using Blender in the Character Creator 3 pipeline can often feel like hitting a brick wall.
+Potentially spending hours with the import settings and setting up the material textures and shader node setup by hand.</p>
+<p>This add-on aims to reduce that time spent getting characters into Blender down to just a few seconds and
+make use of as many of the exported textures as possible so that character artists can work in the highest quality possible using Blender.</p>
+<p>As well as the materials, this add-on can also set up and enable cloth physics on any clothing or hair meshes that have PhysX weight maps.</p>
+<div class="section" id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>The character exports from CC3 and iClone have a very rigid naming structure. All objects and materials have unique names and the textures
+for these materials are stored in folders and named after the object and material names. Thus textures for each
+material can be easily discovered without the need for deep recursive scans for texture files.</p>
+<p>The add-on then
+reconstructs the material nodes, for each object and material, using these textures and the material setup parameters
+as needed.</p>
+</div>
+<div class="section" id="installing">
+<h2>Installing<a class="headerlink" href="#installing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Download the <strong>Source Code (zip)</strong> from the <a class="reference external" href="https://github.com/soupday/cc3_blender_tools/releases">latest release from Github.com</a></p></li>
+<li><p>In Blender go to menu <strong>Edit</strong> -&gt; <strong>Preferences</strong> then select <strong>Add-ons</strong>.</p></li>
+<li><p>Click the <strong>Install</strong> button at the top of the preferences window and navigate to where you downloaded the zip file, select the file and click <strong>Install Add-on</strong>.</p></li>
+<li><p>Activate the add-on by ticking the checkbox next to <strong>Edit</strong> -&gt; <strong>Preferences</strong> then select <strong>Add-ons</strong></p></li>
+<li><p>The add-ons functionality is available through the <strong>CC3</strong> Tab in the tool menu to the right of the main viewport. Press <strong>N</strong> to show the tools if they are hidden.</p></li>
+</ul>
+</div>
+<div class="section" id="removal">
+<h2>Removal<a class="headerlink" href="#removal" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>From the menu: <strong>Edit</strong>-&gt;**Preferences** then select <strong>Add-ons</strong></p></li>
+<li><p>In the search box search <strong>All</strong> add-ons for <strong>“CC3 Tools”</strong></p></li>
+<li><p>Deactivate the add-on by unticking the checbox next to <strong>Edit</strong>-&gt;**Preferences** then select <strong>Add-ons</strong>.</p></li>
+<li><p>Then click the <strong>Remove</strong> button.</p></li>
+</ul>
+</div>
+<div class="section" id="updating">
+<h2>Updating<a class="headerlink" href="#updating" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Remove the current version of the add-on by following the remove instructions above.</p></li>
+<li><p>Follow the installation instructions, above, to install the new version.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="CC3 / iClone Blender Tools Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Victor Soupday.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
