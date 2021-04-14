@@ -1,12 +1,9 @@
-========
-Examples
-========
+~~~~~~~~~~
+ Examples
+~~~~~~~~~~
 
-.. contents::
-
-~~~~~~~~~~~
 First Steps
-~~~~~~~~~~~
+===========
 
 - In character creator, make any character you like and dress them up.
 
@@ -32,27 +29,25 @@ First Steps
 
 .. image:: images/ex1_import_char.jpg
 
-- Expand the **Materials and Build Settings** panel.
-  Here you can change the way the add-on builds the materials,
-  quickly adjust the alpha blend settings on any object and material and change any of the material parameters.
-  Full details of the material settings can be found here: :doc:`materials`.
+- Expand the **Build Settings** panel.
+  Here you can change the way the add-on builds the materials, select any imported object and
+  quickly adjust the build object type and material type as well as the alpha blend settings on any object material.
+
+  The add-on attempts to detect the type and purpose of each object and material by analysing the object and material names for certain keywords.
+  Sometimes it gets this process wrong if the objects or materials have ambiguous names, but the detected settings can be corrected:
+
+  - The **Object Type** allows you to specify what type of object and thus how to build the materials for that object.
+  - The **Material Type** similarly allows you to specify what type of material.
+  - These two settings will allow you to correct any mis-detected materials in the import. Typically only hair and clothing meshes will
+    be wrongly detected sometimes.
+
+.. image:: images/ex1_build_panel.jpg
+
+- Expand the **Material Parameters** panel.
+  The material parameters control how the various textures of the character interact and mix together to form the final appearance of the character.
+  Each parameter can be adjusted and the materials will update in real time as you change the parameter sliders.
+  For the most part these parameters take the same values as the material shader parameters in Character Creator 3.
+  The parameters displayed are context sensitive to the currently active selected object and material.
+  Full details of the material parameters can be found here: :doc:`materials`.
 
 .. image:: images/ex1_materials_panel.jpg
-
-- The add-on attempts to identify which object is the hair mesh by looking for keywords in the object and material names.
-  The hair hint and scalp hint fields contain the keywords the add-on searches for.
-  If the add-on finds the hair object and scalp material it will fill in the respective fields.
-  If it doesn't you choose the hair object by hand and then select the scalp material.
-  If there is no obvious scalp material or there is only one material in the hair mesh, leave the scalp material field blank.
-
-- In the **Material Setup** section you can quickly set the alpha blend settings for the materials in the active object, as well as the back face culling method.
-  Select the sunglasses in the viewport and try changing the alpha blend settings on the lens material of the sunglasses. Glass lenses and the like are best set to alpha **Blend**, whereas clothing and hair are best set to alpha **Hashed**.
-
-.. image:: images/ex1_glasses_mat.jpg
-
-- Finally there is the **Adjust Parameters** section. Here are all the parameters the add-on uses to set up the materials. Each one can be adjusted and the
-  materials will update in real time as you change the parameter sliders. This section can be rather long so remember to scroll down through it.
-  Have a play with the parameters to see how they affect the materials.
-
-.. image:: images/ex1_params.jpg
-  :width: 600

@@ -1,11 +1,11 @@
-
-Import & Export Panel
-=====================
+~~~~~~~~~~~~~~~~~~~~~~~
+ Import & Export Panel
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: images/pipeline_panel.jpg
 
 Rendering & Animation
-~~~~~~~~~~~~~~~~~~~~~
+=====================
 
 This section is for importing characters for rendering and/or animation. There are no specific requirements
 for this and you can export characters from CC3 or iClone in any particular way you want, so long as the target tool is to Blender.
@@ -23,7 +23,7 @@ If the Physics option is selected then cloth physics vertex groups and modifiers
 the mesh objects & materials that PhysX weight maps. All of which can be changed later in the :doc:`physics`.
 
 Morph Editing
-~~~~~~~~~~~~~
+=============
 
 This section is to facilitate creating character morph sliders for CC3. The typical process is to import a character,
 adjust the mesh, with the mesh editing and sculpting tools, for the shape of the morph. Then export the new mesh
@@ -133,7 +133,7 @@ Here we create a morph slider directly from the OBJ file.
 .. image:: images/import_slider_editor_options.jpg
 
 Accessory Editing
-~~~~~~~~~~~~~~~~~
+=================
 
 Import For Accessory
 --------------------

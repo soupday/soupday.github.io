@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Examples &mdash; CC3 Blender Tools 0.2.2 documentation</title>
+  <title>Examples &mdash; CC3 Blender Tools 0.4.2 documentation</title>
   
 
   
@@ -94,7 +94,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Import &amp; Export Panel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build.html">Build Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="materials.html">Materials Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics.html">Physics Panel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prefs.html">Preferences Panel</a></li>
@@ -166,19 +166,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="examples">
-<h1><a class="toc-backref" href="#id1">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#examples" id="id1">Examples</a></p>
-<ul>
-<li><p><a class="reference internal" href="#first-steps" id="id2">First Steps</a></p></li>
-</ul>
-</li>
-</ul>
-</div>
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="first-steps">
-<h2><a class="toc-backref" href="#id2">First Steps</a><a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
+<h2>First Steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>In character creator, make any character you like and dress them up.</p></li>
 </ul>
@@ -202,29 +192,30 @@ Navigate to where you saved the exported the character from Character Creator, s
 You can hide the Armature if it’s getting in the way.</p></li>
 </ul>
 <img alt="_images/ex1_import_char.jpg" src="_images/ex1_import_char.jpg" />
+<ul>
+<li><p>Expand the <strong>Build Settings</strong> panel.
+Here you can change the way the add-on builds the materials, select any imported object and
+quickly adjust the build object type and material type as well as the alpha blend settings on any object material.</p>
+<p>The add-on attempts to detect the type and purpose of each object and material by analysing the object and material names for certain keywords.
+Sometimes it gets this process wrong if the objects or materials have ambiguous names, but the detected settings can be corrected:</p>
 <ul class="simple">
-<li><p>Expand the <strong>Materials and Build Settings</strong> panel.
-Here you can change the way the add-on builds the materials,
-quickly adjust the alpha blend settings on any object and material and change any of the material parameters.
-Full details of the material settings can be found here: <a class="reference internal" href="materials.html"><span class="doc">Materials Setup</span></a>.</p></li>
+<li><p>The <strong>Object Type</strong> allows you to specify what type of object and thus how to build the materials for that object.</p></li>
+<li><p>The <strong>Material Type</strong> similarly allows you to specify what type of material.</p></li>
+<li><p>These two settings will allow you to correct any mis-detected materials in the import. Typically only hair and clothing meshes will
+be wrongly detected sometimes.</p></li>
+</ul>
+</li>
+</ul>
+<img alt="_images/ex1_build_panel.jpg" src="_images/ex1_build_panel.jpg" />
+<ul class="simple">
+<li><p>Expand the <strong>Material Parameters</strong> panel.
+The material parameters control how the various textures of the character interact and mix together to form the final appearance of the character.
+Each parameter can be adjusted and the materials will update in real time as you change the parameter sliders.
+For the most part these parameters take the same values as the material shader parameters in Character Creator 3.
+The parameters displayed are context sensitive to the currently active selected object and material.
+Full details of the material parameters can be found here: <a class="reference internal" href="materials.html"><span class="doc">Material Parameters</span></a>.</p></li>
 </ul>
 <img alt="_images/ex1_materials_panel.jpg" src="_images/ex1_materials_panel.jpg" />
-<ul class="simple">
-<li><p>The add-on attempts to identify which object is the hair mesh by looking for keywords in the object and material names.
-The hair hint and scalp hint fields contain the keywords the add-on searches for.
-If the add-on finds the hair object and scalp material it will fill in the respective fields.
-If it doesn’t you choose the hair object by hand and then select the scalp material.
-If there is no obvious scalp material or there is only one material in the hair mesh, leave the scalp material field blank.</p></li>
-<li><p>In the <strong>Material Setup</strong> section you can quickly set the alpha blend settings for the materials in the active object, as well as the back face culling method.
-Select the sunglasses in the viewport and try changing the alpha blend settings on the lens material of the sunglasses. Glass lenses and the like are best set to alpha <strong>Blend</strong>, whereas clothing and hair are best set to alpha <strong>Hashed</strong>.</p></li>
-</ul>
-<img alt="_images/ex1_glasses_mat.jpg" src="_images/ex1_glasses_mat.jpg" />
-<ul class="simple">
-<li><p>Finally there is the <strong>Adjust Parameters</strong> section. Here are all the parameters the add-on uses to set up the materials. Each one can be adjusted and the
-materials will update in real time as you change the parameter sliders. This section can be rather long so remember to scroll down through it.
-Have a play with the parameters to see how they affect the materials.</p></li>
-</ul>
-<a class="reference internal image-reference" href="_images/ex1_params.jpg"><img alt="_images/ex1_params.jpg" src="_images/ex1_params.jpg" style="width: 600px;" /></a>
 </div>
 </div>
 
