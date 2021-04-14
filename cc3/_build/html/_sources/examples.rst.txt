@@ -8,7 +8,7 @@ Examples
 First Steps
 ~~~~~~~~~~~
 
-- In character creator, make any character you like, dress them up and put them in sun glasses.
+- In character creator, make any character you like and dress them up.
 
 .. image:: images/ex1_cc3_char.jpg
   :width: 600
@@ -17,7 +17,6 @@ First Steps
   You can Embed the textures if you want, but it's usually better not to as embedding the textures stores them in the FBX file
   where you can't access them if you need to.
   Set the Include Motion to **Current Pose** and tick **Delete Hidden Faces**.
-  For maximum compatibility *do not put spaces* in the export file name. Blender doesn't deal with spaces in the name very well.
 
 .. image:: images/ex1_export_fbx.jpg
 

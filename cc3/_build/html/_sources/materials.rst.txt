@@ -1,13 +1,12 @@
-===================
-Material Parameters
-===================
+===============
+Materials Setup
+===============
 
 .. contents:: The tiny table of contents
 
+~~~~~
 About
 ~~~~~
-
-.. image:: images/material_parameters_panel.jpg
 
 Some stuff
 
@@ -17,6 +16,7 @@ Some stuff
   - sub point three
   - sub point four
 
+~~~~~~~~~~~~~~~~~~~~
 What is it good for?
 ~~~~~~~~~~~~~~~~~~~~
 
