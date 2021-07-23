@@ -1,8 +1,8 @@
 ..
     all external links referenced here
-.. _git repository: https://github.com/soupday/cc3_unity_tools
-.. _git URL: https://github.com/soupday/cc3_unity_tools.git
-.. _latest release: https://github.com/soupday/cc3_unity_tools/releases/
+.. _git repository: https://github.com/soupday/cc3_unity_tools_HDRP
+.. _git URL: https://github.com/soupday/cc3_unity_tools_HDRP.git
+.. _latest release: https://github.com/soupday/cc3_unity_tools_HDRP/releases/
 .. _Unity: https://unity.com/
 .. _Reallusion: https://www.reallusion.com/
 

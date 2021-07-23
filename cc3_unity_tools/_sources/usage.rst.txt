@@ -167,3 +167,4 @@ This is useful for inspecting the character to ensure there are no hidden proble
 The eye menu **CC3 → Tools → Eye** enables movement of the eye direction for a detailed inspection of the eye.
 
 .. image:: images/eye_manipulation.gif
+
