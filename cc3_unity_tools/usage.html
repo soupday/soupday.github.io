@@ -172,7 +172,19 @@
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="initial-import-into-unity">
 <h2>Initial Import Into Unity<a class="headerlink" href="#initial-import-into-unity" title="Permalink to this headline">¶</a></h2>
-<p>In <strong>Character Creator</strong>, prepare your character as you see fit.  When you are ready to export the characteras <strong>FBX (Clothed Character)</strong>. Set the target tool preset to <strong>Unity</strong>, The FBX options to <strong>Mesh and Motion</strong>. You can Embed the textures if you want, but it’s usually better not to as embedding the textures stores them in the FBX file where you can’t access them if you need to. Set the Include Motion to <strong>Current Pose</strong> and tick <strong>Delete Hidden Faces</strong>.</p>
+<p>In <strong>Character Creator</strong>, or <strong>iClone</strong> prepare your character as you see fit.</p>
+<p>In <strong>Character Creator</strong> export the character using <strong>Export -&gt; FBX (Clothed Character)</strong>.</p>
+<img alt="_images/e1-cc3.png" src="_images/e1-cc3.png" />
+<p>Select the following options in the export window (you may need to scroll down to see all options).</p>
+<p>Target tool preset: <strong>Unity 3D</strong>, select: <strong>Current Pose</strong>, <strong>Delete Hidden Faces</strong>,  <strong>Merge Beard and Brows into one object</strong> and <strong>Bake Diffuse and Specular maps from Digital Human Hair Shader</strong>.</p>
+<img alt="_images/e2-cc3.png" src="_images/e2-cc3.png" />
+<p>Click <strong>Export</strong> to begin the export process.</p>
+<p>In <strong>iClone</strong> export the character using <strong>Export -&gt; Export FBX…</strong></p>
+<img alt="_images/e1-iClone.png" src="_images/e1-iClone.png" />
+<p>Select the following options in the export window.</p>
+<p>Target tool preset: <strong>Unity 3D</strong>, select: <strong>Export Range = All</strong>, <strong>Delete Hidden Faces</strong>, <strong>Merge Face Hair to One Object</strong>.</p>
+<img alt="_images/e2-iClone.png" src="_images/e2-iClone.png" />
+<p>Click <strong>Export</strong> to begin the export process.</p>
 <p>In <strong>Microsoft Windows</strong> open the file explorer and navigate to the export directory. In your <strong>Unity 2020.3</strong> or above project browser, navigate to the folder in your project where you will be placing your imported character.</p>
 <p>Now drag the &lt;name&gt;.fbx and &lt;name&gt;.json files &amp; the textures and &lt;name&gt;.fbm (if present) folders from Windows file explorer into the project browser’s target folder of your Unity project.</p>
 <img alt="_images/initial_import.png" src="_images/initial_import.png" />

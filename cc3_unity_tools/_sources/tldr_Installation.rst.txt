@@ -2,7 +2,7 @@
     all external links referenced here
 .. _git repository: https://github.com/soupday/cc3_unity_tools
 .. _git URL: https://github.com/soupday/cc3_unity_tools.git
-.. _latest release: https://github.com/soupday/cc3_unity_tools/releases/latest/download/cc3_unity_tools.zip
+.. _latest release: https://github.com/soupday/cc3_unity_tools/releases/
 
 ~~~~~~~~~~~~~~~~~
 TLDR Installation
@@ -38,8 +38,8 @@ Finished
 You should now have the **CC3** top menu option.  You can safely delete the files you unpacked earlier.
 
 
-Uninstallation
-==============
+Un-install
+==========
 
 Open the package manager (**Window -> Package Manager**) select the **'CC3 Unity Tools package'** and click **Remove** (bottom right corner).
  

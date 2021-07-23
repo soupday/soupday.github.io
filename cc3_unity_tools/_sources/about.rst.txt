@@ -2,7 +2,7 @@
     all external links referenced here
 .. _git repository: https://github.com/soupday/cc3_unity_tools
 .. _git URL: https://github.com/soupday/cc3_unity_tools.git
-.. _latest release: https://github.com/soupday/cc3_unity_tools/releases/latest/download/cc3_unity_tools.zip
+.. _latest release: https://github.com/soupday/cc3_unity_tools/releases/
 .. _Unity: https://unity.com/
 .. _Reallusion: https://www.reallusion.com/
 
@@ -16,7 +16,7 @@ Welcome to the `Unity`_ import and auto setup tool for **Character Creator 3** a
 
 This is a fully featured tool to take exports from CC3/iClone and set them up in Unity with complete visual fidelity.
 
-The tool can produce characters of the highest visual quality using custom Shadergraph shaders.
+The tool can produce characters of the highest visual quality using custom Shader graph shaders.
 Additionally, more performance focussed characters can be produced using simpler shaders with a minimal loss of visual quality. 
 
 How it works
@@ -36,11 +36,11 @@ This process is discussed in detail in the :ref:`Installation <Installation>` se
 
 **Removal**
 
-Unity's internal packagage manager allows the simple and safe removal of the tool.
+Unity's internal package manager allows the simple and safe removal of the tool.
 
 
 **Updating**
 
-Simply remove the existing tool as above and install the lastest version.
+Simply remove the existing tool as above and install the latest version.
 
 

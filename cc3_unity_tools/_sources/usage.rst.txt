@@ -5,7 +5,33 @@
 Initial Import Into Unity
 =========================
 
-In **Character Creator**, prepare your character as you see fit.  When you are ready to export the characteras **FBX (Clothed Character)**. Set the target tool preset to **Unity**, The FBX options to **Mesh and Motion**. You can Embed the textures if you want, but it's usually better not to as embedding the textures stores them in the FBX file where you can't access them if you need to. Set the Include Motion to **Current Pose** and tick **Delete Hidden Faces**.
+In **Character Creator**, or **iClone** prepare your character as you see fit.  
+
+In **Character Creator** export the character using **Export -> FBX (Clothed Character)**.
+
+.. image:: images/e1-cc3.png
+
+Select the following options in the export window (you may need to scroll down to see all options).  
+
+Target tool preset: **Unity 3D**, select: **Current Pose**, **Delete Hidden Faces**,  **Merge Beard and Brows into one object** and **Bake Diffuse and Specular maps from Digital Human Hair Shader**.
+
+.. image:: images/e2-cc3.png
+
+Click **Export** to begin the export process.
+
+
+In **iClone** export the character using **Export -> Export FBX...**
+
+.. image:: images/e1-iClone.png
+
+Select the following options in the export window.
+
+Target tool preset: **Unity 3D**, select: **Export Range = All**, **Delete Hidden Faces**, **Merge Face Hair to One Object**.
+
+.. image:: images/e2-iClone.png
+
+Click **Export** to begin the export process.
+
 
 In **Microsoft Windows** open the file explorer and navigate to the export directory. In your **Unity 2020.3** or above project browser, navigate to the folder in your project where you will be placing your imported character.  
 

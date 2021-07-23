@@ -2,7 +2,7 @@
     all external links referenced here
 .. _git repository: https://github.com/soupday/cc3_unity_tools
 .. _git URL: https://github.com/soupday/cc3_unity_tools.git
-.. _latest release: https://github.com/soupday/cc3_unity_tools/releases/latest/download/cc3_unity_tools.zip
+.. _latest release: https://github.com/soupday/cc3_unity_tools/releases/
 .. _Unity: https://unity.com/
 .. _Reallusion: https://www.reallusion.com/
 .. _7zip: https://www.7-zip.org/
@@ -17,7 +17,7 @@ Hosting at Github
 
 The tool is hosted in this `git repository`_, and is intended to be installed into **Unity 2020.3 or above** using Unity's internal package manager.
 
-To obtain most recent stable version follow this link to the `latest release`_, and download the zip file from there.
+To obtain most recent stable version follow this link to the `latest release`_, and download the **source code.zip** file from there.
 
 Alternatively, you can obtain the latest commit to the stable branch by pressing the green 'Code' button and then 'Download Zip' from the dropdown window. Alternatively the code can be cloned directly from github via HTTPS using the `git URL`_ which can be copied from the dropdown window (discussed later).
 
