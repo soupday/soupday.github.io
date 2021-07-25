@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- CC3 / iClone Blender Tools Documentation
+ CC3 / iClone Unity Tools Documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. toctree::
