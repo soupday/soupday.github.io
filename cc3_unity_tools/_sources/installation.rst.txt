@@ -27,7 +27,9 @@ Alternatively, you can obtain the latest commit to the stable branch by pressing
 Installation from .zip file
 ===========================
 
-Download the `latest release`_ or latest stable commit (from the code dropdown box). Unpack the .zip file (`7zip`_ is a suitable tool for this, should you lack one).
+Download the `latest release`_ or latest stable commit (from the code dropdown box). Unpack the .zip file into a **safe + non volatile** directory where you'll be able to store the package files (`7zip`_ is a suitable tool for this, should you lack one).
+
+**Note: You must store the package files in a safe place**.  You can make a *directory* inside your project *directory* (eg '<drive>:/~~/<project directory>/downloaded files') if you wish (**DO NOT** place the unzipped files into the /Assets /Packages /Library or /ProjectSettings directories of your project.)
 
 In Unity, open your project and navigate to the 'Package Manager' (*via* **Window -> Package Manager**).
 
@@ -49,8 +51,7 @@ The package manager will now install the tool and will end up looking like this.
 
 .. image:: images/post_install_package.png
 
-The tool is fully installed and ready to be used.  The files you extracted earlier can safely be deleted.
-
+The tool is fully installed and ready to be used.  Remember to keep the files you installed from safe. 
 
 
 Installation from git URL
