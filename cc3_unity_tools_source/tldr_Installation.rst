@@ -44,3 +44,16 @@ Un-install
 Open the package manager (**Window -> Package Manager**) select the **'CC3 Unity Tools package'** and click **Remove** (bottom right corner).
  
 
+TLDR Git Install Video
+======================
+
+.. youtube:: SIBUuT3BfGs
+
+| 
+
+TLDR .zip Install Video
+=======================
+
+.. youtube:: 2CUHkz29X3I
+
+| 

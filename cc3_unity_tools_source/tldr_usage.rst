@@ -26,3 +26,11 @@ Thats it
 
 You're all done.  Drag the chracter into your scene and do your thing.
 
+
+TLDR Usage Video
+================
+
+.. youtube:: 6VIH5eXCioQ
+
+| 
+

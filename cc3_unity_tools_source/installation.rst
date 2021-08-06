@@ -27,6 +27,10 @@ Alternatively, you can obtain the latest commit to the stable branch by pressing
 Installation from .zip file
 ===========================
 
+.. youtube:: 2CUHkz29X3I
+
+| 
+
 Download the `latest release`_ or latest stable commit (from the code dropdown box). Unpack the .zip file into a **safe + non volatile** directory where you'll be able to store the package files (`7zip`_ is a suitable tool for this, should you lack one).
 
 **Note: You must store the package files in a safe place**.  You can make a *directory* inside your project *directory* (eg '<drive>:/~~/<project directory>/downloaded files') if you wish (**DO NOT** place the unzipped files into the /Assets /Packages /Library or /ProjectSettings directories of your project.)
@@ -56,6 +60,10 @@ The tool is fully installed and ready to be used.  Remember to keep the files yo
 
 Installation from git URL
 =========================
+
+.. youtube:: SIBUuT3BfGs
+
+| 
 
 **Pre-requisites**
 

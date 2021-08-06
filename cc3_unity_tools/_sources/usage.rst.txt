@@ -2,6 +2,10 @@
  Usage
 ~~~~~~~
 
+.. youtube:: 6VIH5eXCioQ
+
+| 
+
 Initial Import Into Unity
 =========================
 
@@ -95,6 +99,11 @@ This combination produces result with the highest visual quality.
 
 .. image:: images/bake_options.png
 
+
+.. youtube:: 9sCRM0hUkc4
+
+| 
+    
 Baking is the most performance friendly option, whilst maintaining high visual quality.
 
 .. image:: images/anim_button.png
@@ -152,7 +161,7 @@ The **CC3 → Tools** menu can be used to further manipulate the character.  Bef
 
 **Reverse Triangle Order**
 
-This option is occasionally needed to correct any anomalies with alpha blended materials.  This principal use of this is to ensure that hair materials are rendered in the proper order i.e. from inside to out.
+This option is occasionally needed to correct any anomalies with alpha blended materials.  This principal use of this is to ensure that hair materials are rendered in the proper order i.e. from inside to out.  To use this, select the **hair mesh** of a model in the scene and use the menu option **CC3 -> Tools -> Reverse Triangle Order**.
 
 **Prune Blend Shapes**
 
