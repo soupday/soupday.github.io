@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skin &mdash; CC3 Blender Tools 0.4.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notes on Power Functions" href="powers.html" />
+    <link rel="prev" title="Eyes" href="eyes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC3 Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Import &amp; Export Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Build Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefs.html">Preferences Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Skin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#skin-materials">Skin Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#skin-parameters">Skin Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC3 Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Skin</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/skin.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="skin">
+<h1>Skin<a class="headerlink" href="#skin" title="Permalink to this headline"></a></h1>
+<section id="skin-materials">
+<h2>Skin Materials<a class="headerlink" href="#skin-materials" title="Permalink to this headline"></a></h2>
+<a class="reference internal image-reference" href="_images/selected_head_obj.png"><img alt="_images/selected_head_obj.png" class="align-center" src="_images/selected_head_obj.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>All skin material parameters are accessible in the <strong>Material Parameters</strong> dropdown of the tool, by selecting the <strong>CC3_Base_Body</strong> object (in <em>Object Mode</em>) and then selecting the appropriate material in the <em>Material Properties</em> tab <img alt="mtpr" src="_images/material_properties.png" /> of the <em>properties</em> pane.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="mat_sel_img" src="_images/skin_material_selection.png" /></p></td>
+<td><p><em>Skin Releated Materials Are:</em>
+<br /><br />
+<strong>Std_Skin_Head</strong>
+<br />
+<strong>Std_Skin_Body</strong>
+<br />
+<strong>Std_Skin_Arm</strong>
+<br />
+<strong>Std_Skin_Leg</strong></p></td>
+</tr>
+</tbody>
+</table>
+<img alt="_images/material_parameters_pane_s.png" class="align-right" src="_images/material_parameters_pane_s.png" />
+<p>The <em>Material Parameters</em> pane of the CC3 tool will then be updated with the available settings for the <em>Selected Material</em>.</p>
+<p>Depending on which material is selected, the exposed shader parameters may differ. All of the potential differences are discussed below.</p>
+<p>These parameters can be adjusted simultaneously as <a class="reference internal" href="materials.html#linked-materials"><span class="std std-ref">linked materials</span></a>.</p>
+<p><br /><br /></p>
+</section>
+<section id="skin-parameters">
+<h2>Skin Parameters<a class="headerlink" href="#skin-parameters" title="Permalink to this headline"></a></h2>
+<p><strong>Base Color</strong></p>
+<p>This section deals with ambient occlusion strength for the mouth, nostrils and lips.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="im1" src="_images/mat_param_skin_head_base_col.png" /></p></td>
+<td><p><em>AO Strength</em> - (Multiply) Blending factor of the ambient occlusion overlay. Blending factor is discussed <a class="reference internal" href="mix.html#notes-on-color-mixing"><span class="std std-ref">here</span></a>
+<br /><br />
+<em>Mouth/Nostrils/Lips AO (Head Specific)</em> - <em>Exponent</em> to control the strength of the ambient occlusion for each of the individual cavities (lips refers to the inner lip lining). See <a class="reference internal" href="powers.html#notes-on-power-functions"><span class="std std-ref">these notes</span></a> on the effects of exponents.
+<br /><br />
+<em>Color Blend (Head Specific)</em> - (Overlay) Blending factor of the AO overlay with the base skin texture.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Surface</strong></p>
+<p>This section controls specular reflection and roughness of the character’s skin.</p>
+<p><em>Surface (Head Specific)</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="im2" src="_images/mat_param_skin_head_surface.png" /></p></td>
+<td><p><em>Specular scale</em> - Base effect strength of the masked specular map.
+<br /><br />
+<em>Roughness Power</em> - <em>Exponent</em> to control the base strength of the roughness map.
+<br /><br />
+<em>Roughness Min/Max</em> - These settings will rescale the Roughness Map + applied Roughness Power (which will have a min of 0 and max of 1) to the min and max settings you may wish to specify.  This is useful for narrowing the difference between the most and least rough parts of the model, where you can also fine tune the whole value range up and down as you see fit see these <a class="reference internal" href="remap.html#notes-on-remapping-functions"><span class="std std-ref">notes</span></a> for more details.
+<br /><br />
+<em>Micro Roughness Mod</em> - Overall value <em>added</em> to to each of the location specific roughness mods (below).
+<br /><br />
+<em>Roughness Mod (specific)</em> - Roughness map <em>multiplier</em> (always has the  above <em>micro roughness mod</em> added to it) For the specific locations: Ear, Neck, Chin, Forehead, Upper Lip, Cheek, Nose, Mouth, Upper Lid &amp; Inner Lid (these locations are predefined by masks exported with the character).
+<br /><br />
+<em>Unmasked Roughness Mod</em> - Non specific roughness map <em>multiplier</em> for unmasked areas.</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Surface (non-Head)</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="im3" src="_images/mat_param_skin_nonhead_surface.png" /></p></td>
+<td><p><em>Surface (non-Head) differences:</em>
+<br /><br />
+<em>Roughness Masking</em> - Whilst the head has multiple masks to define the various areas where specific roughness could be applied, all of the non-head shaders each employ a single mask consisting of 4 channels (RGBA) which can be adjusted individually.
+<br />
+<em>NB</em> - Only if the exported RGBA mask has data in it then the masked area roughness can be adjusted (on a per-chennel basis); otherwise no effects will be observed.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Subsurface</strong></p>
+<p><em>Subsurface (Head Specific)</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="im4" src="_images/mat_param_skin_head_sub_surface.png" /></p></td>
+<td><p><em>Subsurface Falloff &amp; Subsurface Radius</em> - These are combined to give a vector which controls the subsurface scattering radius for each color, thus:
+<br /><br />
+<img alt="im4a" src="_images/surface_subsurface_radii.png" />
+<br /><br />
+<em>‘Subsurface Radius Vector’</em> in the material surface properties.  This is used to bypass limitiations of <a class="reference external" href="https://docs.blender.org/manual/en/latest/render/eevee/limitations.html#eevee-limitations-sss">SSS in the Eevee render engine</a>.
+<br /><br />
+<em>Subsurface Scale</em> - This is a multiplier that effectively represents the opacity of the subsurface scattering.
+<br /><br />
+<em>Scatter Scale (Specific)</em> - Additional (cumulative with the subsurface scale) scattering multiplier for each specific area. As with roughness (above), the specific locations: Ear, Neck, Chin, Forehead, Upper Lip, Cheek, Nose, Mouth, Upper Lid &amp; Inner Lid are predefined by (the same) masks exported with the character.
+<br /><br />
+<em>Unmasked Scatter Scale</em> - Non specific scattering multiplier for unmasked areas.</p></td>
+</tr>
+</tbody>
+</table>
+<p><em>Subsurface (non-Head)</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="im5" src="_images/mat_param_skin_nonhead_sub_surface.png" /></p></td>
+<td><p><em>Subsurface (non-Head) differences:</em>
+<br /><br />
+<em>Scatter Scale</em> - As with roughness (above), the non-head shaders use a general RGBA mask to define where subsurface scattering may be applied.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Normals</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="im6" src="_images/mat_param_skin_head_normals.png" /></p></td>
+<td><p><em>Normal Strength</em> - The <em>Tangent Space</em> strength of the final normal map (after blending with the normal blend and micro-normal maps.
+<br /><br />
+<em>Normal Blend</em> - The Extent of overlay blending of the base normal map and the normal blend map.
+<br /><br />
+<em>Micro Normal Strength</em> - The (masked) extent of overlay blending of the micro normal with previously blended normal + normal blend map.
+<br /><br />
+<em>NB</em> - Normal maps are overlay blended in the following order:
+<br />
+<strong>Base Normal Map</strong> -&gt; <strong>Normal Blend Map</strong> -&gt; <strong>Micro Normal Map</strong>
+<br /><br />
+<em>Micro Normal Tiling</em> - UV scaling of the micro normal map.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Emission</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="im7" src="_images/mat_param_skin_head_emission.png" /></p></td>
+<td><p><em>Emission Color</em> - Color multiplied with an available emission map.
+<br /><br />
+<em>Emission Strength</em> Value by which the color*emission map is multiplied to give the final emission map.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eyes.html" class="btn btn-neutral float-left" title="Eyes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="powers.html" class="btn btn-neutral float-right" title="Notes on Power Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -13,4 +13,11 @@
    materials
    physics
    scene
-   prefs
+   prefs   
+   
+   eyes
+   skin
+
+   powers
+   remap
+   mix

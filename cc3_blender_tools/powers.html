@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes on Power Functions &mdash; CC3 Blender Tools 0.4.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notes on Remapping Functions" href="remap.html" />
+    <link rel="prev" title="Skin" href="skin.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC3 Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Import &amp; Export Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Build Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefs.html">Preferences Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Notes on Power Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exponent-effects">Exponent Effects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC3 Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Notes on Power Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/powers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="notes-on-power-functions">
+<h1>Notes on Power Functions<a class="headerlink" href="#notes-on-power-functions" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Bitmaps, be they single channel greyscale or RGB are essentially an array of values where each value is between 0 and 1.</p>
+<figure class="align-center" id="id1">
+<img alt="Greyscale Roughness Map" src="_images/head_roughness_g0_sm.png" />
+<figcaption>
+<p><span class="caption-text"><em>Greyscale Head Roughness Map</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>In a shader, when we use a parameter such as ‘Roughness Power’, this parameter is used in an operation which takes a value <img class="math" src="_images/math/c28db08c9f7ca70af82c200608ce75b6f6df6295.svg" alt="b"/> from the bitmap and raises it to the power of the parameter <img class="math" src="_images/math/9eae729219516ffac0f282e62444659aa54ac273.svg" alt="n"/> i.e. <img class="math" src="_images/math/8851d9cc969f46984bd4859127683e0722299ff7.svg" alt="b^n"/> (here <img class="math" src="_images/math/c28db08c9f7ca70af82c200608ce75b6f6df6295.svg" alt="b"/> is referred to as the <em>base</em> and <img class="math" src="_images/math/9eae729219516ffac0f282e62444659aa54ac273.svg" alt="n"/> as the <em>exponent</em>.  This operation is usually referred to as <a class="reference external" href="https://en.wikipedia.org/wiki/Exponentiation">Exponentiation</a> or a <a class="reference external" href="https://en.wikipedia.org/wiki/Power_law">Power Law</a>.</p>
+<p>Blender uses the Math-&gt;Power ‘Converter’ type shadernode (light blue) to do this  <em>(shown below for illustration)</em>.</p>
+<figure class="align-center" id="id2">
+<img alt="Converter Node: Math (Power)" src="_images/blender_power_node.png" />
+<figcaption>
+<p><span class="caption-text"><em>Converter Node: Math (Power)</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>This type of operation is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Gamma_correction">Gamma Correction</a> where ‘gamma’ (<img class="math" src="_images/math/c1f2fa46542837d29a562d192ea3f92faeb1e949.svg" alt="\gamma"/>) is the <em>exponent</em>, <img class="math" src="_images/math/f6d1bb46090eccefda020d3112766ed2c7ca8d72.svg" alt="V_{\mathrm{in}}"/> is the <em>base</em> (i.e. the input bitmap) and <img class="math" src="_images/math/0f9e827ab2b79a42cd876777047dc29fc9ebf72f.svg" alt="A"/> is a constant of proportionality which gives Gamma Corrected <img class="math" src="_images/math/befa80da8d72629ae33b5d0acccffe23e960b411.svg" alt="V_{\mathrm{out}}"/> (i.e. the output bitmap) in the expression:</p>
+<div class="math">
+<p><img src="_images/math/3a6cfa1b22af68aadfe8845b66e4baaba5094050.svg" alt="V_{\mathrm{out}} = A V_{\mathrm{in}}^{\gamma}"/></p>
+</div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="exponent-effects">
+<h2>Exponent Effects<a class="headerlink" href="#exponent-effects" title="Permalink to this headline"></a></h2>
+<p>When the <em>base</em> value you are raising to a power is between 0 and 1 (as is the case with a bitmap), the result can never be lower then 0 or greater than 1.  Thus all the values in a bitmap can be safely <em>tuned</em> in a non-linear manner by only varying the <em>exponent</em>.</p>
+<div class="admonition-important admonition">
+<p class="admonition-title">Important</p>
+<p>The value of the <em>exponent</em> can have a dramatic effect on the bitmap.  Consider the examples below:</p>
+<p>When the <em>exponent</em> is 0.2 (<img class="math" src="_images/math/8c0e3d9bfc4908fe4ca118b2acfa5da0fdbc2bb2.svg" alt="y = x^{0.2}"/> i.e. the <em>quintic root</em> <img class="math" src="_images/math/933558a4ea8cd64eb5988fb81e40acf3b2ecb0e6.svg" alt="x^{1/5}"/>) smaller values are amplified much more than the higher values (with a roughness map, this would mean that the smoother areas are made somewhat rougher; with a RGB image, the darker areas would be significantly lightened)</p>
+<p>When the <em>exponent</em> is 1 (<img class="math" src="_images/math/84f9b92619b2476ea654398fb8a6ce9c19d9c372.svg" alt="y = x^{1}"/> <img class="math" src="_images/math/041694ebf99ff55353a7d70d8dddb9f0fdc3b3df.svg" alt="\equiv"/> <img class="math" src="_images/math/7b6f1d4b90851b9a770d998d0c7b1a3bbb116d0a.svg" alt="y = x"/>) this is the neutral case where the operation makes no changes to the bitmap.</p>
+<p><a class="reference internal" href="_images/x^0.2.png"><img alt="x02" src="_images/x^0.2.png" style="width: 300px;" /></a> <a class="reference internal" href="_images/x^1.png"><img alt="x1" src="_images/x^1.png" style="width: 300px;" /></a></p>
+<p><a class="reference internal" href="_images/_exponent_0.2.png"><img alt="e02" src="_images/_exponent_0.2.png" style="width: 300px;" /></a> <a class="reference internal" href="_images/_exponent_1.png"><img alt="e1" src="_images/_exponent_1.png" style="width: 300px;" /></a></p>
+<p>When the <em>exponent</em> is above 1 but still small, we can see a slight reduction in lower end values and a slight increase in higher end values e.g with <img class="math" src="_images/math/57ff4cbbf8f381d5ae90b656168c93e11984e3da.svg" alt="y = x^{2}"/>.</p>
+<p>As the <em>exponent</em> becomes higher (e.g with <img class="math" src="_images/math/ec7c9e44723f14cf708ad038504e2407c92e9a4b.svg" alt="y = x^{5}"/>) we observe a very significant reduction of all but the highest end values (with a roughness map this would smooth out all but the roughest areas; with a RGB image, the lighter areas would be significantly darkened)</p>
+<p><a class="reference internal" href="_images/x^2.png"><img alt="x2" src="_images/x^2.png" style="width: 300px;" /></a> <a class="reference internal" href="_images/x^5.png"><img alt="x5" src="_images/x^5.png" style="width: 300px;" /></a></p>
+<p><a class="reference internal" href="_images/_exponent_2.png"><img alt="e2" src="_images/_exponent_2.png" style="width: 300px;" /></a> <a class="reference internal" href="_images/_exponent_5.png"><img alt="e5" src="_images/_exponent_5.png" style="width: 300px;" /></a></p>
+<p>The value of the <em>exponent</em> should therefore be adjusted carefully.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="skin.html" class="btn btn-neutral float-left" title="Skin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="remap.html" class="btn btn-neutral float-right" title="Notes on Remapping Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
