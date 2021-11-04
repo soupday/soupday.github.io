@@ -11,7 +11,25 @@ TLDR Installation
 Download from GitHub
 ====================
 
-Download the `latest release`_ from Github.
+Download the latest release from Github for the render pipeline that you are using **(Only install one version)**.
+
+.. _HDRP Latest Release: https://github.com/soupday/cc3_unity_tools_HDRP/releases/
+.. _URP Latest Release: https://github.com/soupday/cc3_unity_tools_URP/releases/
+.. _3D Latest Release: https://github.com/soupday/cc3_unity_tools_3D/releases/
+
+
+.. list-table::
+   :widths: 1 1
+   :header-rows: 1
+
+   * - Pipeline
+     - Latest Release
+   * - HDRP
+     - `HDRP Latest Release`_
+   * - URP
+     - `URP Latest Release`_
+   * - 3D
+     - `3D Latest Release`_
 
 
 Unpack the files

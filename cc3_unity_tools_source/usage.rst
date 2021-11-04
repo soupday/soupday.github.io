@@ -77,38 +77,40 @@ Beginning The Import
 Firstly ensure the character you wish to process is currently selected by clicking on the character icon (on the left hand side).  The currently selected character will be shown as follows.
 
 .. image:: images/current_selection.png
+    :align: center
 
-The selected character is now ready to be processed.  The following options are available:
+|
 
-.. image:: images/default_button.png
+The selected character is now ready to be processed.  The following options will be initially available:
 
-**Default** processing will set up the character with materials using the system default HDRP/Lit and HDRP/Hair shaders that ship with Unity
+Initial Processing
+------------------
 
-.. image:: images/hq_button.png
+.. |default| image:: images/default_button.png
 
-**High Quality** processing will set up the character with materials using a custom ShaderGraph which replicates the visual quality of CC3 as closely as possible. 
-Using the refractive option for eye rendering will produce the highest quality output (defaults to refractive).
+.. |deftxt| replace:: 
+    **Default** processing will set up the character with materials using the system default shaders that ship with Unity - This should only ever be used as a draft import.
 
-.. image:: images/eye_options.png
+.. |hq| image:: images/hq_button.png
 
-This combination produces result with the highest visual quality.
+.. |hqtxt| replace::
+    **High Quality** processing will set up the character with materials using a custom ShaderGraph which replicates the visual quality of CC3 as closely as possible.
 
-.. image:: images/bake_button.png
+.. |eyeref| image:: images/eye_options.png
 
-**Bake** will create a new prefab which has consolidated all the texture influences into as simple a set of textures as possible with materials which a custom ShaderGraph shader or the system default HDRP/Lit and HDRP/Hair shaders – this is controlled by the checkbox (defaults to custom shader).
+.. |eyereftxt| replace::
+    This option is only available with *HDRP* and will use a more complex shader for a better result using 'Higher Quality' processing.
 
-.. image:: images/bake_options.png
+.. list-table::
+   :widths: 1 3
+   :header-rows: 0
 
-
-.. youtube:: 9sCRM0hUkc4
-
-| 
-    
-Baking is the most performance friendly option, whilst maintaining high visual quality.
-
-.. image:: images/anim_button.png
-
-**Animations** will process all of the animations contained in the .fbx and conform them to Unity's X,Y,Z co-ordinate system.
+   * - |default|
+     - |deftxt|
+   * - |hq|
+     - |hqtxt|
+   * - |eyeref|
+     - |eyereftxt|
 
 To begin processing click the appropriate button, Unity will then process the character and write a log file in the same directory as the .fbx file.  
 
@@ -118,7 +120,84 @@ Additionally, the status text will be updated with the type of processing that h
 
 .. image:: images/floating_window_post_hq.png
 
+Once the (High Quality) processing has been completed, a prefabs directory will be created in the same directory as the imported character .fbx file and a unity prefab of the imported character will be placed into it. 
 
+Several further processing options will then become available.
+
+Baking
+------
+
+Baking is the most performance friendly option, whilst maintaining high visual quality.
+
+.. |bake| image:: images/bake_button.png
+
+.. |baketxt| replace::
+    **Bake** will create and apply new materials which have consolidated all the texture influences into as simple a set of textures as possible to enhance performance.
+
+.. |custom| image:: images/bake_options_custom.png
+
+.. |customtxt| replace::
+    This option determines wether materials with a custom ShaderGraph shader or the system default shaders are used in the baked output.
+
+.. |prefab| image:: images/bake_options_prefab.png
+
+.. |prefabtxt| replace::
+    This option controls wether the baked output is written to a new prefab <name>_baked (in the same directory as the initialally created prefab) or overwrites the initially created prefab with new materials and textures. 
+
+.. list-table::
+   :widths: 1 3
+   :header-rows: 0
+
+   * - |bake|
+     - |baketxt|
+   * - |custom|
+     - |customtxt|
+   * - |prefab|
+     - |prefabtxt|
+
+The Baking workflow is show in the video below:
+
+.. youtube:: 9sCRM0hUkc4
+
+|     
+
+Two pass hair shader
+--------------------
+
+.. |2pass| image:: images/two_pass.png
+    
+.. |2passtxt| replace::
+    The **2Pass** option will apply two materials to the hair meshes (and thus use two material passes). Two pass hair is generally higher quality, where the hair is first drawn opaque with alpha cutout and the remaining edges drawn in softer alpha blending, but can come at a performance cost. 
+
+.. list-table::
+   :widths: 1 7
+   :header-rows: 0
+
+   * - |2pass|
+     - |2passtxt|
+
+After two pass hair has been generated, the character prefab will also be updated with the two pass hair materials (for the original HQ prefab or the baked version where a new prefab wasn't created). If you are using a separate baked prefab (the default) then re-baking the character will update the baked prefab with the two pass materials.
+
+|
+
+Animations
+----------
+
+.. |anim| image:: images/anim_button.png
+
+.. |animtxt| replace::
+    **Animations** will process all of the animations contained in the .fbx and conform them to Unity's X,Y,Z co-ordinate system.
+
+.. list-table::
+   :widths: 1 7
+   :header-rows: 0
+
+   * - |anim|
+     - |animtxt|
+
+This will also create a default animator controller.
+
+|
 
 Post Processing
 ===============
