@@ -184,6 +184,8 @@ Animations
 ----------
 
 .. |anim| image:: images/anim_button.png
+    :scale: 100%
+    :align: middle
 
 .. |animtxt| replace::
     **Animations** will process all of the animations contained in the .fbx and conform them to Unity's X,Y,Z co-ordinate system.
@@ -195,7 +197,7 @@ Animations
    * - |anim|
      - |animtxt|
 
-This will also create a default animator controller.
+This will also create a default animator controller
 
 |
 
