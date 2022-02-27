@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eyes &mdash; CC3 Blender Tools 0.4.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Skin" href="skin.html" />
+    <link rel="prev" title="Preferences Panel" href="prefs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC3 Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Import &amp; Export Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Build Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefs.html">Preferences Panel</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Eyes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#eye-composition">Eye Composition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eye-refraction">Eye Refraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eye-parameters">Eye Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#eye-occlusion">Eye Occlusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tearline">TearLine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eyeball">Eyeball</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eyelash">Eyelash</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC3 Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Eyes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/eyes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="eyes">
+<h1>Eyes<a class="headerlink" href="#eyes" title="Permalink to this headline"></a></h1>
+<section id="eye-composition">
+<h2>Eye Composition<a class="headerlink" href="#eye-composition" title="Permalink to this headline"></a></h2>
+<p>The eyes and the surrounding area have a large amount of detail and flexibility.  The following are the “eye relevant” parts of the character model.</p>
+<figure class="align-center" id="id1">
+<img alt="Eye Objects" src="_images/eye_objects.png" />
+<figcaption>
+<p><span class="caption-text"><em>Eye Objects</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><a class="reference internal" href="#eye-occlusion"><span class="std std-ref">Eye Occlusion</span></a> - defined by the <em>Std_Eye_Occlusion_R &amp; _L</em> materials in the <strong>CC_Base_EyeOcclusion</strong> object.</p></li>
+<li><p><a class="reference internal" href="#tearline"><span class="std std-ref">TearLine</span></a> - defined by the <em>Std_Tearline_R &amp; _L</em> materials in the <strong>CC_Base_TearLine</strong> object.</p></li>
+<li><p><a class="reference internal" href="#eyeball"><span class="std std-ref">Eyeball</span></a> - defined by the <em>Std_Eye_R &amp; _L and Std_Cornea_R &amp; _L</em> in the <strong>CC_Base_Eye</strong> object.</p></li>
+<li><p><a class="reference internal" href="#eyelash"><span class="std std-ref">Eyelashes</span></a> - defined by the <em>Std_Eyelash</em> material in the <strong>CC_Base_Body</strong> object.</p></li>
+</ul>
+<p>The parameters for each of the materials can be manipulated in the <em>Material Parameters</em> dropdown of the tool <em>via</em> the selection of the relevant object and the selection of the material from the <em>Material Properties</em> tab of the <em>properties</em> pane.  This is discussed in more detail <a class="reference internal" href="materials.html#examining-material-parameters"><span class="std std-ref">here</span></a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="eye-refraction">
+<h2>Eye Refraction<a class="headerlink" href="#eye-refraction" title="Permalink to this headline"></a></h2>
+<p>There are two types of <em>eye refraction</em> available (summarized below)</p>
+<ul class="simple">
+<li><p><em>Parallax</em> - <em>Approximated Parallax Refraction</em> using a single cornea material.  In the Eevee render engine this material <strong>allows</strong> both <strong>Sub-Surface Scattering</strong> and <strong>Receiving Shadows</strong></p></li>
+</ul>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/eye_parallax.gif"><img alt="Parallax" src="_images/eye_parallax.gif" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Parallax Refraction</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><em>SSR</em> - <em>Screen Space Refraction</em> using a transmissive and transparent cornea material over an opaque iris material.  In the Eevee render engine this material <strong>cannot have Sub-Surface Scattering</strong> and <strong>cannot receive full shadows</strong></p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/eye_ssr.gif"><img alt="Screen Space Refraction" src="_images/eye_ssr.gif" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Screen Space Refraction</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>When the character is imported, the <em>Parallax</em> materials are built by default.  If you wish to switch to <em>SSR</em> materials then navigate to the <em>Build Settings</em> dropdown of the tool and find the section called <em>Eye Refraction</em>.</p>
+<figure class="align-center" id="id4">
+<img alt="Eye Refraction Settings" src="_images/eye-ssr-set.png" />
+<figcaption>
+<p><span class="caption-text"><em>Eye Refraction Settings with SSR selected</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Select the type of refraction required and then click <em>Rebuild Advanced Materials</em>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="eye-parameters">
+<h2>Eye Parameters<a class="headerlink" href="#eye-parameters" title="Permalink to this headline"></a></h2>
+<section id="eye-occlusion">
+<h3>Eye Occlusion<a class="headerlink" href="#eye-occlusion" title="Permalink to this headline"></a></h3>
+<img alt="_images/eye_occlusion_mat_selection.png" class="align-right" src="_images/eye_occlusion_mat_selection.png" />
+<p>Eye Occlusion parameters are defined in the <em>Std_Eye_Occlusion_R</em> and <em>Std_Eye_Occlusion_L</em> materials in the <strong>CC_Base_EyeOcclusion</strong> object.  These parameters can be adjusted simultaneously as <a class="reference internal" href="materials.html#linked-materials"><span class="std std-ref">linked materials</span></a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Base Color &amp; Opacity</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime2" src="_images/mat_param_eye_occlusion_bco.png" /></p></td>
+<td><p><em>Hardness</em> - Eye occlusion alpha channel <em>exponent</em>.  Note: Small <a class="reference internal" href="powers.html#exponent-effects"><span class="std std-ref">exponent</span></a> values will tend to raise all the values in the alpha map towards 1 and as such cause the whole eye occlusion to become more opaque whereas larger values will give less opacity.
+<br /><br />
+<em>Strength</em> - Multiplier applied to the to the primary occlusion mask to control the overall strength of the mask.
+<br /><br />
+<em>Top / Top Range / Top Curve</em> - These values control the <em>UV</em> gradient for the top of the eye.  Where <em>Top</em> determines the minimum distance of occlusion from the top of the eye (where larger values will occlude more of the eye in a downward direction); <em>Top Curve</em> determines the curvature of the occlusion; <em>Top Range</em> determines the maximum extent of the occlusion (max 1.0).
+<br /><br />
+<em>Bottom / Inner / Outer</em> - These controls work analogously to the above but for the bottom of the eye (occluding upwards); the inner eye (occluding from the tear duct across the eye) &amp; the outer eye (occluding inwards towards the tear duct).
+<br /><br />
+<em>2nd Strength / 2nd Top / 2nd Top Range</em> - These values control a secondary occlusion mask which occludes from the top down;  Strength operates as above  however the sense of the 2nd mask is inverted so small values will occlude more (in a downward direction from the top of the eye).
+<br /><br />
+<em>Tear Duct Position / Width</em> - These values control the beginning of the occlusion from the tear duct side of the eye.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Displacement</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime3" src="_images/mat_param_eye_occlusion_disp.png" /></p></td>
+<td><p><em>Displace / Top / Bottom / Inner / Outer</em> - These values determine the shape of the eye occlusion object iteself.
+<br /><br />
+Each value controls the strength of a blender <a class="reference external" href="https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/displace.html">displacement modifier</a> for the appropriate vertex group relating to the named part of the mesh.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="tearline">
+<h3>TearLine<a class="headerlink" href="#tearline" title="Permalink to this headline"></a></h3>
+<img alt="_images/tear_line_mat_selection.png" class="align-right" src="_images/tear_line_mat_selection.png" />
+<p>TearLine parameters are defined in the <em>Std_Tearline_R</em> and <em>Std_Tearline_L</em> materials in the <strong>CC_Base_Tearline</strong> object.  These parameters can be adjusted simultaneously as <a class="reference internal" href="materials.html#linked-materials"><span class="std std-ref">linked materials</span></a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime4" src="_images/mat_param_tearline.png" /></p></td>
+<td><p><em>Specular</em> - Controls the amount of specular reflection.
+<br /><br />
+<em>Roughness</em> - Controls the surface roughness for diffuse and specular reflection.
+<br /><br />
+<em>Alpha</em> - Controls the transparency of the tear line.
+<br /><br />
+<em>Displace / Inner Displace</em> - control the shape of the tearline object using a <a class="reference external" href="https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/displace.html">displacement modifier</a> for each appropriate vertex group.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="eyeball">
+<h3>Eyeball<a class="headerlink" href="#eyeball" title="Permalink to this headline"></a></h3>
+<img alt="_images/eyeball_mat_selection.png" class="align-right" src="_images/eyeball_mat_selection.png" />
+<p>TearLine parameters are defined in the <em>Std_Eye_R</em>, <em>Std_Eye_L</em>, <em>Std_Cornea_R</em> and <em>Std_Cornea_L</em> materials in the <strong>CC_Base_Eye</strong> object.  These parameters can <strong>all</strong> be adjusted simultaneously as <a class="reference internal" href="materials.html#linked-materials"><span class="std std-ref">linked materials</span></a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Base Color</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime5" src="_images/mat_param_eyeball_base_color.png" /></p></td>
+<td><p><em>AO Strength</em> - <a class="reference internal" href="mix.html#blending-factor"><span class="std std-ref">Blending Factor</span></a> controls the multiply blending of the AO map over the eye color map.
+<br /><br />
+<em>Color Blend</em> - <a class="reference internal" href="mix.html#blending-factor"><span class="std std-ref">Blending Factor</span></a> controls the multiply blending of the color blend map (effectively controlling edge darkening) over the combined iris and limbus color map (giving the eye color map which is then AO blended, as above).
+<br /><br />
+<em>Sclera Hue, Saturation and Brightness</em> - These are respectively the Hue, Saturation and Value parameters of the standard <a class="reference external" href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSV color model</a>; applied to the <a class="reference external" href="https://en.wikipedia.org/wiki/Sclera">sclera</a> of the eye.
+<br /><br />
+<em>Sclera HSV</em> - This is a control factor for a blender ‘<a class="reference external" href="https://docs.blender.org/manual/en/latest/compositing/types/color/hue_saturation.html">Hue Saturation Value Node</a>’ to control the influence of the <em>Sclera Hue, Saturation and Brightness</em> values defined above.
+<br /><br />
+<em>Iris Hue, Saturation and Brightness</em> - These are respectively the Hue, Saturation and Value parameters of the standard HSV color model; applied to the <a class="reference external" href="https://en.wikipedia.org/wiki/Iris_(anatomy)">iris</a> of the eye.
+<br /><br />
+<em>Iris HSV</em> - This is a control factor for a blender ‘<a class="reference external" href="https://docs.blender.org/manual/en/latest/compositing/types/color/hue_saturation.html">Hue Saturation Value Node</a>’ to control the influence of the <em>Iris Hue, Saturation and Brightness</em> values defined above.
+<br /><br />
+<em>Iris radius</em> - Controls the size of the <a class="reference external" href="https://en.wikipedia.org/wiki/Iris_(anatomy)">iris</a>.
+<br /><br />
+<em>Limbus Width, Dark Radius/Width &amp; Limbus Color</em> - Collectively these control the <a class="reference external" href="https://en.wikipedia.org/wiki/Corneal_limbus">limbus</a> region of the eye (more specifically these values influence the size and strength of the dark region between the iris and sclera).</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Eye Shape</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime6" src="_images/mat_param_eyeball_eye_shape.png" /></p></td>
+<td><p><em>Sclera Scale</em> - Scaling factor for the sclera texture (effectiveley controls the visibility of blood vessels).
+<br /><br />
+<em>Iris Scale</em> - Controls the size of the iris (incorporating of the limbus settings in the above section).</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Corner Shadow</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime7" src="_images/mat_param_eyeball_corner_shadow.png" /></p></td>
+<td><p><em>Shadow Radius</em> -  Radius of an circular inverse shadow mask, which at low values will draw shadow over the corners of the eye (at very small values it will shadow the entire eye).
+<br /><br />
+<em>Shadow Hardness</em> -  Hardness of the edge of the shadow mask (values towards 1.0 will draw a very sharp line).
+<br /><br />
+<em>Shadow Color</em> -  Color of the shadow.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Surface</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime8" src="_images/mat_param_eyeball_surface.png" /></p></td>
+<td><p><em>Cornea / Iris Specular</em> -  Controls the amount of specular reflection in the Cornea and Iris respectively.
+<br /><br />
+<em>Sclera / Iris / Cornea Roughness</em> -  Controls the surface roughness for diffuse and specular reflection in the Sclera, Iris and Cornea respectively.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Subsurface</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime9" src="_images/mat_param_eyeball_subsurface.png" /></p></td>
+<td><p><em>Subsurface Scale</em> -  <a class="reference external" href="https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html#inputs">Multiplier</a> for the <em>‘Subsurface Radius Vector’</em> constructed below.
+<br /><br />
+<em>Subsurface Radius and Falloff</em> - These are combined to give a vector which controls the subsurface scattering radius for each color, as with the skin subsurface:
+<br /><br />
+<img alt="ime9b" src="_images/eye_subsurface_radii.png" />
+<br /><br />
+<em>‘Subsurface Radius Vector’</em> in the material surface properties.  This is used to bypass limitiations of <a class="reference external" href="https://docs.blender.org/manual/en/latest/render/eevee/limitations.html#eevee-limitations-sss">SSS in the Eevee render engine</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Depth and Refraction</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime10" src="_images/mat_param_eyeball_depth.png" /></p></td>
+<td><p><em>Iris Depth</em> - Controls the depth of the iris (using a blender displacement modifier of the relevant vertex group).
+<br /><br />
+<em>Depth Radius</em> - Controls the radius of influence of the depth control.
+<br /><br />
+<em>Pupil Scale</em> - Controls the texture scaling of the pupil and surrounding iris.
+<br /><br />
+<em>IOR</em> - ‘<a class="reference external" href="https://en.wikipedia.org/wiki/Index_of_refraction">Index of Refraction</a>’ of the eye.  For reference water has a refractive index <img class="math" src="_images/math/9eae729219516ffac0f282e62444659aa54ac273.svg" alt="n"/> = 1.333 and diamond has <img class="math" src="_images/math/9eae729219516ffac0f282e62444659aa54ac273.svg" alt="n"/> = 2.417.
+<br /><br />
+<em>Refraction Depth</em> - Controls the apparent depth of the refracting medium.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Normals</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime11" src="_images/mat_param_eyeball_normals.png" /></p></td>
+<td><p><em>Sclera Normal Strength</em> - Multiplier to control the strength of the sclera normal map.
+<br /><br />
+<em>Sclera Normal Tiling</em> - UV tiling size of teh sclera normal map.
+<br /><br />
+<em>Blood Vessel Height</em> - Bump map strength for blood vessels in the sclera diffuse map.
+<br /><br />
+<em>Iris Bump Height</em> - Control for the overall distance for bump mapping.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Emission</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime12" src="_images/mat_param_eyeball_emission.png" /></p></td>
+<td><p><em>Sclera Emission Color</em> - Emissive color of the sclera to be multiplied with an exported emission map.
+<br /><br />
+<em>Sclera Emission Strength</em> - Multiplier applied to the emissive color map.
+<br /><br />
+<em>Iris Emission Color</em> - Emissive color of the iris to be multiplied with an exported emission map.
+<br /><br />
+<em>Iris Emission Strength</em> - Multiplier applied to the emissive color map.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="eyelash">
+<h3>Eyelash<a class="headerlink" href="#eyelash" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ime1" src="_images/mat_param_eyelash_all.png" /></p></td>
+<td><p>The <em>Std_Eyelash</em> material is part of the <strong>CC_Base_Body</strong> object and is a standard PBR Material.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A general discussion of PBR materials can be found in the <a class="reference external" href="https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html">Blender Documentation</a>.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="prefs.html" class="btn btn-neutral float-left" title="Preferences Panel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="skin.html" class="btn btn-neutral float-right" title="Skin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

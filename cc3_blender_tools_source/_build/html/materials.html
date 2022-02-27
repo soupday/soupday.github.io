@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material Parameters &mdash; CC3 Blender Tools 0.4.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Physics Panel" href="physics.html" />
+    <link rel="prev" title="Build Settings" href="build.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC3 Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Import &amp; Export Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build.html">Build Settings</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Material Parameters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#examining-material-parameters">Examining Material Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#single-materials">Single Materials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linked-materials">Linked Materials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#material-parameter-discussion">Material Parameter Discussion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefs.html">Preferences Panel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC3 Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Material Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/materials.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="material-parameters">
+<h1>Material Parameters<a class="headerlink" href="#material-parameters" title="Permalink to this headline"></a></h1>
+<figure class="align-center" id="id1">
+<img alt="_images/mat_param_default.png" src="_images/mat_param_default.png" />
+<figcaption>
+<p><span class="caption-text"><em>Default material pane</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Opening the <strong>Material Parameters</strong> dropdown will show the default material parameters pane, which will be initially devoid of any information.</p>
+<p>Once a character has been imported, the material parameters pane will show a context sensitive set of parameters dependent on the object selected in the viewport.</p>
+<figure class="align-center" id="id2">
+<img alt="_images/mat_param_grouped_fade.png" src="_images/mat_param_grouped_fade.png" />
+<figcaption>
+<p><span class="caption-text"><em>Illustration of various material parameter sets</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The 5 principal object types (relating to the character itself rather than any clothing or accessories) are the <em>Skin, Eyes, Eye Occlusion, Hair and Teeth</em>.</p>
+<div class="admonition-notable-parameters admonition">
+<p class="admonition-title">Notable Parameters</p>
+<p>When manipulating the material parameters the function of most parameters is self evident, however there are several which require further explanation.</p>
+<ul class="simple">
+<li><p><em>Color Blending</em> - When a map such as a <em>micro normal map</em> or an <em>ambient occlusion map</em> is being blended with a base normal map or diffuse texture, the shader requires a parameter to control the extent of the blending.  These parameters are labelled as a <em>strength</em> for <em>multiplicative</em> type blending, and as a <em>blend overlay strength</em> for <em>overlay</em> type blending.  These parameters are discussed <a class="reference internal" href="mix.html#notes-on-color-mixing"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><em>Exponents</em> - There are many occasions where exponents are used with an input map (e.g. Roughness) in order to change the map values in a non linear way.  For example to exaggerate roughness in relatively smooth areas or to de-emphasize roughness in rougher areas.  Please see <a class="reference internal" href="powers.html#notes-on-power-functions"><span class="std std-ref">these notes</span></a> on the effects of exponents.</p></li>
+<li><p><em>Min-Max</em> - Occasionally, a min and max value is used to define upper and lower limits for value ranges of input bitmaps.  These are not simple value clamps, instead they are a remapping of the input values to a new user defined range.  This is explained more thoroughly <a class="reference internal" href="remap.html#notes-on-remapping-functions"><span class="std std-ref">here</span></a>.</p></li>
+</ul>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="examining-material-parameters">
+<h2>Examining Material Parameters<a class="headerlink" href="#examining-material-parameters" title="Permalink to this headline"></a></h2>
+<section id="single-materials">
+<h3>Single Materials<a class="headerlink" href="#single-materials" title="Permalink to this headline"></a></h3>
+<p>In order to view the settings specific to a particular object’s material, you must first select the object in Blender’s viewport (in <em>Object Mode</em>).</p>
+<img alt="_images/selected_head_obj.png" class="align-center" src="_images/selected_head_obj.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="_images/selected_mat.png" class="align-right" src="_images/selected_mat.png" />
+<p>To examine or manipulate a single material first make sure that in <em>Adjust Parameters</em> the <em>Selected</em> button is active.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <em>Material Properties</em> tab <img alt="mtpr" src="_images/material_properties.png" /> in the <em>properties</em> pane.  Then select the material you require from the displayed materials list.</p>
+<img alt="_images/material_selection.png" src="_images/material_selection.png" />
+<p>The <em>Material Parameters</em> pane of the CC3 tool will then be updated with the available settings for the <em>Selected Material</em>.</p>
+<img alt="_images/material_parameters_pane_s.png" src="_images/material_parameters_pane_s.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="linked-materials">
+<h3>Linked Materials<a class="headerlink" href="#linked-materials" title="Permalink to this headline"></a></h3>
+<p>Many of the materials in the imported character share the same shader, this allows for the collective editing of shared shader parameters across multiple materials; referred to here as <em>Linked Materials</em>.</p>
+<p><em>Linked Materials</em> are grouped as follows</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="skin.html#skin-materials"><span class="std std-ref">Skin (Head), Skin (Body), Skin (Arm) &amp; Skin (leg)</span></a></p></li>
+<li><p><a class="reference internal" href="eyes.html#eyeball"><span class="std std-ref">Eye (Right + Left) &amp; Eye (Right Cornea + left Cornea)</span></a></p></li>
+<li><p><a class="reference internal" href="eyes.html#eye-occlusion"><span class="std std-ref">Eye Occlusion (Left + Right)</span></a></p></li>
+<li><p><a class="reference internal" href="eyes.html#tearline"><span class="std std-ref">Tearline (Left + Right)</span></a></p></li>
+<li><p><a class="reference internal" href="teeth.html#teeth-gums-and-tongue"><span class="std std-ref">Teeth &amp; Gums (Upper + Lower)</span></a></p></li>
+<li><p><a class="reference internal" href="#material-parameters"><span class="std std-ref">Hair (All types present)</span></a></p></li>
+<li><p><a class="reference internal" href="skin.html#skin-parameters"><span class="std std-ref">Scalp</span></a></p></li>
+</ul>
+<img alt="_images/linked_mats.png" class="align-right" src="_images/linked_mats.png" />
+<p>In order to edit the settings for a group of linked materials ensure that in <em>Adjust Parameters</em> the <em>Linked</em> button is active.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Selecting an object in in Blender’s viewport (in <em>Object Mode</em>) will then update the <em>Material Parameters</em> pane of the CC3 tool with the available settings for the <em>Linked Materials</em> associated with the selected object.</p>
+<img alt="_images/material_parameters_pane_l.png" src="_images/material_parameters_pane_l.png" />
+<p>Thus, multiple settings can be simultaneously edited and consistency maintained across the linked materials in an imported character.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="material-parameter-discussion">
+<h2>Material Parameter Discussion<a class="headerlink" href="#material-parameter-discussion" title="Permalink to this headline"></a></h2>
+<p>The specific parameters for each material type are discussed in details in the following sections:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="eyes.html#eyes"><span class="std std-ref">Eyes</span></a> A full discussion of the eye structure and the options (including alternative materials) available.</p></li>
+<li><p><a class="reference internal" href="skin.html#skin-parameters"><span class="std std-ref">Skin</span></a> All of the skin shader parameters and their location specific properties are discussed.</p></li>
+<li><p><a class="reference internal" href="teeth.html#teeth-gums-and-tongue"><span class="std std-ref">Teeth, Gums and Tongue</span></a> A discussion of the shaders used inside the mouth.</p></li>
+<li><p><a class="reference internal" href="#material-parameters"><span class="std std-ref">Hair</span></a> TBD</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="build.html" class="btn btn-neutral float-left" title="Build Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="physics.html" class="btn btn-neutral float-right" title="Physics Panel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

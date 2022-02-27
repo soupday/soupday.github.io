@@ -18,7 +18,7 @@ Process the Character
 
 Open the tool window via right clicking on the fbx file or use the top menu (CC3 -> Import Character)
 
-In the tool window click on the character you want to process (make sure it's name is the one shown at the top).  Then click 'High Quality' and wait while Unity processes the character and sets it up.  If it looks wierd, wait for any shaders to compile (progress bar at bottom right).
+In the tool window click on the character you want to process (make sure it's name is the one shown at the top).  Then click 'Build Materials' and wait while Unity processes the character and sets it up.  If it looks weird, wait for any shaders to compile (progress bar at bottom right).  If its the 3D render pipeline version make sure the :ref:`color space<Considerations for the URP and 3D Render Pipeline>` is set to 'linear'.  Also if 3D or URP are used, the install the post processing package from the Unity Registry for further enhancement (see the above linked section for install details).
 
 
 Thats it

@@ -156,6 +156,34 @@ The HDRP and URP versions of the tool require minimum versions of the following 
      - `Universal RP`_
      - 10.5.0 or above.
 
+Optional Installation
+=====================
+
+Users of the 3D (built in render pipeline) and URP (universal render pipeline) should consider the optional installation of the post processing package from the Unity Registry.  This will be utilized automatically to give excellent quality results comparable to Character Creator's viewport.
+
+.. image:: images/linear_postprocess.png
+    :width: 300
+    :align: center
+
+|
+
+To install the post processing package, go to the package manager window and use the 'Packages' dropdown to change the list show to 'Unity Registry'.
+
+.. image:: images/package_registry.png
+    :align: center
+
+|
+
+Scroll down the list to find 'Post Processing'.  Select the item in the list and click install.
+
+.. image:: images/package_postprocess.png
+    :align: center
+
+|
+
+After installation the post processing stack will be added to the main camera and the custom settings automatically applied.
+
+|
 
 Removal
 =======
