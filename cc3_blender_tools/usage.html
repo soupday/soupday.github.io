@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Usage &mdash; CC3 Blender Tools 1.3.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advanced Usage" href="adv-usage.html" />
+    <link rel="prev" title="About" href="about.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC3 Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#export-settings-from-character-creator-or-iclone">Export Settings From Character Creator or iClone</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#character-creator">Character Creator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iclone">iClone</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#import-into-blender">Import into Blender</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#standard-import">Standard Import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#character-settings-panel">Character Settings Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#material-parameters-panel">Material Parameters Panel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC3 Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Basic Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-usage">
+<h1>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline"></a></h1>
+<section id="export-settings-from-character-creator-or-iclone">
+<h2>Export Settings From Character Creator or iClone<a class="headerlink" href="#export-settings-from-character-creator-or-iclone" title="Permalink to this headline"></a></h2>
+<section id="character-creator">
+<h3>Character Creator<a class="headerlink" href="#character-creator" title="Permalink to this headline"></a></h3>
+<p>In character creator, make any character you like and dress them up.</p>
+<a class="reference internal image-reference" href="_images/ex1_cc3_char.jpg"><img alt="_images/ex1_cc3_char.jpg" src="_images/ex1_cc3_char.jpg" style="width: 600px;" /></a>
+<p>Export the character as <strong>FBX (Clothed Character)</strong>. Set the target tool preset to <strong>Blender</strong>, The FBX options to <strong>Mesh and Motion</strong>.
+You can Embed the textures if you want, but it’s usually better not to as embedding the textures stores them in the FBX file where you can’t access them if you need to. Set the Include Motion to <strong>Current Pose</strong> and tick <strong>Delete Hidden Faces</strong>.</p>
+<img alt="_images/ex1_export_fbx.jpg" src="_images/ex1_export_fbx.jpg" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="iclone">
+<h3>iClone<a class="headerlink" href="#iclone" title="Permalink to this headline"></a></h3>
+<p>In iClone, select the character you wish to export and use the menu option <strong>File -&gt; Export -&gt; Export FBX</strong></p>
+<a class="reference internal image-reference" href="_images/ex1_iclone_char.png"><img alt="_images/ex1_iclone_char.png" src="_images/ex1_iclone_char.png" style="width: 600px;" /></a>
+<p>Set the target tool to <strong>Blender</strong> the animation range to whatever you need (set to <strong>All</strong> if in doubt).  Leave the default selection of <strong>Embed Textures</strong> and <strong>Delete Hidden Faces</strong>.</p>
+<img alt="_images/ex1_iclone_export.png" src="_images/ex1_iclone_export.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="import-into-blender">
+<h2>Import into Blender<a class="headerlink" href="#import-into-blender" title="Permalink to this headline"></a></h2>
+<section id="standard-import">
+<h3>Standard Import<a class="headerlink" href="#standard-import" title="Permalink to this headline"></a></h3>
+<div class="admonition-important admonition">
+<p class="admonition-title">Important</p>
+<p><strong>Do Not</strong> use the standard blender FBX importer to import characters from iClone or Character Creator. You will encounter all of the numerous problems which initially prompted the creation of this add-on.</p>
+<p>Instead follow the method below.</p>
+</div>
+<p>In Blender and with a new Blend file, you may need to delete the default cube. Press <strong>N</strong> to show the tools panel and select the <strong>CC3</strong> Tab. Select the desired <strong>Lighting</strong> option and then import the character by pressing the <strong>Import Character</strong> button under the <em>Importing</em> header of the <strong>Import/Export panel</strong>.</p>
+<p>Navigate to where you saved the exported the character from Character Creator or iClone, <strong>select the file</strong> and <strong>click the import button</strong>.  Should you wish to import animations, then leave the <em>Import Animation</em> checkbox active in the <em>file view</em> where you navigate to the fbx to import.</p>
+<img alt="_images/import_panel.png" src="_images/import_panel.png" />
+<p>This will import the character, set up the materials and (if the <strong>Lighting</strong> setting is enabled) set up some lighting similar to Character Creators default lighting to better view the character in the viewport.</p>
+<ul class="simple">
+<li><p>You can hide the Armature if it’s getting in the way.</p></li>
+</ul>
+<img alt="_images/imported_char.png" src="_images/imported_char.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="character-settings-panel">
+<h3>Character Settings Panel<a class="headerlink" href="#character-settings-panel" title="Permalink to this headline"></a></h3>
+<p>In the <strong>Character Settings</strong> panel you can control the way the add-on builds the materials.</p>
+<img alt="_images/character_settings.png" src="_images/character_settings.png" />
+<p>Materials can be specifically built for either the Cycles or Eevee renderer, and the type of eye shader can be defined according to your needs.</p>
+<ul class="simple">
+<li><p><strong>Parallax Eyes</strong> use a single cornea material which is not subject to the Eevee engine’s limitations on sub surface scattering and the receiving of shadows.</p></li>
+<li><p><strong>SSR Eyes</strong> (Screen Space Refraction) use a transparent cornea material over an opaque eye (iris) material.  When using Eevee, SSR materials do not receive shadows and do not have subsurface scattering.</p></li>
+</ul>
+<p>Please see the <a class="reference internal" href="eyes.html#eye-refraction"><span class="std std-ref">Eye Refraction</span></a> section for more information.</p>
+<p>Select any imported object to quickly adjust the build object type and material type for any object material.</p>
+<p>The add-on attempts to detect the type and purpose of each object and material by analyzing the object and material names for certain keywords. Sometimes it gets this process wrong if the objects or materials have ambiguous names, but the detected settings can be corrected:</p>
+<ul class="simple">
+<li><p>The <strong>Object Type</strong> allows you to specify what type of object and thus how to build the materials for that object.</p></li>
+<li><p>The <strong>Material Type</strong> similarly allows you to specify what type of material.</p></li>
+</ul>
+<p>These two settings will allow you to correct any mis-detected materials in the import. Typically only hair and clothing meshes will be (occasionally) wrongly detected.</p>
+<p>The <strong>Basic</strong> and <strong>Advanced</strong> material options determine whether a standard PBR shader is used (i.e. BSDF) or a more complex shader.</p>
+<p>Once changes have been made to any of the above the <strong>Rebuild Advanced Materials</strong> button must be used to update the materials with the new settings.</p>
+<p>The <strong>Rebuild Node Groups</strong> button will rebuild the shaders in line with the current version of the add-on.  This can be used in cases where you have an old .blend file created with an earlier version of the add-on and you wish to update the shaders to the latest version.  Or you can use it to reset any changes you may have made to the shaders. In either case, after performing a <strong>Rebuild Node Groups</strong> you must then use <strong>Rebuild Advanced Materials</strong> to complete the process.</p>
+<p>Selection of a material in the <strong>Object and Material Setup</strong> pane will show all of the available settings in the <strong>Material Parameters</strong> panel (in much the same way as selection of  the material in the Material Properties tab of the standard Properties panel would).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="material-parameters-panel">
+<h3>Material Parameters Panel<a class="headerlink" href="#material-parameters-panel" title="Permalink to this headline"></a></h3>
+<p>In the <strong>Material Parameters</strong> panel you can control how the various textures of the character interact and mix together to form the final appearance of the character. Each parameter can be adjusted and the materials will update in real time as you change the parameter sliders. For the most part these parameters take the same values as the material shader parameters in Character Creator.</p>
+<p>The parameters displayed are context sensitive to the currently active selected object and material. Full details of the material parameters can be found here: <a class="reference internal" href="materials.html"><span class="doc">Material Parameters</span></a>.</p>
+<img alt="_images/material_parameters_panel.png" src="_images/material_parameters_panel.png" />
+<p>Make any adjustments you wish to - these settings can all be revisited at any time.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="adv-usage.html" class="btn btn-neutral float-right" title="Advanced Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

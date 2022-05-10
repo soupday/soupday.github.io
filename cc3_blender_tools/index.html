@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CC3 / iClone Blender Tools Documentation &mdash; CC3 Blender Tools 0.4.2 documentation</title>
+  <title>CC3 / iClone Blender Tools Documentation &mdash; CC3 Blender Tools 1.3.4 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -41,15 +41,15 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Import &amp; Export Panel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build.html">Build Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics Panel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefs.html">Preferences Panel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
@@ -85,26 +85,31 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="about.html#how-it-works">How it works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#installing">Installing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#removal">Removal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="about.html#updating">Updating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#version">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about.html#features">Features</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#first-steps">First Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#export-settings-from-character-creator-or-iclone">Export Settings From Character Creator or iClone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#import-into-blender">Import into Blender</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Import &amp; Export Panel</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pipeline.html#rendering-animation">Rendering &amp; Animation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline.html#morph-editing">Morph Editing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline.html#accessory-editing">Accessory Editing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adv-usage.html#importing-with-physics">Importing with Physics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adv-usage.html#morph-editing">Morph Editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adv-usage.html#accessory-editing">Accessory Editing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adv-usage.html#frame-dropping">Frame Dropping</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="build.html">Build Settings</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="build.html#import-details">Import Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build.html#rebuild-materials">Rebuild materials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build.html#material-setup">Material Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="animation.html#introduction">Introduction.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation.html#creating-a-rigify-control-rig">Creating a Rigify Control Rig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation.html#retargeting-animations-to-the-rigify-control-rig">Retargeting Animations to the Rigify Control Rig</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adv-animation.html#retargeting-shape-key-animation">Retargeting Shape Key Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adv-animation.html#retargeting-workflow-for-shape-key-animation">Retargeting Workflow For Shape Key Animation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a><ul>
@@ -112,9 +117,7 @@
 <li class="toctree-l2"><a class="reference internal" href="materials.html#material-parameter-discussion">Material Parameter Discussion</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics Panel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="prefs.html">Preferences Panel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="eyes.html#eye-composition">Eye Composition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eyes.html#eye-refraction">Eye Refraction</a></li>
@@ -124,6 +127,10 @@
 <li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="skin.html#skin-materials">Skin Materials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skin.html#skin-parameters">Skin Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="teeth.html#teeth-gums-tongue-parameters">Teeth, Gums &amp; Tongue Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a><ul>
@@ -152,7 +159,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Victor Soupday.</p>
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

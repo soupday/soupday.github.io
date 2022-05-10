@@ -7,13 +7,12 @@
    :caption: Contents:
 
    about
-   examples
-   pipeline
-   build
+   usage
+   adv-usage
+   animation
+   adv-animation    
    materials
-   physics
-   scene
-   prefs   
+   scene     
    
    eyes
    skin

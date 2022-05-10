@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animation &mdash; CC3 Blender Tools 1.3.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advanced Animation" href="adv-animation.html" />
+    <link rel="prev" title="Advanced Usage" href="adv-usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC3 Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Animation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-rigify-control-rig">Creating a Rigify Control Rig</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rigify-creation-workflow">Rigify Creation Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#retargeting-animations-to-the-rigify-control-rig">Retargeting Animations to the Rigify Control Rig</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#retargeting-workflow">Retargeting Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#import">Import</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#retargeting">Retargeting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC3 Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Animation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/animation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="animation">
+<h1>Animation<a class="headerlink" href="#animation" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction.<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Characters imported into Blender from either Character Creator or iClone using the <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> which have animation track(s) will have those animations imported as separate <a class="reference external" href="https://docs.blender.org/manual/en/latest/animation/actions.html">Blender actions</a>.</p>
+<p>These skeletal animations can be directly edited using Blender, however this can often be a difficult process.  A more popular means of animation editing/creation is to use a <em>Control Rig</em> which allows easy posing and manipulation of the character using simple controls.</p>
+<p>Since version 2.79 (2017) Blender ships with the excellent <a class="reference external" href="https://docs.blender.org/manual/en/2.81/addons/rigging/rigify.html">Rigify</a> control rigging tool.  To make use of it, we must consider the following.</p>
+<ul class="simple">
+<li><p>The basic workflow for Rigify involves using a T-posed model and generating a <em>Meta-Rig</em> which then has it’s pose manually matched to the T-pose of the model.  This is then used to automatically generate the <em>Rigify Rig</em> and weight paint the model for use with that Rigify Rig - which can then be used to create animations.</p></li>
+<li><p>The characters imported from Character Creator and iClone are <em>already</em> rigged and weighted and are cross compatible with the extensive animation library for CC/iClone/ActorCore.  Re-rigging would therefore break compatibility with existing animations and destroy carefully weight painted items.</p></li>
+</ul>
+<p>To overcome the issues highlighted above, the process of generating the Rigify Rig for CC/iClone characters has been fully automated and the only user input required is to press the button.  Simple tools to convert imported animations for use with the Rigify Rig are also provided.  These tools can currently convert ActorCore/GameBase/Character Creator/iClone animations from Reallusion and Mixamo’s XY Bots and General Human animations.</p>
+<p>As an example, the .gif displayed below is a Character Creator 3 character with a native animation which has been ‘rigified’ and the animation retargetted onto the rigify rig.</p>
+<figure class="align-center" id="id1">
+<img alt="_images/dance_rigify.gif" src="_images/dance_rigify.gif" />
+<figcaption>
+<p><span class="caption-text"><em>Rigified CC character with animation applied to Rigify Rig</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The complete Rigify workflow for CC characters is discussed below.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="creating-a-rigify-control-rig">
+<h2>Creating a Rigify Control Rig<a class="headerlink" href="#creating-a-rigify-control-rig" title="Permalink to this headline"></a></h2>
+<section id="pre-requisites">
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline"></a></h3>
+<p>In addition to having the CC Blender Tools add-on installed and activated (see the <a class="reference internal" href="about.html#installing"><span class="std std-ref">Installing</span></a> section for details), the Rigify add-on must also be enabled (in a default installation of Blender, it is disabled by default). To enable Rigify, navigate to <em>Edit -&gt; Preferences</em> to bring up the ‘Blender Preferences’ window, click the <em>Add-ons</em> button and enter “rigify” in the search field; ensure that the <em>Rigging:Rigify</em> checkbox has a tick in it.  The preferences should auto-save - if not click on the <em>‘Save &amp; Load’</em> button <img alt="save_load" src="_images/save_load.png" /> and choose <em>‘Save Preferences’</em>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/rigify_active.png"><img alt="_images/rigify_active.png" src="_images/rigify_active.png" style="width: 450px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="rigify-creation-workflow">
+<h3>Rigify Creation Workflow<a class="headerlink" href="#rigify-creation-workflow" title="Permalink to this headline"></a></h3>
+<p>Once a character has been imported using the <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> procedure (with the <em>Import Animation</em> checkbox in the <em>file view</em> active as per default) then the character can be automatically <em>Rigified</em> as follows:</p>
+<ul class="simple">
+<li><p>Open the <strong>Rigging and Animation</strong> dropdown to show the initial controls.  Please make sure at this point that the character you wish to work with is named in the <em>Character</em> info text.</p></li>
+</ul>
+<ul class="simple">
+<li><p><img alt="init_rigify" src="_images/initial_rigify.png" /> <br /><br /></p></li>
+<li><p>Full Face Rig is selected by default - deselecting it will omit the very complex and versatile facial rig leaving only the main skeletal rig.</p></li>
+<li><p>The Rigify process is completed by clicking the <strong>Rigify</strong> button.  This will create a new rig with all of the necessary controls and constraints.  The original skeleton will be left in the hierarchy (deselected and hidden).</p></li>
+<li><p>The character will then be presented in a A-Pose with all the standard Rigify controls available (show here in <em>Pose Mode</em>).</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/char_rigify.png"><img alt="_images/char_rigify.png" src="_images/char_rigify.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Rigified character</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Rigify process is complete.  The control rigged character can now be used to create animations.  Any animations that were imported with the original character <strong>must</strong> now be retargeted to the new control rig <strong>before</strong> they can be used.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="retargeting-animations-to-the-rigify-control-rig">
+<h2>Retargeting Animations to the Rigify Control Rig<a class="headerlink" href="#retargeting-animations-to-the-rigify-control-rig" title="Permalink to this headline"></a></h2>
+<p>A wide range of animation sources can be retargeted directly to the Rigify Control Rig.  These are as follows:</p>
+<p>From <strong>Reallusion</strong></p>
+<ul class="simple">
+<li><p>Character Creator</p></li>
+<li><p>ActorCore</p></li>
+<li><p>GameBase</p></li>
+<li><p>iClone</p></li>
+</ul>
+<p>From <strong>Mixamo</strong> (Experimental)</p>
+<ul class="simple">
+<li><p>XY Bots</p></li>
+<li><p>General Humans</p></li>
+</ul>
+<section id="retargeting-workflow">
+<h3>Retargeting Workflow<a class="headerlink" href="#retargeting-workflow" title="Permalink to this headline"></a></h3>
+<section id="import">
+<h4>Import<a class="headerlink" href="#import" title="Permalink to this headline"></a></h4>
+<p>To retarget animations, they must first be present in the .blend file you are working with.  Animations may have been imported along with the character that has been rigified and as such can be processed directly. Or, they can be imported from other external .fbx files.</p>
+<p>Animation import can be performed using the <em>Import Animations</em> button.</p>
+<img alt="_images/retarget_import.png" src="_images/retarget_import.png" />
+<p>This will bring up a file dialog which has some extra settings that will remove meshes and materials from the animation import. i.e. only the armature with its’ associated actions including shapekey actions; this greatly cuts down excess clutter in the .blend file.</p>
+<img alt="_images/anim_import_options.png" src="_images/anim_import_options.png" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <em>Import Animations</em> function also has the ability to perform multiple animation imports in a single operation (limited to the .fbx files being in the same directory). By simply multiple selecting the source files you want to import.</p>
+</div>
+<div class="admonition-note-on-naming-conventions admonition">
+<p class="admonition-title">Note on naming conventions</p>
+<p>When the import animations function is used, it will automatically rename the animation action to the following form:</p>
+<p>Source Filename | &lt;Type&gt; | Animation Clip Name</p>
+<p>where &lt;Type&gt; can be A for Armature, and K for Key (the name ShapeKey animations are by default imported with).</p>
+<p>For the animation name, iClone’s TempMotion is abbreviated to iCTM.</p>
+</div>
+<p>Imported armatures will appear in the scene as shown below (shown here with an imported ActorCore animation - where the imported armature’s viewport visibility is set to ‘In Front’ for clarity):</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/char_rigify_anim_import.png"><img alt="_images/char_rigify_anim_import.png" src="_images/char_rigify_anim_import.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Rigified character with imported armature</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="retargeting">
+<h4>Retargeting<a class="headerlink" href="#retargeting" title="Permalink to this headline"></a></h4>
+<p>Once animations are imported (or are already present from your original character) then they can be easily retargeted using the following procedure:</p>
+<ul class="simple">
+<li><p>Select the Source Armature.</p></li>
+<li><p>Select the animation action on that source armature (by default the actions list is filtered by the selected armature).</p></li>
+</ul>
+<ul class="simple">
+<li><p><img alt="anim_source" src="_images/anim_source.png" /> <br /><br /></p></li>
+<li><p>Note that the animation source has also been identified (in this example as a Gen 3 CC3/CC3+ Animation)</p></li>
+<li><p>The selected action can be live previewed on the rigified character.  If you wish to omit any Shape Key animations from the preview then uncheck the <em>Preview Shape Keys</em> checkbox. To begin the preview click on the <em>Preview Retarget</em> button.</p></li>
+</ul>
+<ul class="simple">
+<li><p><img alt="preview_controls" src="_images/preview_controls.png" /></p></li>
+</ul>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/char_rigify_preview.png"><img alt="_images/char_rigify_preview.png" src="_images/char_rigify_preview.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Rigified character previewing retargeted animation</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>During the live preview, several aspects of the animation can be adjusted:  the spread of the arms, the spacing of the legs, the angle of the heel <em>and</em> toe (<strong>shown below</strong> - used to compensate for changes to footwear) and the root height of the animation (again useful for changes in footwear and in scale).</p></li>
+</ul>
+<ul class="simple">
+<li><p><img alt="limb_correction" src="_images/heel_correction.gif" /> <br /><br /></p></li>
+<li><p>Once you are happy with the corrections and the preview, then you can bake the animation (including the corrections) to a new action using the <em>Bake Retarget</em> button.</p></li>
+</ul>
+<ul class="simple">
+<li><p><img alt="bake_retarget" src="_images/bake_retarget.png" /> <br /><br /></p></li>
+<li><p>If you wish to apply a Shape Key animation to the current character then press the <em>Retarget Shape Keys</em> button.  This will apply the Shape Key animation to all of the objects in the character that have the same Shape Keys available - thus facial hair will be properly animated irrespective of there being any facial hair on the animation source.  This is discussed more fully in the <a class="reference internal" href="adv-animation.html#retargeting-shape-key-animation"><span class="std std-ref">Retargeting Shape Key Animation</span></a> section of the documentation.</p></li>
+<li><p><strong>The process is complete</strong> for this Action, perform this procedure for as many actions as you require.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Baked animations are created and stored in the Blender <em>Action Editor</em> with the following naming convention:</p>
+<p>Rigified Char Name | &lt;Type&gt; | Animation Clip Name</p>
+<p>Multiple actions are perhaps best managed with the NLA editor (especially Shape Key animations).</p>
+</div>
+<figure class="align-center" id="id5">
+<img alt="_images/side_by_side_actorcore.gif" src="_images/side_by_side_actorcore.gif" />
+<figcaption>
+<p><span class="caption-text"><em>Retargeted Rigified CC+ Char playing alongside the Original ActorCore Motion Dummy and Animation used in the above example workflow</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="adv-usage.html" class="btn btn-neutral float-left" title="Advanced Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="adv-animation.html" class="btn btn-neutral float-right" title="Advanced Animation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

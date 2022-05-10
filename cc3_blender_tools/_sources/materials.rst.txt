@@ -86,7 +86,7 @@ Many of the materials in the imported character share the same shader, this allo
 * :ref:`Eye (Right + Left) & Eye (Right Cornea + left Cornea)<Eyeball>`
 * :ref:`Eye Occlusion (Left + Right)<Eye Occlusion>`
 * :ref:`Tearline (Left + Right)<TearLine>`
-* :ref:`Teeth & Gums (Upper + Lower)<Material Parameters>`
+* :ref:`Teeth & Gums (Upper + Lower)<Teeth, Gums and Tongue>`
 * :ref:`Hair (All types present)<Material Parameters>`
 * :ref:`Scalp<Skin Parameters>`
 
@@ -112,7 +112,7 @@ Material Parameter Discussion
 The specific parameters for each material type are discussed in details in the following sections:
 
 * :ref:`Eyes<eyes>` A full discussion of the eye structure and the options (including alternative materials) available.
-* :ref:`Skin<skin parameters>` All of the skin shader parameters and their location specific properties are disussed.
-* :ref:`Teeth & Gums<Material Parameters>` TBD
+* :ref:`Skin<skin parameters>` All of the skin shader parameters and their location specific properties are discussed.
+* :ref:`Teeth, Gums and Tongue<Teeth, Gums and Tongue>` A discussion of the shaders used inside the mouth.
 * :ref:`Hair <Material Parameters>` TBD
 

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Usage &mdash; CC3 Blender Tools 1.3.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Animation" href="animation.html" />
+    <link rel="prev" title="Basic Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC3 Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#importing-with-physics">Importing with Physics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importing">Importing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#morph-editing">Morph Editing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exporting-a-character-fbx-with-fbxkey-from-cc">Exporting a Character FBX with FbxKey (From CC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exporting-a-character-obj-with-objkey-from-cc">Exporting a Character OBJ with ObjKey (From CC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-for-morph-editing">Import For Morph Editing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-character-morph">Export Character Morph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importing-a-character-fbx-with-fbxkey-back-into-cc">Importing a Character FBX with FbxKey (Back into CC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importing-a-character-obj-with-objkey-back-into-cc">Importing a Character OBJ with ObjKey (Back into CC)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#accessory-editing">Accessory Editing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#export-accessory">Export Accessory</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#frame-dropping">Frame Dropping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC3 Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Advanced Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/adv-usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-usage">
+<h1>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline"></a></h1>
+<section id="importing-with-physics">
+<h2>Importing with Physics<a class="headerlink" href="#importing-with-physics" title="Permalink to this headline"></a></h2>
+<section id="importing">
+<h3>Importing<a class="headerlink" href="#importing" title="Permalink to this headline"></a></h3>
+<img alt="_images/physics_selected.png" src="_images/physics_selected.png" />
+<p>When the <em>Physics</em> option is selected in the <strong>Import/Export</strong> panel then when the character is imported, <em>cloth physics</em>, <em>vertex groups</em> and <em>modifiers</em> will be automatically generated for any of the mesh objects &amp; materials that have PhysX weight maps. All of which can be changed at will should you need to.</p>
+<p>Thus, to import a character with physics enabled (highlighted blue), in the <strong>Import/Export</strong> panel follow the procedure for <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> (do not use the standard fbx importer for this).</p>
+<div class="admonition-important-consideration-for-cloth-simulation admonition">
+<p class="admonition-title">Important Consideration For Cloth Simulation</p>
+<p>Always allow Blender to compute the full range of frames for any cloth simulation by playing the whole animation through with no <a class="reference internal" href="#frame-dropping"><span class="std std-ref">Frame Dropping</span></a>.</p>
+<p>This will be initially slow; however this <strong>must</strong> be done in order to cache the cloth calculations.</p>
+<p>Once this is done you may then spool through the animation or enable <a class="reference internal" href="#frame-dropping"><span class="std std-ref">Frame Dropping</span></a> to get closer to real time playback (as much as Blender allows before requiring a re-calculation).</p>
+<p>Failure to do this will cause the cloth simulation to break and behave erratically.</p>
+</div>
+</section>
+<section id="settings">
+<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline"></a></h3>
+<p>The <strong>Physics Settings</strong> panel contains a comprehensive set of controls to adjust the physics parameters of the currently selected object.</p>
+<img alt="_images/physics_settings.png" src="_images/physics_settings.png" />
+<p><strong>Create/Remove</strong></p>
+<ul class="simple">
+<li><p>Add/Remove Cloth Physics: This will add or remove a <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/cloth/index.html">Cloth Physics</a> modifier on the selected object.  This enables/disables full cloth simulation.</p></li>
+<li><p>Add/Remove Collision Physics: This will add or remove a <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/collision.html">Collision Physics</a> modifier on the selected object.  Which will allow cloth objects to collide with mesh objects.</p></li>
+</ul>
+<p><strong>Mesh Correction</strong></p>
+<ul class="simple">
+<li><p>Fix Degenerate Mesh: This will remove degenerate mesh elements from the mesh - this include loose vertices, orphaned edges, zero length edges etc.  The presence of these elements may cause problems with simulation.</p></li>
+<li><p>Separate Physics Materials: This will separate the object by material and apply physics to the separated objects that have weight maps.  This may increase performance where only a small part of an object is simulated.</p></li>
+</ul>
+<p><strong>Presets</strong></p>
+<p>This will impose physics settings on the object that approximate the behavior of the named material (Cotton, Silk etc).</p>
+<p><strong>Cloth Settings</strong> and <strong>Collision Settings</strong> are the standard physics settings used by Blender in the <em>Physics Properties</em> of the standard <em>Properties</em> pane (only presented here for user convenience -  only visible when cloth or collision physics have been applied to the object).</p>
+<p>The example below shows a standard ‘Silk’ preset applied to a dress object during an animation (mesh highlighted for clarity).</p>
+<figure class="align-center" id="id1">
+<img alt="_images/dress_physics.gif" src="_images/dress_physics.gif" />
+<figcaption>
+<p><span class="caption-text"><em>Standard Silk Simulation</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition-hair-physics admonition">
+<p class="admonition-title">Hair Physics</p>
+<p>Whilst early versions of hair from Character Creator have properly defined physics properties, certain newer ones may not simulate correctly.  Smart Hair should now simulate correctly (as of version 1.3.6).</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="morph-editing">
+<h2>Morph Editing<a class="headerlink" href="#morph-editing" title="Permalink to this headline"></a></h2>
+<p>This section is to facilitate creating character morph sliders for CC3. The typical process is to import a character,
+adjust the mesh, with the mesh editing and sculpting tools, for the shape of the morph. Then export the new mesh
+back to CC3 to be made into a morph.</p>
+<p>There are two main ways of achieving this. One is with an FBX character export, the other with an OBJ character export.
+The procedures for exporting and subsequent re-importing are different for each.</p>
+<p>Character Creator also requires that an <strong>FbxKey</strong> or <strong>ObjKey</strong> must be generated by the export process and used in the re-import process.
+This key is uniquely generated for each character export and is conditional on certain export settings.</p>
+<section id="exporting-a-character-fbx-with-fbxkey-from-cc">
+<h3>Exporting a Character FBX with FbxKey (From CC)<a class="headerlink" href="#exporting-a-character-fbx-with-fbxkey-from-cc" title="Permalink to this headline"></a></h3>
+<p>Export from the file menu: <strong>File</strong> -&gt; <strong>Export</strong> -&gt; <strong>FBX (Clothed Character)</strong></p>
+<img alt="_images/export_fbx_menu.jpg" src="_images/export_fbx_menu.jpg" />
+<p>With the options:</p>
+<ul class="simple">
+<li><p>Target Tool: <em>Blender</em></p></li>
+<li><p>FBX Options: <em>Mesh</em></p></li>
+<li><dl class="simple">
+<dt>Texture Settings: <em>Any</em></dt><dd><ul>
+<li><p>Generally best not to embed textures.</p></li>
+<li><p><em>Do not convert to BMP</em></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Default Pose: <em>Any</em></p></li>
+</ul>
+<img alt="_images/export_fbx_morph_options.jpg" src="_images/export_fbx_morph_options.jpg" />
+</section>
+<section id="exporting-a-character-obj-with-objkey-from-cc">
+<h3>Exporting a Character OBJ with ObjKey (From CC)<a class="headerlink" href="#exporting-a-character-obj-with-objkey-from-cc" title="Permalink to this headline"></a></h3>
+<p>Export from the file menu: <strong>File</strong> -&gt; <strong>Export</strong> -&gt; <strong>OBJ</strong> -&gt; <strong>Nude Character in Bind Pose</strong></p>
+<img alt="_images/export_obj_nude_menu.jpg" src="_images/export_obj_nude_menu.jpg" />
+<p>With the default options:</p>
+<img alt="_images/export_obj_nude_options.jpg" src="_images/export_obj_nude_options.jpg" />
+<p>The <strong>Nude Character in Bind Pose</strong> export does not generate any materials, which means that
+the import into Blender will have no textures.</p>
+</section>
+<section id="import-for-morph-editing">
+<h3>Import For Morph Editing<a class="headerlink" href="#import-for-morph-editing" title="Permalink to this headline"></a></h3>
+<p>Perform a <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> of the exported character without animation; also Physics should <em>not</em> be applied for morph creation.</p>
+<p>If an <strong>FbxKey</strong> or <strong>ObjKey</strong> file is present (created using either of the processes outlined above) then the character is suitable for editing with subsequent export back to Character Creator.</p>
+<p>In the absence of a suitable Fbx or Obj Key the <em>Export to CC3</em> function will be unavailable.</p>
+</section>
+<section id="export-character-morph">
+<h3>Export Character Morph<a class="headerlink" href="#export-character-morph" title="Permalink to this headline"></a></h3>
+<p>Once you have altered the character to your satisfaction you can export it back to Character Creator using the <em>Export to CC3</em> button in the <strong>Exporting</strong> pane of the add-on.</p>
+</section>
+<section id="importing-a-character-fbx-with-fbxkey-back-into-cc">
+<h3>Importing a Character FBX with FbxKey (Back into CC)<a class="headerlink" href="#importing-a-character-fbx-with-fbxkey-back-into-cc" title="Permalink to this headline"></a></h3>
+<p>Import from the File menu: <strong>File</strong> -&gt; <strong>Import…</strong></p>
+<img alt="_images/import_fbx_menu.jpg" src="_images/import_fbx_menu.jpg" />
+<p>Find and select the FBX file exported from Blender.</p>
+<p>Before the import begins you should be presented with the “Create Assets” window. It should have the <strong>Decrypt Key</strong>
+(i.e. the <strong>FbxKey</strong>) automatically filled in as it is copied with the FBX export.</p>
+<img alt="_images/import_fbx_key_options.jpg" src="_images/import_fbx_key_options.jpg" />
+<p>Press OK to continue the import. After a while you should be presented with a status report window summarising the contents.
+Any problems with the import will be displayed here.</p>
+<p>If this fails with a decrypt key warning, this means that the character body mesh is not the same topology as was originally
+exported from CC3. There can be <strong>no</strong> changes to the mesh vertex structure or order. You can deform the mesh as much as you like
+but you cannot add or remove <strong>any</strong> vertices or faces from the character body mesh. Some Blender modifiers may also re-arrange the vertex order
+and make the mesh invalid.</p>
+<img alt="_images/import_fbx_report.jpg" src="_images/import_fbx_report.jpg" />
+<p>Press OK and the import process will complete.
+Note: The import character process does not re-import the textures and you will be left with a textureless character.
+However you can still make morph sliders from this character.</p>
+<p><strong>Create</strong> -&gt; <strong>Head &amp; Body Morph Sliders</strong></p>
+<img alt="_images/import_create_head_body_slider.jpg" src="_images/import_create_head_body_slider.jpg" />
+<p>And this will create a full body head/body slider you can apply to the neutral character base.</p>
+</section>
+<section id="importing-a-character-obj-with-objkey-back-into-cc">
+<h3>Importing a Character OBJ with ObjKey (Back into CC)<a class="headerlink" href="#importing-a-character-obj-with-objkey-back-into-cc" title="Permalink to this headline"></a></h3>
+<p>This time we import from the Create menu: <strong>Create</strong> -&gt; <strong>Morph Slider Editor</strong></p>
+<img alt="_images/import_slider_editor.jpg" src="_images/import_slider_editor.jpg" />
+<p>Here we create a morph slider directly from the OBJ file.</p>
+<ul class="simple">
+<li><p>You can select the default morph as the source morph to create a full body morph for the neutral base.</p></li>
+<li><p>Or you can select the current morph as the source morph to create a morph relative to your current character.</p></li>
+<li><p>In the target morph, select the OBJ file exported from Blender.
+The <strong>Checksum File</strong> (i.e. the <strong>ObjKey</strong>) should be filled in automatically as it is copied during the export.</p></li>
+</ul>
+<img alt="_images/import_slider_editor_options.jpg" src="_images/import_slider_editor_options.jpg" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="accessory-editing">
+<h2>Accessory Editing<a class="headerlink" href="#accessory-editing" title="Permalink to this headline"></a></h2>
+<section id="export-accessory">
+<h3>Export Accessory<a class="headerlink" href="#export-accessory" title="Permalink to this headline"></a></h3>
+<img alt="_images/export_accessory.png" src="_images/export_accessory.png" />
+<p>Exports the selected object as an accessory for Character Creator.  This does of course require you to make your own model.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="frame-dropping">
+<h2>Frame Dropping<a class="headerlink" href="#frame-dropping" title="Permalink to this headline"></a></h2>
+<p>Frame dropping during playback is a convenient means of viewing real time playback of the animation.  This does have some limitations.</p>
+<ul class="simple">
+<li><p>Playback of Blendshape animation may be erratic in a Material Shaded or Rendered Viewport.</p></li>
+<li><p>Initial playthrough of Cloth Simulations will be entirely broken.</p></li>
+</ul>
+<p>To enable or disable frame dropping: In a <strong>Timeline</strong> window, click on the <em>Playback</em> dropdown.</p>
+<img alt="_images/timeline_playback.png" src="_images/timeline_playback.png" />
+<p>In the <em>Sync</em> section click the dropdown and choose whichever <em>Sync Mode</em> you require.</p>
+<img alt="_images/timeline_sync_mode.png" src="_images/timeline_sync_mode.png" />
+<p><strong>NB</strong> Remember to reset this to ‘Play every frame’ in order to properly re-calculate cloth simulations.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Basic Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="animation.html" class="btn btn-neutral float-right" title="Animation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -18,11 +18,11 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'CC3 Blender Tools'
-copyright = '2021, Victor Soupday'
+copyright = '2021-2022, Victor Soupday'
 author = 'Victor Soupday'
 
 # The full version, including alpha/beta/rc tags
-release = '0.4.2'
+release = '1.3.4'
 
 
 # -- General configuration ---------------------------------------------------
