@@ -8,10 +8,10 @@
 
 .. image:: images/scene_tools_panel.jpg
 
-*Scene Lighitng* provides a simple means of quickly applying a variety of lighting and `HDRI`_ presets.
+*Scene Lighitng* provides a simple means of quickly applying a variety of lighting and `HDRI`_ presets.  Including a close approximation of the lighting used in Character Creator for reference purposes.
 
-*3 Point Tracking and Camera* instantiates a camera and a transform point which the camera will track
+*3 Point Tracking and Camera* instantiates a camera and a transform point which the camera will track.
 
-*Animation Range from Character* sets the animation frame range to that of the current action on teh character's armature.
+*Animation Range from Character* sets the animation frame range to that of the current action on the character's armature.
 
 *Sync Physics Range* sets the physics bake range to the current world scene frame range.

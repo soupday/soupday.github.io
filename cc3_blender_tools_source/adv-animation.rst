@@ -122,8 +122,10 @@ Notable features of the retarget result are as follows:
 
 - The armature data for head, neck etc compliments the Shape Key data and must be included for the complete performance.  Thus the *Bake Retarget* is an **essential** step.  Giving an armature Action on the Rigified character labelled \|A\|.
 
-Because this example has no other body motion, then to be useful it must be combined with body animations.
+Because *this* example has no other body motion, then to be useful it must be combined with body animations.
 
 This is best achieved by using Blender's `Nonlinear animaton`_ system (NLA). The NLA system in Blender is extremely powerful and can be used to combine actions, offset timings and blend between actions in an accessible way.
 
 It is however beyond the scope of this document to fully explore the NLA system in Blender.
+
+Full body + face performances from iClone will of course be properly retargetted and fully useable in Blender without the need for any Blender-side manipulation.
