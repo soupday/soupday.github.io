@@ -102,7 +102,7 @@ A quick render of this to a video file gives the following result (render was us
 
 .. |vid| raw:: html
 
-    <video controls src="_static/retarget.mkv"></video> 
+    <video controls src="_static/retarget.mp4"></video> 
 
 + |vid|
 
