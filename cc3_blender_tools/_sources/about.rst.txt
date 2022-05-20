@@ -1,3 +1,5 @@
+.. _latest release from Github.com: https://github.com/soupday/cc_blender_tools/releases
+
 ~~~~~~~
  About
 ~~~~~~~
@@ -5,16 +7,16 @@
 Version
 -------
 
-This documentation is for version 1.3.6
+This documentation is for version 1.3.8
 
 Features
 --------
 
-This add-on is primarily for importing and automatically setting up materials for Character Creator 3 and iClone character exports.
+This add-on is primarily for importing and automatically setting up materials for Character Creator and iClone character exports.
 
 .. image:: images/cc3_about.jpg
 
-Using Blender in the Character Creator 3 pipeline can often feel like hitting a brick wall.
+Using Blender in the Character Creator pipeline can often feel like hitting a brick wall.
 Potentially spending hours with the import settings and setting up the material textures and shader node setup by hand.
 
 This add-on aims to reduce that time spent getting characters into Blender down to just a few seconds and
@@ -24,13 +26,13 @@ Alongside the fundamental material setup, this addon also has the following feat
 
 - Set up and enabling of cloth physics on any clothing or hair meshes that have PhysX weight maps.
 
-- Import OBJKey and FBXKey containing models for editing in Blender to be returned to CC (the so called *Blender Round Trip*)
+- Import OBJKey and FBXKey containing models for editing in Blender to be returned to Character Creator (the so called *Blender Round Trip*)
 
 - Automated creation of a Rigify control rig for the character to allow animators to work with an IK/FK rig for animation creation.
 
 - Retargeting of armature animations from multiple sources directly onto the Rigify rig to make animation editing and adjustment much simpler.
 
-- Retargeting of Shape Key animations from iClone to CC characters that have differing facial add-ons (brows, beards etc).
+- Retargeting of Shape Key animations from iClone to Character Creator characters that have differing facial add-ons (brows, beards etc).
 
 |
 
@@ -45,7 +47,7 @@ How it works
 
     Instead follow the method here - :ref:`Standard Import`.
 
-The character exports from CC3 and iClone have a very rigid naming structure. All objects and materials have unique names and the textures for these materials are stored in folders and named after the object and material names. Thus textures for each material can be easily discovered without the need for deep recursive scans for texture files.
+The character exports from Character Creator and iClone have a very rigid naming structure. All objects and materials have unique names and the textures for these materials are stored in folders and named after the object and material names. Thus textures for each material can be easily discovered without the need for deep recursive scans for texture files.
 
 The add-on then reconstructs the material nodes, for each object and material, using these textures and the material setup parameters as needed.
 
@@ -64,17 +66,17 @@ Characters can also be exported to Unity along with any animations.  This includ
 Installing
 ==========
 
-- Download the **Source Code (zip)** from the `latest release from Github.com <https://github.com/soupday/cc3_blender_tools/releases>`_
+- Download the **Source Code (zip)** from the `latest release from Github.com`_
 - In Blender go to menu **Edit** -> **Preferences** then select **Add-ons**.
 - Click the **Install** button at the top of the preferences window and navigate to where you downloaded the zip file, select the file and click **Install Add-on**.
 - Activate the add-on by ticking the checkbox next to **Edit** -> **Preferences** then select **Add-ons**
-- The add-ons functionality is available through the **CC3** Tab in the tool menu to the right of the main viewport. Press **N** to show the tools if they are hidden.
+- The add-ons functionality is available through the **CC/iC Pipeline** Tab in the tool menu to the right of the main viewport. Press **N** to show the tools if they are hidden.
 
 Removal
 =======
 
 - From the menu: **Edit**->**Preferences** then select **Add-ons**
-- In the search box search **All** add-ons for **"CC3 Tools"**
+- In the search box search **All** add-ons for **"CC/iC Tools"**
 - Deactivate the add-on by unticking the checbox next to **Edit**->**Preferences** then select **Add-ons**.
 - Then click the **Remove** button.
 
