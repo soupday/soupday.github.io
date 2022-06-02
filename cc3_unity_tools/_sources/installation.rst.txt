@@ -32,7 +32,7 @@ The tool is hosted in separate Github repositories for the *HDRP*, *URP* and *3D
 .. _3D Repository: https://github.com/soupday/cc_unity_tools_3D
 .. _3D Latest Release: https://github.com/soupday/cc_unity_tools_3D/releases/
 
-.. admonition:: Warning
+.. warning:: 
 
     Only install **one version** of the tool at a time.  Only use the **package manager** for installation.
 
@@ -73,8 +73,8 @@ Download the appropriate latest release or latest stable commit (from the code d
 
     **You must store the package files in a safe place**.  You can make a *directory* inside your project *directory* (eg '<drive>:/~~/<project directory>/downloaded files') if you wish. 
 
-.. admonition:: Warning
-    
+.. warning::
+      
     **DO NOT** place the unzipped files into the **/Assets** **/Packages** **/Library** or **/ProjectSettings** directories of your project.
 
 In Unity, open your project and navigate to the 'Package Manager' (*via* **Window -> Package Manager**).
@@ -159,6 +159,9 @@ The HDRP and URP versions of the tool require minimum versions of the following 
 Optional Installation
 =====================
 
+Post Processing Package
+-----------------------
+
 Users of the 3D (built in render pipeline) and URP (universal render pipeline) should consider the optional installation of the post processing package from the Unity Registry.  This will be utilized automatically to give excellent quality results comparable to Character Creator's viewport.
 
 .. image:: images/linear_postprocess.png
@@ -182,6 +185,20 @@ Scroll down the list to find 'Post Processing'.  Select the item in the list and
 |
 
 After installation the post processing stack will be added to the main camera and the custom settings automatically applied.
+
+Alembic Package
+---------------
+
+Should you wish to use the Alembic file format for baked physics geometry (and indeed the Alembic functions from this tool), then the Alembic package is also required from the 'Unity Registry'.
+
+Use the above method to navigate to the 'Unity Registry' and select the Alembic package and click install.
+
+.. image:: images/package_alembic.png
+    :align: center
+
+|
+
+This will allow Unity to correctly import and animate Alembic files.
 
 |
 

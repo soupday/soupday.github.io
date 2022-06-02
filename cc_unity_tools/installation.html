@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; CC/iC Unity Tools 1.2.2 documentation</title>
+  <title>Installation &mdash; CC/iC Unity Tools 1.3.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -46,11 +46,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#installation-from-zip-file">Installation from .zip file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installation-from-git-url">Installation from git URL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#optional-installation">Optional Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-installation">Optional Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post-processing-package">Post Processing Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alembic-package">Alembic Package</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#removal">Removal</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
 </ul>
@@ -84,7 +89,7 @@
 <section id="hosting-at-github">
 <h2>Hosting at Github<a class="headerlink" href="#hosting-at-github" title="Permalink to this headline"></a></h2>
 <p>The tool is hosted in separate Github repositories for the <em>HDRP</em>, <em>URP</em> and <em>3D (Built in render pipeline)</em> render pipelines. It is intended to be installed into <strong>Unity 2020.3 or above</strong> for <em>HDRP</em> and <em>URP</em> pipelines or <strong>Unity 2019.4.11f1 or above</strong> for the <em>Built in 3D</em> pipeline using Unity’s internal package manager.  The available repositories are shown below.</p>
-<div class="admonition-warning admonition">
+<div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Only install <strong>one version</strong> of the tool at a time.  Only use the <strong>package manager</strong> for installation.</p>
 </div>
@@ -131,7 +136,7 @@
 <p class="admonition-title">Note</p>
 <p><strong>You must store the package files in a safe place</strong>.  You can make a <em>directory</em> inside your project <em>directory</em> (eg ‘&lt;drive&gt;:/~~/&lt;project directory&gt;/downloaded files’) if you wish.</p>
 </div>
-<div class="admonition-warning admonition">
+<div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>DO NOT</strong> place the unzipped files into the <strong>/Assets</strong> <strong>/Packages</strong> <strong>/Library</strong> or <strong>/ProjectSettings</strong> directories of your project.</p>
 </div>
@@ -197,6 +202,8 @@
 </section>
 <section id="optional-installation">
 <h2>Optional Installation<a class="headerlink" href="#optional-installation" title="Permalink to this headline"></a></h2>
+<section id="post-processing-package">
+<h3>Post Processing Package<a class="headerlink" href="#post-processing-package" title="Permalink to this headline"></a></h3>
 <p>Users of the 3D (built in render pipeline) and URP (universal render pipeline) should consider the optional installation of the post processing package from the Unity Registry.  This will be utilized automatically to give excellent quality results comparable to Character Creator’s viewport.</p>
 <a class="reference internal image-reference" href="_images/linear_postprocess.png"><img alt="_images/linear_postprocess.png" class="align-center" src="_images/linear_postprocess.png" style="width: 300px;" /></a>
 <div class="line-block">
@@ -213,9 +220,20 @@
 <div class="line"><br /></div>
 </div>
 <p>After installation the post processing stack will be added to the main camera and the custom settings automatically applied.</p>
+</section>
+<section id="alembic-package">
+<h3>Alembic Package<a class="headerlink" href="#alembic-package" title="Permalink to this headline"></a></h3>
+<p>Should you wish to use the Alembic file format for baked physics geometry (and indeed the Alembic functions from this tool), then the Alembic package is also required from the ‘Unity Registry’.</p>
+<p>Use the above method to navigate to the ‘Unity Registry’ and select the Alembic package and click install.</p>
+<img alt="_images/package_alembic.png" class="align-center" src="_images/package_alembic.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<p>This will allow Unity to correctly import and animate Alembic files.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 </section>
 <section id="removal">
 <h2>Removal<a class="headerlink" href="#removal" title="Permalink to this headline"></a></h2>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced Usage &mdash; CC/iC Unity Tools 1.3.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TLDR Installation" href="tldr_Installation.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Unity Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#animation-retargeting-animretarget">Animation Retargeting </a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#animation-retarget-tools">Animation Retarget Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hand-correction-retargethand">Hand Correction </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#animation-track-correction">Animation Track Correction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jaw-open-correction-retarget-tools">Jaw Open Correction [Retarget Tools]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jaw-open-correction-standalone">Jaw Open Correction [Standalone]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blendshape-retargeting">BlendShape Retargeting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alembic-texture-retargeting-alembicretarget">Alembic Texture Retargeting </a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#workflow-iclone-to-unity-experimental">Workflow - iClone to Unity [Experimental]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Unity Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Advanced Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/adv-usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-usage">
+<h1>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline"></a></h1>
+<section id="animation-retargeting-animretarget">
+<h2>Animation Retargeting <img alt="animretarget" src="_images/new_ui_anim_retarget.png" /><a class="headerlink" href="#animation-retargeting-animretarget" title="Permalink to this headline"></a></h2>
+<p>From time to time when using 3rd party animations on Character Creator characters, there are apparent errors arising from a mismatch between the source animation skeleton and the Character Creator skeleton.</p>
+<p>The most common errors are ‘hunched’ shoulders and malformed hands.  Many Unity users will also encounter the ‘open mouth’ issue wether they use Character Creator or not; this being an artefact of the Mechanim animation system and the way it handles open/closed jaw data.</p>
+<p>To this end, a simple tool-set has been provided to interactively adjust problematic aspects of the animation with real-time preview of those adjustments <strong>directly onto the target model</strong> (via the animation player).  A simple tool to correct only open jaw data has been included as a bonus.</p>
+<p>The retargeting tools are available <strong>Only In The Preview Scene</strong> by pressing the <img alt="animretarget" src="_images/new_ui_anim_retarget.png" /> <em>Animation Adjustment &amp; Retargeting</em> button.</p>
+<p>This will bring up a fixed window in the bottom-left corner of the Scene View (Unity 2020) or a dragable overlay window (Unity 2021+).</p>
+<figure class="align-center" id="id1">
+<img alt="_images/anim_retarget_tools.png" src="_images/anim_retarget_tools.png" />
+<figcaption>
+<p><span class="caption-text"><em>Animation Retarget Tools Window</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="animation-retarget-tools">
+<h3>Animation Retarget Tools<a class="headerlink" href="#animation-retarget-tools" title="Permalink to this headline"></a></h3>
+<p>The animation retarget tools will operate on the <strong>currently selected</strong> <strong>Scene Model</strong> and <strong>Animation</strong> in the <em>Animation Playback</em> section of the <em>Character Preview Tools window</em>.</p>
+<figure class="align-center" id="id2">
+<img alt="_images/selected_model_anim.png" src="_images/selected_model_anim.png" />
+<figcaption>
+<p><span class="caption-text"><em>Selected Model and Animation</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Any Adjustments made can be previewed on the <em>scene model</em> using the animation playback (straightforward Play or spool through the animation with the Time slider).</p>
+<p>The adjusted animation can be saved into the ‘home directory’ of the <em>scene model</em> by pressing the <em>save button</em>. <img alt="retargetsave" src="_images/retarget_save.png" /></p>
+<ul class="simple">
+<li><p>Specifically the animation will be saved to &lt;model FBX dir&gt;/Animations/&lt;Model Name&gt;/  (The project explorer will be focused onto this directory when the animation is saved).</p></li>
+<li><p>The animation will be renamed to &lt;Model name&gt;_&lt;Original animation name&gt;.anim  - Any illegal filesystem characters will also be stripped out and replaced with a ‘-’ symbol.</p></li>
+<li><p>Multiple saves will not overwrite; the animation name will instead be appended with an increasing ‘.000’ ‘.001’ for each save.</p></li>
+<li><p>The animation can be reset to it’s original state at any time by pressing the <em>reset button</em>. <img alt="retargetreset" src="_images/retarget_reset.png" /></p></li>
+<li><p>No changes are ever made to the original animation - the process is entirely non destructive.</p></li>
+</ul>
+<section id="hand-correction-retargethand">
+<h4>Hand Correction <img alt="retargethand" src="_images/retarget_hand.png" /><a class="headerlink" href="#hand-correction-retargethand" title="Permalink to this headline"></a></h4>
+<p>Three options are available for hand correction:</p>
+<ul class="simple">
+<li><p><em>Original</em> This option will use the original data for both hands in the animation track.  This option can be selected to <em>undo</em> any hand changes made by the other options.</p></li>
+<li><p><em>Open</em> This will change all of the hand pose data in the animation into a static open hand pose.</p></li>
+<li><p><em>Closed</em> This will change all of the hand pose data in the animation to a static closed hand pose.</p></li>
+</ul>
+<p>Select either with the radio button or cycle through the options by pressing the hand icon <img alt="retargethand" src="_images/retarget_hand.png" />.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 35%" />
+<col style="width: 28%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/retarget_hand_original.png"><img alt="handoriginal" src="_images/retarget_hand_original.png" style="width: 290px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/retarget_hand_open.png"><img alt="handopen" src="_images/retarget_hand_open.png" style="width: 270px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/retarget_hand_closed.png"><img alt="handclosed" src="_images/retarget_hand_closed.png" style="width: 217px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Original</em></p></td>
+<td><p><em>Open</em></p></td>
+<td><p><em>Closed</em></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>NB</strong> The original pose is specific to the source animation (the one illustrated above is slightly malformed to demonstrate the potential utility of the tool).</p>
+</section>
+<section id="animation-track-correction">
+<h4>Animation Track Correction<a class="headerlink" href="#animation-track-correction" title="Permalink to this headline"></a></h4>
+<p>The Animation Track Correction controls allow the adjustment of specific portions of the animation where mismatches may occur.  i.e the Shoulders, Arms, Legs, Heels and the Vertical displacement of the animation (Height).</p>
+<figure class="align-center" id="id3">
+<img alt="_images/animation_track_sliders.png" src="_images/animation_track_sliders.png" />
+<figcaption>
+<p><span class="caption-text"><em>Correction Controls</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The result of each control’s action is presented visually below:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 43%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Shoulder Correction</em>, Adjust the Up-Down displacement of the Shoulders across the whole animation.</p></td>
+<td><p><a class="reference internal" href="_images/shoulder_correction.gif"><img alt="shoulder_corr" src="_images/shoulder_correction.gif" style="width: 229px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Arm Correction</em>, Adjust the Upper Arm Up-Down rotation. Controls the ‘lift’ of the arms.</p></td>
+<td><p><a class="reference internal" href="_images/arm_correction.gif"><img alt="arm_corr" src="_images/arm_correction.gif" style="width: 229px;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Leg Correction</em>, Adjust the Upper Leg In-Out rotation. Controls the width of the character’s stance.</p></td>
+<td><p><a class="reference internal" href="_images/leg_correction.gif"><img alt="leg_corr" src="_images/leg_correction.gif" style="width: 229px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Heel Correction</em>, Adjust the angle of the Foot Up-Down rotation. Controls the angle of the heel.</p></td>
+<td><p><a class="reference internal" href="_images/heel_correction.gif"><img alt="heel_corr" src="_images/heel_correction.gif" style="width: 229px;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>The effect of each of the controls will be applied across the whole animation (the controls are not keyable).  These controls are only intended as a minor corrective measure; should you require more in-depth corrections then consider using the <a class="reference external" href="https://github.com/soupday/cc_blender_tools/releases">Blender tools for Character Creator/iClone</a> which allow the use of the Rigify control rig in a sophisticated animation package.</p>
+</section>
+<section id="jaw-open-correction-retarget-tools">
+<h4>Jaw Open Correction [Retarget Tools]<a class="headerlink" href="#jaw-open-correction-retarget-tools" title="Permalink to this headline"></a></h4>
+<p>If an animation is imported without any proper jaw data then the Unity Mechanim system will construct a placeholder animation curve called “Jaw Close” with ‘0’ as each keyframe value; however Jaw Close = 0 means that the jaw is open.</p>
+<p>This can be remedied by hand by making a duplicate of the animation clip then editing all the keyframes in the Jaw Close animation curve to have a value of 1.</p>
+<p>Alternatively you can use the retarget tool and press the close jaw toggle <a class="reference internal" href="_images/retarget_open_icon.png"><img alt="open_icon_s" src="_images/retarget_open_icon.png" style="width: 30px;" /></a></p>
+<p>The icon will change between open and closed mouth to show which mode its in.</p>
+<div class="admonition-caution admonition">
+<p class="admonition-title">Caution</p>
+<p>This feature will overwrite any jaw data in the animation curve and replace the whole animation with ‘Jaw Closed’.  As such, it should only be used when 3rd party animations are playing with a permanent open mouth.</p>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="open_head" src="_images/retarget_open_head.png" /></p></td>
+<td><p><img alt="closed_head" src="_images/retarget_closed_head.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="open_icon" src="_images/retarget_open_icon.png" /> - Original curve data.</p></td>
+<td><p><img alt="closed_icon" src="_images/retarget_closed_icon.png" /> - Closed jaw curve data.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="jaw-open-correction-standalone">
+<h4>Jaw Open Correction [Standalone]<a class="headerlink" href="#jaw-open-correction-standalone" title="Permalink to this headline"></a></h4>
+<p>A quick alternative means of performing ‘jaw open’ correction has also been provided.</p>
+<ul class="simple">
+<li><p>Navigate in the project browser to the fbx which contains the animation you wish to close the jaw for.</p></li>
+<li><p>Right click and select the <strong>Quick Animation Processing -&gt; Process Jaw Animations</strong> option.</p></li>
+<li><p><strong>All</strong> of the animations in the fbx will be processed with a closed jaw and saved into the same folder as the source fbx file.</p></li>
+<li><p>The animations will be renamed to &lt;FBX name&gt; - &lt;Animation Clip Name&gt;.anim (illegal filesystem chars will be stripped out and replaced with a ‘-’ symbol).</p></li>
+<li><p>Again, multiple saves will not overwrite; the animation name will instead be appended with an increasing ‘.000’ ‘.001’ for each save.</p></li>
+<li><p>If any jaw data is present in the animation then the process will notify with a console warning and fail.  An option to force processing is available at <strong>Quick Animation Processing -&gt; Process Jaw Animations (Force)</strong></p></li>
+</ul>
+</section>
+<section id="blendshape-retargeting">
+<h4>BlendShape Retargeting<a class="headerlink" href="#blendshape-retargeting" title="Permalink to this headline"></a></h4>
+<p>When the selected animation clip contains BlendShape animations (for example iClone AccuLips or facial expression performances) then these often do not play correctly on a different character model due to differences in the face objects (eyebrows, beards, moustaches etc).  This is illustrated below with the ExPlusFacial Demo animation being played on a character with extra face ‘furniture’.</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/face_blendshape_mismatched_post.gif"><img alt="_images/face_blendshape_mismatched_post.gif" src="_images/face_blendshape_mismatched_post.gif" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Face objects not obeying Blend Shape animations</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The BlendShape Retarget function <a class="reference internal" href="_images/retarget_blendshape.png"><img alt="blendshaperetarget_s" src="_images/retarget_blendshape.png" style="width: 30px;" /></a> will copy the existing BlendShape animation data in the <strong>currently selected Animation</strong> and copy it to all of the applicable objects in the <strong>currently selected Scene Model</strong> (which must contain the appropriate BlendShape definitions) allowing them to animate correctly.</p>
+<p><em>Usage:</em></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When exporting from iClone, ensure in the advanced options that ‘<strong>Mouth Open as Morph</strong>’’ is <strong>NOT</strong> selected.  Otherwise corruption of the BlendShape data may occur.</p>
+</div>
+<ul class="simple">
+<li><p>Select the appropriate <strong>Scene Model</strong> and source <strong>Animation</strong> in the <em>Animation Playback</em> section of the <em>Character Preview Tools window</em></p></li>
+<li><p>Press the BlendShape Retarget <a class="reference internal" href="_images/retarget_blendshape.png"><img alt="blendshaperetarget_s" src="_images/retarget_blendshape.png" style="width: 30px;" /></a> button.  There will be a brief pause after which the updated animation can be previewed using the normal <em>Animation Playback</em> functions.</p></li>
+<li><p>Once you are happy with the BlendShapes the animation can be saved (this will save all of the adjustments made with the animation retarget tool) using the <em>save button</em>. <img alt="retargetsave" src="_images/retarget_save.png" /></p></li>
+</ul>
+<p>Once the BlendShape retarget is complete, the animation player will show (for our example) the following:</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/face_blendshape_corrected_post.gif"><img alt="_images/face_blendshape_corrected_post.gif" src="_images/face_blendshape_corrected_post.gif" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Face objects now have proper animation data</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>Use of the ‘Jaw Close’ function will likely interfere with facial BlendShape animations and is best avoided when dealing with them.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+</section>
+<section id="alembic-texture-retargeting-alembicretarget">
+<h2>Alembic Texture Retargeting <img alt="Alembicretarget" src="_images/Alembic_texture_retarget.png" /><a class="headerlink" href="#alembic-texture-retargeting-alembicretarget" title="Permalink to this headline"></a></h2>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Alembic_(computer_graphics)">Alembic</a> file format is used to store baked geometry from an animated scene (amongst other things). In the context of iClone exports, it is used to capture baked <em>Soft Cloth</em> physics for further use in a different rendering or lighting package.</p>
+<p>An exported Alembic file can be imported into Unity, however it will lose all of its material and texture data and appear as a blank white model.</p>
+<p>The <em>Alembic Texture Retarget</em> function <a class="reference internal" href="_images/Alembic_texture_retarget.png"><img alt="Alembicretarget_s" src="_images/Alembic_texture_retarget.png" style="width: 20px;" /></a> allows the automated transfer of material and texture data from a Character Creator/iClone character onto the corresponding Alembic export from iClone.</p>
+<section id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h3>
+<p>The use of Alembic (.abc) files requires the installation of the Alembic package from the ‘Unity Registry’ please see the <a class="reference internal" href="installation.html#optional-installation"><span class="std std-ref">Optional Installation</span></a> section for details.</p>
+<section id="workflow-iclone-to-unity-experimental">
+<h4>Workflow - iClone to Unity [Experimental]<a class="headerlink" href="#workflow-iclone-to-unity-experimental" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>In iClone, Set up the character to be animated and animate it however you wish.</p></li>
+<li><p>In the iClone <em>Project</em> window; ensure <em>Soft Cloth</em> - <em>Bake Animation</em> is selected in the <em>Global Physics Settings</em> section.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/iclone_physics_settings.png"><img alt="_images/iclone_physics_settings.png" src="_images/iclone_physics_settings.png" style="width: 200px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>On the animated character ensure that <em>Activate Physics</em> is enabled for all of the objects that need to have their physics simulation baked.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/iclone_object_physics_settings.png"><img alt="_images/iclone_object_physics_settings.png" src="_images/iclone_object_physics_settings.png" style="width: 200px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>In the animation playback pane ensure that the <em>Time Mode</em> is set to <em>By Frame</em>. <img alt="byframe" src="_images/by_frame_time_mode.png" /></p></li>
+<li><p>Play the animation through once to cache the physics data as a vertex animation track for each applicable object.  This is shown in the timeline below:</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/timeline_soft_cloth.png"><img alt="_images/timeline_soft_cloth.png" src="_images/timeline_soft_cloth.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Physics baked as Soft Cloth Vertex Animation tracks</em></span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Now export the animated character as FBX for Unity see: <a class="reference internal" href="usage.html#export-from-iclone"><span class="std std-ref">Export From iClone</span></a>  (this will be the reference model for textures and materials - so no animation data is needed). <strong>Give the model a simple name</strong> <em>&lt;MODEL_NAME&gt;</em>.</p></li>
+<li><p>Now export the character as Alembic with the file format set to <em>Ogawa</em> and <em>Split Mesh by Material</em> selected.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/iclone_Alembic_export_settings.png"><img alt="_images/iclone_Alembic_export_settings.png" src="_images/iclone_Alembic_export_settings.png" style="width: 200px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Name it <strong>&lt;Your choice of animation name&gt;.abc</strong></p></li>
+</ul>
+<p><em>Once everything is exported, it must be transferred into Unity.</em></p>
+<ul class="simple">
+<li><p>Open your unity project and drag in the FBX export you made earlier.  You should end up with a file structure like this:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Import</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
+  <span class="o">|--</span> <span class="n">textures</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbx</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">json</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create a folder in the &lt;Import Folder&gt; called “Alembic” with a sub-folder called &lt;MODEL_NAME&gt; and place the exported Alembic file (&lt;Your choice of animation name&gt;.abc) inside it.</p></li>
+<li><p>The folder layout should now be:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Import</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="n">Alembic</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span>
+  <span class="o">|</span>           <span class="o">|--</span> <span class="o">&lt;</span><span class="n">Your</span> <span class="n">choice</span> <span class="n">of</span> <span class="n">animation</span> <span class="n">name</span><span class="o">&gt;.</span><span class="n">abc</span>
+  <span class="o">|</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
+  <span class="o">|--</span> <span class="n">textures</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbx</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">json</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This file structure is designed to allow placing of multiple models in &lt;Import Folder&gt; so that they don’t interfere with each other.</p>
+</div>
+<ul class="simple">
+<li><p>Multiple different Alembic files may be placed in the ‘Alembic/&lt;MODEL_NAME&gt;’ folder.  They will all be processed at once.</p></li>
+</ul>
+<p><em>Once the files are all imported into the correct place then can then be processed with the CC/iC Import Tools for Unity.</em></p>
+<ul class="simple">
+<li><p>Open the import tool and for the <em>Reference Model</em> (&lt;MODEL_NAME&gt;.fbx) follow the procedure here: <a class="reference internal" href="usage.html#initial-processing"><span class="std std-ref">Initial Processing</span></a>.  This will create all the materials needed to properly display the model.</p></li>
+<li><p>Finally press the <a class="reference internal" href="_images/Alembic_texture_retarget.png"><img alt="Alembicretarget_s" src="_images/Alembic_texture_retarget.png" style="width: 20px;" /></a> <em>Alembic Texture Retarget</em> button to create a prefab which has all of the material data from the <em>Reference Model</em> correctly applied to the Alembic Animation. (Multiple .abc files will give multiple prefabs).</p></li>
+<li><p>The project explorer will be automatically focussed onto the prefab directory (which will be &lt;Import Directory&gt;/Alembic/&lt;Model_Name&gt;/Prefabs/)</p></li>
+</ul>
+<p>The generated prefabs can now be freely used in your scenes.  The video below is an iClone baked Soft Cloth simulation exported as Alembic with materials reconstructed from an fbx exported reference model, played with the Unity timeline.</p>
+<p><video width="695" height="417" controls src="_static/alembic.mp4"></video></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The generated prefabs are only pointers to the animation and material information - they do not use up any extra disk space compared to the enormous size of the .abc files</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tldr_Installation.html" class="btn btn-neutral float-right" title="TLDR Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

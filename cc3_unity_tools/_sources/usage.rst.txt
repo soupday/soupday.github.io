@@ -19,6 +19,9 @@
 Initial Import Into Unity
 =========================
 
+Export From Character Creator
+-----------------------------
+
 In **Character Creator**, or **iClone** prepare your character as you see fit.  
 
 In **Character Creator** export the character using **Export -> FBX (Clothed Character)**.
@@ -33,6 +36,9 @@ Target tool preset: **Unity 3D**, select: **Current Pose**, **Delete Hidden Face
 
 Click **Export** to begin the export process.
 
+
+Export From iClone
+------------------
 
 In **iClone** export the character using **Export -> Export FBX...**
 
@@ -296,17 +302,21 @@ The preview scene now contains a small tool to allow you to preview animations a
 
 The tool pane has two sections (each can be minimized/revealed by clicking it's foldout button).
 
-Animation player
-~~~~~~~~~~~~~~~~
+.. |animplayer| image:: images/new_ui_anim_player.png
+
+Animation player |animplayer|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The animation player can play any appropriate `Mechanim <https://docs.unity3d.com/Manual/AnimationOverview.html>`_ animation from your project on the character in the preview scene (by using the *'Animation'* selector.  The controls for this are standard (play/pause advance one frame back/forward and go to start/end) additionally dragging the 'Time' bar will allow you to spool manually through the animation.  Additionally, any model (with an animator component) may be dragged into the scene and selected in the *'Scene Model'* object selector to allow animations to be played on it.
+
+The animation player/facial expression tool may be toggled on/off with the |animplayer| button.
 
 NB:  When an animation is playing, the facial expression controls are locked out.
 
 Facial Expression
 ~~~~~~~~~~~~~~~~~
 
-This section controls numerous aspects of facial manipulation it was introduced to replace the older menu driven facial manipulation and contains some useful features.  
+This section controls numerous aspects of facial manipulation it was introduced to replace the older menu driven facial manipulation and contains some useful features.  The tool is included as part of the animation player window.  
 
 .. image:: images/eye_2d_slider.png
         :align: left

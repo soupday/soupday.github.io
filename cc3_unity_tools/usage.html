@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Usage &mdash; CC/iC Unity Tools 1.2.2 documentation</title>
+  <title>Usage &mdash; CC/iC Unity Tools 1.3.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="TLDR Installation" href="tldr_Installation.html" />
+    <link rel="next" title="Advanced Usage" href="adv-usage.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
@@ -43,7 +43,11 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#initial-import-into-unity">Initial Import Into Unity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-import-into-unity">Initial Import Into Unity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#export-from-character-creator">Export From Character Creator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-from-iclone">Export From iClone</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#opening-the-import-tool">Opening The Import Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#beginning-the-import">Beginning The Import</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#initial-processing">Initial Processing</a></li>
@@ -54,7 +58,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#post-processing">Post Processing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#preview-scene-preview">Preview Scene </a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#animation-player">Animation player</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#animation-player-animplayer">Animation player </a></li>
 <li class="toctree-l4"><a class="reference internal" href="#facial-expression">Facial Expression</a></li>
 </ul>
 </li>
@@ -71,6 +75,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
 </ul>
@@ -108,6 +113,8 @@
 </div>
 <section id="initial-import-into-unity">
 <h2>Initial Import Into Unity<a class="headerlink" href="#initial-import-into-unity" title="Permalink to this headline"></a></h2>
+<section id="export-from-character-creator">
+<h3>Export From Character Creator<a class="headerlink" href="#export-from-character-creator" title="Permalink to this headline"></a></h3>
 <p>In <strong>Character Creator</strong>, or <strong>iClone</strong> prepare your character as you see fit.</p>
 <p>In <strong>Character Creator</strong> export the character using <strong>Export -&gt; FBX (Clothed Character)</strong>.</p>
 <img alt="_images/e1-cc3.png" src="_images/e1-cc3.png" />
@@ -115,6 +122,9 @@
 <p>Target tool preset: <strong>Unity 3D</strong>, select: <strong>Current Pose</strong>, <strong>Delete Hidden Faces</strong>,  <strong>Merge Beard and Brows into one object</strong> and <strong>Bake Diffuse and Specular maps from Digital Human Hair Shader</strong>.</p>
 <img alt="_images/e2-cc3.png" src="_images/e2-cc3.png" />
 <p>Click <strong>Export</strong> to begin the export process.</p>
+</section>
+<section id="export-from-iclone">
+<h3>Export From iClone<a class="headerlink" href="#export-from-iclone" title="Permalink to this headline"></a></h3>
 <p>In <strong>iClone</strong> export the character using <strong>Export -&gt; Export FBX…</strong></p>
 <img alt="_images/e1-iClone.png" src="_images/e1-iClone.png" />
 <p>Select the following options in the export window.</p>
@@ -124,6 +134,7 @@
 <p>In <strong>Microsoft Windows</strong> open the file explorer and navigate to the export directory. In your <strong>Unity 2020.3</strong> or above project browser, navigate to the folder in your project where you will be placing your imported character.</p>
 <p>Now drag the &lt;name&gt;.fbx and &lt;name&gt;.json files &amp; the textures and &lt;name&gt;.fbm (if present) folders from Windows file explorer into the project browser’s target folder of your Unity project.</p>
 <img alt="_images/initial_import.png" src="_images/initial_import.png" />
+</section>
 </section>
 <section id="opening-the-import-tool">
 <h2>Opening The Import Tool<a class="headerlink" href="#opening-the-import-tool" title="Permalink to this headline"></a></h2>
@@ -282,14 +293,15 @@
 <p>The preview scene now contains a small tool to allow you to preview animations and facial expressions on your character.  The previews are performed in <strong>Edit Mode</strong> only, so that the Unity project itself <strong>doesn’t have to enter Play Mode</strong> (which, for complex projects is desireable).  The tool itself is controlled from an embedded pane in the SceneView window (In Unity versions below 2021.2.0 this will appear as a standard Gui window, above 2021.2.0 the tool will be contained in a more versatile (and moveable) overlay window).</p>
 <img alt="_images/char_preview_toolpane.png" src="_images/char_preview_toolpane.png" />
 <p>The tool pane has two sections (each can be minimized/revealed by clicking it’s foldout button).</p>
-<section id="animation-player">
-<h4>Animation player<a class="headerlink" href="#animation-player" title="Permalink to this headline"></a></h4>
+<section id="animation-player-animplayer">
+<h4>Animation player <img alt="animplayer" src="_images/new_ui_anim_player.png" /><a class="headerlink" href="#animation-player-animplayer" title="Permalink to this headline"></a></h4>
 <p>The animation player can play any appropriate <a class="reference external" href="https://docs.unity3d.com/Manual/AnimationOverview.html">Mechanim</a> animation from your project on the character in the preview scene (by using the <em>‘Animation’</em> selector.  The controls for this are standard (play/pause advance one frame back/forward and go to start/end) additionally dragging the ‘Time’ bar will allow you to spool manually through the animation.  Additionally, any model (with an animator component) may be dragged into the scene and selected in the <em>‘Scene Model’</em> object selector to allow animations to be played on it.</p>
+<p>The animation player/facial expression tool may be toggled on/off with the <img alt="animplayer" src="_images/new_ui_anim_player.png" /> button.</p>
 <p>NB:  When an animation is playing, the facial expression controls are locked out.</p>
 </section>
 <section id="facial-expression">
 <h4>Facial Expression<a class="headerlink" href="#facial-expression" title="Permalink to this headline"></a></h4>
-<p>This section controls numerous aspects of facial manipulation it was introduced to replace the older menu driven facial manipulation and contains some useful features.</p>
+<p>This section controls numerous aspects of facial manipulation it was introduced to replace the older menu driven facial manipulation and contains some useful features.  The tool is included as part of the animation player window.</p>
 <img alt="_images/eye_2d_slider.png" class="align-left" src="_images/eye_2d_slider.png" />
 <p>The eye control tool is used to ‘zoom in’ on the face (double click anywhere on the ‘eye’ graphic).  This will change the scene view to look directly at the face of the character no matter what the position of the head is (this may result in unusual camera angles - this can be rectified by double clicking on the <img alt="reset-face" src="_images/reset_face_button.png" /> icon to return to a neutral angle).</p>
 <p>Dragging the handle in the centre of the eye control tool will move the rotation of the eyes allowing detailed inspection of the eyes and the area of the face around the eyes are they are moved in real time.</p>
@@ -373,7 +385,7 @@ This will multiple select all of the materials associated with the ‘selectable
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="tldr_Installation.html" class="btn btn-neutral float-right" title="TLDR Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="adv-usage.html" class="btn btn-neutral float-right" title="Advanced Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

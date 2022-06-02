@@ -13,5 +13,6 @@
    about
    installation
    usage
+   adv-usage
    tldr_Installation
    tldr_usage
