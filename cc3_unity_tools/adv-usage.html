@@ -123,6 +123,7 @@
 <li><p>The animation will be renamed to &lt;Model name&gt;_&lt;Original animation name&gt;.anim  - Any illegal filesystem characters will also be stripped out and replaced with a ‘-’ symbol.</p></li>
 <li><p>Multiple saves will not overwrite; the animation name will instead be appended with an increasing ‘.000’ ‘.001’ for each save.</p></li>
 <li><p>The animation can be reset to it’s original state at any time by pressing the <em>reset button</em>. <img alt="retargetreset" src="_images/retarget_reset.png" /></p></li>
+<li><p>The slider settings lock button <img alt="retargetlock" src="_images/retarget_lock.png" /> will preserve the slider values when you change the animation in the animation selector.  Thus you can process multiple animations from the same source whilst preserving the settings between animation selections.  Using the reset button will remove the lock and return all the values to zero.</p></li>
 <li><p>No changes are ever made to the original animation - the process is entirely non destructive.</p></li>
 </ul>
 <section id="hand-correction-retargethand">
@@ -175,10 +176,13 @@
 <tr class="row-even"><td><p><em>Arm Correction</em>, Adjust the Upper Arm Up-Down rotation. Controls the ‘lift’ of the arms.</p></td>
 <td><p><a class="reference internal" href="_images/arm_correction.gif"><img alt="arm_corr" src="_images/arm_correction.gif" style="width: 229px;" /></a></p></td>
 </tr>
-<tr class="row-odd"><td><p><em>Leg Correction</em>, Adjust the Upper Leg In-Out rotation. Controls the width of the character’s stance.</p></td>
+<tr class="row-odd"><td><p><em>Arm Flexion Correction</em>, Controls the forward and back upper arm rotation relative to the clavicle.</p></td>
+<td><p><a class="reference internal" href="_images/arm_flexion.gif"><img alt="arm_flexion" src="_images/arm_flexion.gif" style="width: 229px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Leg Correction</em>, Adjust the Upper Leg In-Out rotation. Controls the width of the character’s stance.</p></td>
 <td><p><a class="reference internal" href="_images/leg_correction.gif"><img alt="leg_corr" src="_images/leg_correction.gif" style="width: 229px;" /></a></p></td>
 </tr>
-<tr class="row-even"><td><p><em>Heel Correction</em>, Adjust the angle of the Foot Up-Down rotation. Controls the angle of the heel.</p></td>
+<tr class="row-odd"><td><p><em>Heel Correction</em>, Adjust the angle of the Foot Up-Down rotation. Controls the angle of the heel.</p></td>
 <td><p><a class="reference internal" href="_images/heel_correction.gif"><img alt="heel_corr" src="_images/heel_correction.gif" style="width: 229px;" /></a></p></td>
 </tr>
 </tbody>
@@ -232,7 +236,39 @@
 </figcaption>
 </figure>
 <p>The BlendShape Retarget function <a class="reference internal" href="_images/retarget_blendshape.png"><img alt="blendshaperetarget_s" src="_images/retarget_blendshape.png" style="width: 30px;" /></a> will copy the existing BlendShape animation data in the <strong>currently selected Animation</strong> and copy it to all of the applicable objects in the <strong>currently selected Scene Model</strong> (which must contain the appropriate BlendShape definitions) allowing them to animate correctly.</p>
-<p><em>Usage:</em></p>
+<p><strong>Retarget Quality:</strong></p>
+<p>The quality of the retargeting is heavily dependent on the generational differences between the target model and animation’s model. Thus the respective <a class="reference external" href="https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/06-Facial-Profile-Editor/Introduction-of-Facial-Profile-Editor.htm?Highlight=expression%20profile">facial profiles</a> used on the model and source animation have a large influence on which data can be properly retargeted.</p>
+<p>Best results are obtained when the animation and target model have the same <a class="reference external" href="https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/06-Facial-Profile-Editor/Introduction-of-Facial-Profile-Editor.htm?Highlight=expression%20profile">facial profiles</a>.</p>
+<p>The tool provides a visual status which gives an indication of the potential retargeting quality.  This compares the facial profiles of the target model and and selected animation and assesses the overlap of available BlendShapes between the two.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="grey_retarget" src="_images/grey_retarget.png" /></p></td>
+<td><p>No BlendShape animation is detected, so no retarget is possible.</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="red_retarget" src="_images/red_retarget.png" /></p></td>
+<td><p>Significant mismatch between the BlendShape animation data and the available BlendShapes in the target model, so significant amounts of data may be omitted.  [Usually when transferring data from more complex CC4 facial profiles to very early and much simpler facial profiles]</p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="yellow_retarget" src="_images/yellow_retarget.png" /></p></td>
+<td><p>Partial mismatch of BlendShapes, with a smaller potential data omission. [Usually encountered when transferring between CC3 ExPlus and CC4]</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="green_retarget" src="_images/green_retarget.png" /></p></td>
+<td><p>The BlendShapes in the animation and target model match and no data will be omitted.</p></td>
+</tr>
+</tbody>
+</table>
+<p>A <em>Retargeting quality report</em> will be provided in the console after the process is complete (see below for <strong>usage</strong>).  This will list all of the successful BlendShape mappings, and any that couldn’t be remapped.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/retarget_report.png"><img alt="_images/retarget_report.png" src="_images/retarget_report.png" style="width: 150px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Retargeting quality report (Click to enlarge)</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The above example report shows a BlendShape animation from a CC4 Character being retargeted to a CC3 ExPlus character, and shows that the animation data contains BlendShapes that aren’t available on the simpler target model.</p>
+<p><strong>Usage:</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>When exporting from iClone, ensure in the advanced options that ‘<strong>Mouth Open as Morph</strong>’’ is <strong>NOT</strong> selected.  Otherwise corruption of the BlendShape data may occur.</p>
@@ -240,13 +276,14 @@
 <ul class="simple">
 <li><p>Select the appropriate <strong>Scene Model</strong> and source <strong>Animation</strong> in the <em>Animation Playback</em> section of the <em>Character Preview Tools window</em></p></li>
 <li><p>Press the BlendShape Retarget <a class="reference internal" href="_images/retarget_blendshape.png"><img alt="blendshaperetarget_s" src="_images/retarget_blendshape.png" style="width: 30px;" /></a> button.  There will be a brief pause after which the updated animation can be previewed using the normal <em>Animation Playback</em> functions.</p></li>
+<li><p>The <em>Retargeting quality report</em> can be reviewed in the console (see above)</p></li>
 <li><p>Once you are happy with the BlendShapes the animation can be saved (this will save all of the adjustments made with the animation retarget tool) using the <em>save button</em>. <img alt="retargetsave" src="_images/retarget_save.png" /></p></li>
 </ul>
 <p>Once the BlendShape retarget is complete, the animation player will show (for our example) the following:</p>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id6">
 <a class="reference internal image-reference" href="_images/face_blendshape_corrected_post.gif"><img alt="_images/face_blendshape_corrected_post.gif" src="_images/face_blendshape_corrected_post.gif" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-text"><em>Face objects now have proper animation data</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-text"><em>Face objects now have proper animation data</em></span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <div class="admonition-note admonition">
@@ -292,10 +329,10 @@
 <li><p>In the animation playback pane ensure that the <em>Time Mode</em> is set to <em>By Frame</em>. <img alt="byframe" src="_images/by_frame_time_mode.png" /></p></li>
 <li><p>Play the animation through once to cache the physics data as a vertex animation track for each applicable object.  This is shown in the timeline below:</p></li>
 </ul>
-<figure class="align-center" id="id6">
+<figure class="align-center" id="id7">
 <a class="reference internal image-reference" href="_images/timeline_soft_cloth.png"><img alt="_images/timeline_soft_cloth.png" src="_images/timeline_soft_cloth.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text"><em>Physics baked as Soft Cloth Vertex Animation tracks</em></span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-text"><em>Physics baked as Soft Cloth Vertex Animation tracks</em></span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <ul class="simple">

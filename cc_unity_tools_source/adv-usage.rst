@@ -47,6 +47,8 @@ The animation retarget tools will operate on the **currently selected** **Scene 
 
 .. |retargethand| image:: images/retarget_hand.png
 
+.. |retargetlock| image:: images/retarget_lock.png
+
 .. |retargetreset| image:: images/retarget_reset.png
 
 .. |retargetsave| image:: images/retarget_save.png
@@ -62,6 +64,8 @@ The adjusted animation can be saved into the 'home directory' of the *scene mode
 - Multiple saves will not overwrite; the animation name will instead be appended with an increasing '.000' '.001' for each save. 
 
 - The animation can be reset to it's original state at any time by pressing the *reset button*. |retargetreset|
+
+- The slider settings lock button |retargetlock| will preserve the slider values when you change the animation in the animation selector.  Thus you can process multiple animations from the same source whilst preserving the settings between animation selections.  Using the reset button will remove the lock and return all the values to zero. 
 
 - No changes are ever made to the original animation - the process is entirely non destructive.
 
@@ -122,6 +126,9 @@ The result of each control's action is presented visually below:
 .. |arm_corr| image:: images/arm_correction.gif
     :width: 229
 
+.. |arm_flexion| image:: images/arm_flexion.gif
+    :width: 229
+
 .. |leg_corr| image:: images/leg_correction.gif
     :width: 229
 
@@ -136,6 +143,8 @@ The result of each control's action is presented visually below:
     - |shoulder_corr|           
   * - *Arm Correction*, Adjust the Upper Arm Up-Down rotation. Controls the 'lift' of the arms.
     - |arm_corr|
+  * - *Arm Flexion Correction*, Controls the forward and back upper arm rotation relative to the clavicle.
+    - |arm_flexion|
   * - *Leg Correction*, Adjust the Upper Leg In-Out rotation. Controls the width of the character's stance.
     - |leg_corr|
   * - *Heel Correction*, Adjust the angle of the Foot Up-Down rotation. Controls the angle of the heel.
@@ -212,7 +221,48 @@ When the selected animation clip contains BlendShape animations (for example iCl
 
 The BlendShape Retarget function |blendshaperetarget_s| will copy the existing BlendShape animation data in the **currently selected Animation** and copy it to all of the applicable objects in the **currently selected Scene Model** (which must contain the appropriate BlendShape definitions) allowing them to animate correctly.
 
-*Usage:*
+.. _facial profiles: https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/06-Facial-Profile-Editor/Introduction-of-Facial-Profile-Editor.htm?Highlight=expression%20profile
+
+**Retarget Quality:**
+
+The quality of the retargeting is heavily dependent on the generational differences between the target model and animation's model. Thus the respective `facial profiles`_ used on the model and source animation have a large influence on which data can be properly retargeted.
+
+Best results are obtained when the animation and target model have the same `facial profiles`_.
+
+The tool provides a visual status which gives an indication of the potential retargeting quality.  This compares the facial profiles of the target model and and selected animation and assesses the overlap of available BlendShapes between the two.
+
+.. |grey_retarget| image:: images/grey_retarget.png
+
+.. |red_retarget| image:: images/red_retarget.png
+
+.. |yellow_retarget| image:: images/yellow_retarget.png
+
+.. |green_retarget| image:: images/green_retarget.png
+
+.. list-table::
+  :widths: 1 5
+  :header-rows: 0
+  
+  * - |grey_retarget|
+    - No BlendShape animation is detected, so no retarget is possible.
+  * - |red_retarget|
+    - Significant mismatch between the BlendShape animation data and the available BlendShapes in the target model, so significant amounts of data may be omitted.  [Usually when transferring data from more complex CC4 facial profiles to very early and much simpler facial profiles]
+  * - |yellow_retarget|
+    - Partial mismatch of BlendShapes, with a smaller potential data omission. [Usually encountered when transferring between CC3 ExPlus and CC4]
+  * - |green_retarget|
+    - The BlendShapes in the animation and target model match and no data will be omitted.
+
+A *Retargeting quality report* will be provided in the console after the process is complete (see below for **usage**).  This will list all of the successful BlendShape mappings, and any that couldn't be remapped.
+
+.. figure:: images/retarget_report.png
+  :align: center
+  :width: 150
+
+  *Retargeting quality report (Click to enlarge)*
+
+The above example report shows a BlendShape animation from a CC4 Character being retargeted to a CC3 ExPlus character, and shows that the animation data contains BlendShapes that aren't available on the simpler target model.
+
+**Usage:**
 
 .. warning::
 
@@ -222,6 +272,8 @@ The BlendShape Retarget function |blendshaperetarget_s| will copy the existing B
 - Select the appropriate **Scene Model** and source **Animation** in the *Animation Playback* section of the *Character Preview Tools window*
 
 - Press the BlendShape Retarget |blendshaperetarget_s| button.  There will be a brief pause after which the updated animation can be previewed using the normal *Animation Playback* functions.
+
+- The *Retargeting quality report* can be reviewed in the console (see above)
 
 - Once you are happy with the BlendShapes the animation can be saved (this will save all of the adjustments made with the animation retarget tool) using the *save button*. |retargetsave|
 

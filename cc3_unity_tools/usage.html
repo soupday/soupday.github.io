@@ -43,11 +43,13 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#initial-import-into-unity">Initial Import Into Unity</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-the-character-for-import-into-unity">Preparing the Character for Import into Unity</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#export-from-character-creator">Export From Character Creator</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#export-from-iclone">Export From iClone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#considerations-to-avoid-clipping">Considerations to Avoid Clipping</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-into-unity">Importing into Unity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#opening-the-import-tool">Opening The Import Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#beginning-the-import">Beginning The Import</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#initial-processing">Initial Processing</a></li>
@@ -111,30 +113,70 @@
 </iframe></div><div class="line-block">
 <div class="line"><br /></div>
 </div>
-<section id="initial-import-into-unity">
-<h2>Initial Import Into Unity<a class="headerlink" href="#initial-import-into-unity" title="Permalink to this headline"></a></h2>
+<section id="preparing-the-character-for-import-into-unity">
+<h2>Preparing the Character for Import into Unity<a class="headerlink" href="#preparing-the-character-for-import-into-unity" title="Permalink to this headline"></a></h2>
+<p>Before a character can be imported into Unity, it must first be properly exported from the relevant software package.  This tool can accept exports from Character Creator 3/4, iClone 7/8 and Blender 2.8 and above (the Blender case requires a CC3/4 or iClone 7/8 character as the starting point).</p>
+<p>In <strong>Character Creator</strong>, or <strong>iClone</strong> prepare your character as you see fit.</p>
 <section id="export-from-character-creator">
 <h3>Export From Character Creator<a class="headerlink" href="#export-from-character-creator" title="Permalink to this headline"></a></h3>
-<p>In <strong>Character Creator</strong>, or <strong>iClone</strong> prepare your character as you see fit.</p>
-<p>In <strong>Character Creator</strong> export the character using <strong>Export -&gt; FBX (Clothed Character)</strong>.</p>
-<img alt="_images/e1-cc3.png" src="_images/e1-cc3.png" />
+<p>In <strong>Character Creator</strong> export the character using <strong>Export -&gt; FBX -&gt; Clothed Character</strong>.</p>
+<a class="reference internal image-reference" href="_images/cc4-export-menu.png"><img alt="_images/cc4-export-menu.png" class="align-center" src="_images/cc4-export-menu.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>Select the following options in the export window (you may need to scroll down to see all options).</p>
-<p>Target tool preset: <strong>Unity 3D</strong>, select: <strong>Current Pose</strong>, <strong>Delete Hidden Faces</strong>,  <strong>Merge Beard and Brows into one object</strong> and <strong>Bake Diffuse and Specular maps from Digital Human Hair Shader</strong>.</p>
-<img alt="_images/e2-cc3.png" src="_images/e2-cc3.png" />
+<p>Target tool preset: <strong>Unity 3D</strong>, select: <strong>Current Pose</strong>, <strong>Delete Hidden Faces</strong>,  <strong>Merge Beard and Brows into one object</strong> <em>(Optional)</em> and <strong>Bake Diffuse and Specular maps from Digital Human Hair Shader</strong>.</p>
+<a class="reference internal image-reference" href="_images/cc4-export-top.png"><img alt="_images/cc4-export-top.png" class="align-center" src="_images/cc4-export-top.png" style="width: 550px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Further settings are available by scrolling down. Please note <strong>Delete Hidden Faces</strong> is not currently selected by default.</p>
+<a class="reference internal image-reference" href="_images/cc4-export-bottom.png"><img alt="_images/cc4-export-bottom.png" class="align-center" src="_images/cc4-export-bottom.png" style="width: 550px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>Click <strong>Export</strong> to begin the export process.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the character is placed in its own folder then it can be easily removed or moved around.  Should you wish to export multiple characters into the same folder, they will co-exist safely without overwriting each other’s data and can be manipulated collectively.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are exporting directly into a Unity project, then <strong>please wait for the export process to complete before switching to the Unity application</strong>. Otherwise Unity will detect new files as they are being written and will lock them before they are completely exported - causing an inconsistent mess.</p>
+</div>
 </section>
 <section id="export-from-iclone">
 <h3>Export From iClone<a class="headerlink" href="#export-from-iclone" title="Permalink to this headline"></a></h3>
 <p>In <strong>iClone</strong> export the character using <strong>Export -&gt; Export FBX…</strong></p>
-<img alt="_images/e1-iClone.png" src="_images/e1-iClone.png" />
+<a class="reference internal image-reference" href="_images/e1-iClone.png"><img alt="_images/e1-iClone.png" class="align-center" src="_images/e1-iClone.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>Select the following options in the export window.</p>
 <p>Target tool preset: <strong>Unity 3D</strong>, select: <strong>Export Range = All</strong>, <strong>Delete Hidden Faces</strong>, <strong>Merge Face Hair to One Object</strong>.</p>
-<img alt="_images/e2-iClone.png" src="_images/e2-iClone.png" />
+<img alt="_images/ic8-export-main.png" class="align-center" src="_images/ic8-export-main.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If you are exporting facial animations, then enter the advanced export settings using the <img alt="advexp" src="_images/ic8-export-adv-button.png" /> button.  Ensure that <strong>Mouth Open as Morph</strong> is <em>un-ticked</em> (it is currently enabled by default) otherwise the facial animations will be incorrectly exported.</p>
+<img alt="_images/ic8-export-adv.png" class="align-center" src="_images/ic8-export-adv.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>Click <strong>Export</strong> to begin the export process.</p>
+</section>
+<section id="considerations-to-avoid-clipping">
+<h3>Considerations to Avoid Clipping<a class="headerlink" href="#considerations-to-avoid-clipping" title="Permalink to this headline"></a></h3>
+<p>Typically, to avoid the issue of meshes beneath clothing items penetrating through during animation, the <strong>Delete Hidden Faces</strong> is used to cull any parts of the model that cannot be seen directly.</p>
+<p>Whilst this is usually fine, there may be circumstances where it is not desireable to do this (or the clothing items are being clipped thorough in Character Creator itself).</p>
+<p>In such circumstances please see the <a class="reference external" href="https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/08_Cloth/Conforming_Clothing.htm?Highlight=conform">conforming clothes in Character Creator</a> section of the Character Creator 4 documentation for a guide on eliminating clipping.</p>
+</section>
+</section>
+<section id="importing-into-unity">
+<h2>Importing into Unity<a class="headerlink" href="#importing-into-unity" title="Permalink to this headline"></a></h2>
 <p>In <strong>Microsoft Windows</strong> open the file explorer and navigate to the export directory. In your <strong>Unity 2020.3</strong> or above project browser, navigate to the folder in your project where you will be placing your imported character.</p>
 <p>Now drag the &lt;name&gt;.fbx and &lt;name&gt;.json files &amp; the textures and &lt;name&gt;.fbm (if present) folders from Windows file explorer into the project browser’s target folder of your Unity project.</p>
 <img alt="_images/initial_import.png" src="_images/initial_import.png" />
-</section>
 </section>
 <section id="opening-the-import-tool">
 <h2>Opening The Import Tool<a class="headerlink" href="#opening-the-import-tool" title="Permalink to this headline"></a></h2>
@@ -150,14 +192,14 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>This will open the main tool window (by default this will be docked next to the Scene Hierarchy View window - it is shown here undocked).</p>
+<p>This will open the main tool window (by default this will be docked next to the Scene Hierarchy View window - it is shown here un-docked).</p>
 <img alt="_images/tool_new_ui.png" class="align-center" src="_images/tool_new_ui.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>The import tool will actively detect all of the valid Character Creator or iClone characters that are contained in the Unity project and display them vertically on the left hand side of the tool window.</p>
 <p>If your character is not displayed (or if no right click menu option is available to open the import tool) then <strong>please ensure that all of the exported data from Character Creator or iClone has been dragged into the Unity project browser</strong> (there must be at least the .fbx and .json files and a textures folder containing a subfolder with the same name as the .fbx asset).</p>
-<p>If you add a character to the project whilst the tool is open, you can refresh the available character list with the <img alt="refresh" src="_images/new_ui_refresh.png" /> button.</p>
+<p>If you add a character to the project whilst the tool is open, you can refresh the available character list with the <a class="reference internal" href="_images/new_ui_refresh.png"><img alt="refresh" src="_images/new_ui_refresh.png" style="width: 28px;" /></a> button.</p>
 </section>
 <section id="beginning-the-import">
 <h2>Beginning The Import<a class="headerlink" href="#beginning-the-import" title="Permalink to this headline"></a></h2>
@@ -188,16 +230,23 @@
 <strong>Basic Materials</strong> processing will set up the character with materials using the system default shaders that ship with Unity - This should only ever be used as a draft import.</p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="eyes" src="_images/new_eye_settings.png" /></p></td>
-<td><p><strong>Parallax Eyes</strong> <em>(Default)</em> This option will apply a high quality shader to the eyes which attempts to properly simulate the refractive properties of the eye, offering excellent visual quality. this shader also allows control over eye attributes such as pupil size.
+<td><p><strong>Basic Eyes</strong> This option will use a simpler shader for the eye, but will still offer good quality for a lower performance overhead.
 <br /><br />
-<strong>Basic Eyes</strong> This option will use a simpler shader for the eye, but will still offer good quality for a lower performance overhead.</p></td>
+<strong>Parallax Eyes</strong> <em>(Default)</em> This option will apply a high quality shader to the eyes which attempts to properly simulate the refractive properties of the eye, offering excellent visual quality. this shader also allows control over eye attributes such as pupil size.
+<br /><br />
+<strong>Refractive (SSR) Eyes</strong> <em>(HDRP pipeline only)</em> Screen Space Refraction (SSR) is a “HDRP feature that uses the depth and color buffer of the screen to calculate refraction”.</p></td>
 </tr>
 <tr class="row-odd"><td><p><img alt="hair" src="_images/new_hair_settings.png" /></p></td>
 <td><p><strong>Single Pass Hair</strong> This option will apply a single pbr material to the hair meshes, whilst having lower performance this also offers lower visual fidelity (this should be used as the general use case).
 <br /><br />
 <strong>Two Pass Hair</strong> <em>(Default)</em> This option will apply two materials to the hair meshes (and thus use two material passes). Two pass hair is generally higher quality, where the hair is first drawn opaque with alpha cutout and the remaining edges drawn in softer alpha blending, but can come at a performance cost (whilst this is the default, it is best suited to close up shots).
 <br /><br />
-<strong>MSAA Coverage Hair</strong> This option is intended to be used when MSAA (Multi-Sample Anti-Aliasing) is enabled in post processing to provide low cost high quality results.</p></td>
+<strong>MSAA Coverage Hair</strong> <em>(Available only when amplify shaders are used - not available in HDRP)</em> This option is intended to be used when MSAA (Multi-Sample Anti-Aliasing) is enabled in post processing to provide low cost high quality results.</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="shaderfeat" src="_images/new_shader_features.png" /></p></td>
+<td><p><strong>No Shader Features</strong>
+<br /><br />
+<strong>Tesselation</strong> <em>(HDRP v12)</em> For HDRP 12 (Unity 2021.2+) all shader graph shaders can have tessellation enabled.</p></td>
 </tr>
 </tbody>
 </table>
@@ -205,17 +254,22 @@
 <div class="line"><br /></div>
 </div>
 <p><strong>Further Settings</strong> <img alt="FurtherSettings" src="_images/additional_settings.png" /></p>
-<p>Clicking on the settings icon <img alt="FurtherSettings" src="_images/additional_settings.png" /> will show a secondary settings panel.</p>
-<img alt="_images/additional_settings_panel.png" class="align-center" src="_images/additional_settings_panel.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Currently this panel allows users to revert from the new standard of ‘<em>Amplify Shaders</em>’ to the original Unity Shadergraph shaders or to disable the reconstruction of flow map normals.</p>
-<p><strong>NB:</strong> <strong>AMP Shaders</strong>  are shaders made with the <em>Amplify Shader Editor</em> for which has higher quality anisotropic lighting of the hair at a minimal performance cost.  This will become the new shader standard going forward.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>You can return to the main tool window from the sttings panle by clicking the back button. <img alt="settingsback" src="_images/settings_back.png" /></p>
+<p>Clicking on the settings icon <a class="reference internal" href="_images/additional_settings.png"><img alt="FurtherSettings_s" src="_images/additional_settings.png" style="width: 28px;" /></a> will show a secondary settings panel.</p>
+<figure class="align-center" id="id1">
+<img alt="_images/additional_settings_panel.png" src="_images/additional_settings_panel.png" />
+<figcaption>
+<p><span class="caption-text"><em>HDRP settings panel</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The options available in this panel are dependent on the pipeline version used; all available options are discussed below.</p>
+<ul class="simple">
+<li><p><strong>Use Amplify Shaders</strong> <em>(3D and URP pipelines ONLY)</em> Use shaders made with the <em>Amplify Shader Editor</em> for which has higher quality anisotropic lighting of the hair at a minimal performance cost.  Amplify shaders are capable of subsurface scattering effects, and anisotropic hair lighting in the URP and Build-in 3D pipelines.</p></li>
+<li><p><strong>Reconstruct Flow Map Normals</strong> <em>(All pipelines)</em> Rebuild missing Normal maps from Flow Maps in hair materials. Reconstructed Normals add extra detail to the lighting models.</p></li>
+<li><p><strong>Rebake Blender Unity Maps</strong> <em>(All pipelines)</em> When active will always re-bake the blender to unity Diffuse+Alpha, HDRP Mask and Metallic+Gloss maps. Otherwise subsequent material rebuilds will try to re-use existing bakes. Only needed if the source textures are changed.</p></li>
+<li><p><strong>Animation Player On</strong> <em>(All pipelines)</em> Always show the animation player when opening the preview scene.</p></li>
+<li><p><strong>Log Level</strong> Here you can opt to change the console logging level to: Errors Only, Warnings &amp; Errors (default) or Everything</p></li>
+</ul>
+<p>You can return to the main tool window from the settings panel by clicking the back button. <a class="reference internal" href="_images/settings_back.png"><img alt="settingsback" src="_images/settings_back.png" style="width: 28px;" /></a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -225,6 +279,22 @@
 <div class="line"><br /></div>
 </div>
 <p>Once processing is complete the tool window will be updated to reflect that.. The processed character icon will change color (Grey for Default processing, Green for HQ processing and  Orange for Baked processing).</p>
+<p>All of the animations (with the exception of the T-Pose) will also be extracted from the imported fbx, and have all of the Blend Shapes in those animations retargeted to animate all of the objects in the processed model.</p>
+<p>This processing is necessary since two-pass hair processing adds new hair objects which would otherwise require manual Blend Shape retargeting in order to animate properly.  This allows the animations to be used ‘out of the box’.</p>
+<p>The animation is placed in a subfolder of the folder containing the fbx file and renamed to &lt;MODEL_NAME&gt;_Imported_&lt;Animation_Name&gt;.anim</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Import</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="n">Animations</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span>
+  <span class="o">|</span>           <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span><span class="n">_Imported_</span><span class="o">&lt;</span><span class="n">Animation_Name_1</span><span class="o">&gt;.</span><span class="n">anim</span>
+  <span class="o">|</span>           <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span><span class="n">_Imported_</span><span class="o">&lt;</span><span class="n">Animation_Name_2</span><span class="o">&gt;.</span><span class="n">anim</span>
+  <span class="o">|</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
+  <span class="o">|--</span> <span class="n">textures</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbx</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>The first animation in the list will also be the default animation in the preview scene animation player.</p>
 <p>Additionally, the status text will be updated with the type of processing that has been performed (highlighted below).</p>
 <img alt="_images/post_hq_processing.png" class="align-center" src="_images/post_hq_processing.png" />
 <div class="line-block">
@@ -259,13 +329,13 @@
 <strong>Default Shaders</strong> Uses the system default pbr shaders in the baked output, if performance is desired above all else, at the cost of visual quality.</p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="bkpre" src="_images/new_ui_bake_prefab.png" /></p></td>
-<td><p><strong>Separate Baked Prefab</strong> <em>(Default)</em> The baked output will be written to a new prefab &lt;name&gt;_baked (in the same directory as the initialally created prefab).
+<td><p><strong>Separate Baked Prefab</strong> <em>(Default)</em> The baked output will be written to a new prefab &lt;name&gt;_baked (in the same directory as the initially created prefab).
 <br /><br />
 <strong>Overwrite Prefab</strong> This option will overwrite the initially (when the materials are built during initial processing) created prefab with new materials and textures.  This feature is used principally for the ‘iClone Live Link’.</p></td>
 </tr>
 </tbody>
 </table>
-<p>Once the desired options have been set, then the process can be started with the <img alt="Bake" src="_images/new_ui_bake.png" /> button.</p>
+<p>Once the desired options have been set, then the process can be started with the <a class="reference internal" href="_images/new_ui_bake.png"><img alt="Bake_s" src="_images/new_ui_bake.png" style="width: 28px;" /></a> button.</p>
 <p>Any changes that are made to the main processing options (material quality, eye and hair settings) and then reprocessed <em>via</em> ‘Build Materials’ will cause the baked prefab to be automatically updated with those new settings.</p>
 <p>The Baking workflow is show in the video below:</p>
 <div class="youtube_wrapper" style="">
@@ -276,8 +346,8 @@
 </section>
 <section id="animations-anim">
 <h3>Animations <img alt="anim" src="_images/new_ui_anim.png" /><a class="headerlink" href="#animations-anim" title="Permalink to this headline"></a></h3>
-<p>The animation button <img alt="anim" src="_images/new_ui_anim.png" /> will process all of the animations contained in the .fbx.</p>
-<p>It will conform the animations to Unity’s X,Y,Z co-ordinate system.  It will also remove root transform motion from any animations labelled with ‘idle’.  This will also create a default animator controller.  Please use this option very carefully.</p>
+<p>The animation button <a class="reference internal" href="_images/new_ui_anim.png"><img alt="anim_s" src="_images/new_ui_anim.png" style="width: 28px;" /></a> will re-process all of the animations contained in the fbx, and re-create the same default output as the build process did.</p>
+<p>This will also create a default animator controller will all the fbx’s animations in it as states.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -287,16 +357,21 @@
 <h2>Post Processing<a class="headerlink" href="#post-processing" title="Permalink to this headline"></a></h2>
 <section id="preview-scene-preview">
 <h3>Preview Scene <img alt="preview" src="_images/new_ui_preview.png" /><a class="headerlink" href="#preview-scene-preview" title="Permalink to this headline"></a></h3>
-<p>After processing has completed, the output character can be inspected in a preview scene by pressing the <strong>‘Preview Scene’</strong> button <img alt="preview" src="_images/new_ui_preview.png" />.</p>
+<p>After processing has completed, the output character can be inspected in a preview scene by pressing the <strong>‘Preview Scene’</strong> button <a class="reference internal" href="_images/new_ui_preview.png"><img alt="preview_s" src="_images/new_ui_preview.png" style="width: 28px;" /></a>.</p>
 <p>This will open a new scene with neutral lighting; if your current scene is marked as changed then you will be prompted to save the current scene before changing to the preview scene.</p>
 <img alt="_images/preview_scene_2.png" src="_images/preview_scene_2.png" />
-<p>The preview scene now contains a small tool to allow you to preview animations and facial expressions on your character.  The previews are performed in <strong>Edit Mode</strong> only, so that the Unity project itself <strong>doesn’t have to enter Play Mode</strong> (which, for complex projects is desireable).  The tool itself is controlled from an embedded pane in the SceneView window (In Unity versions below 2021.2.0 this will appear as a standard Gui window, above 2021.2.0 the tool will be contained in a more versatile (and moveable) overlay window).</p>
+<p>Several preview scene specific tools are included on the main button strip (of the main tool window) for user convenience:</p>
+<ul class="simple">
+<li><p><img alt="prev_light" src="_images/preview_lighting_model.png" /> <em>Preview Scene Lighting</em> This will cycle through several pre defined lighting setups to allow you to rapidly assess the character under a range of lighting conditions.</p></li>
+<li><p><img alt="pref_cam_align" src="_images/preview_camera_align.png" /> <em>Align main camera with current scene view</em> This will align the main camera in the preview scene with the current orientation of the view in the <em>Scene Window</em> (i.e. it will align the <em>Game window</em> with what you are seeing in the <em>Scene Window</em>).</p></li>
+</ul>
+<p>By default, the preview scene contains a small tool to allow you to preview animations and facial expressions on your character.  The previews are performed in <strong>Edit Mode</strong> only, so that the Unity project itself <strong>doesn’t have to enter Play Mode</strong> (which, for complex projects is desireable).  The tool itself is controlled from an embedded pane in the SceneView window (In Unity versions below 2021.2.0 this will appear as a standard Gui window, above 2021.2.0 the tool will be contained in a more versatile (and moveable) overlay window).</p>
 <img alt="_images/char_preview_toolpane.png" src="_images/char_preview_toolpane.png" />
 <p>The tool pane has two sections (each can be minimized/revealed by clicking it’s foldout button).</p>
 <section id="animation-player-animplayer">
 <h4>Animation player <img alt="animplayer" src="_images/new_ui_anim_player.png" /><a class="headerlink" href="#animation-player-animplayer" title="Permalink to this headline"></a></h4>
-<p>The animation player can play any appropriate <a class="reference external" href="https://docs.unity3d.com/Manual/AnimationOverview.html">Mechanim</a> animation from your project on the character in the preview scene (by using the <em>‘Animation’</em> selector.  The controls for this are standard (play/pause advance one frame back/forward and go to start/end) additionally dragging the ‘Time’ bar will allow you to spool manually through the animation.  Additionally, any model (with an animator component) may be dragged into the scene and selected in the <em>‘Scene Model’</em> object selector to allow animations to be played on it.</p>
-<p>The animation player/facial expression tool may be toggled on/off with the <img alt="animplayer" src="_images/new_ui_anim_player.png" /> button.</p>
+<p>The animation player can play any appropriate <a class="reference external" href="https://docs.unity3d.com/Manual/AnimationOverview.html">Mechanim</a> animation from your project on the character in the preview scene (by using the <em>‘Animation’</em> selector).  The controls for this are standard (play/pause advance one frame back/forward and go to start/end) additionally dragging the ‘Time’ bar will allow you to spool manually through the animation.  Additionally, any model (with an animator component) may be dragged into the scene and selected in the <em>‘Scene Model’</em> object selector to allow animations to be played on it.</p>
+<p>The animation player/facial expression tool may be toggled on/off with the <a class="reference internal" href="_images/new_ui_anim_player.png"><img alt="animplayer_s" src="_images/new_ui_anim_player.png" style="width: 28px;" /></a> button.</p>
 <p>NB:  When an animation is playing, the facial expression controls are locked out.</p>
 </section>
 <section id="facial-expression">
