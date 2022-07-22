@@ -51,8 +51,10 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#importing-into-unity">Importing into Unity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#opening-the-import-tool">Opening The Import Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#beginning-the-import">Beginning The Import</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#initial-processing">Initial Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beginning-the-import">Beginning The Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-processing">Initial Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quality-settings">Quality Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-settings">Further Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#further-processing">Further Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#baking-bake">Baking </a></li>
 <li class="toctree-l3"><a class="reference internal" href="#animations-anim">Animations </a></li>
@@ -64,7 +66,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#facial-expression">Facial Expression</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#materials-inspector">Materials Inspector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#materials-inspector">Materials Inspector</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tesselation-options">Tesselation Options</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#tools-menu">Tools Menu</a><ul>
@@ -78,6 +83,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Cloth Physics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
 </ul>
@@ -209,9 +215,11 @@
 <div class="line"><br /></div>
 </div>
 <p>The selected character is now ready to be processed.  The following options will be initially available:</p>
+</section>
 <section id="initial-processing">
-<h3>Initial Processing<a class="headerlink" href="#initial-processing" title="Permalink to this headline"></a></h3>
-<p><strong>Quality Settings</strong></p>
+<h2>Initial Processing<a class="headerlink" href="#initial-processing" title="Permalink to this headline"></a></h2>
+<section id="quality-settings">
+<h3>Quality Settings<a class="headerlink" href="#quality-settings" title="Permalink to this headline"></a></h3>
 <p>The three principal quality settings are presented as dropdown menus, with the defaults pre-selected as shown below.</p>
 <img alt="_images/new_ui_quality_settings.png" class="align-center" src="_images/new_ui_quality_settings.png" />
 <div class="line-block">
@@ -244,16 +252,22 @@
 <strong>MSAA Coverage Hair</strong> <em>(Available only when amplify shaders are used - not available in HDRP)</em> This option is intended to be used when MSAA (Multi-Sample Anti-Aliasing) is enabled in post processing to provide low cost high quality results.</p></td>
 </tr>
 <tr class="row-even"><td><p><img alt="shaderfeat" src="_images/new_shader_features.png" /></p></td>
-<td><p><strong>No Shader Features</strong>
+<td><p><strong>Features</strong> (Multiple features can be simultaneously selected)
 <br /><br />
-<strong>Tesselation</strong> <em>(HDRP v12)</em> For HDRP 12 (Unity 2021.2+) all shader graph shaders can have tessellation enabled.</p></td>
+<strong>Tesselation</strong> <em>(HDRP v12)</em> For HDRP 12 (Unity 2021.2+) all shader graph shaders can have tessellation enabled.  If enabled, will add additional <a class="reference internal" href="#tesselation-options"><span class="std std-ref">Tesselation Options</span></a> in the <a class="reference internal" href="#materials-inspector"><span class="std std-ref">Materials Inspector</span></a>.
+<br /><br />
+<strong>Cloth Physics</strong> Will enable <a class="reference internal" href="physics.html#cloth-physics"><span class="std std-ref">Cloth Physics</span></a> - During ‘Build Materials’ This will construct colliders, constraint paint applicable clothing items and set them to use the character’s colliders with the Unity built in physics system.
+<br /><br />
+<strong>Hair Physics</strong> Will enable hair physics during ‘Build Materials’ in much the same way that cloth physics is enabled. <strong>Consider this to be highly experimental.</strong> <strong>Warning: this will be VERY detrimental to performance.</strong></p></td>
 </tr>
 </tbody>
 </table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><strong>Further Settings</strong> <img alt="FurtherSettings" src="_images/additional_settings.png" /></p>
+</section>
+<section id="further-settings">
+<h3>Further Settings<a class="headerlink" href="#further-settings" title="Permalink to this headline"></a></h3>
 <p>Clicking on the settings icon <a class="reference internal" href="_images/additional_settings.png"><img alt="FurtherSettings_s" src="_images/additional_settings.png" style="width: 28px;" /></a> will show a secondary settings panel.</p>
 <figure class="align-center" id="id1">
 <img alt="_images/additional_settings_panel.png" src="_images/additional_settings_panel.png" />
@@ -267,6 +281,8 @@
 <li><p><strong>Reconstruct Flow Map Normals</strong> <em>(All pipelines)</em> Rebuild missing Normal maps from Flow Maps in hair materials. Reconstructed Normals add extra detail to the lighting models.</p></li>
 <li><p><strong>Rebake Blender Unity Maps</strong> <em>(All pipelines)</em> When active will always re-bake the blender to unity Diffuse+Alpha, HDRP Mask and Metallic+Gloss maps. Otherwise subsequent material rebuilds will try to re-use existing bakes. Only needed if the source textures are changed.</p></li>
 <li><p><strong>Animation Player On</strong> <em>(All pipelines)</em> Always show the animation player when opening the preview scene.</p></li>
+<li><p><strong>Physics Collider Shrink</strong> Coefficient to specify if the colliders should be reduced or enlarged: +ve numbers shrink the collders and -ve numbers enlarge them.</p></li>
+<li><p><strong>Physics Collider Detection Threshold</strong> The weight threshold (from the weight map + power/offset/scale) that must be reached before a collider can be assigned to the cloth when optimized colliders are being assigned to &lt;Cloth&gt; components by the physics Weight Mapper.  This is a global default value see <a class="reference internal" href="physics.html#the-weightmapper-component"><span class="std std-ref">The &lt;WeightMapper&gt; Component</span></a> documentation for details.</p></li>
 <li><p><strong>Log Level</strong> Here you can opt to change the console logging level to: Errors Only, Warnings &amp; Errors (default) or Everything</p></li>
 </ul>
 <p>You can return to the main tool window from the settings panel by clicking the back button. <a class="reference internal" href="_images/settings_back.png"><img alt="settingsback" src="_images/settings_back.png" style="width: 28px;" /></a></p>
@@ -408,6 +424,24 @@ This will multiple select all of the materials associated with the ‘selectable
 <img alt="_images/selected_eyes.png" src="_images/selected_eyes.png" />
 <p>Example adjustment – working zoomed in on one eye will also update the other eye for consistency:</p>
 <img alt="_images/pupil_manipulation.gif" src="_images/pupil_manipulation.gif" />
+<section id="tesselation-options">
+<h4>Tesselation Options<a class="headerlink" href="#tesselation-options" title="Permalink to this headline"></a></h4>
+<p>If the materials have been built with the ‘Tesselation’ feature enabled (HDRP 12+), then a tesselation options section becomes available in the materials inspector.</p>
+<figure class="align-center" id="id2">
+<img alt="_images/tess_options.png" src="_images/tess_options.png" />
+<figcaption>
+<p><span class="caption-text"><em>Enabled Tesselation Options</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The shaded wireframe gif below shows the effect of ramping the ‘Tesselation Factor’ from 0 to 32:</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/face_tesselation_s.gif"><img alt="_images/face_tesselation_s.gif" src="_images/face_tesselation_s.gif" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Tesselation Factor Changes</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>This allows a higher density mesh to be simulated by the shader.</p>
+</section>
 </section>
 </section>
 <section id="tools-menu">

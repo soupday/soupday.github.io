@@ -187,9 +187,6 @@ Now drag the <name>.fbx and <name>.json files & the textures and <name>.fbm (if 
 .. image:: images/initial_import.png
 
 
-
-
-
 Opening The Import Tool
 =======================
 
@@ -235,9 +232,11 @@ Firstly ensure the character you wish to process is currently selected by clicki
 The selected character is now ready to be processed.  The following options will be initially available:
 
 Initial Processing
-------------------
+==================
 
-**Quality Settings**
+
+Quality Settings
+----------------
 
 The three principal quality settings are presented as dropdown menus, with the defaults pre-selected as shown below.
 
@@ -281,10 +280,17 @@ The following dropdown options are available:
 .. |shaderfeat| image:: images/new_shader_features.png
 
 .. |feattxt1| replace::
-    **No Shader Features**
+    **Features** (Multiple features can be simultaneously selected)
 
 .. |feattxt2| replace::
-    **Tesselation** *(HDRP v12)* For HDRP 12 (Unity 2021.2+) all shader graph shaders can have tessellation enabled.
+    **Tesselation** *(HDRP v12)* For HDRP 12 (Unity 2021.2+) all shader graph shaders can have tessellation enabled.  If enabled, will add additional :ref:`Tesselation Options` in the :ref:`Materials Inspector`.
+
+.. |feattxt3| replace::
+    **Cloth Physics** Will enable :ref:`Cloth Physics` - During 'Build Materials' This will construct colliders, constraint paint applicable clothing items and set them to use the character's colliders with the Unity built in physics system.  
+
+.. |feattxt4| replace::
+    **Hair Physics** Will enable hair physics during 'Build Materials' in much the same way that cloth physics is enabled. **Consider this to be highly experimental.** **Warning: this will be VERY detrimental to performance.**
+
 
 .. list-table::
    :widths: 19 31
@@ -310,6 +316,10 @@ The following dropdown options are available:
      - |feattxt1|
        |br2|
        |feattxt2|
+       |br2|
+       |feattxt3|
+       |br2|
+       |feattxt4|
 
 |
 
@@ -318,7 +328,8 @@ The following dropdown options are available:
 .. |FurtherSettings_s| image:: images/additional_settings.png
     :width: 28
 
-**Further Settings** |FurtherSettings|
+Further Settings
+----------------
 
 Clicking on the settings icon |FurtherSettings_s| will show a secondary settings panel.
 
@@ -345,6 +356,13 @@ The options available in this panel are dependent on the pipeline version used; 
 .. |settxt5| replace::
     **Animation Player On** *(All pipelines)* Always show the animation player when opening the preview scene.
 
+.. |settxt7| replace::
+    **Physics Collider Shrink** Coefficient to specify if the colliders should be reduced or enlarged: +ve numbers shrink the collders and -ve numbers enlarge them.
+
+.. |settxt8| replace::
+    **Physics Collider Detection Threshold** The weight threshold (from the weight map + power/offset/scale) that must be reached before a collider can be assigned to the cloth when optimized colliders are being assigned to <Cloth> components by the physics Weight Mapper.  This is a global default value see :ref:`The <WeightMapper> component` documentation for details.
+
+
 .. |settxt6| replace::
     **Log Level** Here you can opt to change the console logging level to: Errors Only, Warnings & Errors (default) or Everything 
 
@@ -355,6 +373,10 @@ The options available in this panel are dependent on the pipeline version used; 
 - |settxt3|
 
 - |settxt5|
+
+- |settxt7|
+
+- |settxt8|
 
 - |settxt6|
 
@@ -589,7 +611,25 @@ Example adjustment – working zoomed in on one eye will also update the other e
 
 .. image:: images/pupil_manipulation.gif
 
+Tesselation Options
+~~~~~~~~~~~~~~~~~~~
 
+If the materials have been built with the 'Tesselation' feature enabled (HDRP 12+), then a tesselation options section becomes available in the materials inspector. 
+
+.. figure:: images/tess_options.png
+    :align: center
+    
+    *Enabled Tesselation Options*
+
+The shaded wireframe gif below shows the effect of ramping the 'Tesselation Factor' from 0 to 32:
+
+.. figure:: images/face_tesselation_s.gif
+    :align: center
+    :width: 400
+
+    *Tesselation Factor Changes*
+
+This allows a higher density mesh to be simulated by the shader.
 
 Tools Menu
 ==========
