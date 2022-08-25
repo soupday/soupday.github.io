@@ -2,73 +2,73 @@
 
 .. _Collision Physics: https://docs.blender.org/manual/en/latest/physics/collision.html
 
-
 ~~~~~~~~~~~~~~~~
  Advanced Usage
 ~~~~~~~~~~~~~~~~
 
-Importing with Physics
-======================
+..
+  Importing with Physics
+  ======================
 
-Importing
----------
+  Importing
+  ---------
 
-.. image:: images/physics_selected.png
+  .. image:: images/physics_selected.png
 
-When the *Physics* option is selected in the **Import/Export** panel then when the character is imported, *cloth physics*, *vertex groups* and *modifiers* will be automatically generated for any of the mesh objects & materials that have PhysX weight maps. All of which can be changed at will should you need to.
+  When the *Physics* option is selected in the **Import/Export** panel then when the character is imported, *cloth physics*, *vertex groups* and *modifiers* will be automatically generated for any of the mesh objects & materials that have PhysX weight maps. All of which can be changed at will should you need to.
 
-Thus, to import a character with physics enabled (highlighted blue), in the **Import/Export** panel follow the procedure for :ref:`Standard Import` (do not use the standard fbx importer for this).
+  Thus, to import a character with physics enabled (highlighted blue), in the **Import/Export** panel follow the procedure for :ref:`Standard Import` (do not use the standard fbx importer for this).
 
-.. admonition:: Important Consideration For Cloth Simulation
+  .. admonition:: Important Consideration For Cloth Simulation
 
-  Always allow Blender to compute the full range of frames for any cloth simulation by playing the whole animation through with no :ref:`frame dropping`.
-  
-  This will be initially slow; however this **must** be done in order to cache the cloth calculations.
+    Always allow Blender to compute the full range of frames for any cloth simulation by playing the whole animation through with no :ref:`frame dropping`.
+    
+    This will be initially slow; however this **must** be done in order to cache the cloth calculations.
 
-  Once this is done you may then spool through the animation or enable :ref:`frame dropping` to get closer to real time playback (as much as Blender allows before requiring a re-calculation).
-  
-  Failure to do this will cause the cloth simulation to break and behave erratically.
-
-
-Settings
---------
-
-The **Physics Settings** panel contains a comprehensive set of controls to adjust the physics parameters of the currently selected object.
-
-.. image:: images/physics_settings.png
-
-**Create/Remove**
-
-- Add/Remove Cloth Physics: This will add or remove a `Cloth Physics`_ modifier on the selected object.  This enables/disables full cloth simulation.
-
-- Add/Remove Collision Physics: This will add or remove a `Collision Physics`_ modifier on the selected object.  Which will allow cloth objects to collide with mesh objects.
+    Once this is done you may then spool through the animation or enable :ref:`frame dropping` to get closer to real time playback (as much as Blender allows before requiring a re-calculation).
+    
+    Failure to do this will cause the cloth simulation to break and behave erratically.
 
 
-**Mesh Correction**
+  Settings
+  --------
 
-- Fix Degenerate Mesh: This will remove degenerate mesh elements from the mesh - this include loose vertices, orphaned edges, zero length edges etc.  The presence of these elements may cause problems with simulation.
+  The **Physics Settings** panel contains a comprehensive set of controls to adjust the physics parameters of the currently selected object.
 
-- Separate Physics Materials: This will separate the object by material and apply physics to the separated objects that have weight maps.  This may increase performance where only a small part of an object is simulated.
+  .. image:: images/physics_settings.png
 
-**Presets**
+  **Create/Remove**
 
-This will impose physics settings on the object that approximate the behavior of the named material (Cotton, Silk etc).
+  - Add/Remove Cloth Physics: This will add or remove a `Cloth Physics`_ modifier on the selected object.  This enables/disables full cloth simulation.
 
-**Cloth Settings** and **Collision Settings** are the standard physics settings used by Blender in the *Physics Properties* of the standard *Properties* pane (only presented here for user convenience -  only visible when cloth or collision physics have been applied to the object).
-
-The example below shows a standard 'Silk' preset applied to a dress object during an animation (mesh highlighted for clarity).
-
-.. figure:: images/dress_physics.gif
-  :align: center
-
-  *Standard Silk Simulation*
+  - Add/Remove Collision Physics: This will add or remove a `Collision Physics`_ modifier on the selected object.  Which will allow cloth objects to collide with mesh objects.
 
 
-.. admonition:: Hair Physics
+  **Mesh Correction**
 
-  Whilst early versions of hair from Character Creator have properly defined physics properties, certain newer ones may not simulate correctly.  Smart Hair should now simulate correctly (as of version 1.3.6).
+  - Fix Degenerate Mesh: This will remove degenerate mesh elements from the mesh - this include loose vertices, orphaned edges, zero length edges etc.  The presence of these elements may cause problems with simulation.
 
-|
+  - Separate Physics Materials: This will separate the object by material and apply physics to the separated objects that have weight maps.  This may increase performance where only a small part of an object is simulated.
+
+  **Presets**
+
+  This will impose physics settings on the object that approximate the behavior of the named material (Cotton, Silk etc).
+
+  **Cloth Settings** and **Collision Settings** are the standard physics settings used by Blender in the *Physics Properties* of the standard *Properties* pane (only presented here for user convenience -  only visible when cloth or collision physics have been applied to the object).
+
+  The example below shows a standard 'Silk' preset applied to a dress object during an animation (mesh highlighted for clarity).
+
+  .. figure:: images/dress_physics.gif
+    :align: center
+
+    *Standard Silk Simulation*
+
+
+  .. admonition:: Hair Physics
+
+    Whilst early versions of hair from Character Creator have properly defined physics properties, certain newer ones may not simulate correctly.  Smart Hair should now simulate correctly (as of version 1.3.6).
+
+  |
 
 Morph Editing
 =============

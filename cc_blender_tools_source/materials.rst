@@ -63,6 +63,12 @@ The *Material Parameters* pane of the CC/iC Pipeline tool will then be updated w
 
 |
 
+
+..
+    .. tip::
+
+        As of add-on version 1.4.3, the material parameters that are not considered during export back to Character Creator during the :ref:`Blender Round Trip` are labelled in **red**. This coloration has no effect other than to highlight which parameters will be ignored during export back to CC.
+
 Linked Materials
 ================
 

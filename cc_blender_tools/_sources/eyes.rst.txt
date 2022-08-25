@@ -407,7 +407,7 @@ TearLine parameters are defined in the *Std_Eye_R*, *Std_Eye_L*, *Std_Cornea_R* 
     *Sclera Normal Strength* - Multiplier to control the strength of the sclera normal map.
 
 .. |txe11b| replace::
-    *Sclera Normal Tiling* - UV tiling size of teh sclera normal map.
+    *Sclera Normal Tiling* - UV tiling size of the sclera normal map.
 
 .. |txe11c| replace::
     *Blood Vessel Height* - Bump map strength for blood vessels in the sclera diffuse map.

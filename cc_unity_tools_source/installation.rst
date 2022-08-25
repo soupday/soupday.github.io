@@ -67,6 +67,9 @@ Installation from .zip file
 
 | 
 
+Download and Unpack .zip file
+-----------------------------
+
 Download the appropriate latest release or latest stable commit (from the code dropdown box). Unpack the .zip file into a **safe + non volatile** directory where you'll be able to store the package files (`7zip`_ is a suitable tool for this, should you lack one).
 
 .. note:: 
@@ -76,6 +79,9 @@ Download the appropriate latest release or latest stable commit (from the code d
 .. warning::
       
     **DO NOT** place the unzipped files into the **/Assets** **/Packages** **/Library** or **/ProjectSettings** directories of your project.
+
+Install the Package From Disk
+-----------------------------
 
 In Unity, open your project and navigate to the 'Package Manager' (*via* **Window -> Package Manager**).
 
@@ -133,6 +139,76 @@ Copy the URL from the green code dropdown box in the `git repository`_.
 .. image:: images/copy_code_dropdown.png
 
 Paste this into the package manager and click 'Add'.  The package manager will now install the tool.
+
+
+Installation using the Github Desktop [Advanced]
+================================================
+
+.. _Github Desktop: https://desktop.github.com/
+
+Using the `Github Desktop`_ application to clone the repository is a very convenient means of keeping the addon installation up to date (it also allows easy switching between the main and dev branches if you want to test in-development features).
+
+The addon can be installed into your Unity project(s) from wherever you have cloned the repository and it can be updated by 'Fetching' the latest changes without the need to uninstall/reinstall.
+
+**Workflow**:
+
+- Download and install the application from the `Github Desktop`_ web page.
+
+- You won't need an Github account to proceed.
+
+.. |cloneMenu| image:: images/git-clone-menu.png
+                  :width: 160
+
+- Open the application and chose the menu option *File -> Clone Repository...* 
+
+  | |cloneMenu|
+
+
+.. |clonedia| image:: images/git-clone-dia.png
+                :width: 300
+
+- Input the desired path to the repository and the local path where the cloned repository will be stored on your system.
+
+- The Repo names are either:
+
+  - soupday/cc_unity_tools_3D
+    
+  - soupday/cc_unity_tools_URP
+
+  - soupday/cc_unity_tools_HDRP
+
+  (a repository URL can also be used)
+
+  | |clonedia|
+
+
+.. |cloning| image:: images/git-cloning.png
+              :width: 450
+
+- The application will clone the repository
+
+  | |cloning|
+
+- Once complete, install the package *as per* :ref:`Install the Package From Disk` (open the Unity project then the package manager and select add package from disk.  Navigate to the cloned repository and select the package.JSON file).
+
+.. |fetch| image:: images/git-fetch.png
+            :width: 250
+
+.. |pull| image:: images/git-pull.png
+            :width: 250
+
+- Keep the package up to date using the '*Fetch Origin*' button.
+
+
+  | |fetch|
+
+  If there any changes then 'Pull' them with the '*Pull Origin*' button.
+
+
+
+  | |pull|
+
+
 
 Dependencies
 ============

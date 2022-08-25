@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CC/iC ‘Create’ Tools &mdash; CC/iC Blender Tools 1.3.8 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Eyes" href="eyes.html" />
+    <link rel="prev" title="Scene Tools" href="scene.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">CC - Blender - Unity Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CC/iC ‘Create’ Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-objects-to-characters">Adding Objects to Characters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-object-general-workflow">‘Create’ Object General Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#export-according-to-pipeline">Export According To Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-character-and-position-accessory">Import Character and Position Accessory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-the-object-to-the-character">Adding the Object to the Character</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-weights-to-the-object">Add Weights to the Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#export-actions-according-to-pipeline">Export/Actions According to Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#converting-to-a-non-conformable-accessory">Converting to a Non-Conformable Accessory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#saving-to-the-custom-library">Saving to the Custom Library</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-and-editing-physics">Adding and Editing Physics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importing-with-physics">Importing with Physics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#settings">Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-adding-object-physics">Workflow: Adding Object Physics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-physics-weight-mapping">Workflow: Physics Weight Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-exporting-according-to-pipeline">Workflow: Exporting According to Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#actions-to-aid-cloth-simulation">Actions to Aid Cloth Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sculpting-normals">Sculpting Normals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>CC/iC ‘Create’ Tools</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/create.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cc-ic-create-tools">
+<h1>CC/iC ‘Create’ Tools<a class="headerlink" href="#cc-ic-create-tools" title="Permalink to this headline"></a></h1>
+<p>Since version 1.4.3, the CC/iC Blender Tools add-on has been split up into 2 tabs:</p>
+<ul class="simple">
+<li><p>The ‘Pipeline’ tab which handles import/export, material parameters and rigging/animation. <br /><br /></p></li>
+<li><p>The ‘Create’ tab which handles object management, physics and sculpting/texturing.</p></li>
+</ul>
+<img alt="_images/tab-create.png" class="align-left" src="_images/tab-create.png" />
+<p>The <em>CC/iC Create</em> tab has an initially opened section with common tools to quickly export the character (only for the CC-Blender round trip) and to adjust the current lighting preset.</p>
+<p>It also contains foldout sections for:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">- Object Management: see <a class="reference internal" href="#adding-objects-to-characters"><span class="std std-ref">Adding Objects to Characters</span></a> <br /><br /></div>
+</div>
+<div class="line-block">
+<div class="line">- Physics Settings: see <a class="reference internal" href="#adding-and-editing-physics"><span class="std std-ref">Adding and Editing Physics</span></a> <br /><br /></div>
+</div>
+<div class="line-block">
+<div class="line">- Sculpting: see: <a class="reference internal" href="#sculpting-normals"><span class="std std-ref">Sculpting Normals</span></a> <br /><br /> <br /><br /></div>
+</div>
+</div></blockquote>
+<section id="adding-objects-to-characters">
+<h2>Adding Objects to Characters<a class="headerlink" href="#adding-objects-to-characters" title="Permalink to this headline"></a></h2>
+<p>The example discussed here uses a simple Blender created model of a gold ring with a <a class="reference external" href="https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html">BSDF</a> shader and shows how to properly add it to a Character Creator character.  This character + added item can then either be returned to Character Creator, used in Blender or sent onwards to Unity (depending on which workflow you are using).</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="ring_obj" src="_images/obj_ring_init.png" /></p></td>
+<td><p><img alt="ring_shader" src="_images/obj_ring_shader_init.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p>A simple mesh made in Blender. (<strong>note</strong>: <em>the object origin is kept as the world origin</em>)</p></td>
+<td><p>A Principled <a class="reference external" href="https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html">BSDF</a> shader made with Blender’s shader node editor.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="create-object-general-workflow">
+<h3>‘Create’ Object General Workflow<a class="headerlink" href="#create-object-general-workflow" title="Permalink to this headline"></a></h3>
+<p>Firstly create the item you wish to add to your character. You may do this in a separately stored .blend file and <a class="reference external" href="https://docs.blender.org/manual/en/latest/files/linked_libraries/link_append.html">append</a> it to your working character when needed, or model it directly onto the imported character.</p>
+<p>For this example the origin of the model item is kept at the world origin (0,0,0), and the material for the model uses a node based BSDF shader (with only an <em>Image Texture</em> node as the input for the base color - for simplicity).</p>
+<section id="export-according-to-pipeline">
+<h4>Export According To Pipeline<a class="headerlink" href="#export-according-to-pipeline" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>If you wish to add the item to the character and then return it to Character Creator, the please export from CC using the <a class="reference internal" href="pipeline.html#blender-round-trip-workflow"><span class="std std-ref">Blender Round Trip Workflow</span></a>.</p></li>
+<li><p>If you intend solely to use the character and added item in Blender, then use the basic <a class="reference internal" href="usage.html#export-settings-from-character-creator-or-iclone"><span class="std std-ref">Export Settings From Character Creator or iClone</span></a>.</p></li>
+<li><p>If you wish to have a character that is editable (and indeed re-editable) in Blender which will ultimately be destined for Unity, then follow the directions in the <a class="reference internal" href="pipeline.html#unity-round-trip-workflow"><span class="std std-ref">Unity Round Trip Workflow</span></a>.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Potentially the <strong>best course of action</strong> is to use the <a class="reference internal" href="pipeline.html#blender-round-trip-workflow"><span class="std std-ref">Blender Round Trip Workflow</span></a> and return the character to Character Creator.</p>
+<p>This will allow you to save the new item to your Character Creator library and re-use it on other characters (discussed below).</p>
+<p>Export of character + new library item can then be made for whichever pipeline you subsequently want to use.</p>
+</div>
+</section>
+<section id="import-character-and-position-accessory">
+<h4>Import Character and Position Accessory<a class="headerlink" href="#import-character-and-position-accessory" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Import your character with a <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a>.</p></li>
+<li><p>Add your new object (either create it directly or append it from a library file).</p></li>
+<li><p>Position the object (in <em>Edit mode</em>) according to your needs (this example requires a ring to be on a finger).</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<img alt="_images/obj_ring_positioned.png" src="_images/obj_ring_positioned.png" />
+<figcaption>
+<p><span class="caption-text"><em>New model positioned appropriately on the character.</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="adding-the-object-to-the-character">
+<h4>Adding the Object to the Character<a class="headerlink" href="#adding-the-object-to-the-character" title="Permalink to this headline"></a></h4>
+<ul>
+<li><p>Select the object in <em>Object mode</em></p></li>
+<li><p>In the <em>CC/iC Create</em> tab, open ‘Object Management’ and click on ‘Add To Character’ in the ‘Objects &amp; Materials’ section.</p></li>
+<li><img alt="_images/obj_add_to_char.png" src="_images/obj_add_to_char.png" />
+</li>
+</ul>
+<p>‘Add to Character’ will have a number of effects.  Firstly, the object will be have the character armature set as it’s parent and an Armature modifier applied to the object. Secondly, the shader on the object’s material will be reconstructed and changed into a PBR shader suitable for use in Character Creator.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="added_outliner" src="_images/obj_ring_outliner_added.png" /></p></td>
+<td><p><img alt="added_shader" src="_images/obj_ring_shader_added.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p>The outliner changes to reflect the hierarchy change (object parented to the character armature).</p></td>
+<td><p>A PBR shader is constructed to look identical, but be compatible with Character Creator.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="add-weights-to-the-object">
+<h4>Add Weights to the Object<a class="headerlink" href="#add-weights-to-the-object" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Re-select the object in <em>Object mode</em>.</p></li>
+</ul>
+<ul>
+<li><p>Using the ‘Armature &amp; Weights’ tools in the <em>CC/iC Create</em> tab: Set the armature to ‘Rest Position’ as shown.</p>
+<div class="line-block">
+<div class="line"><img alt="xferWeight" src="_images/obj_xfer_weights.png" /></div>
+</div>
+</li>
+<li><p>Click ‘Transfer Weights’ to ‘weight paint’ the object with appropriate bone influences.</p></li>
+</ul>
+<p>The images below show a ‘before and after’ the weight transfer to show what happens.</p>
+<p><strong>Before:</strong> <em>(Weight Paint mode view and Object data - Vertex Groups)</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="pre_paint" src="_images/obj_pre_xfer_paint.png" /></p></td>
+<td><p><img alt="pre_vgs" src="_images/obj_pre_xfer_vgrps.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p>No weights are set.</p></td>
+<td><p>No vertex groups are present</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>After:</strong> <em>(Weight Paint mode view and Object data - Vertex Groups)</em></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="post_paint" src="_images/obj_post_xfer_paint.png" /></p></td>
+<td><p><img alt="post_vgs" src="_images/obj_post_xfer_vgrps.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p>Weights are ‘painted’ for each vertex group according to bone proximity.</p></td>
+<td><p>A full set of vertex groups have been added (only relevant ones have weights painted).</p></td>
+</tr>
+</tbody>
+</table>
+<p>The weights are transferred by proximity and as such will have several bone influences, this is best suited to clothing items which are intended to conform to the character pose.</p>
+<p>Should you wish to have only a single bone influence then there are two options:</p>
+<ul class="simple">
+<li><p>You can leave the weigh panting as it is and export the character + added item back to CC.  In CC you can then convert the item to a ‘Non Conformable Accessory’ which will automatically repaint it with a single bone influence and parent it a bone in the character (discussed further below). <br /><br /></p></li>
+<li><p>Or you can manually repaint the item with only that bone as influence, then after export back to CC or further use elsewhere, you can leave the item as a ‘Conformable Item’.  So after removal of all unwanted vertex groups and 100% weight painting (in <em>weight paint mode</em>) the <em>Weight Paint mode</em> view and Object data - Vertex Groups pane should look similar to those shown below.</p></li>
+</ul>
+<p><strong>Manual Weight Paint for Single Bone:</strong></p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="re_paint" src="_images/obj_repaint_paint.png" /></p></td>
+<td><p><img alt="re_vgs" src="_images/obj_repaint_vgrps.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p>100% weight paint for a single bone.</p></td>
+<td><p>Only one bone has been allowed influence.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="export-actions-according-to-pipeline">
+<h4>Export/Actions According to Pipeline<a class="headerlink" href="#export-actions-according-to-pipeline" title="Permalink to this headline"></a></h4>
+<p><strong>For use only in Blender:</strong> If you are only using the added object in Blender then since it is positioned and weighted, it will obey the pose of the character and is now ready for use.</p>
+<p><strong>For further Export to Unity:</strong> In the case of further export to Unity, again the positioning and weight painting mean that it can be safely exported to Unity as described in the <a class="reference internal" href="pipeline.html#unity-round-trip-workflow"><span class="std std-ref">Unity Round Trip Workflow</span></a>.</p>
+<p><strong>For return to Character Creator:</strong> To return the character to Character Creator follow the procedure described in the Round Trip <a class="reference internal" href="pipeline.html#detailed-workflow"><span class="std std-ref">Detailed Workflow</span></a> section of the documentation: using the ‘Export to CC3/4’ function.</p>
+<img alt="_images/cc4-blender-pipeline-export-panel.png" class="align-center" src="_images/cc4-blender-pipeline-export-panel.png" />
+<p>This export can be re-imported using the ‘Plugins -&gt; Blender Pipeline -&gt; Import Character From Blender’.  The Asset Import Status Report will contain the added model item.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc4-blender-obj-reimport.png"><img alt="_images/cc4-blender-obj-reimport.png" src="_images/cc4-blender-obj-reimport.png" style="width: 400px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once the import has completed, the added object will be visible on the character (please note you’ll need to manually re-hide any penetrating meshes - see the <a class="reference internal" href="pipeline.html#hiding-meshes-in-cc4"><span class="std std-ref">Hiding Meshes in CC4</span></a> documentation for more information).</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="import_obj_wide" src="_images/cc4-blender-obj-imported-wide.png" /></p></td>
+<td><p><img alt="import_obj_near" src="_images/cc4-blender-obj-imported-near.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p>The character returns normally (<strong>NB:</strong> Blender Round Trip loses the hidden face data) with the object attached.</p></td>
+<td><p>The object correctly conforms to the pose of the character.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Within Character Creator you now the opportunity to save the new item to your Character Creator library.</p>
+<ul class="simple">
+<li><p>In the case of a ‘Conformable Item’ - one that deforms with the character pose (e.g. a clothing item), then it can be saved directly to your custom library. (see the section below on <a class="reference internal" href="#saving-to-the-custom-library"><span class="std std-ref">Saving to the Custom Library</span></a> for more details).  <br /><br /></p></li>
+<li><p>In the case of a ‘Non-Conformable Item’ - one that is never deformed, but only moves according to the movements of a parent bone (e.g. a static inflexible object such as a brooch or glasses), then it can be converted to a ‘Non Conformable Accessory’ (see the section below on <a class="reference internal" href="#converting-to-a-non-conformable-accessory"><span class="std std-ref">Converting to a Non-Conformable Accessory</span></a> for more details) and then saved to the custom library (see: <a class="reference internal" href="#saving-to-the-custom-library"><span class="std std-ref">Saving to the Custom Library</span></a>).</p></li>
+</ul>
+</section>
+<section id="converting-to-a-non-conformable-accessory">
+<h4>Converting to a Non-Conformable Accessory<a class="headerlink" href="#converting-to-a-non-conformable-accessory" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Select the object in the <em>Scene</em> window object list.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc4-scene-sel.png"><img alt="_images/cc4-scene-sel.png" src="_images/cc4-scene-sel.png" style="width: 300px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>In the <em>Attribute</em> tab of the <em>Modify</em> window use the ‘Convert to Accessory’ tool.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc4-convert-acc.png"><img alt="_images/cc4-convert-acc.png" src="_images/cc4-convert-acc.png" style="width: 310px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>In the ‘Convert to Accessory’ dialog box, select ‘Bake Current Shape’ then click convert.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc4-convert-dlg.png"><img alt="_images/cc4-convert-dlg.png" src="_images/cc4-convert-dlg.png" style="width: 300px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>The object will now appear in the <em>Scene</em> window object list with the accessory icon next to it.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="_images/cc4-scene-acc.png" src="_images/cc4-scene-acc.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>When saving the accessory to the custom library it will be considered as an ‘Accessory Asset Type’ and can only be stored beneath the accessories folder; see below for details.</p>
+</section>
+<section id="saving-to-the-custom-library">
+<h4>Saving to the Custom Library<a class="headerlink" href="#saving-to-the-custom-library" title="Permalink to this headline"></a></h4>
+<p>New or customized objects can be saved to Character Creator’s Custom Library as follows:</p>
+<ul class="simple">
+<li><p>Select the object in the <em>Scene</em> window object list.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc4-scene-sel.png"><img alt="_images/cc4-scene-sel.png" src="_images/cc4-scene-sel.png" style="width: 300px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Navigate to the <em>Content</em> window and select the <em>Custom</em> tab.  You may freely create a new subfolder (<strong>NB:</strong> ‘Conformable Items’ are considered to belong to the ‘Cloth’ group and must be saved somewhere under the Cloth folder.  ‘Non Conformable’ accessories must be saved under the Accessories folder.)</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc4-content-sel.png"><img alt="_images/cc4-content-sel.png" src="_images/cc4-content-sel.png" style="width: 300px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Click Save and give the object a ‘File Name’ and an ‘Asset Type’ (save location)</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="_images/cc4-save-sel.png"><img alt="_images/cc4-save-sel.png" src="_images/cc4-save-sel.png" style="width: 250px;" /></a>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>The object will be added to the custom library as the above Asset Type, using the current scene camera view as the object icon.</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/cc4-content-saved.png"><img alt="_images/cc4-content-saved.png" src="_images/cc4-content-saved.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>New Item Saved to Cloth/Others</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+</section>
+<section id="adding-and-editing-physics">
+<h2>Adding and Editing Physics<a class="headerlink" href="#adding-and-editing-physics" title="Permalink to this headline"></a></h2>
+<section id="importing-with-physics">
+<h3>Importing with Physics<a class="headerlink" href="#importing-with-physics" title="Permalink to this headline"></a></h3>
+<img alt="_images/physics_selected.png" src="_images/physics_selected.png" />
+<p>When the <em>Physics</em> option is selected in the <strong>Import/Export</strong> panel then when the character is imported, <em>cloth physics</em>, <em>vertex groups</em> and <em>modifiers</em> will be automatically generated for any of the mesh objects &amp; materials that have PhysX weight maps. All of which can be changed at will should you need to.</p>
+<p>Thus, to import a character with physics enabled (highlighted blue), in the <strong>Import/Export</strong> panel follow the procedure for <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> (do not use the standard fbx importer for this).</p>
+<div class="admonition-important-consideration-for-cloth-simulation admonition">
+<p class="admonition-title">Important Consideration For Cloth Simulation</p>
+<p>Always allow Blender to compute the full range of frames for any cloth simulation by playing the whole animation through with no <a class="reference internal" href="adv-usage.html#frame-dropping"><span class="std std-ref">Frame Dropping</span></a>.</p>
+<p>This will be initially slow; however this <strong>must</strong> be done in order to cache the cloth calculations.</p>
+<p>Once this is done you may then spool through the animation or enable <a class="reference internal" href="adv-usage.html#frame-dropping"><span class="std std-ref">Frame Dropping</span></a> to get closer to real time playback (as much as Blender allows before requiring a re-calculation).</p>
+<p>Failure to do this will cause the cloth simulation to break and behave erratically.</p>
+</div>
+<section id="settings">
+<h4>Settings<a class="headerlink" href="#settings" title="Permalink to this headline"></a></h4>
+<p>The <strong>Physics Settings</strong> panel contains a comprehensive set of controls to adjust the physics parameters of the currently selected object.</p>
+<img alt="_images/b-pys-tools.png" class="align-left" src="_images/b-pys-tools.png" />
+<p><strong>Create/Remove</strong></p>
+<ul class="simple">
+<li><p>Add/Remove Cloth Physics: This will add or remove a <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/cloth/index.html">Cloth Physics</a> modifier on the selected object.  This enables/disables full cloth simulation.</p></li>
+<li><p>Add/Remove Collision Physics: This will add or remove a <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/collision.html">Collision Physics</a> modifier on the selected object.  Which will allow cloth objects to collide with mesh objects.</p></li>
+</ul>
+<p><strong>Mesh Correction</strong></p>
+<ul class="simple">
+<li><p>Fix Degenerate Mesh: This will remove degenerate mesh elements from the mesh - this include loose vertices, orphaned edges, zero length edges etc.  The presence of these elements may cause problems with simulation.</p></li>
+<li><p>Separate Physics Materials: This will separate the object by material and apply physics to the separated objects that have weight maps.  This may increase performance where only a small part of an object is simulated.</p></li>
+</ul>
+<p><strong>Presets</strong></p>
+<p>This will impose physics settings on the object that approximate the behavior of the named material (Cotton, Silk etc).  <br /><br />  <br /><br /></p>
+<img alt="_images/b-pys-cloth.png" class="align-left" src="_images/b-pys-cloth.png" />
+<p><strong>Cloth Settings</strong> are a convenient access point to the standard Blender cloth physics settings (by default seen in the <em>Physics Properties</em> of the standard <em>Properties</em> pane). These are only shown when an object (e.g. a clothing item) has had ‘Cloth Physics’ applied to it and is selected. <br /><br /> <br /><br /> <br /></p>
+<img alt="_images/b-pys-collider.png" class="align-left" src="_images/b-pys-collider.png" />
+<p><strong>Collision Settings</strong> are the standard blender collision settings (by default seen in the <em>Physics Properties</em> of the standard <em>Properties</em> pane).  These are only shown when an object has had ‘Collision Physics’ applied to it and is selected.  This is generally applicable to the character’s body since Blender uses the character mesh as a collider for physics simulation.</p>
+<p>The example below shows a standard ‘Silk’ preset applied to a dress object during an animation (mesh highlighted for clarity).</p>
+<figure class="align-center" id="id3">
+<img alt="_images/dress_physics.gif" src="_images/dress_physics.gif" />
+<figcaption>
+<p><span class="caption-text"><em>Standard Silk Simulation</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition-hair-physics admonition">
+<p class="admonition-title">Hair Physics</p>
+<p>Whilst early versions of hair from Character Creator have properly defined physics properties, certain newer ones may not simulate correctly.  Smart Hair should now simulate correctly (as of version 1.3.6).</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="workflow-adding-object-physics">
+<h3>Workflow: Adding Object Physics<a class="headerlink" href="#workflow-adding-object-physics" title="Permalink to this headline"></a></h3>
+<p>This workflow discussion is specifically aimed at adding physics properties that are suitable for return to Character Creator or for further use in Unity.  For the purpose of <strong>only</strong> adding physics for use in <strong>Blender</strong> then please consult the official <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/index.html">Blender Physics documentation</a> for details.</p>
+<p><strong>Export According To Pipeline</strong></p>
+<p>As with the <a class="reference internal" href="#adding-objects-to-characters"><span class="std std-ref">Adding Objects to Characters</span></a> workflow, it is imperative that the character you wish to work with is exported from Character Creator with the appropriate settings for the pipeline being used.</p>
+<ul class="simple">
+<li><p>If you wish to add a physics enabled item and then return the character to Character Creator, the please export from CC using the <a class="reference internal" href="pipeline.html#blender-round-trip-workflow"><span class="std std-ref">Blender Round Trip Workflow</span></a>.</p></li>
+<li><p>If you intend solely to use the character and physics enabled item in Blender, then use the basic <a class="reference internal" href="usage.html#export-settings-from-character-creator-or-iclone"><span class="std std-ref">Export Settings From Character Creator or iClone</span></a>.</p></li>
+<li><p>If you wish to have a character that is editable (and indeed re-editable) in Blender which will ultimately be destined for Unity, then follow the directions in the <a class="reference internal" href="pipeline.html#unity-round-trip-workflow"><span class="std std-ref">Unity Round Trip Workflow</span></a>.</p></li>
+</ul>
+<p><strong>Import Character</strong></p>
+<p>The correctly exported character should be imported into Blender with a <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> (physics will be deliberately added in a later step).</p>
+<p>The item to which physics is to be added can either be part of the export from Character Creator or can be created directly or appended from a library file (if you are adding a new item then please follow the instructions in <a class="reference internal" href="#adding-objects-to-characters"><span class="std std-ref">Adding Objects to Characters</span></a> to correctly incorporate it).</p>
+<ul class="simple">
+<li><p>Open the <em>CC/iC Create</em> tab.</p></li>
+</ul>
+<ul>
+<li><p>In the ‘Character Physics’ section, click on ‘Apply All Physics’. This will enable physics on all the applicable items (colliders for the character body, and cloth for any items that have physics enabled in Character Creator).</p>
+<div class="line-block">
+<div class="line"><img alt="physChar" src="_images/b-phys-char.png" /></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p>In <em>Object Mode</em> select the item to have physics added to it; in the ‘Create/Remove’ section click on ‘Add Cloth Physics’.  This will enable cloth physics for the selected item and add a modifier which uses a <em>weight map</em> texture to control allowed cloth deformation.  Presets for several cloth types are also made available which will control the response of the cloth to cloth simulation.</p>
+<div class="line-block">
+<div class="line"><img alt="createRemove" src="_images/b-phys-create.png" /></div>
+</div>
+</li>
+</ul>
+<p>After Cloth Physics is added, a suitable weight map must be painted onto the object which will control how much the object is permitted to be deformed by cloth physics simulation.</p>
+</section>
+<section id="workflow-physics-weight-mapping">
+<h3>Workflow: Physics Weight Mapping<a class="headerlink" href="#workflow-physics-weight-mapping" title="Permalink to this headline"></a></h3>
+<p>Cloth simulation in Character Creator/iClone is controlled not only by the cloth parameters, but also by a monochrome texture or “weight map” which is used to determine the extent to which the cloth is permitted to be moved by the physics simulation (this weight map like all textures uses the model’s UV coordinates).</p>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/cc-skirt-weight.png"><img alt="_images/cc-skirt-weight.png" src="_images/cc-skirt-weight.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Character Creator Item With Physics Weight Map</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>This Blender add-on allows this weight map to be painted directly onto the item model using Blender’s own texture painting tools allowing fine control.</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/b-skirt-weight.png"><img alt="_images/b-skirt-weight.png" src="_images/b-skirt-weight.png" style="width: 250px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Blender Physics Weight Map Painted on Above Item</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The weight map is monochrome (<em>black</em> and <em>white</em>) and as such uses <em>black</em> to mean that part of the model will not move and <em>white</em> to mean that part of the model can move freely.  The grey scale in-between will permit an increasing amount of movement.</p>
+</div>
+<img alt="_images/b-phys-weight.png" class="align-left" src="_images/b-phys-weight.png" />
+<p>To begin weight map painting, in the ‘Weight Maps’ section click on ‘Paint weight Map’.  This will change Blender into <em>Texture Paint</em> mode, whereupon the Blender texture paint tools may be used (see the documentation on <a class="reference external" href="https://docs.blender.org/manual/en/latest/sculpt_paint/texture_paint/index.html">Blender Texture Painting</a> for further details).</p>
+<p>Should you require a different size of weight map (larger or smaller) then (prior to starting the painting) select the desired size of map from the dropdown list and then click ‘Resize Weightmap’.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use the <em>Gradient Fill Mode</em> to easily paint a smooth predictable gradient onto the model.</p>
+<p>When weight painting select the <em>Fill Tool</em> on the Left hand side tool strip. <img alt="fillTool" src="_images/b-paint-fill.png" /></p>
+<p>Then in the Right hand tool bar select the <em>Tool</em> tab and in the <em>Color Picker</em> switch from <em>Color</em> to <em>Gradient</em></p>
+<p><img alt="gradPaint" src="_images/b-gradient-pick.png" /></p>
+<p>Set up the gradient as you see fit. Then on the model position the pointer where you wish the gradient to begin, press <strong>CTRL</strong> then press <strong>LMB</strong> move the pointer to wherever you wish the gradient to end (a solid line will be shown) and release the LMB to impose the gradient along the line.</p>
+</div>
+<p>Once weight painting is complete, then click on ‘Done Weight Painting’</p>
+<img alt="_images/b-done-weight.png" src="_images/b-done-weight.png" />
+<p>If you are satisfied with the weight painting then click ‘Save’ to store the weight map.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Weight painting physics requires some <em>subtlety</em>, where too much freedom will result in a disastrous simulation in Character Creator and too little will not allow anything visible to happen.</p>
+<p>Several attempts will probably be needed before the results are acceptable.</p>
+</div>
+<p>The images below are the actual results of a weight painting.  The weight painted model (left) only has a small area able to move freely, this is reflected in the Blender cloth simulation (center).  <strong>NB</strong>: The Blender simulation is somewhat different to Character Creator’s and as such should only be used a a guide (grey areas are far more restricted in Blender).  Finally the Character Creator result (right) shows a visible range of motion in accordance with the grey-white painted areas of the weight map.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="wp_tex" src="_images/b-weightpaint-grad.png" /></p></td>
+<td><p><img alt="wp_blender" src="_images/blender_simulation.gif" /></p></td>
+<td><p><img alt="wp_cc" src="_images/cc_simulation_lo.gif" /></p></td>
+</tr>
+<tr class="row-even"><td><p>Weight painted model in Blender</p></td>
+<td><p>Wind simulation in Blender</p></td>
+<td><p>Idle movement simulation in Character Creator</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="workflow-exporting-according-to-pipeline">
+<h3>Workflow: Exporting According to Pipeline<a class="headerlink" href="#workflow-exporting-according-to-pipeline" title="Permalink to this headline"></a></h3>
+<p><strong>Return to Character Creator:</strong> To return the character to Character Creator follow the procedure described in the Round Trip <a class="reference internal" href="pipeline.html#detailed-workflow"><span class="std std-ref">Detailed Workflow</span></a> section of the documentation: using the ‘Export to CC3/4’ function (Either in the Import/Export section of the <em>CC/iC Pipeline</em> Tab or the Quick Export section of the <em>CC/iC Create</em> Tab).</p>
+<img alt="_images/cc4-blender-pipeline-export-panel.png" class="align-center" src="_images/cc4-blender-pipeline-export-panel.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This export can be re-imported using the ‘Plugins -&gt; Blender Pipeline -&gt; Import Character From Blender’.  The physics will be automatically activated on the newly enabled working object and the physics weight map will be automatically applied along with any parameter settings made in Blender.</p>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/blender-cc4-phys-weightmaped.png"><img alt="_images/blender-cc4-phys-weightmaped.png" src="_images/blender-cc4-phys-weightmaped.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Newly Physics Enabled Item Returned to Character Creator</em></span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>This item is now ready for use.</p>
+<p><strong>Export to Unity:</strong> In the case of further export to Unity, again the positioning and weight painting mean that it can be safely exported to Unity as described in the <a class="reference internal" href="pipeline.html#unity-round-trip-workflow"><span class="std std-ref">Unity Round Trip Workflow</span></a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is of immense benefit to <strong>export the model to Unity as a Blend file</strong> and to <strong>export the model directly into the Unity project</strong> (in a folder under /Assets in the Unity project folder structure).</p>
+<p>This allows rapid editing of the physics data (and indeed any other aspect of the model):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Double-click on the blend file from within the Unity project</strong> to begin editing.</p></li>
+<li><p>Return to Unity with the <strong>‘Update Unity Project’</strong> function (see <a class="reference internal" href="pipeline.html#unity-round-trip-workflow"><span class="std std-ref">Unity Round Trip Workflow</span></a>).</p></li>
+<li><p><strong>Rebuild the cloth physics</strong> with the Unity addon.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>Once processed in Unity with the ‘Cloth Physics’ feature enabled (see the <a class="reference external" href="https://soupday.github.io/cc_unity_tools/physics.html#cloth-physics">Unity Cloth Physics documentation</a>) then the physics item will be appropriately constraint painted and have the correct colliders associated with it.</p>
+<figure class="align-center" id="id7">
+<a class="reference internal image-reference" href="_images/u-phys-weightmaped-import.png"><img alt="_images/u-phys-weightmaped-import.png" src="_images/u-phys-weightmaped-import.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Unity Constraint Painted In Line With The Blender Weight Map</em></span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="actions-to-aid-cloth-simulation">
+<h3>Actions to Aid Cloth Simulation<a class="headerlink" href="#actions-to-aid-cloth-simulation" title="Permalink to this headline"></a></h3>
+<p>Sometimes, cloth simulations do not behave as expected. This can be for a number of reasons which include:</p>
+<ul class="simple">
+<li><p>Improper cloth parameters.</p></li>
+<li><p>Improper weight Mapping.</p></li>
+<li><p>Mesh errors.</p></li>
+<li><p>Mesh distortion.</p></li>
+</ul>
+<p>The cloth parameters and weight mapping have been discussed above and are principally responsible for how the cloth performs (too much/too little freedom and flexibility etc.) which can be adjusted easily to your needs.</p>
+<p>Mesh problems can however cause cloth simulation to fail spectacularly.</p>
+<ul>
+<li><p>Mesh degeneracy will often cause simulations to fail - examples of this include:</p>
+<ul class="simple">
+<li><p>Zero length edges</p></li>
+<li><p>Zero area faces</p></li>
+<li><p>Orphaned/duplicated vertices</p></li>
+</ul>
+<p>Blender has internal tools to help with these problems (see Blender’s <a class="reference external" href="https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/cleanup.html">Clean Up</a> documentation).</p>
+<p>A simple tool has also been provided to rapidly remove most offending items - in the ‘<em>Mesh Correction</em>’ section of the physics foldout, use the ‘<em>Fix Degenerate Mesh</em>’ tool to correct the above problems.</p>
+<div class="line-block">
+<div class="line"><img alt="fixDeg" src="_images/b-fix-deg.png" /></div>
+</div>
+</li>
+<li><p>Mesh distortion, e.g. meshes that have been folded over themselves can also cause significant problems.</p>
+<p>These can be readily corrected by use of the ‘<em>Smooth</em>’ tool in ‘<em>Sculpt mode</em>’.</p>
+<p><strong>Please note:</strong> the smooth tool should be used at very low <em>strength</em> (0.075 - 0.100) to avoid doing damage to the mesh.</p>
+<div class="line-block">
+<div class="line"><img alt="smth" src="_images/b-sculpt-smooth.png" /> <em>Smooth Tool</em></div>
+</div>
+</li>
+</ul>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="preSmooth" src="_images/b-pre-smh.png" /></p></td>
+<td><p><img alt="postSmooth" src="_images/b-post-smh.png" /></p></td>
+</tr>
+<tr class="row-even"><td><p>Folded, distorted mesh which will cause cloth simulation problems.</p></td>
+<td><p>Smoothed mesh to remove folded elements will allow better cloth simulation.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For more details please see Blender’s <a class="reference external" href="https://docs.blender.org/manual/en/latest/sculpt_paint/sculpting/editing/sculpt.html">Sculpt Tools</a> documentation.</p>
+</section>
+</section>
+<section id="sculpting-normals">
+<h2>Sculpting Normals<a class="headerlink" href="#sculpting-normals" title="Permalink to this headline"></a></h2>
+<p>This is currently work in progress.</p>
+<p>This section is an aid to allow the sculpting of extra detail into the normal map of the imported character.</p>
+<p>It allows the sculpting of detail directly onto the character body/face/hands and then the ‘baking’ of that detail into a normal map.</p>
+<p>This baked normal map can then be applied to the base character model in order to give the illusion of detail without altering the topology of the character model.</p>
+<p>It should find use in enhancing the appearance of features such as scars or burns.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="scene.html" class="btn btn-neutral float-left" title="Scene Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eyes.html" class="btn btn-neutral float-right" title="Eyes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

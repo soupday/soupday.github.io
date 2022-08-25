@@ -1,0 +1,35 @@
+.. |br2| raw:: html
+
+   <br /><br />
+
+.. |br| raw:: html
+
+   <br />
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Character Creator - Blender - Unity Pipeline
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..
+    all in blender documentation - placeholder for any specific Unity items.
+
+   The CC/iC Blender Tools addon is a versatile tool to handle character exports from Character Creator or iClone.  Its features include the following:
+
+
+
+   - The ability to edit/correct meshes.
+
+   - Easy Introduction of accessory items to a character.
+
+   - Simplified editing of PhysX weight maps by painting the maps directly onto the character model using Blender's internal weight painting facilities.
+
+   - Easy introduction of physics and weight maps onto items that dont have physics enabled
+
+   - Use of the pipeline addon to return the above to Character Creator.
+
+
+   blender only
+   file length limitation on pipeline exports
+
+   export back to CC n the same directory as you (pipeline) exported to - this will allow the relative paths used by the return trip (textures arent duplicated) to be shorter

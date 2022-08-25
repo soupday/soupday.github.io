@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CC - Blender - Unity Pipeline &mdash; CC/iC Blender Tools 1.3.8 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Animation" href="animation.html" />
+    <link rel="prev" title="Advanced Usage" href="adv-usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CC - Blender - Unity Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#blender-round-trip">Blender Round Trip</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cc4-blender-tools-plugin">CC4 Blender Tools Plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#plugin-installation">Plugin Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manual-plugin-installation">Manual Plugin Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plugin-removal">Plugin Removal</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#blender-round-trip-workflow">Blender Round Trip Workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-workflow">Detailed Workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hiding-meshes-in-cc4">Hiding Meshes in CC4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#round-trip-export-for-unity">Round Trip Export For Unity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#export-for-unity-introduction">Export For Unity Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#considerations-for-unity">Considerations for Unity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unity-friendly-export-options">Unity Friendly Export Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unity-round-trip-workflow">Unity Round Trip Workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>CC - Blender - Unity Pipeline</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pipeline.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cc-blender-unity-pipeline">
+<h1>CC - Blender - Unity Pipeline<a class="headerlink" href="#cc-blender-unity-pipeline" title="Permalink to this headline"></a></h1>
+<p>The ‘Character Creator (CC) - Blender - Unity Pipeline’ is an eco-system where character data can be exchanged (in both directions) between CC &amp; Blender and Blender &amp; Unity.</p>
+<section id="blender-round-trip">
+<h2>Blender Round Trip<a class="headerlink" href="#blender-round-trip" title="Permalink to this headline"></a></h2>
+<p>As discussed in the <a class="reference internal" href="adv-usage.html#morph-editing"><span class="std std-ref">Morph Editing</span></a> section, it is possible to export from Character Creator to Blender with an Fbx Key which permits the reimport of the model back into Character Creator.  The import/export process for this has been simplified with a Character Creator plugin for this purpose:</p>
+<section id="cc4-blender-tools-plugin">
+<h3>CC4 Blender Tools Plugin<a class="headerlink" href="#cc4-blender-tools-plugin" title="Permalink to this headline"></a></h3>
+<p>The CC4 Blender Tools Plugin is available from the linked <a class="reference external" href="https://github.com/soupday/CC4-Blender-Tools-Plugin">Github repository</a>, an installer can be downloaded from the <a class="reference external" href="https://github.com/soupday/CC4-Blender-Tools-Plugin/releases">latest release</a> page.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/cc4-plugin-github.png"><img alt="_images/cc4-plugin-github.png" src="_images/cc4-plugin-github.png" style="width: 450px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Latest release download page</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="plugin-installation">
+<h4>Plugin Installation<a class="headerlink" href="#plugin-installation" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Download and run the installer from the <a class="reference external" href="https://github.com/soupday/CC4-Blender-Tools-Plugin/releases">latest release</a> page.</p></li>
+<li><p>If you are using Windows Defender, then because this installer executable is uncommonly encountered it may show a “Windows Protected your PC” warning message about using the file:</p></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference internal" href="_images/def_warn.png"><img alt="def_warn" src="_images/def_warn.png" style="width: 275px;" /></a> <a class="reference internal" href="_images/def_run.png"><img alt="def_run" src="_images/def_run.png" style="width: 275px;" /></a></p></li>
+<li><p>This can be overridden by clicking on ‘More Info’ and then ‘Run Anyway’.</p></li>
+<li><p>The installer will place a folder called ‘CC4 Blender Tools’ in the ‘Character Creator 4/Bin64/OpenPlugin’ directory of your CC4 installation.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Installation</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="n">Character</span> <span class="n">Creator</span> <span class="mi">4</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="n">Bin</span> <span class="mi">64</span>
+  <span class="o">|</span>           <span class="o">|--</span> <span class="n">OpenPlugin</span>
+  <span class="o">|</span>               <span class="o">|--</span> <span class="n">CC4</span><span class="o">-</span><span class="n">Blender</span> <span class="n">Tools</span>
+  <span class="o">|--</span> <span class="n">Common</span>
+  <span class="o">|--</span> <span class="n">Ico</span>
+  <span class="o">|--</span> <span class="n">Image</span> <span class="o">...</span> <span class="p">(</span><span class="n">etc</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The plugin will be auto detected the next time you start Character Creator and needs no further intervention. A new ‘Blender Pipeline’ entry will be added to the ‘Plugins’ menu.</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/cc4-plugin-menu.png"><img alt="_images/cc4-plugin-menu.png" src="_images/cc4-plugin-menu.png" style="width: 303px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>New menu entry after successful installation</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="manual-plugin-installation">
+<h4>Manual Plugin Installation<a class="headerlink" href="#manual-plugin-installation" title="Permalink to this headline"></a></h4>
+<p>If you do not wish to run an executable on your system, then as an alternative to downloading the installer, you can download the ‘Source code (zip)’.</p>
+<ul class="simple">
+<li><p>Download ‘Source code (zip)’ from the <a class="reference external" href="https://github.com/soupday/CC4-Blender-Tools-Plugin/releases">latest release</a> page.</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/cc4-plugin-github-source.png"><img alt="_images/cc4-plugin-github-source.png" src="_images/cc4-plugin-github-source.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Latest release source package</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Once downloaded:</p>
+<ul class="simple">
+<li><p>Navigate to ‘&lt;Installation Folder&gt;/Character Creator 4/Bin64/OpenPlugin’</p></li>
+<li><p>Delete any previous versions of ‘CC4-Blender Tools’</p></li>
+<li><p>Open the zip file and drag the CC4-Blender-Tools-Plugin folder into the OpenPlugin Folder</p></li>
+<li><p>The folder structure will look something like this:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Installation</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="n">Character</span> <span class="n">Creator</span> <span class="mi">4</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="n">Bin</span> <span class="mi">64</span>
+  <span class="o">|</span>           <span class="o">|--</span> <span class="n">OpenPlugin</span>
+  <span class="o">|</span>               <span class="o">|--</span> <span class="n">CC4</span><span class="o">-</span><span class="n">Blender</span><span class="o">-</span><span class="n">Tools</span><span class="o">-</span><span class="n">Plugin</span><span class="o">-</span><span class="mf">1.0.10</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>If the plugin is correctly installed then it will be recognized the next time Character Creator is started and will add a new ‘Blender Pipeline’ entry in the ‘Plugins’ menu.</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/cc4-plugin-menu.png"><img alt="_images/cc4-plugin-menu.png" src="_images/cc4-plugin-menu.png" style="width: 303px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>New menu entry after successful installation</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="plugin-removal">
+<h4>Plugin Removal<a class="headerlink" href="#plugin-removal" title="Permalink to this headline"></a></h4>
+<p>Navigate to the ‘Character Creator 4/Bin64/OpenPlugin’ directory and delete the ‘CC4 Blender Tools’ directory.</p>
+<div class="admonition-path-length-information admonition">
+<p class="admonition-title">Path Length Information.</p>
+<p>Earlier versions of the plugin (v1.0.9 and earlier) had a path length limit (MAX_PATH) which obeys the Windows API limit of 260 chars.  Where path lengths are longer than 260 characters, the re-import of some textures can fail silently and leave the model incompletely textured.</p>
+<p>This has been fixed in v 1.0.10 and above - <em>please update the plugin if you are using an earlier version</em>.</p>
+</div>
+</section>
+</section>
+<section id="blender-round-trip-workflow">
+<h3>Blender Round Trip Workflow<a class="headerlink" href="#blender-round-trip-workflow" title="Permalink to this headline"></a></h3>
+<p>The basic ‘round trip’ workflow is as follows:  Setup a character in Character Creator; use the plugin to export it to Blender; import and manipulate the character in Blender (e.g. sculpt); export the Character back into CC4 to update CC4 with the changes made in Blender.</p>
+<section id="detailed-workflow">
+<h4>Detailed Workflow<a class="headerlink" href="#detailed-workflow" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Prepare a character in Character Creator</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/cc4-blender-pipeline-source.png"><img alt="_images/cc4-blender-pipeline-source.png" class="align-center" src="_images/cc4-blender-pipeline-source.png" style="width: 250px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>Export to Blender either as A-Posed Character (<em>Mesh Only</em> option) or In the current character pose (<em>Current Pose</em> option); using the menu option Plugins -&gt; Blender Pipeline -&gt; Export Character to Blender (Mesh Only/Current Pose)</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/cc4-plugin-menu.png"><img alt="_images/cc4-plugin-menu.png" class="align-center" src="_images/cc4-plugin-menu.png" style="width: 350px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>This will immediately prompt for a save location and requires no further settings to be made.  Save to the location of your choice: This will export the character along with a <em>.fbxkey</em> file which allows for reimport into Character Creator.</p></li>
+<li><p>In Blender, perform a <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> of the exported character.</p></li>
+<li><p>Please Note: When imported into Blender and clothing items that have had their faces hidden by Character Creator will now have those faces revealed (i.e. you will see the whole meshes) and there may appear to be clip through/mesh penetration (you can hide those faces again once the character returns to Character Creator).</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/cc4-blender-pipeline-import.png"><img alt="_images/cc4-blender-pipeline-import.png" class="align-center" src="_images/cc4-blender-pipeline-import.png" style="width: 250px;" /></a>
+</div></blockquote>
+<ul>
+<li><p>Using Blender, manipulate the character however you see fit (you may not alter the composition of any existing meshes - i.e. you cannot add or remove vertices):</p>
+<blockquote>
+<div><p>Sculpt/Alter Mesh Topology* <br />
+Edit Textures* <br />
+Add extra accessory items and use Blender’s shader nodes to shade them <br />
+Paint physics weight maps for new or existing items <br /></p>
+<p>*Example sculpting and texture editing demonstrated in <a class="reference external" href="https://www.youtube.com/watch?v=XFQOrgVcqcw">this video</a></p>
+</div></blockquote>
+</li>
+<li><p>Material parameters may also be adjusted.  Most of these parameters are eligible to be returned to Character Creator, however some are Blender specific and will not be considered when exporting back to CC.  The parameters that cannot be returned to CC are highlighted in <strong>red</strong> (this highlight is only shown when the imported character has a valid fbx key and is suitable for the ‘Round Trip’).</p></li>
+</ul>
+<blockquote>
+<div><img alt="_images/cc4-blender-pipeline-material-panel.png" class="align-center" src="_images/cc4-blender-pipeline-material-panel.png" />
+</div></blockquote>
+<ul class="simple">
+<li><p>Once finished, the character can be exported back to Character Created by using the ‘Export to CC3/4’ button in the ‘Exporting’ section of the Blender Tool (NB this till only be available if the original model was correctly exported with a fbx key).</p></li>
+</ul>
+<blockquote>
+<div><img alt="_images/cc4-blender-pipeline-export-panel.png" class="align-center" src="_images/cc4-blender-pipeline-export-panel.png" />
+</div></blockquote>
+<ul class="simple">
+<li><p>This will prompt for a save location and will default to a file name of ‘&lt;<em>original name</em>&gt;_export.fbx’. Since the returning model references all the textures as relative paths and reuses the original exported textures (and any new/edited textures assigned to image nodes will be added to the export .json with their relative paths), then <em>it is safe to use the original export directory</em> as the save location.</p></li>
+<li><p>Once exported, the CC plugin can be used to re-import the model into Character Creator: using the menu option ‘Plugins -&gt; Blender Pipeline -&gt; Import Character From Blender’.  This will bring up a file dialog.</p></li>
+<li><p>Navigate to the file exported from Blender (default name ‘&lt;<em>original name</em>&gt;_export.fbx’) and click ‘open’.</p></li>
+<li><p>An import options dialog box will be opened - leave ‘Import Mesh’, ‘Import Textures’ and ‘Import Parameters’ ticked and click ‘Import Character’.</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/cc4-blender-pipeline-import-options.png"><img alt="_images/cc4-blender-pipeline-import-options.png" class="align-center" src="_images/cc4-blender-pipeline-import-options.png" style="width: 250px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>This will prompt to check the file path and fbx key path (these are auto filled) Click ‘OK’ to continue.</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/cc4-blender-pipeline-create-assets.png"><img alt="_images/cc4-blender-pipeline-create-assets.png" class="align-center" src="_images/cc4-blender-pipeline-create-assets.png" style="width: 150px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>After some initial processing a d status report will be shown, giving details of which meshes can be successfully re-imported.  Click ‘OK’ to continue.</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/cc4-blender-pipeline-import-status.png"><img alt="_images/cc4-blender-pipeline-import-status.png" class="align-center" src="_images/cc4-blender-pipeline-import-status.png" style="width: 400px;" /></a>
+</div></blockquote>
+<ul class="simple">
+<li><p>After further texture processing the process will complete and the character will be manipulable in Character Creator.  Please note that any faces that are penetrating outer meshes must be manually re-hidden: please see <a class="reference internal" href="#hiding-meshes-in-cc4"><span class="std std-ref">Hiding Meshes in CC4</span></a> for more details.</p></li>
+</ul>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/cc4-blender-pipeline-finish.png"><img alt="_images/cc4-blender-pipeline-finish.png" class="align-center" src="_images/cc4-blender-pipeline-finish.png" style="width: 250px;" /></a>
+</div></blockquote>
+</section>
+<section id="hiding-meshes-in-cc4">
+<h4>Hiding Meshes in CC4<a class="headerlink" href="#hiding-meshes-in-cc4" title="Permalink to this headline"></a></h4>
+<p>The CC4 documentation has details of a number of methods that can be used to hide ‘penetrating meshes’:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/08_Cloth/Hiding_Specific_Inner_Meshes.htm?Highlight=hide%20face">Manually hiding specific inner meshes</a> by hiding faces.</p></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference external" href="https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/08_Creating_Custom_Assets/Showing_Hiding_Meshes_with_Brush.htm?Highlight=edit%20mesh">Showing or Hiding Meshes</a> using sculpting.</p></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference external" href="https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/08_Cloth/Hiding_Body_Meshes_by_Faces.htm?Highlight=hide%20face">Specifically hiding Body Mesh faces</a> with the ‘Hide Body Mesh’ tool.</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+</section>
+<section id="round-trip-export-for-unity">
+<h2>Round Trip Export For Unity<a class="headerlink" href="#round-trip-export-for-unity" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Please Note:</strong>  <em>This section deals only with the specific case of taking a character from Character Creator - Editing it in Blender - Then importing it into Unity whilst keeping physics and hidden face data intact for use in Unity.</em></p>
+</div>
+<section id="export-for-unity-introduction">
+<h3>Export For Unity Introduction<a class="headerlink" href="#export-for-unity-introduction" title="Permalink to this headline"></a></h3>
+<p>The use of Blender as an intermediate between Character Creator and Unity enables the use of Blender’s very powerful and varied tool set to directly assist with a Unity project.  It also allows the editing of the character in Blender after it has been imported into Unity - thus allowing changes to be made easily without having to go through all of the normal export/import steps again.</p>
+</section>
+<section id="considerations-for-unity">
+<h3>Considerations for Unity<a class="headerlink" href="#considerations-for-unity" title="Permalink to this headline"></a></h3>
+<p>The <a class="reference internal" href="#cc4-blender-tools-plugin"><span class="std std-ref">CC4 Blender Tools Plugin</span></a> is currently unsuitable for use with Unity for the following reasons:</p>
+<ul>
+<li><p>Hidden Faces</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exports that are suitable for the ‘Blender Round Trip’ will lose their hidden face data, so further export to Unity will require extensive editing in Blender.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Cloth Physics Colliders</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Blender physics uses mesh colliders rather than primitive colliders (both CC and Unity use primitive colliders) so no primitive collider data is typically exported to Blender.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>In order to export a character from CC to Blender which is then suitable for Unity, we must export with settings that:</p>
+<ul class="simple">
+<li><p>Preserve hidden faces.</p></li>
+<li><p>Export the physics colliders.</p></li>
+<li><p>Do not embed the textures.</p></li>
+</ul>
+<p>These are settings (discussed below) which are suitable for <em>Mesh Only</em> export to Blender.</p>
+</section>
+<section id="unity-friendly-export-options">
+<h3>Unity Friendly Export Options<a class="headerlink" href="#unity-friendly-export-options" title="Permalink to this headline"></a></h3>
+<p>As stated above, the basic requirement for the successful use of Blender as an intermediate between Character Creator and Unity is that the hidden face data must be preserved, the physics colliders must be exported and have the correct orientation and that the textures aren’t embedded into the fbx export.</p>
+<p><strong>NB:</strong> If you are prepared to correct mesh penetration problems within Blender yourself, then you can simply use <em>Plugins -&gt; Blender Pipeline -&gt; Export Character to Blender (Mesh Only)</em>, otherwise follow the full procedure below.</p>
+<p><strong>Full Workflow (to preserve hidden faces):</strong></p>
+<ul class="simple">
+<li><p>Use the standard Character Creator export function (<strong>File -&gt; Export -&gt; FBX -&gt; Clothed Character</strong>).</p></li>
+<li><p>Export with the initial export settings are detailed below:</p></li>
+</ul>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 60%" />
+<col style="width: 40%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="BasicSettingsImg" src="_images/bas_set.png" /></p></td>
+<td><ul class="simple">
+<li><p><strong>Required Settings:</strong> <br /><br /></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>Blender</strong> as the target tool preset. <br /><br /></p></li>
+<li><p><strong>Mesh</strong> <em>only</em> as the FBX option. <br /><br /></p></li>
+<li><p><strong>Embed Textures</strong> must be <em>unchecked</em>. <br /><br /></p></li>
+<li><p><strong>Delete Hidden Faces</strong> must be <em>unchecked</em>. <br /><br /></p></li>
+<li><p><strong>Advanced Settings</strong> - one advanced setting must also be made (see below).</p></li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td><p><img alt="SingleAdvImg" src="_images/t_pose_bind.png" /></p></td>
+<td><ul class="simple">
+<li><p>The single setting that needs to be made in the <strong>Advanced Settings</strong> is to check T-Pose as Bind Pose. <br /><br /></p></li>
+<li><p>All other settings should be inherited from the ‘Blender’ tool preset specified in the basic settings.</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>As a quick reference, the following settings should be (automatically) set in the advanced settings.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="AdvSetA" src="_images/adv_set_a.png" /></p></td>
+<td><p><img alt="AdvSetB" src="_images/adv_set_b.png" /></p></td>
+<td><p><img alt="AdvSetC" src="_images/adv_set_c.png" /></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>General Settings</strong></p></li>
+<li><p>Z-Axis</p></li>
+<li><p>Auto Skin Rigid Mesh</p></li>
+<li><p>Reset Self Illumination</p></li>
+<li><p>Export JSON</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><strong>Character Settings</strong></p></li>
+<li><p>Use T-Pose as Bind Pose</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><strong>Texture and UV</strong></p></li>
+<li><p>UDIM</p></li>
+<li><p>Export Vertex Color</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/adv_set_d.png"><img alt="AdvSetD" src="_images/adv_set_d.png" style="width: 222px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/adv_set_e.png"><img alt="AdvSetE" src="_images/adv_set_e.png" style="width: 222px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/adv_set_f.png"><img alt="AdvSetF" src="_images/adv_set_f.png" style="width: 222px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li><p><strong>Normal Settings</strong></p></li>
+<li><p>OpenGL (Y+)</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><strong>Embed Motion</strong></p></li>
+<li><p><strong>No</strong> Embed Settings</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p><strong>Texture Preset</strong></p></li>
+<li><p><strong>No</strong> Texture Preset</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="unity-round-trip-workflow">
+<h4>Unity Round Trip Workflow<a class="headerlink" href="#unity-round-trip-workflow" title="Permalink to this headline"></a></h4>
+<p>This simplified workflow describes the <em>Export from CC to Blender; Manipulation in Blender; Export from Blender into a Unity Project; Further editing in Blender directly from the Unity Project.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This workflow utilizes both the <a class="reference external" href="https://github.com/soupday/cc_blender_tools">Cc/iC Blender Tools</a> and the CC/iC Unity Tools for the render pipeline used by your project: either <a class="reference external" href="https://github.com/soupday/cc_unity_tools_3D">3D</a>, <a class="reference external" href="https://github.com/soupday/cc_unity_tools_URP">URP</a> or <a class="reference external" href="https://github.com/soupday/cc_unity_tools_HDRP">HDRP</a> (please see the <a class="reference external" href="https://soupday.github.io/cc_unity_tools/">CC/iC Unity Tools documentation</a> for further details).</p>
+</div>
+<ul class="simple">
+<li><p>Prepare and export your character using the <a class="reference internal" href="#unity-friendly-export-options"><span class="std std-ref">Unity Friendly Export Options</span></a>.</p></li>
+<li><p>Import the character into Blender with a <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> procedure.  This will bring the character into Blender in a T-Pose.</p></li>
+</ul>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/tpose_import_for_unity.png"><img alt="_images/tpose_import_for_unity.png" src="_images/tpose_import_for_unity.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Imported Mesh Only in T-Pose (unshaded)</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Since this is a simplified workflow let us assume some Blender manipulation takes place…</p></li>
+<li><p>The Export to Unity function (found in the ‘Exporting’ section of the Import/Export foldout) can output either a .FBX or a .Blend file</p></li>
+</ul>
+<figure class="align-center">
+<img alt="_images/mesh_export_to_unity.png" src="_images/mesh_export_to_unity.png" />
+</figure>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul>
+<li><p>Whilst it is always possible to export to a directory somewhere in the filesystem, and then <a class="reference external" href="https://soupday.github.io/cc_unity_tools/usage.html#importing-into-unity">drag that into the unity project</a>, you may also <strong>export directly into the Unity project</strong>.  When using a .Blend file this offers some distinct advantages.</p>
+<blockquote>
+<div><ul>
+<li><p>A link will be made with the export that changes the ‘Export to Unity’ function into  ‘Update Unity Project’</p></li>
+<li><figure class="align-default">
+<img alt="_images/update_unity.png" src="_images/update_unity.png" />
+</figure>
+</li>
+<li><p>This allows any changes subsequently made to be transferred into the Unity project with a single click, rather than by doing another export.</p></li>
+<li><p>If the character is re-opened from the Unity project (by double clicking on the .Blend file in the Project explorer window) then any edits made can also be transferred directly back to Unity using the ‘Update Unity Project’ button.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Once the character is either imported for the first time or updated, then you will need to <a class="reference external" href="https://soupday.github.io/cc_unity_tools/usage.html#beginning-the-import">build the materials</a> as usual to see any effects (mesh changes will be automatic - but its worth rebuilding the character anyway)</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<a class="reference internal image-reference" href="_images/tpose_col_face_unity.png"><img alt="_images/tpose_col_face_unity.png" src="_images/tpose_col_face_unity.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Imported into Unity in t-pose with correct physics colliders and hidden faces.</em></span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Please see the <a class="reference external" href="https://soupday.github.io/cc_unity_tools/usage.html#usage">CC/iC Unity Tools Usage</a> documentation for a complete overview of the Unity import procedure.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="adv-usage.html" class="btn btn-neutral float-left" title="Advanced Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="animation.html" class="btn btn-neutral float-right" title="Animation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
