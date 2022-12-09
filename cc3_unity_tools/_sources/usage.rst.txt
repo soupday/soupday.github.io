@@ -10,6 +10,8 @@
 
 .. _CC/iC Blender Tools: https://github.com/soupday/cc_blender_tools
 
+.. _Texture Importer Mipmap Bias: https://docs.unity3d.com/ScriptReference/TextureImporter-mipMapBias.html 
+
 ~~~~~~~
  Usage
 ~~~~~~~
@@ -212,6 +214,20 @@ This will open the main tool window (by default this will be docked next to the 
 
 The import tool will actively detect all of the valid Character Creator or iClone characters that are contained in the Unity project and display them vertically on the left hand side of the tool window. 
 
+With many characters, the default large icons in the character display list can quickly become congested. With version 1.4.1 and above the character display list can be resized and turned into a condensed readable list by dragging the edge of the display list (the cursor appearance will change over the draggable area).
+
+.. |lgeIcon| image:: images/char_icon_list_large.png
+
+.. |detIcon| image:: images/char_icon_list_detail.png
+
+.. list-table::
+   :widths: 120 199
+   :align: center
+   :header-rows: 0
+
+   * - |lgeIcon|
+     - |detIcon|
+
 If your character is not displayed (or if no right click menu option is available to open the import tool) then **please ensure that all of the exported data from Character Creator or iClone has been dragged into the Unity project browser** (there must be at least the .fbx and .json files and a textures folder containing a subfolder with the same name as the .fbx asset).
 
 .. |refresh| image:: images/new_ui_refresh.png
@@ -356,6 +372,9 @@ The options available in this panel are dependent on the pipeline version used; 
 .. |settxt5| replace::
     **Animation Player On** *(All pipelines)* Always show the animation player when opening the preview scene.
 
+.. |settxt9| replace::
+    **Mip-map Bias** Override the mipmap bias for all textures being set up for the character.  Use a (small) negative bias to sharpen textures and a positive bias to blur them.  For further details see Unity's documentation on the `Texture Importer Mipmap Bias`_ setting which this value directly controls.
+
 .. |settxt7| replace::
     **Physics Collider Shrink** Coefficient to specify if the colliders should be reduced or enlarged: +ve numbers shrink the collders and -ve numbers enlarge them.
 
@@ -373,6 +392,8 @@ The options available in this panel are dependent on the pipeline version used; 
 - |settxt3|
 
 - |settxt5|
+
+- |settxt9|
 
 - |settxt7|
 
@@ -410,8 +431,9 @@ The animation is placed in a subfolder of the folder containing the fbx file and
     |           |-- <MODEL_NAME>_Imported_<Animation_Name_1>.anim
     |           |-- <MODEL_NAME>_Imported_<Animation_Name_2>.anim
     |
-    |-- <MODEL_NAME>.fbm
+    |-- materials
     |-- textures
+    |-- <MODEL_NAME>.fbm
     |-- <MODEL_NAME>.fbx
     |-- <MODEL_NAME>.json
 
@@ -426,6 +448,19 @@ Additionally, the status text will be updated with the type of processing that h
 
 Once the (High Quality) processing has been completed, a prefabs directory will be created in the same directory as the imported character .fbx file and a unity prefab of the imported character will be placed into it. 
 
+.. code-block::
+
+  <Import Folder>
+    |-- Prefabs
+    |     |-- <MODEL_NAME>.prefab
+    |
+    |-- Animations
+    |-- materials
+    |-- textures
+    |-- <MODEL_NAME>.fbm
+    |-- <MODEL_NAME>.fbx
+    |-- <MODEL_NAME>.json
+
 |
 
 Further Processing
@@ -435,59 +470,65 @@ After initial processing further options will become available.
 
 .. |Bake| image:: images/new_ui_bake.png
 
-.. |Bake_s| image:: images/new_ui_bake.png
-    :width: 28
+.. |BakeHair| image:: images/new_ui_bake_hair.png
 
-Baking |Bake|
--------------
+Baking |Bake| |BakeHair|
+------------------------
 
-Baking is the most performance friendly option, whilst maintaining high visual quality.  Two principal options are available as dropdown menus as before.
+The baking workflow is a process of consolidating the texture influences from the original imported and processed character into a simple set of textures that can be used in a simpler and faster shader, whilst maintaining high visual quality.  This will also incorporate any user changes made to the materials.
 
-.. image:: images/new_ui_bake_options.png
-    :align: center
+The baking process will output a prefab; using this in your scenes will be much more performance friendly.
 
-|
+Baking is discussed in more detail in the :ref:`Texture Baking` section of this documentation.
 
-**Bake** will create and apply new materials which have consolidated all the texture influences into as simple a set of textures as possible to enhance performance.
+..
+    Baking is the most performance friendly option, whilst maintaining high visual quality.  Two principal options are available as dropdown menus as before.
 
-.. |bksh| image:: images/new_ui_bake_shaders.png
+    .. image:: images/new_ui_bake_options.png
+        :align: center
 
-.. |bkshtxt1| replace::
-    **Custom Shaders** *(Default)*  Uses materials with a custom ShaderGraph shader for very high quality and very good performance.
+    |
 
-.. |bkshtxt2| replace::
-    **Default Shaders** Uses the system default pbr shaders in the baked output, if performance is desired above all else, at the cost of visual quality.
+    **Bake** will create and apply new materials which have consolidated all the texture influences into as simple a set of textures as possible to enhance performance.
 
-.. |bkpre| image:: images/new_ui_bake_prefab.png
+    .. |bksh| image:: images/new_ui_bake_shaders.png
 
-.. |bkpretxt1| replace::
-    **Separate Baked Prefab** *(Default)* The baked output will be written to a new prefab <name>_baked (in the same directory as the initially created prefab).
+    .. |bkshtxt1| replace::
+        **Custom Shaders** *(Default)*  Uses materials with a custom ShaderGraph shader for very high quality and very good performance.
 
-.. |bkpretxt2| replace::
-    **Overwrite Prefab** This option will overwrite the initially (when the materials are built during initial processing) created prefab with new materials and textures.  This feature is used principally for the 'iClone Live Link'. 
+    .. |bkshtxt2| replace::
+        **Default Shaders** Uses the system default pbr shaders in the baked output, if performance is desired above all else, at the cost of visual quality.
 
-.. list-table::
-  :widths: 19 31
-  :header-rows: 0
-  
-  * - |bksh|
-    - |bkshtxt1|
-      |br2|
-      |bkshtxt2|
-  * - |bkpre|
-    - |bkpretxt1|
-      |br2|
-      |bkpretxt2|
+    .. |bkpre| image:: images/new_ui_bake_prefab.png
 
-Once the desired options have been set, then the process can be started with the |Bake_s| button.
+    .. |bkpretxt1| replace::
+        **Separate Baked Prefab** *(Default)* The baked output will be written to a new prefab <name>_baked (in the same directory as the initially created prefab).
 
-Any changes that are made to the main processing options (material quality, eye and hair settings) and then reprocessed *via* 'Build Materials' will cause the baked prefab to be automatically updated with those new settings.
+    .. |bkpretxt2| replace::
+        **Overwrite Prefab** This option will overwrite the initially (when the materials are built during initial processing) created prefab with new materials and textures.  This feature is used principally for the 'iClone Live Link'. 
 
-The Baking workflow is show in the video below:
+    .. list-table::
+    :widths: 19 31
+    :header-rows: 0
+    
+    * - |bksh|
+        - |bkshtxt1|
+        |br2|
+        |bkshtxt2|
+    * - |bkpre|
+        - |bkpretxt1|
+        |br2|
+        |bkpretxt2|
 
-.. youtube:: 9sCRM0hUkc4
+    Once the desired options have been set, then the process can be started with the |Bake_s| button.
 
-|     
+    Any changes that are made to the main processing options (material quality, eye and hair settings) and then reprocessed *via* 'Build Materials' will cause the baked prefab to be automatically updated with those new settings.
+
+    The Baking workflow is show in the video below:
+
+    .. youtube:: 9sCRM0hUkc4
+
+    |     
 
 
 .. |anim| image:: images/new_ui_anim.png

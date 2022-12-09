@@ -10,9 +10,9 @@
 
 .. _Alembic: https://en.wikipedia.org/wiki/Alembic_(computer_graphics)
 
-~~~~~~~~~~~~~~~~
- Advanced Usage
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+ Advanced Animation
+~~~~~~~~~~~~~~~~~~~~
 
 .. |animretarget| image:: images/new_ui_anim_retarget.png
 

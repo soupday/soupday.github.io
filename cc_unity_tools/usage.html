@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Advanced Usage" href="adv-usage.html" />
+    <link rel="next" title="Texture Baking" href="baking.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
 </head>
 
@@ -56,7 +56,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#quality-settings">Quality Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#further-settings">Further Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#further-processing">Further Processing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#baking-bake">Baking </a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baking-bake-bakehair">Baking  </a></li>
 <li class="toctree-l3"><a class="reference internal" href="#animations-anim">Animations </a></li>
 </ul>
 </li>
@@ -82,8 +82,10 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baking.html">Texture Baking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="physics.html">Cloth Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lod.html">LOD Group Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
 </ul>
@@ -204,6 +206,18 @@
 <div class="line"><br /></div>
 </div>
 <p>The import tool will actively detect all of the valid Character Creator or iClone characters that are contained in the Unity project and display them vertically on the left hand side of the tool window.</p>
+<p>With many characters, the default large icons in the character display list can quickly become congested. With version 1.4.1 and above the character display list can be resized and turned into a condensed readable list by dragging the edge of the display list (the cursor appearance will change over the draggable area).</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="lgeIcon" src="_images/char_icon_list_large.png" /></p></td>
+<td><p><img alt="detIcon" src="_images/char_icon_list_detail.png" /></p></td>
+</tr>
+</tbody>
+</table>
 <p>If your character is not displayed (or if no right click menu option is available to open the import tool) then <strong>please ensure that all of the exported data from Character Creator or iClone has been dragged into the Unity project browser</strong> (there must be at least the .fbx and .json files and a textures folder containing a subfolder with the same name as the .fbx asset).</p>
 <p>If you add a character to the project whilst the tool is open, you can refresh the available character list with the <a class="reference internal" href="_images/new_ui_refresh.png"><img alt="refresh" src="_images/new_ui_refresh.png" style="width: 28px;" /></a> button.</p>
 </section>
@@ -281,6 +295,7 @@
 <li><p><strong>Reconstruct Flow Map Normals</strong> <em>(All pipelines)</em> Rebuild missing Normal maps from Flow Maps in hair materials. Reconstructed Normals add extra detail to the lighting models.</p></li>
 <li><p><strong>Rebake Blender Unity Maps</strong> <em>(All pipelines)</em> When active will always re-bake the blender to unity Diffuse+Alpha, HDRP Mask and Metallic+Gloss maps. Otherwise subsequent material rebuilds will try to re-use existing bakes. Only needed if the source textures are changed.</p></li>
 <li><p><strong>Animation Player On</strong> <em>(All pipelines)</em> Always show the animation player when opening the preview scene.</p></li>
+<li><p><strong>Mip-map Bias</strong> Override the mipmap bias for all textures being set up for the character.  Use a (small) negative bias to sharpen textures and a positive bias to blur them.  For further details see Unity’s documentation on the <a class="reference external" href="https://docs.unity3d.com/ScriptReference/TextureImporter-mipMapBias.html">Texture Importer Mipmap Bias</a> setting which this value directly controls.</p></li>
 <li><p><strong>Physics Collider Shrink</strong> Coefficient to specify if the colliders should be reduced or enlarged: +ve numbers shrink the collders and -ve numbers enlarge them.</p></li>
 <li><p><strong>Physics Collider Detection Threshold</strong> The weight threshold (from the weight map + power/offset/scale) that must be reached before a collider can be assigned to the cloth when optimized colliders are being assigned to &lt;Cloth&gt; components by the physics Weight Mapper.  This is a global default value see <a class="reference internal" href="physics.html#the-weightmapper-component"><span class="std std-ref">The &lt;WeightMapper&gt; Component</span></a> documentation for details.</p></li>
 <li><p><strong>Log Level</strong> Here you can opt to change the console logging level to: Errors Only, Warnings &amp; Errors (default) or Everything</p></li>
@@ -304,8 +319,9 @@
   <span class="o">|</span>           <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span><span class="n">_Imported_</span><span class="o">&lt;</span><span class="n">Animation_Name_1</span><span class="o">&gt;.</span><span class="n">anim</span>
   <span class="o">|</span>           <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span><span class="n">_Imported_</span><span class="o">&lt;</span><span class="n">Animation_Name_2</span><span class="o">&gt;.</span><span class="n">anim</span>
   <span class="o">|</span>
-  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
+  <span class="o">|--</span> <span class="n">materials</span>
   <span class="o">|--</span> <span class="n">textures</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
   <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbx</span>
   <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">json</span>
 </pre></div>
@@ -317,6 +333,18 @@
 <div class="line"><br /></div>
 </div>
 <p>Once the (High Quality) processing has been completed, a prefabs directory will be created in the same directory as the imported character .fbx file and a unity prefab of the imported character will be placed into it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Import</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="n">Prefabs</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">prefab</span>
+  <span class="o">|</span>
+  <span class="o">|--</span> <span class="n">Animations</span>
+  <span class="o">|--</span> <span class="n">materials</span>
+  <span class="o">|--</span> <span class="n">textures</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbx</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">json</span>
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -325,40 +353,11 @@
 <h3>Further Processing<a class="headerlink" href="#further-processing" title="Permalink to this headline"></a></h3>
 <p>After initial processing further options will become available.</p>
 </section>
-<section id="baking-bake">
-<h3>Baking <img alt="Bake" src="_images/new_ui_bake.png" /><a class="headerlink" href="#baking-bake" title="Permalink to this headline"></a></h3>
-<p>Baking is the most performance friendly option, whilst maintaining high visual quality.  Two principal options are available as dropdown menus as before.</p>
-<img alt="_images/new_ui_bake_options.png" class="align-center" src="_images/new_ui_bake_options.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p><strong>Bake</strong> will create and apply new materials which have consolidated all the texture influences into as simple a set of textures as possible to enhance performance.</p>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 38%" />
-<col style="width: 62%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><img alt="bksh" src="_images/new_ui_bake_shaders.png" /></p></td>
-<td><p><strong>Custom Shaders</strong> <em>(Default)</em>  Uses materials with a custom ShaderGraph shader for very high quality and very good performance.
-<br /><br />
-<strong>Default Shaders</strong> Uses the system default pbr shaders in the baked output, if performance is desired above all else, at the cost of visual quality.</p></td>
-</tr>
-<tr class="row-even"><td><p><img alt="bkpre" src="_images/new_ui_bake_prefab.png" /></p></td>
-<td><p><strong>Separate Baked Prefab</strong> <em>(Default)</em> The baked output will be written to a new prefab &lt;name&gt;_baked (in the same directory as the initially created prefab).
-<br /><br />
-<strong>Overwrite Prefab</strong> This option will overwrite the initially (when the materials are built during initial processing) created prefab with new materials and textures.  This feature is used principally for the ‘iClone Live Link’.</p></td>
-</tr>
-</tbody>
-</table>
-<p>Once the desired options have been set, then the process can be started with the <a class="reference internal" href="_images/new_ui_bake.png"><img alt="Bake_s" src="_images/new_ui_bake.png" style="width: 28px;" /></a> button.</p>
-<p>Any changes that are made to the main processing options (material quality, eye and hair settings) and then reprocessed <em>via</em> ‘Build Materials’ will cause the baked prefab to be automatically updated with those new settings.</p>
-<p>The Baking workflow is show in the video below:</p>
-<div class="youtube_wrapper" style="">
-<iframe allowfullscreen="true" src="https://www.youtube.com/embed/9sCRM0hUkc4" style="border: 0; height: 345px; width: 560px">
-</iframe></div><div class="line-block">
-<div class="line"><br /></div>
-</div>
+<section id="baking-bake-bakehair">
+<h3>Baking <img alt="Bake" src="_images/new_ui_bake.png" /> <img alt="BakeHair" src="_images/new_ui_bake_hair.png" /><a class="headerlink" href="#baking-bake-bakehair" title="Permalink to this headline"></a></h3>
+<p>The baking workflow is a process of consolidating the texture influences from the original imported and processed character into a simple set of textures that can be used in a simpler and faster shader, whilst maintaining high visual quality.  This will also incorporate any user changes made to the materials.</p>
+<p>The baking process will output a prefab; using this in your scenes will be much more performance friendly.</p>
+<p>Baking is discussed in more detail in the <a class="reference internal" href="baking.html#texture-baking"><span class="std std-ref">Texture Baking</span></a> section of this documentation.</p>
 </section>
 <section id="animations-anim">
 <h3>Animations <img alt="anim" src="_images/new_ui_anim.png" /><a class="headerlink" href="#animations-anim" title="Permalink to this headline"></a></h3>
@@ -494,7 +493,7 @@ This will multiple select all of the materials associated with the ‘selectable
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="adv-usage.html" class="btn btn-neutral float-right" title="Advanced Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="baking.html" class="btn btn-neutral float-right" title="Texture Baking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

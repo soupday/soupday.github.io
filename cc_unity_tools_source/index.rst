@@ -13,8 +13,10 @@
    about
    installation
    usage
+   baking
    adv-usage
    physics
-   
+   lod
+
    tldr_Installation
    tldr_usage

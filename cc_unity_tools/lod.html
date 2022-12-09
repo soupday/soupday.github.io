@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOD Group Management &mdash; CC/iC Unity Tools 1.3.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TLDR Installation" href="tldr_Installation.html" />
+    <link rel="prev" title="Cloth Physics" href="physics.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Unity Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baking.html">Texture Baking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Cloth Physics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LOD Group Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lod-workflow">LOD Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-workflow-for-instalod">Basic workflow for InstaLOD</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#optimize-and-decimate-tools-character-creator-4">Optimize and Decimate Tools [Character Creator 4]</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generating-an-actorbuild-character">Generating an actorBUILD character</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#object-polygon-reduction">Object Polygon Reduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-and-inclusion-into-a-unity-lod-group">Export and Inclusion into a Unity LOD Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-workflow-to-include-a-new-export-in-a-lod-group">Basic Workflow to Include a New Export in a LOD Group</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Unity Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>LOD Group Management</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/lod.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lod-group-management">
+<h1>LOD Group Management<a class="headerlink" href="#lod-group-management" title="Permalink to this headline"></a></h1>
+<p>LOD or <a class="reference external" href="https://en.wikipedia.org/wiki/Level_of_detail_(computer_graphics)">Level of detail</a> is a means of reducing GPU overhead for rendering meshes which are distant from the camera. In short, this is achieved by rendering meshes with progressively lower triangle counts as distance from the camera increases.</p>
+<p>In Unity, the relationship between camera distance and which mesh to render is controlled by a GameObject component called a <a class="reference external" href="https://docs.unity3d.com/Manual/class-LODGroup.html">LOD group</a>. This contains distance information for each LOD and the relevant meshes to display are stored as &lt;MeshRenderer&gt; objects.</p>
+<p>This tool takes output from Character Creator and easily converts this to a Unity LOD group.  The character creator output can be from the ‘Remesher’ i.e. InstaLOD or from using the ‘Optimize and Decimate’ function.</p>
+<section id="lod-workflow">
+<h2>LOD Workflow<a class="headerlink" href="#lod-workflow" title="Permalink to this headline"></a></h2>
+<p>The provided tool to construct a LOD Group only uses the prefabs generated by the CC/iC import tool - the key considerations are as follows.</p>
+<ul class="simple">
+<li><p>The basic requirement for the tool is that all of the relevant Character Creator output has been processed (had its materials built and a prefab generated)</p></li>
+<li><p>The prefab outputs are all in the same directory (prefab models outside of the character’s /Prefabs/ directory will not be considered for LOD group construction).</p></li>
+</ul>
+<section id="basic-workflow-for-instalod">
+<h3>Basic workflow for InstaLOD<a class="headerlink" href="#basic-workflow-for-instalod" title="Permalink to this headline"></a></h3>
+<p>Using InstaLOD as part of the character export allows simple and rapid creation of a LOD group in Unity.</p>
+<ul>
+<li><p>Prepare your character however you see fit.</p></li>
+<li><p>Export clothed character with normal settings for Unity 3D (use the <strong>Mesh Only</strong> setting).  This is needed to build the highest detail level of the LOD group. (See the <a class="reference internal" href="usage.html#export-from-character-creator"><span class="std std-ref">Export From Character Creator</span></a> section of the documentation for details.)</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>When exporting it may help to identify the highest detail model by name e.g &lt;Model Name&gt;_FULL</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Now re-export the character this time with ‘InstaLOD’ selected in the ‘Export FBX’ dialog (again use the <strong>Mesh Only</strong> setting).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ensure that the export directory is the same as for the ‘&lt;Model Name&gt;_FULL’ highest detail model.</p></li>
+<li><p>Name the export accordingly e.g. &lt;Model Name&gt;_INSTALOD</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/cc-instalod-export-default.png"><img alt="_images/cc-instalod-export-default.png" src="_images/cc-instalod-export-default.png" style="width: 410px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>InstaLOD export with default settings</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Leave ‘Keep Original Avatar’ unchecked since we have a clean full detail export already (this full detail export will be processed separately - before being included in a lod group in a later step).</p></li>
+<li><p>For a detailed discussion of the ‘Remesher’ options for this export step please refer to the official CC4 <a class="reference external" href="https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/17_Export/Creating_LOD_with_Remesher.htm">Creating LOD with Remesher</a> documentation.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Import all the above output into Unity (See the <a class="reference internal" href="usage.html#importing-into-unity"><span class="std std-ref">Importing into Unity</span></a> section of the documentation for details.)</p></li>
+<li><p>The Importer window (with file selection enlarged) should appear similarly to the figure below.</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/unity-instalod-import-basic.png"><img alt="_images/unity-instalod-import-basic.png" src="_images/unity-instalod-import-basic.png" style="width: 256px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Imported and unprocessed full detail + instaLOD models</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Build the materials for both the FULL and INSTALOD models (See the <a class="reference internal" href="usage.html#initial-processing"><span class="std std-ref">Initial Processing</span></a> section of the documentation for details). The figure below shows that the full detail model has also been baked (see the section on <a class="reference internal" href="baking.html#texture-baking"><span class="std std-ref">Texture Baking</span></a> for more details).</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/unity-instalod-processed-baked.png"><img alt="_images/unity-instalod-processed-baked.png" src="_images/unity-instalod-processed-baked.png" style="width: 216px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Baked full detail + processed instaLOD models</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>Open the ‘LOD Combining Tool’ with the <img alt="lod_tool" src="_images/unity-ui-lod-tool-ico.png" /> button.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The ‘LOD Combining Tool’ creates a Unity LOD Group from the selected prefab models found in the same directory (more properly, the selection can only be made from processed prefab assets in the prefabs directory of the selected character when the LOD combining tool is launched).</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/unity-ui-lod-tool-pane.png"><img alt="_images/unity-ui-lod-tool-pane.png" src="_images/unity-ui-lod-tool-pane.png" style="width: 279px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Lod Combining Tool</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Where there is a ‘Baked’ prefab, then the tool allows EITHER the original default prefab OR the the baked prefab to be included in the LOD group (the orange selection box shown above signifies that a baked prefab has been selected).</p></li>
+<li><p>A name can be entered (a default is suggested). Pressing create will build and save the Unity LOD Group as a new prefab in the current character’s prefab directory with the suggested/entered name.</p></li>
+</ul>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/unity-lodgroup-inspector.png"><img alt="_images/unity-lodgroup-inspector.png" src="_images/unity-lodgroup-inspector.png" style="width: 291px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>LOD Group inspector</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Playing an animation on the new LOD prefab (video below) shows the LOD levels being transitioned through as the character approaches and moves away from the camera.</p></li>
+</ul>
+<p><video width="700" loop = true controls src="_static/lod_walk.mp4"></video></p>
+<ul class="simple">
+<li><p>The ‘Play mode’ statistics display of the same animation shows the dramatic effect of the LOD level on the number of tris being rendered (see video below).</p></li>
+</ul>
+<p><video width="700" loop = true controls src="_static/lod_walk_stats.mp4"></video></p>
+<p>The meshes and the associated LOD levels obtained by this method are tabulated below:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/lod-wire-full.png"><img alt="LOD0" src="_images/lod-wire-full.png" style="width: 140px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/lod-wire-insta1.png"><img alt="LOD2" src="_images/lod-wire-insta1.png" style="width: 140px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/lod-wire-insta2.png"><img alt="LOD3" src="_images/lod-wire-insta2.png" style="width: 140px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/lod-wire-insta3.png"><img alt="LOD4" src="_images/lod-wire-insta3.png" style="width: 140px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Full Detail</em></p></td>
+<td><p><em>InstaLOD High</em></p></td>
+<td><p><em>InstaLOD Medium</em></p></td>
+<td><p><em>InstaLOD Low</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>Should this progression of detail prove unsatisfactory, then it can be easily adjusted (as described in the following sections).</p>
+</section>
+</section>
+<section id="optimize-and-decimate-tools-character-creator-4">
+<h2>Optimize and Decimate Tools [Character Creator 4]<a class="headerlink" href="#optimize-and-decimate-tools-character-creator-4" title="Permalink to this headline"></a></h2>
+<a class="reference internal image-reference" href="_images/opt-deci-button.png"><img alt="_images/opt-deci-button.png" class="align-center" src="_images/opt-deci-button.png" style="width: 244px;" /></a>
+<p><br />
+Sometimes the transition from the full detail model to the first level of InstaLOD generated models can be somewhat jarring and obvious, principally due to the change in appearance of the character’s hair.</p>
+<p>In the event of a jarring transition, a higher quality intermediate can be used in between full detail and the InstaLOD model to give a smoother near distance transition.  This intermediate takes the form of an ‘actorBUILD’ version of the character which can be automatically generated from your character within Character Creator.</p>
+<section id="generating-an-actorbuild-character">
+<h3>Generating an actorBUILD character<a class="headerlink" href="#generating-an-actorbuild-character" title="Permalink to this headline"></a></h3>
+<p><strong>Please Note:</strong> <em>This process is destructive and cannot be reversed, so please keep a save of your Character Creator Project somewhere safe before beginning.</em></p>
+<ul>
+<li><p>In CC4 with the character selected, either press the ‘Optimize and Decimate’ button in the ‘Character’ section of ‘Attribute’ tab of the ‘Modify’ window, or use the menu option ‘<strong>Character -&gt; Optimize and Decimate</strong>’</p></li>
+<li><p>This will bring up the Optimize and Decimate window (below).</p>
+<blockquote>
+<div><img alt="_images/opt-deci-window.png" class="align-center" src="_images/opt-deci-window.png" />
+</div></blockquote>
+</li>
+<li><p>Select ‘actorBUILD’ and click ‘Convert’ (a dialog box will appear warning about mesh penetration and what to do about it - dismiss that to continue).</p></li>
+<li><p>Once complete the character head &amp; body will now have a lower polygon count mesh but a high quality appearance.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Note:</strong> Hair and Clothing will still have the original polygon count and must be processed separately (discussed in the <a class="reference internal" href="#object-polygon-reduction"><span class="std std-ref">Object Polygon Reduction</span></a> section).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>This character can be exported normally to the same directory as your other LOD eligible exports, if no further polygon reduction is required (see the <a class="reference internal" href="#export-and-inclusion-into-a-unity-lod-group"><span class="std std-ref">Export and Inclusion into a Unity LOD Group</span></a> section for details).  Further polygon reducing steps are detailed in the following section.</p></li>
+<li><p>Should you require either of the other LOD levels eg LOD1 or LOD2 (in the Optimize and Decimate tool) then reload your saved project and re-run the optimize and decimate tool to produce a LOD1 or LOD2 model.</p></li>
+</ul>
+</section>
+<section id="object-polygon-reduction">
+<h3>Object Polygon Reduction<a class="headerlink" href="#object-polygon-reduction" title="Permalink to this headline"></a></h3>
+<a class="reference internal image-reference" href="_images/obj-poly-red-button.png"><img alt="_images/obj-poly-red-button.png" class="align-center" src="_images/obj-poly-red-button.png" style="width: 244px;" /></a>
+<p><br />
+Objects attached to the character can also have their polygon count significantly reduced whilst maintaining good visual quality (<strong>Note:</strong> <em>this process is also destructive so a prior save of the project is needed</em>).</p>
+<ul>
+<li><p>With the desired object selected in the ‘Scene’ window (the object can be Hair, Clothes, Shoes etc.) click on the ‘Polygon Reduction - Object’ button in the ‘Mesh Polygon Reduction’ section of ‘Attribute’ tab of the ‘Modify’ window.</p>
+<blockquote>
+<div><img alt="_images/mesh-poly-reduction.png" class="align-center" src="_images/mesh-poly-reduction.png" />
+</div></blockquote>
+</li>
+<li><p>This will open the ‘Polygon Reduction - Object’ Window.  The detailed use of this window is described in the official <a class="reference external" href="https://manual.reallusion.com/character-creator-4/content/enu/4.0/04_Introducing_the_User_Interface/Poly_Reduction_Toolbar.htm">Polygon Reduction Documentation</a>.</p>
+<blockquote>
+<div><img alt="_images/poly-reduction-obj-window.png" class="align-center" src="_images/poly-reduction-obj-window.png" />
+</div></blockquote>
+</li>
+<li><p>This allows polygon reduction according to your preferences (in this example, a 50% reduction is selected).  Process each object individually.</p></li>
+<li><p>Export the processed model to the same directory as your other LOD eligible exports. See the <a class="reference internal" href="#export-and-inclusion-into-a-unity-lod-group"><span class="std std-ref">Export and Inclusion into a Unity LOD Group</span></a> section for details.</p></li>
+<li><p>Example meshes for the first 3 LOD levels are tabulated below: demonstrating a substantially smoother transition.</p></li>
+</ul>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/lod-wire-full.png"><img alt="LOD0" src="_images/lod-wire-full.png" style="width: 140px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/lod-wire-decimate.png"><img alt="LOD1" src="_images/lod-wire-decimate.png" style="width: 140px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/lod-wire-insta1.png"><img alt="LOD2" src="_images/lod-wire-insta1.png" style="width: 140px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p><em>Full Detail</em></p></td>
+<td><p><em>ActorBuild</em></p></td>
+<td><p><em>InstaLOD High</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>After polygon reduction or conversion of the character to ActorBUILD, LOD1 or LOD2 then <strong>these changes cannot be undone</strong>.  You must <strong>reload your original save</strong> of the project in order to return to the original full detail version of the character.</p>
+</div>
+</section>
+<section id="export-and-inclusion-into-a-unity-lod-group">
+<h3>Export and Inclusion into a Unity LOD Group<a class="headerlink" href="#export-and-inclusion-into-a-unity-lod-group" title="Permalink to this headline"></a></h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Exports of individually generated actorBUILD, LOD1 or LOD2 models should be made using the <strong>Mesh Only</strong> setting of the normal clothed fbx exporter (all exports for LOD Group construction should be made with this setting).</p>
+</div>
+<p>If LOD relevant models (for the same character) are already in the Unity project (e.g. the output of the <a class="reference internal" href="#basic-workflow-for-instalod"><span class="std std-ref">Basic workflow for InstaLOD</span></a>) then attempt to import the newly exported actorBUILD/LOD1/LOD2 into the same directory as the existing output.</p>
+<p>Try to ensure that the .fbx files are all in the same directory, so that after processing of the new import, all of the LOD relevant prefabs are in the same /Prefabs/ directory.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the models you wish to include in a LOD Group are in different directories, then in order for them to be considered for LOD Group creation follow these steps:</p>
+<ul class="simple">
+<li><p>Build the materials for each model</p></li>
+<li><p>Move all of the generated prefabs to the /Prefabs/ directory of <strong>one</strong> of the models.</p></li>
+<li><p>Select that model in the CC/iC Importer tool window and start the ‘LOD Combining Tool’</p></li>
+<li><p>All of the prefabs in that model’s /Prefabs/ directory should then be eligible for inclusion in the LOD Group.</p></li>
+</ul>
+</div>
+</section>
+<section id="basic-workflow-to-include-a-new-export-in-a-lod-group">
+<h3>Basic Workflow to Include a New Export in a LOD Group<a class="headerlink" href="#basic-workflow-to-include-a-new-export-in-a-lod-group" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p><strong>Ensure that you have a save of your full detail project.</strong></p></li>
+<li><p>Perform whichever polygon reductions / character optimization suits your needs.</p></li>
+<li><dl class="simple">
+<dt><strong>Export from Character Creator</strong>  (-&gt; FBX -&gt; Clothed Character) in in the normal way (set to Unity 3D and Mesh Only).</dt><dd><ul class="simple">
+<li><p><em>Export</em> to the same directory as your full detail and any instaLOD exports (if preparing a fresh import)</p></li>
+<li><p>Or <em>Export</em> to its own directory for import into an existing LOD Group.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Import into Unity</strong></dt><dd><ul class="simple">
+<li><p>For a fresh import, drag the files into the Unity project as normal.</p></li>
+<li><p>For an existing LOD Group, drag the <em>contents</em> of the export directory into the <em>same directory</em> as the other LOD Group member models (all the model .fbx files should end up in the same directory).
+<br /> <strong>OR</strong> <br />
+Import the new model to its own location and move the prefab after material processing.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Build the Materials</strong> of the new model. (if you are going to be moving the prefab then this step generates that prefab).</p></li>
+<li><p>Select the full detail model in the import tool and <strong>Launch the LOD Combining Tool</strong> This will show all of the eligible prefabs contained in the /Prefabs/ directory of the selected model.</p>
+<blockquote>
+<div><img alt="_images/lod-inclusion-combine.png" class="align-center" src="_images/lod-inclusion-combine.png" />
+<p><br />
+The example show here contains several exports with varying amounts of polygon reduction performed.  The triangle count for each eligible prefab is shown and the LOD Group will be constructed in reverse order of triangle count.</p>
+<p>Any unwanted prefabs can be deselected (click on them so the green outline is removed) prior to LOD Group creation.</p>
+</div></blockquote>
+</li>
+<li><p>Ensure that the desired prefabs are selected and that the LOD Group is named correctly, then press <strong>Create</strong>.</p></li>
+<li><p>The new LOD Group will be created and placed in the /Prefabs/ directory.</p></li>
+</ul>
+<p><em>Workflow Ends…</em></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="physics.html" class="btn btn-neutral float-left" title="Cloth Physics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tldr_Installation.html" class="btn btn-neutral float-right" title="TLDR Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
