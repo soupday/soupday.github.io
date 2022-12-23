@@ -21,11 +21,19 @@
 
 .. _CC/iC Unity Tools documentation: https://soupday.github.io/cc_unity_tools/
 
+.. _CC/iC Unity Tools: https://soupday.github.io/cc_unity_tools/
+
 .. _drag that into the unity project: https://soupday.github.io/cc_unity_tools/usage.html#importing-into-unity
+
+.. _Importing into Unity: https://soupday.github.io/cc_unity_tools/usage.html#importing-into-unity
 
 .. _build the materials: https://soupday.github.io/cc_unity_tools/usage.html#beginning-the-import
 
 .. _CC/iC Unity Tools Usage: https://soupday.github.io/cc_unity_tools/usage.html#usage
+
+.. _iClone Animation Pipeline: https://www.reallusion.com/iclone/pipeline.html
+
+.. _Importing models into Unity: https://docs.unity3d.com/Manual/models-importing.html
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  CC - Blender - Unity Pipeline
@@ -125,7 +133,7 @@ Once downloaded:
 
 .. figure:: images/cc4-plugin-menu.png
     :align: center
-    :width: 303
+    :width: 342
 
     *New menu entry after successful installation*
 
@@ -155,15 +163,28 @@ Detailed Workflow
 
 - Prepare a character in Character Creator
 
- .. image:: images/cc4-blender-pipeline-source.png
-    :align: center
-    :width: 250
+    .. image:: images/cc4-blender-pipeline-source.png
+        :align: center
+        :width: 250
 
-- Export to Blender either as A-Posed Character (*Mesh Only* option) or In the current character pose (*Current Pose* option); using the menu option Plugins -> Blender Pipeline -> Export Character to Blender (Mesh Only/Current Pose)
+- Open the Blender Pipeline Export Tool (*Plugins -> Blender Pipeline -> Export Character to Blender*).
 
+    .. image:: images/cc4-blender-pipeline-tool.png
+        :align: center
+        
+
+- Export Character either as A-Posed Character (*Mesh Only* option) or In the current character pose (*Current Pose* option). Depending on your requirements (select via the buttons on the top row - the relevant settings will be auto-filled).
+
+    + **Mesh Only: Round Trip Editing -** Export the character as mesh only in the bind pose without animation, with full facial expression data and human IK profile (non-standard),for complete round trip character editing.
+
+    + **Current Pose: Accessory Creation / Replace Mesh -** Export the full character in the current pose, for accessory creation or replacement mesh editing.
+
+..
  .. image:: images/cc4-plugin-menu.png
     :align: center
     :width: 350
+
+- Begin the export by clicking the 'Export Character' button.
     
 - This will immediately prompt for a save location and requires no further settings to be made.  Save to the location of your choice: This will export the character along with a *.fbxkey* file which allows for reimport into Character Creator.
 
@@ -257,35 +278,206 @@ Export For Unity Introduction
 
 The use of Blender as an intermediate between Character Creator and Unity enables the use of Blender's very powerful and varied tool set to directly assist with a Unity project.  It also allows the editing of the character in Blender after it has been imported into Unity - thus allowing changes to be made easily without having to go through all of the normal export/import steps again.
 
-Considerations for Unity
-========================
+Unity Round Trip Workflow
+=========================
 
-The :ref:`CC4 Blender Tools Plugin` is currently unsuitable for use with Unity for the following reasons:
+This simplified workflow describes the *Export from CC to Blender; Manipulation in Blender; Export from Blender into a Unity Project; Further editing in Blender directly from the Unity Project.*
 
-- Hidden Faces
+.. note::
 
-    + Exports that are suitable for the 'Blender Round Trip' will lose their hidden face data, so further export to Unity will require extensive editing in Blender. 
+    This workflow utilizes the :ref:`CC4 Blender Tools Plugin`, `Cc/iC Blender Tools`_ and the CC/iC Unity Tools for the render pipeline used by your project: either `3D`_, `URP`_ or `HDRP`_ (please see the `CC/iC Unity Tools documentation`_ for further details). 
 
-- Cloth Physics Colliders
+- Prepare your character.
 
-    + Blender physics uses mesh colliders rather than primitive colliders (both CC and Unity use primitive colliders) so no primitive collider data is typically exported to Blender.
+- Open the Blender Pipeline Export Tool (*Plugins -> Blender Pipeline -> Export Character to Blender*).
 
-In order to export a character from CC to Blender which is then suitable for Unity, we must export with settings that:
+    .. image:: images/cc4-blender-pipeline-tool-unity.png
+        :align: center
 
-- Preserve hidden faces.
+- Select the 'Blender > Unity' option from the top bar.
 
-- Export the physics colliders.
+    + **Blender to Unity Pipeline:** Export the character with hidden faces removed, skin & hair textures baked and with T-pose bind pose, for editing in Blender before exporting from Blender to Unity.
 
-- Do not embed the textures.
+- Begin the export by clicking the 'Export Character' button.
 
-These are settings (discussed below) which are suitable for *Mesh Only* export to Blender.
+- This will immediately prompt for a save location and requires no further settings to be made. Save to the location of your choice: This will export the character along with a .fbxkey file which allows for reimport into Character Creator.
 
-Unity Friendly Export Options
-=============================
+- Import the character into Blender with a :ref:`Standard Import` procedure.  This will bring the character into Blender in a T-Pose.
 
-As stated above, the basic requirement for the successful use of Blender as an intermediate between Character Creator and Unity is that the hidden face data must be preserved, the physics colliders must be exported and have the correct orientation and that the textures aren't embedded into the fbx export.
+.. figure:: images/tpose_import_for_unity.png
+    :align: center
+    :width: 350
 
-**NB:** If you are prepared to correct mesh penetration problems within Blender yourself, then you can simply use *Plugins -> Blender Pipeline -> Export Character to Blender (Mesh Only)*, otherwise follow the full procedure below. 
+    *Imported Mesh Only in T-Pose (unshaded)*
+
+- Since this is a simplified workflow let us assume some Blender manipulation takes place...
+
+- The Export to Unity function (found in the 'Exporting' section of the Import/Export foldout) can output either a .FBX or a .Blend file
+
+.. figure:: images/mesh_export_to_unity.png
+    :align: center
+
+|
+
+Exporting as a .Blend file
+--------------------------
+
+Whilst it is always possible to export to a directory somewhere in the filesystem, and then `drag that into the unity project`_, you may also **export directly into the Unity project**.  When using a .Blend file this offers some distinct advantages.
+
+    + A link will be made with the export that changes the 'Export to Unity' function into  'Update Unity Project' 
+
+    + .. figure:: images/update_unity.png
+        
+
+    + This allows any changes subsequently made to be transferred into the Unity project with a single click, rather than by doing another export.
+
+    + If the character is re-opened from the Unity project (by double clicking on the .Blend file in the Project explorer window) then any edits made can also be transferred directly back to Unity using the 'Update Unity Project' button this is especially useful when fine tuning things like cloth physics weight maps.
+
+Exporting as FBX
+----------------
+
+This is the universally used standard file format, however no quick access from unity is possible, so the character must be re-exported from blender and then re-imported into Unity if you wish to make subsequent changes.
+
+
+*'Unity Round Trip Workflow' continues...*
+
+- Import the character into Unity (only if it was exported to a folder outside of the unity project) by following the procedure here (`Importing into Unity`_)
+
+- Follow the instructions in `Importing into Unity`_ to correctly import a character into Unity.
+
+- Once the character is either imported for the first time or updated, then you will need to `build the materials`_ as usual to see any effects (mesh changes will be automatic - but its worth rebuilding the character anyway) 
+
+.. figure:: images/tpose_col_face_unity.png
+    :align: center
+    :width: 500
+
+    *Imported into Unity in t-pose with correct physics colliders and hidden faces.*
+
+Please see the `CC/iC Unity Tools Usage`_ documentation for a complete overview of the Unity import procedure.
+
+
+
+Exporting after Rigify
+----------------------
+
+Once rigified *via* the :ref:`Rigify Creation Workflow` the option to export to a .Blend file is no longer available; furthermore it is no longer possible to return the character back to Character Creator.
+
+The central purpose of rigifying the character is to create or edit animations (see the :ref:`Animation` and :ref:`Advanced Animation` sections for more detail), as such these animations should be used either in Blender itself or downstream in Unity.
+
+To transfer any animations from Blender into iClone, then see the `iClone Animation Pipeline`_ webpage for an overview. 
+
+- Rigfy the character (:ref:`Rigify Creation Workflow`), create, retarget or edit animations as needed.
+
+- Depending on your requirements, export character as 'mesh only', 'motion only' or 'mesh and motion'.
+
+    .. list-table::
+        :widths: 2 5
+        :header-rows: 0
+        :align: center
+
+        * - |mesh|
+          - |mechtxt|
+        * - |motion|
+          - |motiontxt|
+        * - |both|
+          - |bothtxt|
+
+.. |mesh|  image:: images/blender-rigify-export-mesh.png
+
+.. |mechtxt| replace::
+    Export only the character mesh without any animation information.
+
+.. |motion| image:: images/blender-rigify-export-motion.png
+
+.. |motiontxt| replace::
+    Export only the armature (skeleton) and any animation information in the **Current Timeline** (for that armature)
+
+.. |both| image:: images/blender-rigify-export-both.png
+
+.. |bothtxt| replace::
+    Export both the character model and any animation in the current timeline.
+
+.. tip:: 
+    
+    **Using Motion Only in Unity:** Should you wish to use a *Motion Only* export in Unity, then some manual adjustment steps must be made before the animation can be properly used (only the *Mesh Only* and *Mesh & Motion* exports can be processed by using the `CC/iC Unity Tools`_ auto-setup).
+
+    - Dragging the exported *Motion Only* .Fbx file into the Unity project.
+
+    - Select it and click on the **'Rig'** selection button in the *Inspector Window* to show the Rig import details tab.
+
+    .. figure:: images/rig-modelimporter-inspector.png
+        :width: 400
+        :align: center
+
+        *Unity Model Import 'Rig' Inspector*
+    
+    - Change the *Animation Type* to **Humanoid** and click 'Apply'.
+
+    - In Blender, the name of the action being exported will look similar to that shown below:
+
+    .. figure:: images/blender-model-action-name.png
+        :align: center
+
+        *Blender Dope Sheet/Action Editor - Action Name*
+
+    - This name will be stripped of all the leading characters up to the final '|' symbol and will appear in the available 'Clips' and 'Source Takes' as shown below in the **'Animation'** details tab: 
+
+    .. figure:: images/animation-modelimporter-inspector.png
+        :width: 400
+        :align: center
+
+        *Unity Model Import 'Animation' Inspector*
+
+    - Enter a suitable name here if desired (press return when finished typing).  Then scroll to the bottom of the inspector window and click 'Apply'.
+
+    - The animation can now be utilized in an animator controller for a Character Creator character.
+
+    Full details of the manual way of importing models into Unity can be found in the Official Unity manual: `Importing models into Unity`_.
+
+    **Please only use the manual import method for 'Motion Only' import.** Otherwise use `CC/iC Unity Tools`_ for full character import.
+
+
+Legacy Documentation For Unity Export
+=====================================
+
+This section is retained for information only and details the considerations that need to be made for export to Unity and the settings that need to be made during a manual (*Export -> FBX -> Clothed Character*) export from Character Creator.
+
+Whilst the information in this section is still valid, **the 'CC4 Blender Tools Plugin' now dramatically simplifies the whole process** and **should be used** instead.
+
+..
+    Considerations for Unity [Legacy]
+    ---------------------------------
+
+    Originally, export via the :ref:`CC4 Blender Tools Plugin` was unsuitable for use with Unity for the following reasons:
+
+    - Hidden Faces
+
+        + Exports that are suitable for the 'Blender Round Trip' will lose their hidden face data, so further export to Unity will require extensive editing in Blender. 
+
+    - Cloth Physics Colliders
+
+        + Blender physics uses mesh colliders rather than primitive colliders (both CC and Unity use primitive colliders) so no primitive collider data is typically exported to Blender.
+
+    In order to export a character from CC to Blender which is then suitable for Unity, we must export with settings that:
+
+    - Preserve hidden faces.
+
+    - Export the physics colliders.
+
+    - Do not embed the textures.
+
+    These are settings (discussed below) which are suitable for *Mesh Only* export to Blender.
+
+Unity Friendly Export Options for Manual Export [Legacy]
+--------------------------------------------------------
+
+..
+    As stated above, 
+
+The basic requirement for the successful use of Blender as an intermediate between Character Creator and Unity is that the hidden face data must be preserved, the physics colliders must be exported and have the correct orientation and that the textures aren't embedded into the fbx export.
+
+..
+    **NB:** If you are prepared to correct mesh penetration problems within Blender yourself, then you can simply use *Plugins -> Blender Pipeline -> Export Character to Blender (Mesh Only)*, otherwise follow the full procedure below. 
 
 **Full Workflow (to preserve hidden faces):** 
 
@@ -375,56 +567,5 @@ As a quick reference, the following settings should be (automatically) set in th
      -  - **Texture Preset**
 
         - **No** Texture Preset
-
-Unity Round Trip Workflow
--------------------------
-
-This simplified workflow describes the *Export from CC to Blender; Manipulation in Blender; Export from Blender into a Unity Project; Further editing in Blender directly from the Unity Project.*
-
-.. note:: 
-    This workflow utilizes both the `Cc/iC Blender Tools`_ and the CC/iC Unity Tools for the render pipeline used by your project: either `3D`_, `URP`_ or `HDRP`_ (please see the `CC/iC Unity Tools documentation`_ for further details). 
-
-- Prepare and export your character using the :ref:`Unity Friendly Export Options`.
-
-- Import the character into Blender with a :ref:`Standard Import` procedure.  This will bring the character into Blender in a T-Pose.
-
-.. figure:: images/tpose_import_for_unity.png
-    :align: center
-    :width: 350
-
-    *Imported Mesh Only in T-Pose (unshaded)*
-
-- Since this is a simplified workflow let us assume some Blender manipulation takes place...
-
-- The Export to Unity function (found in the 'Exporting' section of the Import/Export foldout) can output either a .FBX or a .Blend file
-
-.. figure:: images/mesh_export_to_unity.png
-    :align: center
-
-|
-
-- Whilst it is always possible to export to a directory somewhere in the filesystem, and then `drag that into the unity project`_, you may also **export directly into the Unity project**.  When using a .Blend file this offers some distinct advantages.
-
-    + A link will be made with the export that changes the 'Export to Unity' function into  'Update Unity Project' 
-
-    + .. figure:: images/update_unity.png
-        
-
-    + This allows any changes subsequently made to be transferred into the Unity project with a single click, rather than by doing another export.
-
-    + If the character is re-opened from the Unity project (by double clicking on the .Blend file in the Project explorer window) then any edits made can also be transferred directly back to Unity using the 'Update Unity Project' button.
-
-- Once the character is either imported for the first time or updated, then you will need to `build the materials`_ as usual to see any effects (mesh changes will be automatic - but its worth rebuilding the character anyway) 
-
-.. figure:: images/tpose_col_face_unity.png
-    :align: center
-    :width: 500
-
-    *Imported into Unity in t-pose with correct physics colliders and hidden faces.*
-
-Please see the `CC/iC Unity Tools Usage`_ documentation for a complete overview of the Unity import procedure.
-
-
-
 
 
