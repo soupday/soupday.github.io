@@ -307,6 +307,13 @@ The following dropdown options are available:
 .. |feattxt4| replace::
     **Hair Physics** Will enable hair physics during 'Build Materials' in much the same way that cloth physics is enabled. **Consider this to be highly experimental.** **Warning: this will be VERY detrimental to performance.**
 
+.. |feattxt5| replace::
+    **Spring Bone Hair** This will activate spring bone hair cards (created in Blender) for use with the Dynamic Bone Unity Store Asset package (this will discussed in the Spring Bone Hair section of the documentation.)
+
+.. |feattxt6| replace::
+    **Wrinkle Maps** This flag is set automatically when an eligible character import with the 'CC4 Expression Wrinkle' system enabled, is detected. See the :ref:`Expression Wrinkles` section for more details. 
+
+
 
 .. list-table::
    :widths: 19 31
@@ -336,6 +343,10 @@ The following dropdown options are available:
        |feattxt3|
        |br2|
        |feattxt4|
+       |br2|
+       |feattxt5|
+       |br2|
+       |feattxt6|
 
 |
 

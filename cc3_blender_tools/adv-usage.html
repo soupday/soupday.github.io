@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Animation" href="animation.html" />
+    <link rel="next" title="CC - Blender - Unity Pipeline" href="pipeline.html" />
     <link rel="prev" title="Basic Usage" href="usage.html" /> 
 </head>
 
@@ -44,11 +44,6 @@
 <li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#importing-with-physics">Importing with Physics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#importing">Importing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#morph-editing">Morph Editing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#exporting-a-character-fbx-with-fbxkey-from-character-creator">Exporting a Character FBX with FbxKey (From Character Creator)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exporting-a-character-obj-with-objkey-from-character-creator">Exporting a Character OBJ with ObjKey (From Character Creator)</a></li>
@@ -65,10 +60,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#frame-dropping">Frame Dropping</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">CC - Blender - Unity Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
@@ -103,54 +101,6 @@
              
   <section id="advanced-usage">
 <h1>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permalink to this headline"></a></h1>
-<section id="importing-with-physics">
-<h2>Importing with Physics<a class="headerlink" href="#importing-with-physics" title="Permalink to this headline"></a></h2>
-<section id="importing">
-<h3>Importing<a class="headerlink" href="#importing" title="Permalink to this headline"></a></h3>
-<img alt="_images/physics_selected.png" src="_images/physics_selected.png" />
-<p>When the <em>Physics</em> option is selected in the <strong>Import/Export</strong> panel then when the character is imported, <em>cloth physics</em>, <em>vertex groups</em> and <em>modifiers</em> will be automatically generated for any of the mesh objects &amp; materials that have PhysX weight maps. All of which can be changed at will should you need to.</p>
-<p>Thus, to import a character with physics enabled (highlighted blue), in the <strong>Import/Export</strong> panel follow the procedure for <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> (do not use the standard fbx importer for this).</p>
-<div class="admonition-important-consideration-for-cloth-simulation admonition">
-<p class="admonition-title">Important Consideration For Cloth Simulation</p>
-<p>Always allow Blender to compute the full range of frames for any cloth simulation by playing the whole animation through with no <a class="reference internal" href="#frame-dropping"><span class="std std-ref">Frame Dropping</span></a>.</p>
-<p>This will be initially slow; however this <strong>must</strong> be done in order to cache the cloth calculations.</p>
-<p>Once this is done you may then spool through the animation or enable <a class="reference internal" href="#frame-dropping"><span class="std std-ref">Frame Dropping</span></a> to get closer to real time playback (as much as Blender allows before requiring a re-calculation).</p>
-<p>Failure to do this will cause the cloth simulation to break and behave erratically.</p>
-</div>
-</section>
-<section id="settings">
-<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline"></a></h3>
-<p>The <strong>Physics Settings</strong> panel contains a comprehensive set of controls to adjust the physics parameters of the currently selected object.</p>
-<img alt="_images/physics_settings.png" src="_images/physics_settings.png" />
-<p><strong>Create/Remove</strong></p>
-<ul class="simple">
-<li><p>Add/Remove Cloth Physics: This will add or remove a <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/cloth/index.html">Cloth Physics</a> modifier on the selected object.  This enables/disables full cloth simulation.</p></li>
-<li><p>Add/Remove Collision Physics: This will add or remove a <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/collision.html">Collision Physics</a> modifier on the selected object.  Which will allow cloth objects to collide with mesh objects.</p></li>
-</ul>
-<p><strong>Mesh Correction</strong></p>
-<ul class="simple">
-<li><p>Fix Degenerate Mesh: This will remove degenerate mesh elements from the mesh - this include loose vertices, orphaned edges, zero length edges etc.  The presence of these elements may cause problems with simulation.</p></li>
-<li><p>Separate Physics Materials: This will separate the object by material and apply physics to the separated objects that have weight maps.  This may increase performance where only a small part of an object is simulated.</p></li>
-</ul>
-<p><strong>Presets</strong></p>
-<p>This will impose physics settings on the object that approximate the behavior of the named material (Cotton, Silk etc).</p>
-<p><strong>Cloth Settings</strong> and <strong>Collision Settings</strong> are the standard physics settings used by Blender in the <em>Physics Properties</em> of the standard <em>Properties</em> pane (only presented here for user convenience -  only visible when cloth or collision physics have been applied to the object).</p>
-<p>The example below shows a standard ‘Silk’ preset applied to a dress object during an animation (mesh highlighted for clarity).</p>
-<figure class="align-center" id="id1">
-<img alt="_images/dress_physics.gif" src="_images/dress_physics.gif" />
-<figcaption>
-<p><span class="caption-text"><em>Standard Silk Simulation</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
-<div class="admonition-hair-physics admonition">
-<p class="admonition-title">Hair Physics</p>
-<p>Whilst early versions of hair from Character Creator have properly defined physics properties, certain newer ones may not simulate correctly.  Smart Hair should now simulate correctly (as of version 1.3.6).</p>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</section>
-</section>
 <section id="morph-editing">
 <h2>Morph Editing<a class="headerlink" href="#morph-editing" title="Permalink to this headline"></a></h2>
 <p>This section is to facilitate creating character morph sliders for Character Creator. The typical process is to import a character,
@@ -269,7 +219,7 @@ The <strong>Checksum File</strong> (i.e. the <strong>ObjKey</strong>) should be 
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="usage.html" class="btn btn-neutral float-left" title="Basic Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="animation.html" class="btn btn-neutral float-right" title="Animation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="pipeline.html" class="btn btn-neutral float-right" title="CC - Blender - Unity Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

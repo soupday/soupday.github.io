@@ -50,17 +50,23 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#import-into-blender">Import into Blender</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#standard-import">Standard Import</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#character-settings-panel">Character Settings Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-settings-panel">Build Settings Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-prefs">Build Prefs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#object-material-setup">Object &amp; Material Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rebuild-materials">Rebuild Materials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#material-parameters-panel">Material Parameters Panel</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">CC - Blender - Unity Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
@@ -140,17 +146,30 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 <div class="line"><br /></div>
 </div>
 </section>
-<section id="character-settings-panel">
-<h3>Character Settings Panel<a class="headerlink" href="#character-settings-panel" title="Permalink to this headline"></a></h3>
-<p>In the <strong>Character Settings</strong> panel you can control the way the add-on builds the materials.</p>
-<img alt="_images/character_settings.png" src="_images/character_settings.png" />
+<section id="build-settings-panel">
+<h3>Build Settings Panel<a class="headerlink" href="#build-settings-panel" title="Permalink to this headline"></a></h3>
+<p>In the <strong>Build Settings</strong> panel you can control the way the add-on builds the materials.</p>
+<blockquote>
+<div><img alt="_images/build_settings.png" src="_images/build_settings.png" />
+</div></blockquote>
 <p>Materials can be specifically built for either the Cycles or Eevee renderer, and the type of eye shader can be defined according to your needs.</p>
 <ul class="simple">
 <li><p><strong>Parallax Eyes</strong> use a single cornea material which is not subject to the Eevee engine’s limitations on sub surface scattering and the receiving of shadows.</p></li>
 <li><p><strong>SSR Eyes</strong> (Screen Space Refraction) use a transparent cornea material over an opaque eye (iris) material.  When using Eevee, SSR materials do not receive shadows and do not have subsurface scattering.</p></li>
 </ul>
 <p>Please see the <a class="reference internal" href="eyes.html#eye-refraction"><span class="std std-ref">Eye Refraction</span></a> section for more information.</p>
-<p>Select any imported object to quickly adjust the build object type and material type for any object material.</p>
+</section>
+<section id="build-prefs">
+<h3>Build Prefs<a class="headerlink" href="#build-prefs" title="Permalink to this headline"></a></h3>
+<p>In the <strong>Build Prefs</strong> foldout, a number of miscellaneous settings can be maintained (the overwhelming majority of users should accept the default settings).</p>
+<p>The most notable feature here is the ‘Build Wrinkle Maps’ setting (which is enabled by default).  Should you wish to disable this feature, then uncheck the box and perform a ‘Rebuild Advanced Materials’ (as described below, in <a class="reference internal" href="#rebuild-materials"><span class="std std-ref">Rebuild Materials</span></a>).</p>
+</section>
+<section id="object-material-setup">
+<h3>Object &amp; Material Setup<a class="headerlink" href="#object-material-setup" title="Permalink to this headline"></a></h3>
+<p>In the <strong>Object &amp; Material Setup</strong> panel any imported object can be easily selected to quickly adjust the build object type and material type for any object material.</p>
+<blockquote>
+<div><img alt="_images/object_setup.png" src="_images/object_setup.png" />
+</div></blockquote>
 <p>The add-on attempts to detect the type and purpose of each object and material by analyzing the object and material names for certain keywords. Sometimes it gets this process wrong if the objects or materials have ambiguous names, but the detected settings can be corrected:</p>
 <ul class="simple">
 <li><p>The <strong>Object Type</strong> allows you to specify what type of object and thus how to build the materials for that object.</p></li>
@@ -158,6 +177,9 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 </ul>
 <p>These two settings will allow you to correct any mis-detected materials in the import. Typically only hair and clothing meshes will be (occasionally) wrongly detected.</p>
 <p>The <strong>Basic</strong> and <strong>Advanced</strong> material options determine whether a standard PBR shader is used (i.e. BSDF) or a more complex shader.</p>
+</section>
+<section id="rebuild-materials">
+<h3>Rebuild Materials<a class="headerlink" href="#rebuild-materials" title="Permalink to this headline"></a></h3>
 <p>Once changes have been made to any of the above the <strong>Rebuild Advanced Materials</strong> button must be used to update the materials with the new settings.</p>
 <p>The <strong>Rebuild Node Groups</strong> button will rebuild the shaders in line with the current version of the add-on.  This can be used in cases where you have an old .blend file created with an earlier version of the add-on and you wish to update the shaders to the latest version.  Or you can use it to reset any changes you may have made to the shaders. In either case, after performing a <strong>Rebuild Node Groups</strong> you must then use <strong>Rebuild Advanced Materials</strong> to complete the process.</p>
 <p>Selection of a material in the <strong>Object and Material Setup</strong> pane will show all of the available settings in the <strong>Material Parameters</strong> panel (in much the same way as selection of  the material in the Material Properties tab of the standard Properties panel would).</p>

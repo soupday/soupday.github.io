@@ -60,13 +60,16 @@ This will import the character, set up the materials and (if the **Lighting** se
 
 |
 
-Character Settings Panel
-------------------------
+Build Settings Panel
+--------------------
 
-In the **Character Settings** panel you can control the way the add-on builds the materials.
+In the **Build Settings** panel you can control the way the add-on builds the materials.
 
-.. image:: images/character_settings.png
+  .. image:: images/build_settings.png
 
+..
+  .. image:: images/character_settings.png
+  
 Materials can be specifically built for either the Cycles or Eevee renderer, and the type of eye shader can be defined according to your needs.
 
 - **Parallax Eyes** use a single cornea material which is not subject to the Eevee engine's limitations on sub surface scattering and the receiving of shadows.
@@ -75,7 +78,20 @@ Materials can be specifically built for either the Cycles or Eevee renderer, and
 
 Please see the :ref:`Eye Refraction` section for more information.
 
-Select any imported object to quickly adjust the build object type and material type for any object material.
+Build Prefs
+-----------
+
+In the **Build Prefs** foldout, a number of miscellaneous settings can be maintained (the overwhelming majority of users should accept the default settings).  
+
+The most notable feature here is the 'Build Wrinkle Maps' setting (which is enabled by default).  Should you wish to disable this feature, then uncheck the box and perform a 'Rebuild Advanced Materials' (as described below, in :ref:`Rebuild Materials`).
+
+
+Object & Material Setup
+-----------------------
+
+In the **Object & Material Setup** panel any imported object can be easily selected to quickly adjust the build object type and material type for any object material.
+
+  .. image:: images/object_setup.png
 
 The add-on attempts to detect the type and purpose of each object and material by analyzing the object and material names for certain keywords. Sometimes it gets this process wrong if the objects or materials have ambiguous names, but the detected settings can be corrected:
 
@@ -86,6 +102,9 @@ The add-on attempts to detect the type and purpose of each object and material b
 These two settings will allow you to correct any mis-detected materials in the import. Typically only hair and clothing meshes will be (occasionally) wrongly detected.
 
 The **Basic** and **Advanced** material options determine whether a standard PBR shader is used (i.e. BSDF) or a more complex shader.
+
+Rebuild Materials
+-----------------
 
 Once changes have been made to any of the above the **Rebuild Advanced Materials** button must be used to update the materials with the new settings.
 
