@@ -1,3 +1,11 @@
+.. |br2| raw:: html
+
+   <br /><br />
+
+.. |br| raw:: html
+
+   <br />
+
 ~~~~~~~~~~~~~
  Basic Usage
 ~~~~~~~~~~~~~
@@ -10,13 +18,13 @@ Character Creator
 
 In character creator, make any character you like and dress them up.
 
-.. image:: images/ex1_cc3_char.jpg
-  :width: 600
+  .. image:: images/ex1_cc3_char.jpg
+    :width: 600
 
 Export the character as **FBX (Clothed Character)**. Set the target tool preset to **Blender**, The FBX options to **Mesh and Motion**.
 You can Embed the textures if you want, but it's usually better not to as embedding the textures stores them in the FBX file where you can't access them if you need to. Set the Include Motion to **Current Pose** and tick **Delete Hidden Faces**.
 
-.. image:: images/ex1_export_fbx.jpg
+  .. image:: images/ex1_export_fbx.jpg
 
 |
 
@@ -25,14 +33,14 @@ iClone
 
 In iClone, select the character you wish to export and use the menu option **File -> Export -> Export FBX**
 
-.. image:: images/ex1_iclone_char.png
-    :width: 600
+  .. image:: images/ex1_iclone_char.png
+      :width: 600
 
 Set the target tool to **Blender** the animation range to whatever you need (set to **All** if in doubt).  Leave the default selection of **Embed Textures** and **Delete Hidden Faces**.
 
-.. image:: images/ex1_iclone_export.png
+  .. image:: images/ex1_iclone_export.png
 
-|
+Once the desired settings have been made, then press the 'Export' button to begin the export.
 
 Import into Blender
 ===================
@@ -46,11 +54,54 @@ Standard Import
     
     Instead follow the method below.
 
-In Blender and with a new Blend file, you may need to delete the default cube. Press **N** to show the tools panel and select the **CC/iC Pipeline** Tab. Select the desired **Lighting** option and then import the character by pressing the **Import Character** button under the *Importing* header of the **Import/Export panel**.
+In Blender and with a new Blend file, you may need to delete the default cube. Press **N** to show the tools panel and select the **CC/iC Pipeline** Tab.  A number of settings can be adjusted before you import; please note: **The default settings are fine for general use** and you can :ref:`Begin the Import` with the defaults.
+
+Import Settings
+_______________
+
+The **Core Import Settings** are presented as toggles at the top of the 'Import/Export' pane.
+
+  .. image:: images/core-import-settings.png
+
+The available settings are as follows:
+
+- **Lighting** *(Default: OFF)* - Automatically set up lighting and render settings.
+
+- **Physics** *(Default: OFF)* - Automatically apply physics settings from the Character Creator import. See the :ref:`Adding and Editing Physics` section for more details.
+
+- **Wrinkles** *(Default: ON)* - Automatically generate expression wrinkles for the character if they are available in the export from Character Creator. See the :ref:`Expression Wrinkles` section for more details.
+
+- **Rigify** *(Default: OFF)* - Automatically 'Rigify' the character and retarget any animations in the character import onto the rigified character.  See the :ref:`Animation` section for more details.
+
+.. |importing_foldout| image:: images/importing_foldout.png
+
+**Additional (Optional) Import Settings** are available in the 'Importing' foldout: |importing_foldout|
+
+  .. image:: images/importing_foldout_full.png
+
+- **De-duplicate Materials** *(Default: ON)* -Detects and re-uses duplicate textures and consolidates materials with same name, textures and parameters into a single material.
+
+- **Auto Convert Generic** *(Default: ON)* - When importing generic characters (GLTF, GLB, VRM or OBJ) automatically convert to Reallusion Non-Standard characters or props. Which sets up Reallusion import compatible materials and material parameters.
+
+- **Limit Textures** *(Default: OFF)* - Attempt to limit the number of imported textures to 8 or less. This is to attempt to address problems with OSX hardware limitations allowing only 8 active textures in a material. Note: This will mean the head material will be simpler than intended and no wrinkle map system is possible. Also this will force on texture channel packing to reduce textures on all materials, which will slow down imports significantly.
+
+- **Pack Texture Channels** *(Default: OFF)* - Pack compatible linear texture channels to reduce texture lookups. Note: This will significantly increase import time. Also Note: Wrinkle map textures are always channel packed to reduce texture load.
+
+- **Reuse Channel Packs** *(Default: ON)* - Reuse existing channel packs on material rebuild, otherwise re-bake the texture channel packs.
+
+- **Use Edit Modifier** *(Default: ON)* - Automatically set to use armature modifier in mesh edit mode for all armature modifiers in the character. (i.e. edit in place).
+
+- **Preserve Volume** *(Default: OFF)* - Automatically set use preserve volume for all armature modifiers in the character.
+
+
+Begin the Import
+________________
+
+Select any desired options **(the default options are generally fine)** and then import the character by pressing the **Import Character** button under the *Importing* header of the **Import/Export panel**.
 
 Navigate to where you saved the exported the character from Character Creator or iClone, **select the file** and **click the import button**.  Should you wish to import animations, then leave the *Import Animation* checkbox active in the *file view* where you navigate to the fbx to import.
 
-.. image:: images/import_panel.png
+  .. image:: images/import_panel.png  
 
 This will import the character, set up the materials and (if the **Lighting** setting is enabled) set up some lighting similar to Character Creators default lighting to better view the character in the viewport.
 

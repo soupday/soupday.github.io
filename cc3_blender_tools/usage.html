@@ -49,7 +49,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#import-into-blender">Import into Blender</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#standard-import">Standard Import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standard-import">Standard Import</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#import-settings">Import Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#begin-the-import">Begin the Import</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#build-settings-panel">Build Settings Panel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#build-prefs">Build Prefs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#object-material-setup">Object &amp; Material Setup</a></li>
@@ -65,6 +69,8 @@
 <li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spring-bones.html">Spring Bone Rigging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sprig-bones-blender.html">Spring Bone Usage In Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
@@ -106,10 +112,14 @@
 <section id="character-creator">
 <h3>Character Creator<a class="headerlink" href="#character-creator" title="Permalink to this headline"></a></h3>
 <p>In character creator, make any character you like and dress them up.</p>
-<a class="reference internal image-reference" href="_images/ex1_cc3_char.jpg"><img alt="_images/ex1_cc3_char.jpg" src="_images/ex1_cc3_char.jpg" style="width: 600px;" /></a>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/ex1_cc3_char.jpg"><img alt="_images/ex1_cc3_char.jpg" src="_images/ex1_cc3_char.jpg" style="width: 600px;" /></a>
+</div></blockquote>
 <p>Export the character as <strong>FBX (Clothed Character)</strong>. Set the target tool preset to <strong>Blender</strong>, The FBX options to <strong>Mesh and Motion</strong>.
 You can Embed the textures if you want, but it’s usually better not to as embedding the textures stores them in the FBX file where you can’t access them if you need to. Set the Include Motion to <strong>Current Pose</strong> and tick <strong>Delete Hidden Faces</strong>.</p>
-<img alt="_images/ex1_export_fbx.jpg" src="_images/ex1_export_fbx.jpg" />
+<blockquote>
+<div><img alt="_images/ex1_export_fbx.jpg" src="_images/ex1_export_fbx.jpg" />
+</div></blockquote>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -117,12 +127,14 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 <section id="iclone">
 <h3>iClone<a class="headerlink" href="#iclone" title="Permalink to this headline"></a></h3>
 <p>In iClone, select the character you wish to export and use the menu option <strong>File -&gt; Export -&gt; Export FBX</strong></p>
-<a class="reference internal image-reference" href="_images/ex1_iclone_char.png"><img alt="_images/ex1_iclone_char.png" src="_images/ex1_iclone_char.png" style="width: 600px;" /></a>
+<blockquote>
+<div><a class="reference internal image-reference" href="_images/ex1_iclone_char.png"><img alt="_images/ex1_iclone_char.png" src="_images/ex1_iclone_char.png" style="width: 600px;" /></a>
+</div></blockquote>
 <p>Set the target tool to <strong>Blender</strong> the animation range to whatever you need (set to <strong>All</strong> if in doubt).  Leave the default selection of <strong>Embed Textures</strong> and <strong>Delete Hidden Faces</strong>.</p>
-<img alt="_images/ex1_iclone_export.png" src="_images/ex1_iclone_export.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<blockquote>
+<div><img alt="_images/ex1_iclone_export.png" src="_images/ex1_iclone_export.png" />
+</div></blockquote>
+<p>Once the desired settings have been made, then press the ‘Export’ button to begin the export.</p>
 </section>
 </section>
 <section id="import-into-blender">
@@ -134,9 +146,41 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 <p><strong>Do Not</strong> use the standard blender FBX importer to import characters from iClone or Character Creator. You will encounter all of the numerous problems which initially prompted the creation of this add-on.</p>
 <p>Instead follow the method below.</p>
 </div>
-<p>In Blender and with a new Blend file, you may need to delete the default cube. Press <strong>N</strong> to show the tools panel and select the <strong>CC/iC Pipeline</strong> Tab. Select the desired <strong>Lighting</strong> option and then import the character by pressing the <strong>Import Character</strong> button under the <em>Importing</em> header of the <strong>Import/Export panel</strong>.</p>
+<p>In Blender and with a new Blend file, you may need to delete the default cube. Press <strong>N</strong> to show the tools panel and select the <strong>CC/iC Pipeline</strong> Tab.  A number of settings can be adjusted before you import; please note: <strong>The default settings are fine for general use</strong> and you can <a class="reference internal" href="#begin-the-import"><span class="std std-ref">Begin the Import</span></a> with the defaults.</p>
+<section id="import-settings">
+<h4>Import Settings<a class="headerlink" href="#import-settings" title="Permalink to this headline"></a></h4>
+<p>The <strong>Core Import Settings</strong> are presented as toggles at the top of the ‘Import/Export’ pane.</p>
+<blockquote>
+<div><img alt="_images/core-import-settings.png" src="_images/core-import-settings.png" />
+</div></blockquote>
+<p>The available settings are as follows:</p>
+<ul class="simple">
+<li><p><strong>Lighting</strong> <em>(Default: OFF)</em> - Automatically set up lighting and render settings.</p></li>
+<li><p><strong>Physics</strong> <em>(Default: OFF)</em> - Automatically apply physics settings from the Character Creator import. See the <a class="reference internal" href="create.html#adding-and-editing-physics"><span class="std std-ref">Adding and Editing Physics</span></a> section for more details.</p></li>
+<li><p><strong>Wrinkles</strong> <em>(Default: ON)</em> - Automatically generate expression wrinkles for the character if they are available in the export from Character Creator. See the <a class="reference internal" href="expression-wrinkles.html#expression-wrinkles"><span class="std std-ref">Expression Wrinkles</span></a> section for more details.</p></li>
+<li><p><strong>Rigify</strong> <em>(Default: OFF)</em> - Automatically ‘Rigify’ the character and retarget any animations in the character import onto the rigified character.  See the <a class="reference internal" href="animation.html#animation"><span class="std std-ref">Animation</span></a> section for more details.</p></li>
+</ul>
+<p><strong>Additional (Optional) Import Settings</strong> are available in the ‘Importing’ foldout: <img alt="importing_foldout" src="_images/importing_foldout.png" /></p>
+<blockquote>
+<div><img alt="_images/importing_foldout_full.png" src="_images/importing_foldout_full.png" />
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>De-duplicate Materials</strong> <em>(Default: ON)</em> -Detects and re-uses duplicate textures and consolidates materials with same name, textures and parameters into a single material.</p></li>
+<li><p><strong>Auto Convert Generic</strong> <em>(Default: ON)</em> - When importing generic characters (GLTF, GLB, VRM or OBJ) automatically convert to Reallusion Non-Standard characters or props. Which sets up Reallusion import compatible materials and material parameters.</p></li>
+<li><p><strong>Limit Textures</strong> <em>(Default: OFF)</em> - Attempt to limit the number of imported textures to 8 or less. This is to attempt to address problems with OSX hardware limitations allowing only 8 active textures in a material. Note: This will mean the head material will be simpler than intended and no wrinkle map system is possible. Also this will force on texture channel packing to reduce textures on all materials, which will slow down imports significantly.</p></li>
+<li><p><strong>Pack Texture Channels</strong> <em>(Default: OFF)</em> - Pack compatible linear texture channels to reduce texture lookups. Note: This will significantly increase import time. Also Note: Wrinkle map textures are always channel packed to reduce texture load.</p></li>
+<li><p><strong>Reuse Channel Packs</strong> <em>(Default: ON)</em> - Reuse existing channel packs on material rebuild, otherwise re-bake the texture channel packs.</p></li>
+<li><p><strong>Use Edit Modifier</strong> <em>(Default: ON)</em> - Automatically set to use armature modifier in mesh edit mode for all armature modifiers in the character. (i.e. edit in place).</p></li>
+<li><p><strong>Preserve Volume</strong> <em>(Default: OFF)</em> - Automatically set use preserve volume for all armature modifiers in the character.</p></li>
+</ul>
+</section>
+<section id="begin-the-import">
+<h4>Begin the Import<a class="headerlink" href="#begin-the-import" title="Permalink to this headline"></a></h4>
+<p>Select any desired options <strong>(the default options are generally fine)</strong> and then import the character by pressing the <strong>Import Character</strong> button under the <em>Importing</em> header of the <strong>Import/Export panel</strong>.</p>
 <p>Navigate to where you saved the exported the character from Character Creator or iClone, <strong>select the file</strong> and <strong>click the import button</strong>.  Should you wish to import animations, then leave the <em>Import Animation</em> checkbox active in the <em>file view</em> where you navigate to the fbx to import.</p>
-<img alt="_images/import_panel.png" src="_images/import_panel.png" />
+<blockquote>
+<div><img alt="_images/import_panel.png" src="_images/import_panel.png" />
+</div></blockquote>
 <p>This will import the character, set up the materials and (if the <strong>Lighting</strong> setting is enabled) set up some lighting similar to Character Creators default lighting to better view the character in the viewport.</p>
 <ul class="simple">
 <li><p>You can hide the Armature if it’s getting in the way.</p></li>
@@ -145,6 +189,7 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+</section>
 </section>
 <section id="build-settings-panel">
 <h3>Build Settings Panel<a class="headerlink" href="#build-settings-panel" title="Permalink to this headline"></a></h3>

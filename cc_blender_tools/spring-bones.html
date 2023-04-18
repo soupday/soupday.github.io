@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spring Bone Rigging &mdash; CC/iC Blender Tools 1.3.8 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Spring Bone Usage In Blender" href="sprig-bones-blender.html" />
+    <link rel="prev" title="Expression Wrinkles" href="expression-wrinkles.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">CC - Blender - Unity Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Spring Bone Rigging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#blender-spring-bone-workflow">Blender Spring Bone Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparation-and-import">Preparation and Import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-spring-rig">Creating the ‘Spring Rig’</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hair-card-method-basic-workflow">Hair Card Method: Basic workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grease-pencil-method-basic-workflow">Grease Pencil Method: Basic Workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grease-pencil-method-advanced-workflow">Grease Pencil Method: Advanced Workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-placement-method-basic-workflow">Custom Placement Method: Basic workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#weight-painting-the-spring-rig">Weight Painting the Spring Rig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#weighting-variance">Weighting Variance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exporting-to-unity">Exporting to Unity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exporting-back-to-character-creator">Exporting back to Character Creator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sprig-bones-blender.html">Spring Bone Usage In Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Spring Bone Rigging</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/spring-bones.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spring-bone-rigging">
+<h1>Spring Bone Rigging<a class="headerlink" href="#spring-bone-rigging" title="Permalink to this headline"></a></h1>
+<p>Spring Bones are a convenient means of adding physics elements to a character.  When used in a real time engine such as <strong>Unity</strong>, they offer a performance friendly means of doing real-time physics simulation that would otherwise be detrimental to performance.</p>
+<p>The examples discussed below involve the use-case of:</p>
+<p><em>Setup</em></p>
+<ul class="simple">
+<li><p>Import of a character with a hairstyle from Character Creator.</p></li>
+<li><p>The addition of weighted bones in Blender to control parts of the hair.</p></li>
+</ul>
+<p><em>Usage</em></p>
+<ul class="simple">
+<li><p>Exort of the character along with the spring bones to Unity for usage with either the <a class="reference external" href="https://assetstore.unity.com/packages/tools/animation/dynamic-bone-16743">Dynamic Bone</a> or <a class="reference external" href="https://assetstore.unity.com/packages/tools/physics/magica-cloth-2-242307">Magica Cloth 2</a> add-ons for physics simulation.</p></li>
+<li><p>Re-Export of the spring bones back to Character Creator (with some significant limitations).  <em>Please note</em> that whilst Dynamic Bone will only do spring bone simulation, Magica Cloth will do both Spring Bone <em>and</em> Cloth simulation and as such, offers a high performance alternative to the built in Unity Cloth Physics.</p></li>
+</ul>
+<p><em>Further Usage</em></p>
+<ul class="simple">
+<li><p>Spring bones can also be utilized in Blender where the physics simulation utilizes a ‘Rigid Body World’ type simulation; please see the <a class="reference internal" href="sprig-bones-blender.html#spring-bone-usage-in-blender"><span class="std std-ref">Spring Bone Usage In Blender</span></a> section of the documentation for more details.</p></li>
+</ul>
+<section id="blender-spring-bone-workflow">
+<h2>Blender Spring Bone Workflow<a class="headerlink" href="#blender-spring-bone-workflow" title="Permalink to this headline"></a></h2>
+<section id="preparation-and-import">
+<h3>Preparation and Import<a class="headerlink" href="#preparation-and-import" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Prepare a suitable character in Character Creator which contains objects you wish to perform spring bone physics simulation on (in <strong>Unity</strong>).</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<img alt="_images/cc-spring-char.png" src="_images/cc-spring-char.png" />
+<figcaption>
+<p><span class="caption-text"><em>Example character with a ponytail hairstyle</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>To setup spring bones for Unity:</strong> Export the character using the <a class="reference internal" href="pipeline.html#cc4-blender-tools-plugin"><span class="std std-ref">CC4 Blender Tools Plugin</span></a> add on for CC4 (see link for details; The plugin is available here <a class="reference external" href="https://github.com/soupday/CC4-Blender-Tools-Plugin">CC4 Blender Tools Plugin</a>) using the <a class="reference internal" href="pipeline.html#round-trip-export-for-unity"><span class="std std-ref">Round Trip Export For Unity</span></a> export options.</p></li>
+</ul>
+<figure class="align-center" id="id2">
+<img alt="_images/cc-spring-export-dia.png" src="_images/cc-spring-export-dia.png" />
+<figcaption>
+<p><span class="caption-text"><em>Round trip export options for Unity destination</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>To setup spring bones for Character Creator:</strong>  Export the character using the <a class="reference internal" href="pipeline.html#cc4-blender-tools-plugin"><span class="std std-ref">CC4 Blender Tools Plugin</span></a> add on for CC4 (see link for details; The plugin is available here <a class="reference external" href="https://github.com/soupday/CC4-Blender-Tools-Plugin">CC4 Blender Tools Plugin</a>) using the <a class="reference internal" href="pipeline.html#blender-round-trip-workflow"><span class="std std-ref">Blender Round Trip Workflow</span></a> export options. <br /><br /></p></li>
+<li><p>Import the character into Blender with the <a class="reference external" href="https://github.com/soupday/cc_blender_tools">CC/iC Blender Tools</a>  using the <a class="reference internal" href="usage.html#standard-import"><span class="std std-ref">Standard Import</span></a> procedure.</p></li>
+<li><p>Once the character is imported, then new bones can be added with the tools in the ‘Spring Rig’ panel of the <strong>‘CC/iC Create’</strong> tab of the <a class="reference external" href="https://github.com/soupday/cc_blender_tools">CC/iC Blender Tools</a>.</p></li>
+</ul>
+<img alt="_images/bl-spring-rig-pane.png" class="align-center" src="_images/bl-spring-rig-pane.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="creating-the-spring-rig">
+<h3>Creating the ‘Spring Rig’<a class="headerlink" href="#creating-the-spring-rig" title="Permalink to this headline"></a></h3>
+<p>The ‘Spring Rig’ is essentially an extension of the existing character skeleton which when complete will only exert influence on the hair objects of the character.</p>
+<p>The end use target application for the spring bones can currently be either <strong>Character Creator</strong> or <strong>Unity</strong> (A spring bone solution for dynamic animation in Blender is currently WIP).  The correct end-use case should be set using the ‘Hair Spring Rig’ switch in the ‘Spring Rig’ pane of the <strong>‘CC/iC Create’</strong> tab.</p>
+<img alt="_images/cc4-unity-switch.png" class="align-center" src="_images/cc4-unity-switch.png" />
+<p><br /> Three principal methods for adding new bones to the character are available:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="bones_from_card" src="_images/bl-bones-from-card.png" /></p></td>
+<td><p><strong>Hair Card Method:</strong> Spring Bones are programmatically added to individual ‘Hair Cards’ (i.e. individual polygon strips that are commonly used to represent groups of individual hairs in 3D hair models).</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="bones_from_pencil" src="_images/bl-bones-from-pencil.png" /></p></td>
+<td><p><strong>Grease Pencil Method:</strong> Spring Bones are programmatically added that follow the path of lines drawn on the model surface with the Blender <a class="reference external" href="https://docs.blender.org/manual/en/latest/grease_pencil/index.html">Grease Pencil</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="bones_custom" src="_images/bl-bones-custom.png" /></p></td>
+<td><p><strong>Custom Placement Method:</strong> Bones can be added (again as part of the character skeleton) and subsequently positioned and extended by hand.</p></td>
+</tr>
+</tbody>
+</table>
+<p>All of these methods can be used simultaneously, should you wish to. The structure of the hair mesh is perhaps the largest determining factor in which method to use.</p>
+<ul class="simple">
+<li><p>If the hair mesh contains obvious and clearly defined hair cards, then adding bones to individual hair cards will be a simple process.</p></li>
+</ul>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/cc-hair-card-type.png"><img alt="cc_card" src="_images/cc-hair-card-type.png" style="width: 300px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/bl-hair-card-type.png"><img alt="bl_card" src="_images/bl-hair-card-type.png" style="width: 300px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Character Creator hairstyle containing hair cards.</p></td>
+<td><p>Blender view with very clearly defined hair cards. <strong>Suitable for the ‘Hair Card’ method</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>On the other hand if any hair cards are poorly defined (or absent), then use of the grease pencil will be more productive.</p></li>
+</ul>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/cc-pencil-type.png"><img alt="cc_pencil" src="_images/cc-pencil-type.png" style="width: 300px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/bl-pencil-type.png"><img alt="bl_pencil" src="_images/bl-pencil-type.png" style="width: 300px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Character Creator hairstyle with a dense mesh (made from hair cards).</p></td>
+<td><p>Blender view of the mesh with a higher density hair card structure. <strong>Suitable for the ‘Grease Pencil’ method</strong>.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Trianglulated meshes can present some problems in determining how to place any spring bone chains, since the ‘direction’ of the hair can only be estimated from the mesh.  This may require initial placement with the grease pencil or manual placement, followed by manual adjustment as needed by the mesh.</p></li>
+</ul>
+<section id="hair-card-method-basic-workflow">
+<h4>Hair Card Method: Basic workflow<a class="headerlink" href="#hair-card-method-basic-workflow" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p><img alt="bones_from_card" src="_images/bl-bones-from-card.png" /></p></li>
+</ul>
+<p>The principal requirement for adding bones to hair cards is that you must enter ‘<strong>Edit Mode</strong>’ for the hair object and use ‘<strong>Face Selection Mode</strong>’.  So the (highlighted) icons below should be shown at the top of the viewport window.</p>
+<img alt="_images/bl-edit-face-select.png" class="align-center" src="_images/bl-edit-face-select.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>In Edit Mode + Face Selection Mode, simply select one face on the hair card:</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/bl-edit-face-selected-card.png"><img alt="_images/bl-edit-face-selected-card.png" src="_images/bl-edit-face-selected-card.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Single face selected on the hair card</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Set the parameters for the desired <em>Bone Length</em> (shorter lengths will create more bones to fill out the length of the hair card); <em>Skip Length</em> the distance from the start of the hair card that you want the initial bone to be placed at; <em>Truncate Length</em> the distance from the <em>end</em> of the hair card to <em>stop</em> generating bones; <em>Smoothing Steps</em> how much smoothing to apply to the curve generated from the grease pencil stroke or the actual hair card.</p></li>
+</ul>
+<img alt="_images/bl-add-bone-parameters.png" class="align-center" src="_images/bl-add-bone-parameters.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Press the ‘Bones from Cards’ <img alt="bones_from_card" src="_images/bl-bones-from-card.png" /> button to add a set of spring bones along the hair card using the above parameters for bone length and initial positioning.</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/bl-edit-face-added-bone-card.png"><img alt="_images/bl-edit-face-added-bone-card.png" src="_images/bl-edit-face-added-bone-card.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Spring Bones added along the hair card</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Should you wish to adjust the parameters, then (with the hair card still selected) simply edit the values as needed and click on ‘Bones from Cards’ and the spring bones will be recreated with the new parameter values.</p></li>
+<li><p>Bones, bone weights and even grease pencil marks may also be easily removed using the ‘Clear’ buttons - this can be specifically performed for either ‘All Bones/Cards’ or ‘Selected Bones/Cards’ using the provided selection toggles.  The last added bones are automatically selected by default - to change or extend the selection then enter ‘Edit Mode’ for the bone object and select any single bone of a spring bone chain to include it in the selection.  Hair cards must also be selected/deselected in ‘Edit Mode’.</p></li>
+</ul>
+<figure class="align-center" id="id5">
+<img alt="_images/clear-functions.png" src="_images/clear-functions.png" />
+<figcaption>
+<p><span class="caption-text"><em>‘Clear’ Buttons</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Spring Bones can be added to as many or few hair cards as you require (you <strong>DO NOT</strong> need to to add bones to every hair card).</p>
+</section>
+<section id="grease-pencil-method-basic-workflow">
+<h4>Grease Pencil Method: Basic Workflow<a class="headerlink" href="#grease-pencil-method-basic-workflow" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p><img alt="bones_from_pencil" src="_images/bl-bones-from-pencil.png" /></p></li>
+</ul>
+<p>Using the grease pencil method to add bones to the ‘spring rig’ is extremely simple.  The basic requirement is that a single stroke (line) is drawn on the surface of the model to represent each bone chain that will be added.  Any number of bone chains can be added by this method.</p>
+<ul class="simple">
+<li><p>In order to draw a grease pencil stroke onto the surface of the model, you must be in ‘Object Mode’ and the ‘Grease Pencil - Annotate’ tool active (set in the left hand side tool bar)</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<img alt="_images/bl-grease-annotate.png" src="_images/bl-grease-annotate.png" />
+<figcaption>
+<p><span class="caption-text"><em>Grease Pencil - Annotate mode</em></span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>In the grease pencil tool strip at the top of the viewport set the ‘Placement’ to ‘Surface’ and check the ‘Stabilize Stroke’ box.</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<img alt="_images/bl-grease-settings.png" src="_images/bl-grease-settings.png" />
+<figcaption>
+<p><span class="caption-text"><em>Grease Pencil - Settings</em></span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The grease pencil can be easily activated with the above settings by clicking on the grease pencil icon <img alt="grease_button" src="_images/grease_button_active.png" /> (shown highlighted) in the mini tool strip of the spring rig pane.</p>
+<p>Once you are finished with the grease pencil, then click the button again to deactivate it.  This return the active tool to ‘Select Box’.</p>
+</div>
+<ul class="simple">
+<li><p>draw a stroke onto the model in the position that you want to place a chain of bones</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<img alt="_images/bl-drawn-grease-stroke.png" src="_images/bl-drawn-grease-stroke.png" />
+<figcaption>
+<p><span class="caption-text"><em>Drawn Grease Pencil Stroke</em></span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>After drawing the stroke you have the opportunity to change the color of the stroke by clicking on the ‘Annotation’ color in the grease pencil tool strip.</p></li>
+</ul>
+<figure class="align-center" id="id9">
+<img alt="_images/bl-grease-annotation-color.png" src="_images/bl-grease-annotation-color.png" />
+<figcaption>
+<p><span class="caption-text"><em>Annotation Color Settings</em></span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The drawn stroke can now be converted into a chain of bones according to the parameters for the desired Bone Length (shorter lengths will create more bones to fill out the length of the hair card) and Skip Length: the distance from the start of the hair card that you want the initial bone to be placed at.</p></li>
+</ul>
+<img alt="_images/bl-add-bone-parameters.png" class="align-center" src="_images/bl-add-bone-parameters.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Press the ‘Bones from Cards’ <img alt="bones_from_pencil" src="_images/bl-bones-from-pencil.png" /> button to add a set of spring bones along the grease pencil stroke using the above parameters for bone length and initial positioning.</p></li>
+</ul>
+<figure class="align-center" id="id10">
+<img alt="_images/bl-grease-added-bone-chain.png" src="_images/bl-grease-added-bone-chain.png" />
+<figcaption>
+<p><span class="caption-text"><em>Bone chain added along grease pencil mark</em></span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>After the addition of the bone chain, the grease pencil stroke can be removed and a new one drawn to continue the bone adding process.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Any generated bones can easily be repositioned in ‘Edit Mode’ if the auto-generated position is for any reason unacceptable.</p>
+</div>
+</section>
+<section id="grease-pencil-method-advanced-workflow">
+<h4>Grease Pencil Method: Advanced Workflow<a class="headerlink" href="#grease-pencil-method-advanced-workflow" title="Permalink to this headline"></a></h4>
+<p>The grease pencil can be used in a more sophisticated way where multiple annotations can be placed in their own <a class="reference external" href="https://docs.blender.org/manual/en/latest/interface/annotate_tool.html#annotation-layers">annotation layers</a> or ‘Notes’ and then the bones can be generated for selected layers.  This avoids either having to remove exiting grease pencil strokes when using different settings for different bones.</p>
+<p>The annotation layers can be accessed as follows:</p>
+<ul class="simple">
+<li><p>Activate the annotation tool when in object mode.</p></li>
+</ul>
+<figure class="align-center" id="id11">
+<img alt="_images/bl-grease-annotate.png" src="_images/bl-grease-annotate.png" />
+<figcaption>
+<p><span class="caption-text"><em>Grease Pencil - Annotate mode</em></span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>In the grease pencil tool strip at the top of the viewport set the ‘Placement’ to ‘Surface’ and check the ‘Stabilize Stroke’ box.</p></li>
+<li><p>Draw the initial stroke onto the model (this step will allow access to annotation layers).</p></li>
+<li><p>After the first stroke is drawn, a ‘Note’ dropdown menu will appear in the top tool strip - click that to manage the annotation layers.</p></li>
+</ul>
+<img alt="_images/bl-annotation-layers-drop.png" class="align-center" src="_images/bl-annotation-layers-drop.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>The annotation layers can also be managed from the ‘Active Tool’ pane of the sidebar ‘Tool’ tab (accessed by pressing the <strong>N</strong> key).</p></li>
+</ul>
+<img alt="_images/bl-tool-annotate.png" class="align-center" src="_images/bl-tool-annotate.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Add a new layer to the annotations with the ‘+’ button. Each layer can have a different color if desired.</p></li>
+</ul>
+<img alt="_images/bl-new-annotate-layer.png" class="align-center" src="_images/bl-new-annotate-layer.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>With the new layer selected, new strokes can be drawn onto the model.</p></li>
+<li><p>The <img alt="bones_from_pencil" src="_images/bl-bones-from-pencil.png" /> button will now only generate bone chains for grease pencil strokes that are in the currently selected layer.</p></li>
+</ul>
+<p>grease pencil annotation layers - work in object mode so the bones can be selected
+discuss the selection toggles and their power - quick access to notes</p>
+</section>
+<section id="custom-placement-method-basic-workflow">
+<h4>Custom Placement Method: Basic workflow<a class="headerlink" href="#custom-placement-method-basic-workflow" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p><img alt="bones_custom" src="_images/bl-bones-custom.png" /></p></li>
+</ul>
+<p>A custom bone may be added at any time (in <em>Edit Mode</em> or <em>Object Mode</em>) by clicking on the ‘Add Custom Bone’ button. This will immediately enter edit mode for the skeleton and only display the spring rig bones (the original main skeleton bones are in a layer whose visibility is toggled off) along with the character. The newly added bone will be automatically selected.</p>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="_images/bl-added-custom-bone.png"><img alt="_images/bl-added-custom-bone.png" src="_images/bl-added-custom-bone.png" style="width: 176px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Newly added bone</em></span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>To conveniently position the bone on the character, use ‘Face Project’ snapping (selected from the top bar snapping tool)</p>
+<figure class="align-center" id="id13">
+<img alt="_images/bl-face-snap.png" src="_images/bl-face-snap.png" />
+<figcaption>
+<p><span class="caption-text"><em>Face Project snapping</em></span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now when selecting and dragging the bone tips, they should snap to the projected surface of the character. Extending the bone chain with <strong>E</strong> will then allow easy positioning on the model surface.</p>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="_images/bl-snapped-extended-bones.png"><img alt="_images/bl-snapped-extended-bones.png" src="_images/bl-snapped-extended-bones.png" style="width: 196px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Extended bone chain placed with surface snapping</em></span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="bone-visibility">
+<h5>Bone Visibility<a class="headerlink" href="#bone-visibility" title="Permalink to this headline"></a></h5>
+<p>The visibility of the added spring bones and the original skeleton bones can be toggled through use of the visibility toggle <img alt="visibility" src="_images/vis-toggle.png" />. The appearance of the bones can be cycled through using the bone style button <img alt="envelope" src="_images/vis-envelope.png" />.</p>
+</section>
+</section>
+</section>
+<section id="weight-painting-the-spring-rig">
+<h3>Weight Painting the Spring Rig<a class="headerlink" href="#weight-painting-the-spring-rig" title="Permalink to this headline"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before beginning weight painting, please ensure that the correct end-use case is set using the ‘Hair Spring Rig’ switch in the ‘Spring Rig’ pane.</p>
+<img alt="_images/cc4-unity-switch.png" class="align-center" src="_images/cc4-unity-switch.png" />
+</div>
+<p>Once the bones have been added to the spring rig, their influence can be automatically weight painted onto the appropriate hair mesh (or meshes) using the ‘Bind Hair’ button (with the hair object or objects selected).</p>
+<img alt="_images/bl-bind-hair.png" class="align-center" src="_images/bl-bind-hair.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In the case of a single hair object, then that object must be selected in ‘Object Mode’ before pressing ‘Bind Hair’.  When there are multiple hair objects, then each object that you wish to paint influence onto must be multiple selected (shift + select) before using ‘Bind Hair’.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the weight painting is done programmatically, the algorithm used can identify the hair card structure and weight paint the bone influences in such a way that <strong>the hair cards will not be stretched when deformed</strong>.  This will greatly minimize stretching distortion and look much more like real hair.</p>
+</div>
+<p>The selected hair object will be weight painted according to the user defined parameters below:</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="bind-params" src="_images/bl-bind-hair-params.png" /></p></td>
+<td><p><strong>Bind Radius</strong> - How wide a radius around the bones should the hair cards bind vertex weights to.
+<br /><br />
+<strong>Bind Bones</strong> - How many neighboring bones should each hair card bind to. Note: More bones may produce smoother results but add to the overall mesh skinning performance cost.
+<br /><br />
+<strong>Weight Scale</strong> - How much to scale the generated weights by.
+<br /><br />
+<strong>Weight Curve</strong> - How to fade in the bone weights of each hair card from root to ends. Larger values ( &gt; 1.0) will push the weights down closer to the ends. Smaller values ( &lt; 1.0) will push the weights up closer to the roots”
+<br /><br />
+<strong>Weight Variance</strong> - How much random variation in the generated weights. Less variance will cause all the hair cards to the follow the bones more closely. More variance will cause a wider spread of the cards as the bones move which gives the appearance of more volume.
+<br /><br />
+<strong>Smoothing</strong> - How much to smooth the generated weights after binding
+<br /><br />
+<strong>Random Seed</strong> - The random seed for generating the weight variance. The same seed should produce the same results each time.
+<br /><br />
+<strong>Scale Body Weights</strong> - How much to scale any existing body weights on the hair.
+<strong>Note:</strong> The spring bones vertex weights will compete with the body vertex weights.
+Scaling the body weights back (&lt; 1.0) will allow the hair to follow the spring bones more closely but will then conform less to the body.
+<br /><br />
+<strong>Warning:</strong> This change will permanently alter the original body weights on the hair meshes.
+After binding, this value resets to 1.0 to prevent successive weight scaling.
+Setting this to zero will remove all body and other weights from the hair mesh.</p></td>
+</tr>
+</tbody>
+</table>
+<p>After binding, the bones will be shown in ‘Pose Mode’ where the results of the binding can be explored. The binding results can be best seen if you set the ‘Transform Pivot Point’ to Individual Origins (shown below). When rotating, this setting will obey the connectivity of the selected bones in the chain and effectively cause the chain to ‘curl’ as opposed to moving as one static object.</p>
+<img alt="_images/bl-transform-pivot.png" class="align-center" src="_images/bl-transform-pivot.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>It is recommended that for each bone chain created, select all the bones (in ‘Pose Mode’ select one bone then press Shift + L to select all linked) and rotate them (<strong>R</strong> key - and restrict axes with the x,y or z  keys) to see the subsequent mesh deformation.</p>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="_images/bound-bone-rotate.gif"><img alt="_images/bound-bone-rotate.gif" src="_images/bound-bone-rotate.gif" style="width: 289px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Hair deformation with single bone chain (single sample viewport)</em></span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="weighting-variance">
+<h3>Weighting Variance<a class="headerlink" href="#weighting-variance" title="Permalink to this headline"></a></h3>
+<p>The ‘Weight Variance’ value used in the hair binding can have a very pronounced effect.  This weight paints each hair card slightly differently, so that any bone movement will have a different effect on each ‘strand’ or rather ‘group of strands’.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Individual hair cards are programmatically weight painted with equal weights laterally across the width of the card - so that they aren’t stretched by bone movement. When combined with each card being painted differently, this produces a very natural looking range of motion of groups of hair strands (represented by a hair card).</p>
+</div>
+<ul class="simple">
+<li><p>A low ‘Weight Variance’ value will produce a weighting where all of the hair cards are similarly weighted and mill be ‘moved together’ by the deforming bones.</p></li>
+<li><p>A high ‘Weight Variance’ value will produce a weighting where the hair cards are weighted very differently, meaning that they will be moved quite differently from each other by the deforming bones.</p></li>
+</ul>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="low-var-gif" src="_images/low-variance-binding.gif" /></p></td>
+<td><p><img alt="high-var-gif" src="_images/high-variance-binding.gif" /></p></td>
+</tr>
+<tr class="row-even"><td><p>Low Variance (0.05) - All of the hair cards move together as the bone chain deforms the mesh.</p></td>
+<td><p>High Variance (0.95) - The hair cards are now moved to differing extents (without stretching) as the bone chain deforms the mesh.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The video below is a render of the spring bone simulation with a single spring bone chain deforming the ponytail - being acted on by a variable force field.  The hair is weighted to the bone chain with a weight variance of 0.75 (default). <em>This illustrates that quite complex and subtle motion can be created even when only a single bone chain is being used</em>.</p>
+<p><video width="695" controls loop = true muted = true src="_static/weight variance example.mp4"></video></p>
+</section>
+<section id="exporting-to-unity">
+<h3>Exporting to Unity<a class="headerlink" href="#exporting-to-unity" title="Permalink to this headline"></a></h3>
+<p>Prior to ‘Rigifying’ the character, export of the character + spring rig can be performed using the ‘Export to Unity’ button in the Import/Export foldout of the CC/iC Pipeline Tab. This allows <a class="reference internal" href="pipeline.html#exporting-as-a-blend-file"><span class="std std-ref">Exporting as a .Blend file</span></a> or <a class="reference internal" href="pipeline.html#exporting-as-fbx"><span class="std std-ref">Exporting as FBX</span></a> (follow the links for the relevant documentation sections).</p>
+<p>After ‘Rigifying’, the character + spring rig can only be exported using the Mesh/Motion Export function - outlined in the <a class="reference internal" href="pipeline.html#exporting-after-rigify"><span class="std std-ref">Exporting after Rigify</span></a> section of the documentation. This will produce a Unity compatible export.</p>
+<p>In the case of a character which has simply had a ‘spring rig’ created &amp; weighted, and then exported: The exportted character + spring bone rig can be used in unity provided that the  <a class="reference external" href="https://assetstore.unity.com/packages/tools/animation/dynamic-bone-16743">Dynamic Bone</a> package is installed into the Unity project.</p>
+</section>
+<section id="exporting-back-to-character-creator">
+<h3>Exporting back to Character Creator<a class="headerlink" href="#exporting-back-to-character-creator" title="Permalink to this headline"></a></h3>
+<p>Returning a character with added spring bones to CC4 can have some significant complicating factors.</p>
+<ul class="simple">
+<li><p>When returned to CC4, the hair rig is treated as a separate accessory object.  This separate object is pinned to its original position on the character.</p></li>
+<li><p>The accessory object will no longer obey deformation from the original skeleton; only deformation from the hair rig.</p></li>
+<li><p>The hair may then be deformed in unpredictable ways, most likely resulting in unacceptably poor positioning of the hair.</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you wish to have any part of a character’s hair governed by spring bones, then limit those parts to already separate objects which do not move dynamically - such as a Ponytail.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="expression-wrinkles.html" class="btn btn-neutral float-left" title="Expression Wrinkles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sprig-bones-blender.html" class="btn btn-neutral float-right" title="Spring Bone Usage In Blender" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

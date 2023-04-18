@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spring Bone Usage In Blender &mdash; CC/iC Blender Tools 1.3.8 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Scene Tools" href="scene.html" />
+    <link rel="prev" title="Spring Bone Rigging" href="spring-bones.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Blender Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Basic Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">CC - Blender - Unity Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spring-bones.html">Spring Bone Rigging</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Spring Bone Usage In Blender</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#blender-dynamic-animation">Blender Dynamic Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rigify-with-spring-rigs">Rigify with Spring Rigs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rigify-workflow-for-spring-bones">Rigify Workflow for Spring Bones</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulation-baking-point-cache">Simulation Baking (Point Cache)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simulation-baking-nla">Simulation Baking (NLA)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Notes on Power Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="remap.html">Notes on Remapping Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mix.html">Notes on Color Mixing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Blender Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Spring Bone Usage In Blender</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/sprig-bones-blender.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spring-bone-usage-in-blender">
+<h1>Spring Bone Usage In Blender<a class="headerlink" href="#spring-bone-usage-in-blender" title="Permalink to this headline"></a></h1>
+<p>Using a spring rig (set up in the <a class="reference internal" href="spring-bones.html#spring-bone-rigging"><span class="std std-ref">Spring Bone Rigging</span></a> section) for dynamic hair simulation is made possible by use of Blender’s <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/rigid_body/index.html">Rigid Body</a> system.</p>
+<p>The current feature set available for spring bone simulation in Blender are as follows:</p>
+<ul class="simple">
+<li><p>Addition of spring bones to hair objects with a concise and user-friendly workflow (see the <a class="reference internal" href="spring-bones.html#blender-spring-bone-workflow"><span class="std std-ref">Blender Spring Bone Workflow</span></a> section for details).</p></li>
+<li><p>Automated creation of a ‘Rigify’ control rig for the character which also contains FK/IK control elements for each of the added spring bone chains.</p></li>
+<li><p>Ability to re-target an animation onto the ‘Rigified’ character + spring rig, and perform spring bone simulation on the playing animation.</p></li>
+<li><p>Ability to bake the simulation to an animation NLA track that can them be manipulated and fine tuned using the FK/IK controls on the spring bone chains.  This means that not only can a simulation be ‘cached’ but it can also be edited.</p></li>
+</ul>
+<section id="blender-dynamic-animation">
+<h2>Blender Dynamic Animation<a class="headerlink" href="#blender-dynamic-animation" title="Permalink to this headline"></a></h2>
+<p>In order to enable the spring bone simulation in Blender, you must first (at minimum) have an imported character that has had a ‘Spring Rig’ created and the hair weighted to the spring bones (see the <a class="reference internal" href="spring-bones.html#blender-spring-bone-workflow"><span class="std std-ref">Blender Spring Bone Workflow</span></a> section for details).</p>
+<img alt="_images/build-simulation.png" class="align-center" src="_images/build-simulation.png" />
+<p><br />
+The physics simulation can then be added with the ‘Build Simulation’ button (for the chosen hair system).  This automatically adds a physics simulation with <a class="reference external" href="https://docs.blender.org/manual/en/latest/physics/rigid_body/world.html">Rigid Body World</a> bone constraints to the spring bone chains. <strong>The first bone in each chain will be in a fixed position</strong>.</p>
+<p>Creation of the simulation will reveal a set of parameters for the chosen hair system.</p>
+<img alt="_images/simulation-params.png" class="align-center" src="_images/simulation-params.png" />
+<p><br />
+The parameters control the behavior of the simulation.</p>
+<ul class="simple">
+<li><p><strong>Influence</strong> - How much of the simulation is copied into the pose bones.</p></li>
+<li><p><strong>Restrain</strong> - How much to restrain the overall movement of the rigid body simulation.</p></li>
+<li><p><strong>Curve</strong> - The dampening curve factor along the length of the spring bone chains. Less curve gives more movement near the roots.</p></li>
+<li><p><strong>Mass</strong> - Mass of the rigid body particles representing the bones. More mass, more inertia.</p></li>
+<li><p><strong>Margin</strong> - Collision margin. How far into the surface to be considered a collision.</p></li>
+<li><p><strong>Dampening</strong> - Spring dampening, how quickly the hair movement slows down.</p></li>
+<li><p><strong>Stiffness</strong> - Spring stiffness, how resistant to movement.</p></li>
+<li><p><strong>Angle range</strong> - Angular limit of movement.</p></li>
+</ul>
+<p>The simulation can be removed with the ‘Remove Simulation’ button.  Since the simulation will override any animation data on the spring bones, then if you have baked any simulation data to an animation (see later) then the simulation must be removed in order for the baked animation of the spring bones to play.</p>
+<div class="admonition-in-cases-where-you-are-unhappy-with-the-movement-of-the-spring-bones-and-wish-to-reposition-re-weight-them-then-you-must-take-the-following-steps admonition">
+<p class="admonition-title">In cases where you are unhappy with the movement of the spring bones and wish to reposition/re-weight them, then you must take the following steps:</p>
+<ul class="simple">
+<li><p><em>Remove the simulation.</em></p></li>
+<li><p><em># If the character has been Rigified: Remove the control-rig. (see later)</em></p></li>
+<li><p><em>Re-bind the hair with new settings or new positioning.</em></p></li>
+<li><p><em># If the character has been Rigified: Re-add control rig.</em></p></li>
+<li><p><em>Finally re-build the simulation.</em></p></li>
+</ul>
+<p><em># Rigify Note</em>: <strong>please try to avoid the removal of the control rig from a rigified character</strong>, since it will introduce some instability into Blender (due to the large number of behind the scenes changes it necessitates).  Instead please try to finalize the bone positioning and weighting before rigifying.</p>
+</div>
+<p>An animation can now be created with the original character skeleton (or the character can already have an animation in its original import from CC/iClone) and during playback of the animation, the spring bone simulation will be active.</p>
+<p>More advanced capabilities are available when the Rigify control rig is used.  This is discussed below.</p>
+</section>
+<section id="rigify-with-spring-rigs">
+<h2>Rigify with Spring Rigs<a class="headerlink" href="#rigify-with-spring-rigs" title="Permalink to this headline"></a></h2>
+<p>The use of the Rigify control rig in Blender is a well established means of animating humanoid characters.  The automated Rigify process and animation retargeting capabilities of the CC/iC Blender Tools are discussed in the <a class="reference internal" href="animation.html#animation"><span class="std std-ref">Animation</span></a> section of the documentation.</p>
+<p>The Rigify and animation functions have been extended to include:</p>
+<ul class="simple">
+<li><p>The ability to control character limbs by either FK (<a class="reference external" href="https://en.wikipedia.org/wiki/Forward_kinematics">Forward Kinematics</a>) or IK (<a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_kinematics">Inverse Kinematics</a>) have been extended to include FK/IK control elements for the spring rig.</p></li>
+<li><p>Animations can still be retargeted to the character even when a rigified spring rig is present.</p></li>
+<li><p>Playback of an animation will be accompanied by dynamic spring bone simulation.</p></li>
+<li><p>Animation baking to NLA will now bake the bone movements from the dynamic spring bone simulation to the animation NLA track.</p></li>
+<li><p>Once the simulation is baked, the physics simualtion components can be removed (since the presence of a simulation will override the contents of an animation) and the FK/IK controls used to edit the animation where necessary (or blend/override the animation with another user created NLA track).</p></li>
+<li><p>A more complex use-case where the dynamic simulation can be blended with animation of the spring bones is also avilable.</p></li>
+</ul>
+<section id="rigify-workflow-for-spring-bones">
+<h3>Rigify Workflow for Spring Bones<a class="headerlink" href="#rigify-workflow-for-spring-bones" title="Permalink to this headline"></a></h3>
+<p>As a point of best practice, you should only ‘Rigify’ the character when you consider it to be <strong>complete</strong>. As such, create the spring bones, position them and then weight them.  Pose the bones of the added spring rigs to ensure the hair moves as you intend.  When satisfied, you can rigify the model.  The rigify process will automatically incorporate any spring rigs that are present amd create control elements (shown below) for FK (green) and IK (red) posing, as well as tweak bones (blue).</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/bl-rigify-spring-bone.png"><img alt="_images/bl-rigify-spring-bone.png" src="_images/bl-rigify-spring-bone.png" style="width: 240px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Rigified character with ‘spring rig’ control elements (click to enlarge)</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Since Rigify allows users to change the bias between FK and IK (using the IK-FK slider - where 0 is purely IK and 1 is purely FK), a similar mechanism has been implemented to change the bias of the selected spring bones (This control is in the <strong>Item Tab - Spring Rig Properties</strong>).</p>
+<figure class="align-center" id="id2">
+<img alt="_images/bl-spring-rig-ik-fk.png" src="_images/bl-spring-rig-ik-fk.png" />
+<figcaption>
+<p><span class="caption-text"><em>Item Tab - Spring Rig Properties</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The bias settings also allow for the blending of dynamic simulation with FK animation. A potential usage scenario for this would be where an initial animation of the hair bones is created then dynamic simulation is introduced over the top of it.</p>
+<p><strong>Basic Workflow</strong></p>
+<ul>
+<li><p>The Rigify requirements and process are outline in the <a class="reference internal" href="animation.html#animation"><span class="std std-ref">Animation</span></a> section of the documentation.</p></li>
+<li><p>Once the Rigify process is completed, the dynamic simulation constraints can be added using the ‘Build Simulation’ button on the <strong>Rigid Body Sim</strong> foldout of the <strong>Rigging and Animation</strong> pane of the <strong>CC/iC Pipeline</strong> tab of the add-on.</p>
+<blockquote>
+<div><img alt="_images/bl-rigid-body-sim.png" src="_images/bl-rigid-body-sim.png" />
+</div></blockquote>
+</li>
+<li><p>Once the simulation is built then it will override any animation of the hair bones that is present (by default)  This can be changed using the bias sliders in the <strong>Item Tab - Spring Rig Properties</strong> (see above).</p>
+<blockquote>
+<div><img alt="_images/bl-rigid-body-sim-created.png" src="_images/bl-rigid-body-sim-created.png" />
+</div></blockquote>
+</li>
+<li><p>The specific parameters of the simulation can now be controlled and the simulation safely removed <em>via</em> the ‘Remove Simulation’ button.</p></li>
+<li><p>The character and spring rig are now in a suitable state for animation creation or retargeting (see the <a class="reference internal" href="animation.html#retargeting-animations-to-the-rigify-control-rig"><span class="std std-ref">Retargeting Animations to the Rigify Control Rig</span></a> section for details).</p></li>
+<li><p>The spring bone simulation will respond to any motion from animation and also from external influences such as a wind force field.</p></li>
+</ul>
+</section>
+<section id="simulation-baking-point-cache">
+<h3>Simulation Baking (Point Cache)<a class="headerlink" href="#simulation-baking-point-cache" title="Permalink to this headline"></a></h3>
+<p>A number of easily accessible timeline and physics baking tools have been provided as part of the Scene Tools in the CC/iC Pipeline tab of the add-on:</p>
+<blockquote>
+<div><figure class="align-center" id="id3">
+<img alt="_images/bl-timeline-phys-pane.png" src="_images/bl-timeline-phys-pane.png" />
+<figcaption>
+<p><span class="caption-text"><em>Timeline and physics baking tools</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<p><strong>Animation Range</strong> - The range of the animation can be quickly manipulated here. Two distinct frame range functions are available:</p>
+<ul class="simple">
+<li><p><strong>Use Preview Range</strong> <img alt="prev" src="_images/bl-timeline-phys-prev.png" /> - This will activate the <em>Viewport Preview Range</em>. This can be set in the timeline window, for more details see the <a class="reference external" href="https://docs.blender.org/manual/en/latest/editors/graph_editor/introduction.html#graph-preview-range">Preview Range</a> section of the official Blender documentation.</p></li>
+<li><p><strong>Expand Animation Range</strong> <img alt="exp" src="_images/bl-timeline-phys-exp.png" /> - This tool is used to increase the scene animation frame range to the frame range of the current action on the character (it will never decrease the frame range).</p></li>
+<li><p><strong>Fit Animation Range</strong> <img alt="fit" src="_images/bl-timeline-phys-fit.png" /> - This tool will always match the scene frame range to the frame range of the current action on the character.</p></li>
+</ul>
+<p><strong>Physics Cache</strong> - Several tools are provided to allow quick access to the physics baking functions for Cloth Physics and Spring Physics. The frame ranges can also be reset so the  physics simulations match the intended frame range of the scene you are preparing (a common cause of a physics simulation not working is that its frame range is incorrectly set).</p>
+<p>The common features are as follows:</p>
+<ul>
+<li><p><strong>Reset</strong> <img alt="reset" src="_images/bl-timeline-phys-reset.png" /></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Cloth Physics</strong> - Resets the physics point cache on all cloth objects and synchronizes the physics point cache ranges on all cloth objects to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.</p></li>
+<li><p><strong>Spring Physics</strong> - Resets the physics point cache for the rigid body world and synchronizes the physics point cache range to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Bake</strong> <img alt="bake" src="_images/bl-timeline-phys-bake.png" /> - This will bake the physics simulation to Blender’s point cache.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Cloth Physics</strong> - This will bake the simulation for the currently <strong>selected</strong> cloth object.</p></li>
+<li><p><strong>Spring Physics</strong> - This will bake the simulation for all spring bones.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Free</strong> <img alt="free" src="_images/bl-timeline-phys-free.png" /> - This will clear the point cache.</p></li>
+</ul>
+<p>The Reset/Bake/Free functions are also able to be performed all at once (<em>caveat emptor</em>) in the ‘All dynamics’ section. The most useful function here is ‘Free All Dynamics’ which will clear the point cache for all cloth and spring objects at the same time.</p>
+<p>For further details of Blender’s cache system, please see these developer notes on the <a class="reference external" href="https://code.blender.org/2011/01/a-look-at-point-cache/">Point Cache</a>.</p>
+<div class="admonition-the-baking-system-can-be-used-to-properly-simulate-layers-of-clothing admonition">
+<p class="admonition-title">The baking system can be used to properly simulate layers of clothing.</p>
+<p>This example uses the Cloth Physics Tools in the CC/iC Create tab: If you are using several layers of clothing the following procedure will be of use.</p>
+<ol class="arabic simple">
+<li><p>Select the innermost layer of clothing (e.g. a skirt or a dress) and <strong>Add Cloth Physics</strong> to it (with the button of the same name).</p></li>
+<li><p>Select the character’s body and <strong>Add Cloth Collision</strong> to it (named button).  This will allow the simulated cloth to collide with the character body.</p></li>
+<li><p>Select the innermost clothing object and ‘<strong>Bake the Simulation</strong>’.</p></li>
+<li><p>Now we can simulate the next layer of clothing.  Select the object of the next layer of clothing (e.g. a long coat or shawl) and <strong>Add Cloth Physics</strong> to it.</p></li>
+<li><p><strong>We can now use the baked simulation of the innermost layer as a collision object</strong>.  Thus we can <strong>Add Cloth Collision</strong> to the innermost object (used in step 1.).  This will allow the simulation of the outer object to collide properly with the inner object without making a terrible mess of the inner object’s simulation (since it is now baked in).</p></li>
+<li><p>Select the outer clothing object and ‘<strong>Bake the Simulation</strong>’.</p></li>
+<li><p>The outer object can be used as a collision object for the hair simulation.  Again, this is done with the <strong>Add Cloth Collision</strong> button for the outer object.</p></li>
+<li><p>Finally, the Spring Bone Hair simulation can now be baked (in the CC/iC Pipeline Tab - Scene Tools)</p></li>
+</ol>
+<p>This builds up layers of simulation that aren’t allowed to interfere with each other (since that often causes huge problems with Blender physics simulation). Below is an example render of this multi layered baking approach.</p>
+<blockquote>
+<div><div class="youtube_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/7Nr_LADT3yE" style="border: 0; height: 345px; width: 560px">
+</iframe></div></div></blockquote>
+</div>
+</section>
+<section id="simulation-baking-nla">
+<h3>Simulation Baking (NLA)<a class="headerlink" href="#simulation-baking-nla" title="Permalink to this headline"></a></h3>
+<p>Since the dynamic spring bone simulation is used to deform a single chain or several chains of bones, then there is an opportunity to write the simulated bone movements into a keyframed animation track.</p>
+<p>In order to convert the simulation into a keyframed animation, follow these steps (this assumes you have already created a suitable spring rig):</p>
+<ul>
+<li><p>The character + spring rig must first be ‘Rigified’ (details for this are found in the <a class="reference internal" href="animation.html#animation"><span class="std std-ref">Animation</span></a> section of the documentation).</p></li>
+<li><p>A spring bone simulation must be built (details in the <a class="reference internal" href="#rigify-workflow-for-spring-bones"><span class="std std-ref">Rigify Workflow for Spring Bones</span></a> section)</p></li>
+<li><p>A suitable animation must be either created manually or retargeted (details in the <a class="reference internal" href="animation.html#retargeting-animations-to-the-rigify-control-rig"><span class="std std-ref">Retargeting Animations to the Rigify Control Rig</span></a> section).</p>
+<blockquote>
+<div><p>The spring bone simulation will respond to any motion from playback of the retargeted/created animation.  It will also respond to external influences such as force fields.</p>
+</div></blockquote>
+</li>
+<li><p>In the ‘<em>Retargeting</em>’ section of the <em>Rigging and Animation</em> Pane of the CC/iC Pipeline tab the ‘NLA Bake’ function will bake <em>both</em> the current action on the character <em>and</em> the dynamically generated movement of the spring rig to a new <a class="reference external" href="https://docs.blender.org/manual/en/latest/editors/nla/index.html">NLA</a> track.</p>
+<blockquote>
+<div><img alt="_images/bl-retargeting-nla-bake.png" src="_images/bl-retargeting-nla-bake.png" />
+</div></blockquote>
+</li>
+<li><p>Once the animation is baked, the dynamic simulation should be removed (with the ‘Remove Simulation’ button in the Rigid Body Sim foldout - contained in either tab).</p></li>
+<li><p>The animation data can be viewed as a NLA track or via the Action Editor.</p>
+<blockquote>
+<div><figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="_images/bl-baked-nla-track-view.png"><img alt="_images/bl-baked-nla-track-view.png" src="_images/bl-baked-nla-track-view.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Non linear animator view</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/bl-baked-action-edit-view.png"><img alt="_images/bl-baked-action-edit-view.png" src="_images/bl-baked-action-edit-view.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Action editor view</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+<li><p>The motion of the spring bones is now a ‘normal’ keyframed animation and it can be edited as needed using either the FK or IK control rig elements (as discussed above).</p></li>
+</ul>
+<p>This provides a means of ‘caching’ the simulation in a form that can be directly edited or blended with other animation data.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="spring-bones.html" class="btn btn-neutral float-left" title="Spring Bone Rigging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scene.html" class="btn btn-neutral float-right" title="Scene Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

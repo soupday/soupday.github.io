@@ -14,6 +14,8 @@
    adv-animation    
    materials
    expression-wrinkles
+   spring-bones
+   sprig-bones-blender
    scene     
    create
 
