@@ -20,7 +20,7 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Scene Tools" href="scene.html" />
+    <link rel="next" title="Character Object Management" href="create.html" />
     <link rel="prev" title="Spring Bone Rigging" href="spring-bones.html" /> 
 </head>
 
@@ -47,21 +47,22 @@
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">CC - Blender - Unity Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spring-bones.html">Spring Bone Rigging</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Spring Bone Usage In Blender</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#blender-dynamic-animation">Blender Dynamic Animation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rigify-with-spring-rigs">Rigify with Spring Rigs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#rigify-workflow-for-spring-bones">Rigify Workflow for Spring Bones</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#simulation-baking-point-cache">Simulation Baking (Point Cache)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spring-bone-simulation-baking">Spring Bone Simulation Baking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#simulation-baking-nla">Simulation Baking (NLA)</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="create.html">Character Object Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
@@ -186,16 +187,11 @@ The parameters control the behavior of the simulation.</p>
 <li><p>The spring bone simulation will respond to any motion from animation and also from external influences such as a wind force field.</p></li>
 </ul>
 </section>
-<section id="simulation-baking-point-cache">
-<h3>Simulation Baking (Point Cache)<a class="headerlink" href="#simulation-baking-point-cache" title="Permalink to this headline"></a></h3>
-<p>A number of easily accessible timeline and physics baking tools have been provided as part of the Scene Tools in the CC/iC Pipeline tab of the add-on:</p>
+<section id="spring-bone-simulation-baking">
+<h3>Spring Bone Simulation Baking<a class="headerlink" href="#spring-bone-simulation-baking" title="Permalink to this headline"></a></h3>
+<p>The <strong>Rigid Body Sim</strong> foldout of the <strong>Rigging and Animation</strong> pane of the <strong>CC/iC Pipeline</strong> tab of the add-on contains tools that control the Rigid Body Simulation cache.</p>
 <blockquote>
-<div><figure class="align-center" id="id3">
-<img alt="_images/bl-timeline-phys-pane.png" src="_images/bl-timeline-phys-pane.png" />
-<figcaption>
-<p><span class="caption-text"><em>Timeline and physics baking tools</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<div><img alt="_images/bl-rigid-body-sim.png" src="_images/bl-rigid-body-sim.png" />
 </div></blockquote>
 <p><strong>Animation Range</strong> - The range of the animation can be quickly manipulated here. Two distinct frame range functions are available:</p>
 <ul class="simple">
@@ -203,48 +199,25 @@ The parameters control the behavior of the simulation.</p>
 <li><p><strong>Expand Animation Range</strong> <img alt="exp" src="_images/bl-timeline-phys-exp.png" /> - This tool is used to increase the scene animation frame range to the frame range of the current action on the character (it will never decrease the frame range).</p></li>
 <li><p><strong>Fit Animation Range</strong> <img alt="fit" src="_images/bl-timeline-phys-fit.png" /> - This tool will always match the scene frame range to the frame range of the current action on the character.</p></li>
 </ul>
-<p><strong>Physics Cache</strong> - Several tools are provided to allow quick access to the physics baking functions for Cloth Physics and Spring Physics. The frame ranges can also be reset so the  physics simulations match the intended frame range of the scene you are preparing (a common cause of a physics simulation not working is that its frame range is incorrectly set).</p>
-<p>The common features are as follows:</p>
+<p><strong>Rigid Body Cache</strong> - Allows quick access to the physics baking functions for the Rigid Body Cache.</p>
 <ul>
-<li><p><strong>Reset</strong> <img alt="reset" src="_images/bl-timeline-phys-reset.png" /></p>
+<li><p><strong>Reset</strong> <img alt="reset" src="_images/bl-cloth-phys-reset.png" /></p>
 <blockquote>
-<div><ul class="simple">
-<li><p><strong>Cloth Physics</strong> - Resets the physics point cache on all cloth objects and synchronizes the physics point cache ranges on all cloth objects to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.</p></li>
-<li><p><strong>Spring Physics</strong> - Resets the physics point cache for the rigid body world and synchronizes the physics point cache range to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.</p></li>
-</ul>
+<div><p>Resets the physics point cache for the whole rigid body simulation and synchronizes the physics point cache ranges on the current object to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.</p>
 </div></blockquote>
 </li>
-<li><p><strong>Bake</strong> <img alt="bake" src="_images/bl-timeline-phys-bake.png" /> - This will bake the physics simulation to Blender’s point cache.</p>
+<li><p><strong>Bake</strong> <img alt="bake" src="_images/bl-cloth-phys-bake.png" /></p>
 <blockquote>
-<div><ul class="simple">
-<li><p><strong>Cloth Physics</strong> - This will bake the simulation for the currently <strong>selected</strong> cloth object.</p></li>
-<li><p><strong>Spring Physics</strong> - This will bake the simulation for all spring bones.</p></li>
-</ul>
+<div><p>This will bake the rigid body simulation to Blender’s point cache for all rigid body simulations present.</p>
 </div></blockquote>
 </li>
-<li><p><strong>Free</strong> <img alt="free" src="_images/bl-timeline-phys-free.png" /> - This will clear the point cache.</p></li>
-</ul>
-<p>The Reset/Bake/Free functions are also able to be performed all at once (<em>caveat emptor</em>) in the ‘All dynamics’ section. The most useful function here is ‘Free All Dynamics’ which will clear the point cache for all cloth and spring objects at the same time.</p>
-<p>For further details of Blender’s cache system, please see these developer notes on the <a class="reference external" href="https://code.blender.org/2011/01/a-look-at-point-cache/">Point Cache</a>.</p>
-<div class="admonition-the-baking-system-can-be-used-to-properly-simulate-layers-of-clothing admonition">
-<p class="admonition-title">The baking system can be used to properly simulate layers of clothing.</p>
-<p>This example uses the Cloth Physics Tools in the CC/iC Create tab: If you are using several layers of clothing the following procedure will be of use.</p>
-<ol class="arabic simple">
-<li><p>Select the innermost layer of clothing (e.g. a skirt or a dress) and <strong>Add Cloth Physics</strong> to it (with the button of the same name).</p></li>
-<li><p>Select the character’s body and <strong>Add Cloth Collision</strong> to it (named button).  This will allow the simulated cloth to collide with the character body.</p></li>
-<li><p>Select the innermost clothing object and ‘<strong>Bake the Simulation</strong>’.</p></li>
-<li><p>Now we can simulate the next layer of clothing.  Select the object of the next layer of clothing (e.g. a long coat or shawl) and <strong>Add Cloth Physics</strong> to it.</p></li>
-<li><p><strong>We can now use the baked simulation of the innermost layer as a collision object</strong>.  Thus we can <strong>Add Cloth Collision</strong> to the innermost object (used in step 1.).  This will allow the simulation of the outer object to collide properly with the inner object without making a terrible mess of the inner object’s simulation (since it is now baked in).</p></li>
-<li><p>Select the outer clothing object and ‘<strong>Bake the Simulation</strong>’.</p></li>
-<li><p>The outer object can be used as a collision object for the hair simulation.  Again, this is done with the <strong>Add Cloth Collision</strong> button for the outer object.</p></li>
-<li><p>Finally, the Spring Bone Hair simulation can now be baked (in the CC/iC Pipeline Tab - Scene Tools)</p></li>
-</ol>
-<p>This builds up layers of simulation that aren’t allowed to interfere with each other (since that often causes huge problems with Blender physics simulation). Below is an example render of this multi layered baking approach.</p>
+<li><p><strong>Free</strong> <img alt="free" src="_images/bl-cloth-phys-free.png" /></p>
 <blockquote>
-<div><div class="youtube_wrapper" style="">
-<iframe allowfullscreen="true" src="https://www.youtube.com/embed/7Nr_LADT3yE" style="border: 0; height: 345px; width: 560px">
-</iframe></div></div></blockquote>
-</div>
+<div><p>This will clear the rigid body simulation’s point cache.</p>
+</div></blockquote>
+</li>
+</ul>
+<p><br /></p>
 </section>
 <section id="simulation-baking-nla">
 <h3>Simulation Baking (NLA)<a class="headerlink" href="#simulation-baking-nla" title="Permalink to this headline"></a></h3>
@@ -266,16 +239,16 @@ The parameters control the behavior of the simulation.</p>
 <li><p>Once the animation is baked, the dynamic simulation should be removed (with the ‘Remove Simulation’ button in the Rigid Body Sim foldout - contained in either tab).</p></li>
 <li><p>The animation data can be viewed as a NLA track or via the Action Editor.</p>
 <blockquote>
-<div><figure class="align-center" id="id4">
+<div><figure class="align-center" id="id3">
 <a class="reference internal image-reference" href="_images/bl-baked-nla-track-view.png"><img alt="_images/bl-baked-nla-track-view.png" src="_images/bl-baked-nla-track-view.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text"><em>Non linear animator view</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-text"><em>Non linear animator view</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="_images/bl-baked-action-edit-view.png"><img alt="_images/bl-baked-action-edit-view.png" src="_images/bl-baked-action-edit-view.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text"><em>Action editor view</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-text"><em>Action editor view</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></blockquote>
@@ -292,7 +265,7 @@ The parameters control the behavior of the simulation.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="spring-bones.html" class="btn btn-neutral float-left" title="Spring Bone Rigging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="scene.html" class="btn btn-neutral float-right" title="Scene Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="create.html" class="btn btn-neutral float-right" title="Character Object Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

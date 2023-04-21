@@ -48,7 +48,7 @@ The expression wrinkle system is available in Blender starting with version 1.5.
     
     *Imported Expression Wrinkles*
 
-Should you wish to disable the 'Expression Wrinkles' feature, then this can be done in the :ref:`Build Prefs` section of the Build settings panel (please follow the link for more details). 
+Should you wish to disable the 'Expression Wrinkles' feature, then this can be done in the :ref:`Import Settings` section. Once toggled (either on or off), then you must perform a :ref:`Rebuild Materials` step so that the changes take effect.   
 
 .. Warning::
     **Adding extra texture samplers to the shader (Advanced Users Only).**

@@ -147,15 +147,65 @@ The bias settings also allow for the blending of dynamic simulation with FK anim
 
 - The spring bone simulation will respond to any motion from animation and also from external influences such as a wind force field.
 
-Simulation Baking (Point Cache)
--------------------------------
+..
+      Simulation Baking (Point Cache)
+      -------------------------------
 
-A number of easily accessible timeline and physics baking tools have been provided as part of the Scene Tools in the CC/iC Pipeline tab of the add-on:
+      A number of easily accessible timeline and physics baking tools have been provided as part of the Scene Tools in the CC/iC Pipeline tab of the add-on:
 
-   .. figure:: images/bl-timeline-phys-pane.png
-      :align: center
+         .. figure:: images/bl-timeline-phys-pane.png
+            :align: center
 
-      *Timeline and physics baking tools*
+            *Timeline and physics baking tools*
+
+      **Animation Range** - The range of the animation can be quickly manipulated here. Two distinct frame range functions are available:
+
+      .. |prev| image:: images/bl-timeline-phys-prev.png
+
+      .. |exp| image:: images/bl-timeline-phys-exp.png
+
+      .. |fit| image:: images/bl-timeline-phys-fit.png
+
+      - **Use Preview Range** |prev| - This will activate the *Viewport Preview Range*. This can be set in the timeline window, for more details see the `Preview Range`_ section of the official Blender documentation.
+
+      - **Expand Animation Range** |exp| - This tool is used to increase the scene animation frame range to the frame range of the current action on the character (it will never decrease the frame range).
+
+      - **Fit Animation Range** |fit| - This tool will always match the scene frame range to the frame range of the current action on the character.
+
+      **Physics Cache** - Several tools are provided to allow quick access to the physics baking functions for Cloth Physics and Spring Physics. The frame ranges can also be reset so the  physics simulations match the intended frame range of the scene you are preparing (a common cause of a physics simulation not working is that its frame range is incorrectly set).
+
+      The common features are as follows:
+
+      .. |reset| image:: images/bl-timeline-phys-reset.png
+
+      .. |bake| image:: images/bl-timeline-phys-bake.png
+
+      .. |free| image:: images/bl-timeline-phys-free.png
+
+      - **Reset** |reset|
+
+         - **Cloth Physics** - Resets the physics point cache on all cloth objects and synchronizes the physics point cache ranges on all cloth objects to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.
+            
+         - **Spring Physics** - Resets the physics point cache for the rigid body world and synchronizes the physics point cache range to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.
+
+      - **Bake** |bake| - This will bake the physics simulation to Blender's point cache.
+
+         - **Cloth Physics** - This will bake the simulation for the currently **selected** cloth object.
+
+         - **Spring Physics** - This will bake the simulation for all spring bones. 
+
+      - **Free** |free| - This will clear the point cache.
+
+      The Reset/Bake/Free functions are also able to be performed all at once (*caveat emptor*) in the 'All dynamics' section. The most useful function here is 'Free All Dynamics' which will clear the point cache for all cloth and spring objects at the same time.
+      
+      For further details of Blender's cache system, please see these developer notes on the `Point Cache`_.
+
+Spring Bone Simulation Baking
+-----------------------------
+
+The **Rigid Body Sim** foldout of the **Rigging and Animation** pane of the **CC/iC Pipeline** tab of the add-on contains tools that control the Rigid Body Simulation cache.
+
+   .. image:: images/bl-rigid-body-sim.png
 
 **Animation Range** - The range of the animation can be quickly manipulated here. Two distinct frame range functions are available:
 
@@ -171,59 +221,54 @@ A number of easily accessible timeline and physics baking tools have been provid
 
 - **Fit Animation Range** |fit| - This tool will always match the scene frame range to the frame range of the current action on the character.
 
-**Physics Cache** - Several tools are provided to allow quick access to the physics baking functions for Cloth Physics and Spring Physics. The frame ranges can also be reset so the  physics simulations match the intended frame range of the scene you are preparing (a common cause of a physics simulation not working is that its frame range is incorrectly set).
+**Rigid Body Cache** - Allows quick access to the physics baking functions for the Rigid Body Cache.
 
-The common features are as follows:
+.. |reset| image:: images/bl-cloth-phys-reset.png
 
-.. |reset| image:: images/bl-timeline-phys-reset.png
+.. |bake| image:: images/bl-cloth-phys-bake.png
 
-.. |bake| image:: images/bl-timeline-phys-bake.png
-
-.. |free| image:: images/bl-timeline-phys-free.png
+.. |free| image:: images/bl-cloth-phys-free.png
 
 - **Reset** |reset|
 
-   - **Cloth Physics** - Resets the physics point cache on all cloth objects and synchronizes the physics point cache ranges on all cloth objects to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.
-        
-   - **Spring Physics** - Resets the physics point cache for the rigid body world and synchronizes the physics point cache range to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.
+   Resets the physics point cache for the whole rigid body simulation and synchronizes the physics point cache ranges on the current object to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.
 
-- **Bake** |bake| - This will bake the physics simulation to Blender's point cache.
+- **Bake** |bake|
+  
+   This will bake the rigid body simulation to Blender's point cache for all rigid body simulations present.
 
-   - **Cloth Physics** - This will bake the simulation for the currently **selected** cloth object.
+- **Free** |free|
 
-   - **Spring Physics** - This will bake the simulation for all spring bones. 
+   This will clear the rigid body simulation's point cache.
 
-- **Free** |free| - This will clear the point cache.
+|br|
 
-The Reset/Bake/Free functions are also able to be performed all at once (*caveat emptor*) in the 'All dynamics' section. The most useful function here is 'Free All Dynamics' which will clear the point cache for all cloth and spring objects at the same time.
- 
-For further details of Blender's cache system, please see these developer notes on the `Point Cache`_.
+..
+      .. Admonition::
+         The baking system can be used to properly simulate layers of clothing. 
+         
+         This example uses the Cloth Physics Tools in the CC/iC Create tab: If you are using several layers of clothing the following procedure will be of use.
 
-.. Admonition::
-   The baking system can be used to properly simulate layers of clothing. 
-   
-   This example uses the Cloth Physics Tools in the CC/iC Create tab: If you are using several layers of clothing the following procedure will be of use.
+         1. Select the innermost layer of clothing (e.g. a skirt or a dress) and **Add Cloth Physics** to it (with the button of the same name).
 
-   1. Select the innermost layer of clothing (e.g. a skirt or a dress) and **Add Cloth Physics** to it (with the button of the same name).
+         2. Select the character's body and **Add Cloth Collision** to it (named button).  This will allow the simulated cloth to collide with the character body.
 
-   2. Select the character's body and **Add Cloth Collision** to it (named button).  This will allow the simulated cloth to collide with the character body.
+         3. Select the innermost clothing object and '**Bake the Simulation**'.
 
-   3. Select the innermost clothing object and '**Bake the Simulation**'.
+         4. Now we can simulate the next layer of clothing.  Select the object of the next layer of clothing (e.g. a long coat or shawl) and **Add Cloth Physics** to it.
 
-   4. Now we can simulate the next layer of clothing.  Select the object of the next layer of clothing (e.g. a long coat or shawl) and **Add Cloth Physics** to it.
+         5. **We can now use the baked simulation of the innermost layer as a collision object**.  Thus we can **Add Cloth Collision** to the innermost object (used in step 1.).  This will allow the simulation of the outer object to collide properly with the inner object without making a terrible mess of the inner object's simulation (since it is now baked in).
 
-   5. **We can now use the baked simulation of the innermost layer as a collision object**.  Thus we can **Add Cloth Collision** to the innermost object (used in step 1.).  This will allow the simulation of the outer object to collide properly with the inner object without making a terrible mess of the inner object's simulation (since it is now baked in).
+         6. Select the outer clothing object and '**Bake the Simulation**'.
 
-   6. Select the outer clothing object and '**Bake the Simulation**'.
+         7. The outer object can be used as a collision object for the hair simulation.  Again, this is done with the **Add Cloth Collision** button for the outer object.
 
-   7. The outer object can be used as a collision object for the hair simulation.  Again, this is done with the **Add Cloth Collision** button for the outer object.
+         8. Finally, the Spring Bone Hair simulation can now be baked (in the CC/iC Pipeline Tab - Scene Tools)
 
-   8. Finally, the Spring Bone Hair simulation can now be baked (in the CC/iC Pipeline Tab - Scene Tools)
+         This builds up layers of simulation that aren't allowed to interfere with each other (since that often causes huge problems with Blender physics simulation). Below is an example render of this multi layered baking approach.
 
-   This builds up layers of simulation that aren't allowed to interfere with each other (since that often causes huge problems with Blender physics simulation). Below is an example render of this multi layered baking approach.
-
-      .. youtube:: 7Nr_LADT3yE
-   
+            .. youtube:: 7Nr_LADT3yE
+         
 
 Simulation Baking (NLA)
 -----------------------

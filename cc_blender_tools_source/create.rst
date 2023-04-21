@@ -25,28 +25,39 @@
 
 .. _Sculpt Tools: https://docs.blender.org/manual/en/latest/sculpt_paint/sculpting/editing/sculpt.html
 
-~~~~~~~~~~~~~~~~~~~~~~
- CC/iC 'Create' Tools
-~~~~~~~~~~~~~~~~~~~~~~
 
-Since version 1.4.3, the CC/iC Blender Tools add-on has been split up into 2 tabs:
+.. _Preview Range: https://docs.blender.org/manual/en/latest/editors/graph_editor/introduction.html#graph-preview-range
 
-- The 'Pipeline' tab which handles import/export, material parameters and rigging/animation. |br2|
+.. _Point Cache: https://code.blender.org/2011/01/a-look-at-point-cache/
 
-- The 'Create' tab which handles object management, physics and sculpting/texturing.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ Character Object Management
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: images/tab-create.png
-    :align: left
+The introduction of new objects to characters uses functions that are found in the *CC/iC Create* tab of the add-on.
 
-The *CC/iC Create* tab has an initially opened section with common tools to quickly export the character (only for the CC-Blender round trip) and to adjust the current lighting preset.
+This section describes the various workflows used to create and attach new character objects
+in Blender and export them back to Character Creator where they can be stored in a custom asset library.
 
-It also contains foldout sections for:
+  ..
+    Since version 1.4.3, the CC/iC Blender Tools add-on has been split up into 2 tabs:
 
-    | - Object Management: see :ref:`Adding Objects to Characters` |br2|
+    - The 'Pipeline' tab which handles import/export, material parameters and rigging/animation. |br2|
 
-    | - Physics Settings: see :ref:`Adding and Editing Physics` |br2|
+    - The 'Create' tab which handles object management, physics and sculpting/texturing.
 
-    | - Sculpting: see: :ref:`Sculpting Normals` |br2| |br2|
+    .. image:: images/tab-create.png
+        :align: left
+
+    The *CC/iC Create* tab has an initially opened section with common tools to quickly export the character (only for the CC-Blender round trip) and to adjust the current lighting preset.
+
+    It also contains foldout sections for:
+
+        | - Object Management: see :ref:`Adding Objects to Characters` |br2|
+
+        | - Physics Settings: see :ref:`Adding and Editing Physics` |br2|
+
+        | - Sculpting: see: :ref:`Sculpting Normals` |br2| |br2|
 
 
 
@@ -321,304 +332,307 @@ New or customized objects can be saved to Character Creator's Custom Library as 
 
 |
 
-Adding and Editing Physics
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ..
+    Adding and Editing Physics
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Importing with Physics
-======================
+    Importing with Physics
+    ======================
 
-.. image:: images/physics_selected.png
+    .. image:: images/physics_selected.png
 
-When the *Physics* option is selected in the **Import/Export** panel then when the character is imported, *cloth physics*, *vertex groups* and *modifiers* will be automatically generated for any of the mesh objects & materials that have PhysX weight maps. All of which can be changed at will should you need to.
+    When the *Physics* option is selected in the **Import/Export** panel then when the character is imported, *cloth physics*, *vertex groups* and *modifiers* will be automatically generated for any of the mesh objects & materials that have PhysX weight maps. All of which can be changed at will should you need to.
 
-Thus, to import a character with physics enabled (highlighted blue), in the **Import/Export** panel follow the procedure for :ref:`Standard Import` (do not use the standard fbx importer for this).
+    Thus, to import a character with physics enabled (highlighted blue), in the **Import/Export** panel follow the procedure for :ref:`Standard Import` (do not use the standard fbx importer for this).
 
-.. admonition:: Important Consideration For Cloth Simulation
+    .. admonition:: Important Consideration For Cloth Simulation
 
-  Always allow Blender to compute the full range of frames for any cloth simulation by playing the whole animation through with no :ref:`frame dropping`.
-  
-  This will be initially slow; however this **must** be done in order to cache the cloth calculations.
+      Always allow Blender to compute the full range of frames for any cloth simulation by playing the whole animation through with no :ref:`frame dropping`.
+      
+      This will be initially slow; however this **must** be done in order to cache the cloth calculations.
 
-  Once this is done you may then spool through the animation or enable :ref:`frame dropping` to get closer to real time playback (as much as Blender allows before requiring a re-calculation).
-  
-  Failure to do this will cause the cloth simulation to break and behave erratically.
+      Once this is done you may then spool through the animation or enable :ref:`frame dropping` to get closer to real time playback (as much as Blender allows before requiring a re-calculation).
+      
+      Failure to do this will cause the cloth simulation to break and behave erratically.
 
 
-Settings
---------
+    Settings
+    --------
 
-The **Physics Settings** panel contains a comprehensive set of controls to adjust the physics parameters of the currently selected object.
+    The **Physics Settings** panel contains a comprehensive set of controls to adjust the physics parameters of the currently selected object.
 
-..  image:: images/b-pys-tools.png
-     :align: left
+    ..  image:: images/b-pys-tools.png
+        :align: left
 
-**Create/Remove**
+    **Create/Remove**
 
-- Add/Remove Cloth Physics: This will add or remove a `Cloth Physics`_ modifier on the selected object.  This enables/disables full cloth simulation.
+    - Add/Remove Cloth Physics: This will add or remove a `Cloth Physics`_ modifier on the selected object.  This enables/disables full cloth simulation.
 
-- Add/Remove Collision Physics: This will add or remove a `Collision Physics`_ modifier on the selected object.  Which will allow cloth objects to collide with mesh objects.
+    - Add/Remove Collision Physics: This will add or remove a `Collision Physics`_ modifier on the selected object.  Which will allow cloth objects to collide with mesh objects.
 
 
-**Mesh Correction**
+    **Mesh Correction**
 
-- Fix Degenerate Mesh: This will remove degenerate mesh elements from the mesh - this include loose vertices, orphaned edges, zero length edges etc.  The presence of these elements may cause problems with simulation.
+    - Fix Degenerate Mesh: This will remove degenerate mesh elements from the mesh - this include loose vertices, orphaned edges, zero length edges etc.  The presence of these elements may cause problems with simulation.
 
-- Separate Physics Materials: This will separate the object by material and apply physics to the separated objects that have weight maps.  This may increase performance where only a small part of an object is simulated.
+    - Separate Physics Materials: This will separate the object by material and apply physics to the separated objects that have weight maps.  This may increase performance where only a small part of an object is simulated.
 
-**Presets**
+    **Presets**
 
-This will impose physics settings on the object that approximate the behavior of the named material (Cotton, Silk etc).  |br2|  |br2|
- 
+    This will impose physics settings on the object that approximate the behavior of the named material (Cotton, Silk etc).  |br2|  |br2|
+    
 
-..  image:: images/b-pys-cloth.png
-     :align: left
+    ..  image:: images/b-pys-cloth.png
+        :align: left
 
-**Cloth Settings** are a convenient access point to the standard Blender cloth physics settings (by default seen in the *Physics Properties* of the standard *Properties* pane). These are only shown when an object (e.g. a clothing item) has had 'Cloth Physics' applied to it and is selected. |br2| |br2| |br|
+    **Cloth Settings** are a convenient access point to the standard Blender cloth physics settings (by default seen in the *Physics Properties* of the standard *Properties* pane). These are only shown when an object (e.g. a clothing item) has had 'Cloth Physics' applied to it and is selected. |br2| |br2| |br|
 
-..
-   **Cloth Settings** and **Collision Settings** are the standard physics settings used by Blender in the *Physics Properties* of the standard *Properties* pane (only presented here for user convenience -  only visible when cloth or collision physics have been applied to the object and that object is selected).
+    ..
+      **Cloth Settings** and **Collision Settings** are the standard physics settings used by Blender in the *Physics Properties* of the standard *Properties* pane (only presented here for user convenience -  only visible when cloth or collision physics have been applied to the object and that object is selected).
 
-..  image:: images/b-pys-collider.png
-     :align: left
+    ..  image:: images/b-pys-collider.png
+        :align: left
 
-**Collision Settings** are the standard blender collision settings (by default seen in the *Physics Properties* of the standard *Properties* pane).  These are only shown when an object has had 'Collision Physics' applied to it and is selected.  This is generally applicable to the character's body since Blender uses the character mesh as a collider for physics simulation.
+    **Collision Settings** are the standard blender collision settings (by default seen in the *Physics Properties* of the standard *Properties* pane).  These are only shown when an object has had 'Collision Physics' applied to it and is selected.  This is generally applicable to the character's body since Blender uses the character mesh as a collider for physics simulation.
 
-The example below shows a standard 'Silk' preset applied to a dress object during an animation (mesh highlighted for clarity).
+    The example below shows a standard 'Silk' preset applied to a dress object during an animation (mesh highlighted for clarity).
 
-.. figure:: images/dress_physics.gif
-  :align: center
+    .. figure:: images/dress_physics.gif
+      :align: center
 
-  *Standard Silk Simulation*
+      *Standard Silk Simulation*
 
 
-.. admonition:: Hair Physics
+    .. admonition:: Hair Physics
 
-  Whilst early versions of hair from Character Creator have properly defined physics properties, certain newer ones may not simulate correctly.  Smart Hair should now simulate correctly (as of version 1.3.6).
+      Whilst early versions of hair from Character Creator have properly defined physics properties, certain newer ones may not simulate correctly.  Smart Hair should now simulate correctly (as of version 1.3.6).
 
-|
+    |
 
-Workflow: Adding Object Physics
-===============================
+    Workflow: Adding Object Physics
+    ===============================
 
-This workflow discussion is specifically aimed at adding physics properties that are suitable for return to Character Creator or for further use in Unity.  For the purpose of **only** adding physics for use in **Blender** then please consult the official `Blender Physics documentation`_ for details.
+    This workflow discussion is specifically aimed at adding physics properties that are suitable for return to Character Creator or for further use in Unity.  For the purpose of **only** adding physics for use in **Blender** then please consult the official `Blender Physics documentation`_ for details.
 
 
-**Export According To Pipeline**
+    **Export According To Pipeline**
 
-As with the :ref:`Adding Objects to Characters` workflow, it is imperative that the character you wish to work with is exported from Character Creator with the appropriate settings for the pipeline being used.
+    As with the :ref:`Adding Objects to Characters` workflow, it is imperative that the character you wish to work with is exported from Character Creator with the appropriate settings for the pipeline being used.
 
-+ If you wish to add a physics enabled item and then return the character to Character Creator, the please export from CC using the :ref:`Blender Round Trip Workflow`.
+    + If you wish to add a physics enabled item and then return the character to Character Creator, the please export from CC using the :ref:`Blender Round Trip Workflow`.
 
-+ If you intend solely to use the character and physics enabled item in Blender, then use the basic :ref:`Export Settings From Character Creator or iClone`.
+    + If you intend solely to use the character and physics enabled item in Blender, then use the basic :ref:`Export Settings From Character Creator or iClone`.
 
-+ If you wish to have a character that is editable (and indeed re-editable) in Blender which will ultimately be destined for Unity, then follow the directions in the :ref:`Unity Round Trip Workflow`.
+    + If you wish to have a character that is editable (and indeed re-editable) in Blender which will ultimately be destined for Unity, then follow the directions in the :ref:`Unity Round Trip Workflow`.
 
 
-**Import Character**
+    **Import Character**
 
-The correctly exported character should be imported into Blender with a :ref:`standard import` (physics will be deliberately added in a later step).
+    The correctly exported character should be imported into Blender with a :ref:`standard import` (physics will be deliberately added in a later step).
 
-The item to which physics is to be added can either be part of the export from Character Creator or can be created directly or appended from a library file (if you are adding a new item then please follow the instructions in :ref:`Adding Objects to Characters` to correctly incorporate it).
+    The item to which physics is to be added can either be part of the export from Character Creator or can be created directly or appended from a library file (if you are adding a new item then please follow the instructions in :ref:`Adding Objects to Characters` to correctly incorporate it).
 
-+ Open the *CC/iC Create* tab.
+    + Open the *CC/iC Create* tab.
 
-.. |physChar| image:: images/b-phys-char.png
+    .. |physChar| image:: images/b-phys-char.png
 
-+ In the 'Character Physics' section, click on 'Apply All Physics'. This will enable physics on all the applicable items (colliders for the character body, and cloth for any items that have physics enabled in Character Creator).
+    + In the 'Character Physics' section, click on 'Apply All Physics'. This will enable physics on all the applicable items (colliders for the character body, and cloth for any items that have physics enabled in Character Creator).
 
-  | |physChar|
+      | |physChar|
 
-.. |createRemove| image:: images/b-phys-create.png
+    .. |createRemove| image:: images/b-phys-create.png
 
-+ In *Object Mode* select the item to have physics added to it; in the 'Create/Remove' section click on 'Add Cloth Physics'.  This will enable cloth physics for the selected item and add a modifier which uses a *weight map* texture to control allowed cloth deformation.  Presets for several cloth types are also made available which will control the response of the cloth to cloth simulation.
+    + In *Object Mode* select the item to have physics added to it; in the 'Create/Remove' section click on 'Add Cloth Physics'.  This will enable cloth physics for the selected item and add a modifier which uses a *weight map* texture to control allowed cloth deformation.  Presets for several cloth types are also made available which will control the response of the cloth to cloth simulation.
 
-  | |createRemove|
+      | |createRemove|
 
-After Cloth Physics is added, a suitable weight map must be painted onto the object which will control how much the object is permitted to be deformed by cloth physics simulation.
+    After Cloth Physics is added, a suitable weight map must be painted onto the object which will control how much the object is permitted to be deformed by cloth physics simulation.
 
-Workflow: Physics Weight Mapping
-================================
+    Workflow: Physics Weight Mapping
+    ================================
 
-Cloth simulation in Character Creator/iClone is controlled not only by the cloth parameters, but also by a monochrome texture or "weight map" which is used to determine the extent to which the cloth is permitted to be moved by the physics simulation (this weight map like all textures uses the model's UV coordinates).
+    Cloth simulation in Character Creator/iClone is controlled not only by the cloth parameters, but also by a monochrome texture or "weight map" which is used to determine the extent to which the cloth is permitted to be moved by the physics simulation (this weight map like all textures uses the model's UV coordinates).
 
-.. figure:: images/cc-skirt-weight.png
-  :align: center
-  :width: 400
+    .. figure:: images/cc-skirt-weight.png
+      :align: center
+      :width: 400
 
-  *Character Creator Item With Physics Weight Map*
+      *Character Creator Item With Physics Weight Map*
 
-This Blender add-on allows this weight map to be painted directly onto the item model using Blender's own texture painting tools allowing fine control.
+    This Blender add-on allows this weight map to be painted directly onto the item model using Blender's own texture painting tools allowing fine control.
 
-.. figure:: images/b-skirt-weight.png
-  :align: center
-  :width: 250
+    .. figure:: images/b-skirt-weight.png
+      :align: center
+      :width: 250
 
-  *Blender Physics Weight Map Painted on Above Item*
+      *Blender Physics Weight Map Painted on Above Item*
 
-.. Note:: 
+    .. Note:: 
 
-  The weight map is monochrome (*black* and *white*) and as such uses *black* to mean that part of the model will not move and *white* to mean that part of the model can move freely.  The grey scale in-between will permit an increasing amount of movement. 
+      The weight map is monochrome (*black* and *white*) and as such uses *black* to mean that part of the model will not move and *white* to mean that part of the model can move freely.  The grey scale in-between will permit an increasing amount of movement. 
 
-.. image:: images/b-phys-weight.png
-  :align: left
+    .. image:: images/b-phys-weight.png
+      :align: left
 
-To begin weight map painting, in the 'Weight Maps' section click on 'Paint weight Map'.  This will change Blender into *Texture Paint* mode, whereupon the Blender texture paint tools may be used (see the documentation on `Blender Texture Painting`_ for further details).
+    To begin weight map painting, in the 'Weight Maps' section click on 'Paint weight Map'.  This will change Blender into *Texture Paint* mode, whereupon the Blender texture paint tools may be used (see the documentation on `Blender Texture Painting`_ for further details).
 
-Should you require a different size of weight map (larger or smaller) then (prior to starting the painting) select the desired size of map from the dropdown list and then click 'Resize Weightmap'. 
+    Should you require a different size of weight map (larger or smaller) then (prior to starting the painting) select the desired size of map from the dropdown list and then click 'Resize Weightmap'. 
 
-.. |fillTool| image:: images/b-paint-fill.png
+    .. |fillTool| image:: images/b-paint-fill.png
 
-.. |gradPaint| image:: images/b-gradient-pick.png
+    .. |gradPaint| image:: images/b-gradient-pick.png
 
-.. tip:: 
+    .. tip:: 
 
-  You can use the *Gradient Fill Mode* to easily paint a smooth predictable gradient onto the model.
+      You can use the *Gradient Fill Mode* to easily paint a smooth predictable gradient onto the model.
 
-  When weight painting select the *Fill Tool* on the Left hand side tool strip. |fillTool|
+      When weight painting select the *Fill Tool* on the Left hand side tool strip. |fillTool|
 
-  Then in the Right hand tool bar select the *Tool* tab and in the *Color Picker* switch from *Color* to *Gradient*
-  
-  |gradPaint|
-  
-  Set up the gradient as you see fit. Then on the model position the pointer where you wish the gradient to begin, press **CTRL** then press **LMB** move the pointer to wherever you wish the gradient to end (a solid line will be shown) and release the LMB to impose the gradient along the line.
-  
-Once weight painting is complete, then click on 'Done Weight Painting'
+      Then in the Right hand tool bar select the *Tool* tab and in the *Color Picker* switch from *Color* to *Gradient*
+      
+      |gradPaint|
+      
+      Set up the gradient as you see fit. Then on the model position the pointer where you wish the gradient to begin, press **CTRL** then press **LMB** move the pointer to wherever you wish the gradient to end (a solid line will be shown) and release the LMB to impose the gradient along the line.
+      
+    Once weight painting is complete, then click on 'Done Weight Painting'
 
-.. image:: images/b-done-weight.png
+    .. image:: images/b-done-weight.png
 
-If you are satisfied with the weight painting then click 'Save' to store the weight map.
+    If you are satisfied with the weight painting then click 'Save' to store the weight map.
 
-.. warning:: 
-  Weight painting physics requires some *subtlety*, where too much freedom will result in a disastrous simulation in Character Creator and too little will not allow anything visible to happen.
+    .. warning:: 
+      Weight painting physics requires some *subtlety*, where too much freedom will result in a disastrous simulation in Character Creator and too little will not allow anything visible to happen.
 
-  Several attempts will probably be needed before the results are acceptable.
+      Several attempts will probably be needed before the results are acceptable.
 
 
-The images below are the actual results of a weight painting.  The weight painted model (left) only has a small area able to move freely, this is reflected in the Blender cloth simulation (center).  **NB**: The Blender simulation is somewhat different to Character Creator's and as such should only be used a a guide (grey areas are far more restricted in Blender).  Finally the Character Creator result (right) shows a visible range of motion in accordance with the grey-white painted areas of the weight map.
+    The images below are the actual results of a weight painting.  The weight painted model (left) only has a small area able to move freely, this is reflected in the Blender cloth simulation (center).  **NB**: The Blender simulation is somewhat different to Character Creator's and as such should only be used a a guide (grey areas are far more restricted in Blender).  Finally the Character Creator result (right) shows a visible range of motion in accordance with the grey-white painted areas of the weight map.
 
 
-.. |wp_tex| image:: images/b-weightpaint-grad.png
+    .. |wp_tex| image:: images/b-weightpaint-grad.png
 
 
-.. |wp_cc| image:: images/cc_simulation_lo.gif
+    .. |wp_cc| image:: images/cc_simulation_lo.gif
 
 
-.. |wp_blender| image:: images/blender_simulation.gif
+    .. |wp_blender| image:: images/blender_simulation.gif
 
-.. list-table::
-   :widths: 2 2 2
-   :header-rows: 0
+    .. list-table::
+      :widths: 2 2 2
+      :header-rows: 0
 
-   * - |wp_tex|
-     - |wp_blender|
-     - |wp_cc|
-   * - Weight painted model in Blender
-     - Wind simulation in Blender
-     - Idle movement simulation in Character Creator 
+      * - |wp_tex|
+        - |wp_blender|
+        - |wp_cc|
+      * - Weight painted model in Blender
+        - Wind simulation in Blender
+        - Idle movement simulation in Character Creator 
 
-Workflow: Exporting According to Pipeline
-=========================================
+    Workflow: Exporting According to Pipeline
+    =========================================
 
-**Return to Character Creator:** To return the character to Character Creator follow the procedure described in the Round Trip :ref:`Detailed Workflow` section of the documentation: using the 'Export to CC3/4' function (Either in the Import/Export section of the *CC/iC Pipeline* Tab or the Quick Export section of the *CC/iC Create* Tab).
+    **Return to Character Creator:** To return the character to Character Creator follow the procedure described in the Round Trip :ref:`Detailed Workflow` section of the documentation: using the 'Export to CC3/4' function (Either in the Import/Export section of the *CC/iC Pipeline* Tab or the Quick Export section of the *CC/iC Create* Tab).
 
-.. image:: images/cc4-blender-pipeline-export-panel.png
-    :align: center
+    .. image:: images/cc4-blender-pipeline-export-panel.png
+        :align: center
 
-| 
+    | 
 
-This export can be re-imported using the 'Plugins -> Blender Pipeline -> Import Character From Blender'.  The physics will be automatically activated on the newly enabled working object and the physics weight map will be automatically applied along with any parameter settings made in Blender.
+    This export can be re-imported using the 'Plugins -> Blender Pipeline -> Import Character From Blender'.  The physics will be automatically activated on the newly enabled working object and the physics weight map will be automatically applied along with any parameter settings made in Blender.
 
-.. figure:: images/blender-cc4-phys-weightmaped.png
-    :align: center
-    :width: 400
+    .. figure:: images/blender-cc4-phys-weightmaped.png
+        :align: center
+        :width: 400
 
-    *Newly Physics Enabled Item Returned to Character Creator*
+        *Newly Physics Enabled Item Returned to Character Creator*
 
-This item is now ready for use.
+    This item is now ready for use.
 
-**Export to Unity:** In the case of further export to Unity, again the positioning and weight painting mean that it can be safely exported to Unity as described in the :ref:`Unity Round Trip Workflow`.
+    **Export to Unity:** In the case of further export to Unity, again the positioning and weight painting mean that it can be safely exported to Unity as described in the :ref:`Unity Round Trip Workflow`.
 
-.. tip::
-  It is of immense benefit to **export the model to Unity as a Blend file** and to **export the model directly into the Unity project** (in a folder under /Assets in the Unity project folder structure).
+    .. tip::
+      It is of immense benefit to **export the model to Unity as a Blend file** and to **export the model directly into the Unity project** (in a folder under /Assets in the Unity project folder structure).
 
-  This allows rapid editing of the physics data (and indeed any other aspect of the model):
-  
-   - **Double-click on the blend file from within the Unity project** to begin editing.
-   
-   - Return to Unity with the **'Update Unity Project'** function (see :ref:`Unity Round Trip Workflow`).  
-   
-   - **Rebuild the cloth physics** with the Unity addon.
+      This allows rapid editing of the physics data (and indeed any other aspect of the model):
+      
+      - **Double-click on the blend file from within the Unity project** to begin editing.
+      
+      - Return to Unity with the **'Update Unity Project'** function (see :ref:`Unity Round Trip Workflow`).  
+      
+      - **Rebuild the cloth physics** with the Unity addon.
 
 
 
-Once processed in Unity with the 'Cloth Physics' feature enabled (see the `Unity Cloth Physics documentation`_) then the physics item will be appropriately constraint painted and have the correct colliders associated with it.
+    Once processed in Unity with the 'Cloth Physics' feature enabled (see the `Unity Cloth Physics documentation`_) then the physics item will be appropriately constraint painted and have the correct colliders associated with it.
 
-.. figure:: images/u-phys-weightmaped-import.png
-    :align: center
-    :width: 300
+    .. figure:: images/u-phys-weightmaped-import.png
+        :align: center
+        :width: 300
 
-    *Unity Constraint Painted In Line With The Blender Weight Map*
+        *Unity Constraint Painted In Line With The Blender Weight Map*
 
 
-Actions to Aid Cloth Simulation
-===============================
+    Actions to Aid Cloth Simulation
+    ===============================
 
-Sometimes, cloth simulations do not behave as expected. This can be for a number of reasons which include:
+    Sometimes, cloth simulations do not behave as expected. This can be for a number of reasons which include:
 
-- Improper cloth parameters.
+    - Improper cloth parameters.
 
-- Improper weight Mapping.
+    - Improper weight Mapping.
 
-- Mesh errors.
+    - Mesh errors.
 
-- Mesh distortion.
+    - Mesh distortion.
 
-The cloth parameters and weight mapping have been discussed above and are principally responsible for how the cloth performs (too much/too little freedom and flexibility etc.) which can be adjusted easily to your needs.
+    The cloth parameters and weight mapping have been discussed above and are principally responsible for how the cloth performs (too much/too little freedom and flexibility etc.) which can be adjusted easily to your needs.
 
-Mesh problems can however cause cloth simulation to fail spectacularly.
+    Mesh problems can however cause cloth simulation to fail spectacularly.
 
-.. |fixDeg| image:: images/b-fix-deg.png
+    .. |fixDeg| image:: images/b-fix-deg.png
 
-.. |smth| image:: images/b-sculpt-smooth.png
+    .. |smth| image:: images/b-sculpt-smooth.png
 
-- Mesh degeneracy will often cause simulations to fail - examples of this include:
-  
-  + Zero length edges
+    - Mesh degeneracy will often cause simulations to fail - examples of this include:
+      
+      + Zero length edges
 
-  + Zero area faces
+      + Zero area faces
 
-  + Orphaned/duplicated vertices
+      + Orphaned/duplicated vertices
 
-  Blender has internal tools to help with these problems (see Blender's `Clean Up`_ documentation).
+      Blender has internal tools to help with these problems (see Blender's `Clean Up`_ documentation).
 
-  A simple tool has also been provided to rapidly remove most offending items - in the '*Mesh Correction*' section of the physics foldout, use the '*Fix Degenerate Mesh*' tool to correct the above problems.
+      A simple tool has also been provided to rapidly remove most offending items - in the '*Mesh Correction*' section of the physics foldout, use the '*Fix Degenerate Mesh*' tool to correct the above problems.
 
-  | |fixDeg|
+      | |fixDeg|
 
-- Mesh distortion, e.g. meshes that have been folded over themselves can also cause significant problems.
+    - Mesh distortion, e.g. meshes that have been folded over themselves can also cause significant problems.
 
-  These can be readily corrected by use of the '*Smooth*' tool in '*Sculpt mode*'.
-  
-  **Please note:** the smooth tool should be used at very low *strength* (0.075 - 0.100) to avoid doing damage to the mesh.
+      These can be readily corrected by use of the '*Smooth*' tool in '*Sculpt mode*'.
+      
+      **Please note:** the smooth tool should be used at very low *strength* (0.075 - 0.100) to avoid doing damage to the mesh.
 
-  | |smth| *Smooth Tool* 
+      | |smth| *Smooth Tool* 
 
 
-.. |preSmooth| image:: images/b-pre-smh.png
+    .. |preSmooth| image:: images/b-pre-smh.png
 
-.. |postSmooth| image:: images/b-post-smh.png
+    .. |postSmooth| image:: images/b-post-smh.png
 
 
-.. list-table::
-   :widths: 2 2
-   :header-rows: 0
+    .. list-table::
+      :widths: 2 2
+      :header-rows: 0
 
-   * - |preSmooth|
-     - |postSmooth|
-   * - Folded, distorted mesh which will cause cloth simulation problems.
-     - Smoothed mesh to remove folded elements will allow better cloth simulation. 
+      * - |preSmooth|
+        - |postSmooth|
+      * - Folded, distorted mesh which will cause cloth simulation problems.
+        - Smoothed mesh to remove folded elements will allow better cloth simulation. 
 
-For more details please see Blender's `Sculpt Tools`_ documentation.
+    For more details please see Blender's `Sculpt Tools`_ documentation.
+
+
 
 
 Sculpting Normals

@@ -114,13 +114,15 @@ This will import the character, set up the materials and (if the **Lighting** se
 Build Settings Panel
 --------------------
 
-In the **Build Settings** panel you can control the way the add-on builds the materials.
+In the **Build Settings** panel you can control the way the add-on builds the materials.  These settings will be used either during a new import *or* when you next perform the :ref:`Rebuild Materials` action.
 
   .. image:: images/build_settings.png
 
 ..
   .. image:: images/character_settings.png
-  
+
+If you wish to enable or disable physics, then the **Build Physics** toggle in this panel can be used to enable/disable physics when the materials are next rebuilt (this mirrors the setting in the *Core Import Settings*).
+
 Materials can be specifically built for either the Cycles or Eevee renderer, and the type of eye shader can be defined according to your needs.
 
 - **Parallax Eyes** use a single cornea material which is not subject to the Eevee engine's limitations on sub surface scattering and the receiving of shadows.
@@ -129,12 +131,14 @@ Materials can be specifically built for either the Cycles or Eevee renderer, and
 
 Please see the :ref:`Eye Refraction` section for more information.
 
-Build Prefs
------------
+If the character was imported without physics enabled, then the **Build Physics** button in this panel can be used to quickly add all the physics elements from the CC/iC export.
 
-In the **Build Prefs** foldout, a number of miscellaneous settings can be maintained (the overwhelming majority of users should accept the default settings).  
+(The **Build Settings** foldout is a convenient duplicate of the Additional (Optional) :ref:`Import Settings` described above).  
 
-The most notable feature here is the 'Build Wrinkle Maps' setting (which is enabled by default).  Should you wish to disable this feature, then uncheck the box and perform a 'Rebuild Advanced Materials' (as described below, in :ref:`Rebuild Materials`).
+Each of these settings can be changed at any time, but you must perform the :ref:`Rebuild Materials` step before they are incorporated into your character.
+
+..
+  The most notable feature here is the 'Build Wrinkle Maps' setting (which is enabled by default).  Should you wish to disable this feature, then uncheck the box and perform a 'Rebuild Advanced Materials' (as described below, in :ref:`Rebuild Materials`).
 
 
 Object & Material Setup
@@ -157,6 +161,10 @@ The **Basic** and **Advanced** material options determine whether a standard PBR
 Rebuild Materials
 -----------------
 
+  .. image:: images/rebuild-adv-materials.png
+    
+
+|br|
 Once changes have been made to any of the above the **Rebuild Advanced Materials** button must be used to update the materials with the new settings.
 
 The **Rebuild Node Groups** button will rebuild the shaders in line with the current version of the add-on.  This can be used in cases where you have an old .blend file created with an earlier version of the add-on and you wish to update the shaders to the latest version.  Or you can use it to reset any changes you may have made to the shaders. In either case, after performing a **Rebuild Node Groups** you must then use **Rebuild Advanced Materials** to complete the process.
@@ -172,6 +180,6 @@ In the **Material Parameters** panel you can control how the various textures of
 
 The parameters displayed are context sensitive to the currently active selected object and material. Full details of the material parameters can be found here: :doc:`materials`.
 
-.. image:: images/material_parameters_panel.png
+  .. image:: images/material_parameters_panel.png
 
 Make any adjustments you wish to - these settings can all be revisited at any time.

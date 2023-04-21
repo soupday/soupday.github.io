@@ -55,7 +55,6 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#build-settings-panel">Build Settings Panel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#build-prefs">Build Prefs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#object-material-setup">Object &amp; Material Setup</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rebuild-materials">Rebuild Materials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#material-parameters-panel">Material Parameters Panel</a></li>
@@ -67,12 +66,13 @@
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">CC - Blender - Unity Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spring-bones.html">Spring Bone Rigging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sprig-bones-blender.html">Spring Bone Usage In Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create.html">Character Object Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scene.html">Scene Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
@@ -156,7 +156,7 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 <p>The available settings are as follows:</p>
 <ul class="simple">
 <li><p><strong>Lighting</strong> <em>(Default: OFF)</em> - Automatically set up lighting and render settings.</p></li>
-<li><p><strong>Physics</strong> <em>(Default: OFF)</em> - Automatically apply physics settings from the Character Creator import. See the <a class="reference internal" href="create.html#adding-and-editing-physics"><span class="std std-ref">Adding and Editing Physics</span></a> section for more details.</p></li>
+<li><p><strong>Physics</strong> <em>(Default: OFF)</em> - Automatically apply physics settings from the Character Creator import. See the <a class="reference internal" href="physics.html#adding-and-editing-physics"><span class="std std-ref">Adding and Editing Physics</span></a> section for more details.</p></li>
 <li><p><strong>Wrinkles</strong> <em>(Default: ON)</em> - Automatically generate expression wrinkles for the character if they are available in the export from Character Creator. See the <a class="reference internal" href="expression-wrinkles.html#expression-wrinkles"><span class="std std-ref">Expression Wrinkles</span></a> section for more details.</p></li>
 <li><p><strong>Rigify</strong> <em>(Default: OFF)</em> - Automatically ‘Rigify’ the character and retarget any animations in the character import onto the rigified character.  See the <a class="reference internal" href="animation.html#animation"><span class="std std-ref">Animation</span></a> section for more details.</p></li>
 </ul>
@@ -193,21 +193,20 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 </section>
 <section id="build-settings-panel">
 <h3>Build Settings Panel<a class="headerlink" href="#build-settings-panel" title="Permalink to this headline"></a></h3>
-<p>In the <strong>Build Settings</strong> panel you can control the way the add-on builds the materials.</p>
+<p>In the <strong>Build Settings</strong> panel you can control the way the add-on builds the materials.  These settings will be used either during a new import <em>or</em> when you next perform the <a class="reference internal" href="#rebuild-materials"><span class="std std-ref">Rebuild Materials</span></a> action.</p>
 <blockquote>
 <div><img alt="_images/build_settings.png" src="_images/build_settings.png" />
 </div></blockquote>
+<p>If you wish to enable or disable physics, then the <strong>Build Physics</strong> toggle in this panel can be used to enable/disable physics when the materials are next rebuilt (this mirrors the setting in the <em>Core Import Settings</em>).</p>
 <p>Materials can be specifically built for either the Cycles or Eevee renderer, and the type of eye shader can be defined according to your needs.</p>
 <ul class="simple">
 <li><p><strong>Parallax Eyes</strong> use a single cornea material which is not subject to the Eevee engine’s limitations on sub surface scattering and the receiving of shadows.</p></li>
 <li><p><strong>SSR Eyes</strong> (Screen Space Refraction) use a transparent cornea material over an opaque eye (iris) material.  When using Eevee, SSR materials do not receive shadows and do not have subsurface scattering.</p></li>
 </ul>
 <p>Please see the <a class="reference internal" href="eyes.html#eye-refraction"><span class="std std-ref">Eye Refraction</span></a> section for more information.</p>
-</section>
-<section id="build-prefs">
-<h3>Build Prefs<a class="headerlink" href="#build-prefs" title="Permalink to this headline"></a></h3>
-<p>In the <strong>Build Prefs</strong> foldout, a number of miscellaneous settings can be maintained (the overwhelming majority of users should accept the default settings).</p>
-<p>The most notable feature here is the ‘Build Wrinkle Maps’ setting (which is enabled by default).  Should you wish to disable this feature, then uncheck the box and perform a ‘Rebuild Advanced Materials’ (as described below, in <a class="reference internal" href="#rebuild-materials"><span class="std std-ref">Rebuild Materials</span></a>).</p>
+<p>If the character was imported without physics enabled, then the <strong>Build Physics</strong> button in this panel can be used to quickly add all the physics elements from the CC/iC export.</p>
+<p>(The <strong>Build Settings</strong> foldout is a convenient duplicate of the Additional (Optional) <a class="reference internal" href="#import-settings"><span class="std std-ref">Import Settings</span></a> described above).</p>
+<p>Each of these settings can be changed at any time, but you must perform the <a class="reference internal" href="#rebuild-materials"><span class="std std-ref">Rebuild Materials</span></a> step before they are incorporated into your character.</p>
 </section>
 <section id="object-material-setup">
 <h3>Object &amp; Material Setup<a class="headerlink" href="#object-material-setup" title="Permalink to this headline"></a></h3>
@@ -225,7 +224,11 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 </section>
 <section id="rebuild-materials">
 <h3>Rebuild Materials<a class="headerlink" href="#rebuild-materials" title="Permalink to this headline"></a></h3>
-<p>Once changes have been made to any of the above the <strong>Rebuild Advanced Materials</strong> button must be used to update the materials with the new settings.</p>
+<blockquote>
+<div><img alt="_images/rebuild-adv-materials.png" src="_images/rebuild-adv-materials.png" />
+</div></blockquote>
+<p><br />
+Once changes have been made to any of the above the <strong>Rebuild Advanced Materials</strong> button must be used to update the materials with the new settings.</p>
 <p>The <strong>Rebuild Node Groups</strong> button will rebuild the shaders in line with the current version of the add-on.  This can be used in cases where you have an old .blend file created with an earlier version of the add-on and you wish to update the shaders to the latest version.  Or you can use it to reset any changes you may have made to the shaders. In either case, after performing a <strong>Rebuild Node Groups</strong> you must then use <strong>Rebuild Advanced Materials</strong> to complete the process.</p>
 <p>Selection of a material in the <strong>Object and Material Setup</strong> pane will show all of the available settings in the <strong>Material Parameters</strong> panel (in much the same way as selection of  the material in the Material Properties tab of the standard Properties panel would).</p>
 <div class="line-block">
@@ -236,7 +239,9 @@ You can Embed the textures if you want, but it’s usually better not to as embe
 <h3>Material Parameters Panel<a class="headerlink" href="#material-parameters-panel" title="Permalink to this headline"></a></h3>
 <p>In the <strong>Material Parameters</strong> panel you can control how the various textures of the character interact and mix together to form the final appearance of the character. Each parameter can be adjusted and the materials will update in real time as you change the parameter sliders. For the most part these parameters take the same values as the material shader parameters in Character Creator.</p>
 <p>The parameters displayed are context sensitive to the currently active selected object and material. Full details of the material parameters can be found here: <a class="reference internal" href="materials.html"><span class="doc">Material Parameters</span></a>.</p>
-<img alt="_images/material_parameters_panel.png" src="_images/material_parameters_panel.png" />
+<blockquote>
+<div><img alt="_images/material_parameters_panel.png" src="_images/material_parameters_panel.png" />
+</div></blockquote>
 <p>Make any adjustments you wish to - these settings can all be revisited at any time.</p>
 </section>
 </section>

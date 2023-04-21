@@ -20,8 +20,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CC/iC ‘Create’ Tools" href="create.html" />
-    <link rel="prev" title="Spring Bone Usage In Blender" href="sprig-bones-blender.html" /> 
+    <link rel="next" title="Material Parameters" href="materials.html" />
+    <link rel="prev" title="Character Object Management" href="create.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,12 +47,17 @@
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">CC - Blender - Unity Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="animation.html">Animation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adv-animation.html">Advanced Animation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Physics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spring-bones.html">Spring Bone Rigging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sprig-bones-blender.html">Spring Bone Usage In Blender</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Scene Tools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="create.html">CC/iC ‘Create’ Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="create.html">Character Object Management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Scene Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#scene-lighting">Scene Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#simulation-baking-point-cache">Simulation Baking (Point Cache)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="materials.html">Material Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eyes.html">Eyes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skin.html">Skin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teeth.html">Teeth, Gums and Tongue</a></li>
@@ -87,20 +92,64 @@
              
   <section id="scene-tools">
 <h1>Scene Tools<a class="headerlink" href="#scene-tools" title="Permalink to this headline"></a></h1>
-<p><strong>Scene Tools</strong> are a simple set of tools which allow the rapid manipulation of some scene conditions.</p>
-<img alt="_images/scene_tools_panel.jpg" src="_images/scene_tools_panel.jpg" />
-<p><em>Scene Lighitng</em> provides a simple means of quickly applying a variety of lighting and <a class="reference external" href="https://en.wikipedia.org/wiki/High-dynamic-range_imaging">HDRI</a> presets.  Including a close approximation of the lighting used in Character Creator for reference purposes.</p>
+<p><strong>Scene Tools</strong> are a simple set of tools which allow the rapid manipulation of some scene conditions.  The scene tools are available in both tabs of the add-on and are located at the very bottom of each.</p>
+<blockquote>
+<div><img alt="_images/scene_tools_panel.jpg" src="_images/scene_tools_panel.jpg" />
+</div></blockquote>
+<section id="scene-lighting">
+<h2>Scene Lighting<a class="headerlink" href="#scene-lighting" title="Permalink to this headline"></a></h2>
+<p><em>Scene Lighting</em> provides a simple means of quickly applying a variety of lighting and <a class="reference external" href="https://en.wikipedia.org/wiki/High-dynamic-range_imaging">HDRI</a> presets.  Including a close approximation of the lighting used in Character Creator for reference purposes.</p>
 <p><em>3 Point Tracking and Camera</em> instantiates a camera and a transform point which the camera will track.</p>
-<p><em>Animation Range from Character</em> sets the animation frame range to that of the current action on the character’s armature.</p>
-<p><em>Sync Physics Range</em> sets the physics bake range to the current world scene frame range.</p>
+</section>
+<section id="simulation-baking-point-cache">
+<h2>Simulation Baking (Point Cache)<a class="headerlink" href="#simulation-baking-point-cache" title="Permalink to this headline"></a></h2>
+<p>A number of easily accessible timeline and physics baking tools have been provided as part of the Scene Tools in the CC/iC Pipeline tab of the add-on:</p>
+<blockquote>
+<div><figure class="align-center" id="id1">
+<img alt="_images/bl-timeline-phys-pane.png" src="_images/bl-timeline-phys-pane.png" />
+<figcaption>
+<p><span class="caption-text"><em>Timeline and physics baking tools</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<p><strong>Animation Range</strong> - The range of the animation can be quickly manipulated here. Two distinct frame range functions are available:</p>
+<ul class="simple">
+<li><p><strong>Use Preview Range</strong> <img alt="prev" src="_images/bl-timeline-phys-prev.png" /> - This will activate the <em>Viewport Preview Range</em>. This can be set in the timeline window, for more details see the <a class="reference external" href="https://docs.blender.org/manual/en/latest/editors/graph_editor/introduction.html#graph-preview-range">Preview Range</a> section of the official Blender documentation.</p></li>
+<li><p><strong>Expand Animation Range</strong> <img alt="exp" src="_images/bl-timeline-phys-exp.png" /> - This tool is used to increase the scene animation frame range to the frame range of the current action on the character (it will never decrease the frame range).</p></li>
+<li><p><strong>Fit Animation Range</strong> <img alt="fit" src="_images/bl-timeline-phys-fit.png" /> - This tool will always match the scene frame range to the frame range of the current action on the character.</p></li>
+</ul>
+<p><strong>Physics Cache</strong> - Several tools are provided to allow quick access to the physics baking functions for Cloth Physics and Spring Physics. The frame ranges can also be reset so the  physics simulations match the intended frame range of the scene you are preparing (a common cause of a physics simulation not working is that its frame range is incorrectly set).</p>
+<p>The common features are as follows:</p>
+<ul>
+<li><p><strong>Reset</strong> <img alt="reset" src="_images/bl-timeline-phys-reset.png" /></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Cloth Physics</strong> - Resets the physics point cache on all cloth objects and synchronizes the physics point cache ranges on all cloth objects to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.</p></li>
+<li><p><strong>Spring Physics</strong> - Resets the physics point cache for the rigid body world and synchronizes the physics point cache range to fit the current scene animation range. i.e. If the point cache frame range does not cover the current scene range (or preview range) it will be extended to fit.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Bake</strong> <img alt="bake" src="_images/bl-timeline-phys-bake.png" /> - This will bake the physics simulation to Blender’s point cache.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Cloth Physics</strong> - This will bake the simulation for the currently <strong>selected</strong> cloth object.</p></li>
+<li><p><strong>Spring Physics</strong> - This will bake the simulation for all spring bones.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><strong>Free</strong> <img alt="free" src="_images/bl-timeline-phys-free.png" /> - This will clear the point cache.</p></li>
+</ul>
+<p>The Reset/Bake/Free functions are also able to be performed all at once (<em>caveat emptor</em>) in the ‘All dynamics’ section. The most useful function here is ‘Free All Dynamics’ which will clear the point cache for all cloth and spring objects at the same time.</p>
+<p>For further details of Blender’s cache system, please see these developer notes on the <a class="reference external" href="https://code.blender.org/2011/01/a-look-at-point-cache/">Point Cache</a>.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="sprig-bones-blender.html" class="btn btn-neutral float-left" title="Spring Bone Usage In Blender" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="create.html" class="btn btn-neutral float-right" title="CC/iC ‘Create’ Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="create.html" class="btn btn-neutral float-left" title="Character Object Management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="materials.html" class="btn btn-neutral float-right" title="Material Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
