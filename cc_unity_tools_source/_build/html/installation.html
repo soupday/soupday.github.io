@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; CC/iC Unity Tools 1.3.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="About" href="about.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Unity Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hosting-at-github">Hosting at Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-from-zip-file">Installation from .zip file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download-and-unpack-zip-file">Download and Unpack .zip file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-package-from-disk">Install the Package From Disk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-from-git-url">Installation from git URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-using-the-github-desktop-advanced">Installation using the Github Desktop [Advanced]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-installation">Optional Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#post-processing-package">Post Processing Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alembic-package">Alembic Package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#removal">Removal</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baking.html">Texture Baking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Cloth Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lod.html">LOD Group Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Unity Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<section id="hosting-at-github">
+<h2>Hosting at Github<a class="headerlink" href="#hosting-at-github" title="Permalink to this headline"></a></h2>
+<p>The tool is hosted in separate Github repositories for the <em>HDRP</em>, <em>URP</em> and <em>3D (Built in render pipeline)</em> render pipelines. It is intended to be installed into <strong>Unity 2020.3 or above</strong> for <em>HDRP</em> and <em>URP</em> pipelines or <strong>Unity 2019.4.11f1 or above</strong> for the <em>Built in 3D</em> pipeline using Unity’s internal package manager.  The available repositories are shown below.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only install <strong>one version</strong> of the tool at a time.  Only use the <strong>package manager</strong> for installation.</p>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pipeline</p></th>
+<th class="head"><p>Repository</p></th>
+<th class="head"><p>Latest Release</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HDRP</p></td>
+<td><p><a class="reference external" href="https://github.com/soupday/cc_unity_tools_HDRP/">HDRP Repository</a></p></td>
+<td><p><a class="reference external" href="https://github.com/soupday/cc_unity_tools_HDRP/releases/">HDRP Latest Release</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>URP</p></td>
+<td><p><a class="reference external" href="https://github.com/soupday/cc_unity_tools_URP">URP Repository</a></p></td>
+<td><p><a class="reference external" href="https://github.com/soupday/cc_unity_tools_URP/releases/">URP Latest Release</a></p></td>
+</tr>
+<tr class="row-even"><td><p>3D</p></td>
+<td><p><a class="reference external" href="https://github.com/soupday/cc_unity_tools_3D">3D Repository</a></p></td>
+<td><p><a class="reference external" href="https://github.com/soupday/cc_unity_tools_3D/releases/">3D Latest Release</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>To obtain most recent stable version follow the above link to the latest release, and download the <strong>source code.zip</strong> file from there.</p>
+<p>Alternatively, you visit the appropriate repository to obtain the latest commit to the main branch by pressing the green ‘Code’ button and then ‘Download Zip’ from the dropdown window. Alternatively the code can be cloned directly from github via HTTPS using the ‘git URL’ which can be copied from the dropdown window (discussed later).</p>
+<img alt="_images/code_dropdown.png" src="_images/code_dropdown.png" />
+</section>
+<section id="installation-from-zip-file">
+<h2>Installation from .zip file<a class="headerlink" href="#installation-from-zip-file" title="Permalink to this headline"></a></h2>
+<div class="youtube_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/2CUHkz29X3I" style="border: 0; height: 345px; width: 560px">
+</iframe></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="download-and-unpack-zip-file">
+<h3>Download and Unpack .zip file<a class="headerlink" href="#download-and-unpack-zip-file" title="Permalink to this headline"></a></h3>
+<p>Download the appropriate latest release or latest stable commit (from the code dropdown box). Unpack the .zip file into a <strong>safe + non volatile</strong> directory where you’ll be able to store the package files (<a class="reference external" href="https://www.7-zip.org/">7zip</a> is a suitable tool for this, should you lack one).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>You must store the package files in a safe place</strong>.  You can make a <em>directory</em> inside your project <em>directory</em> (eg ‘&lt;drive&gt;:/~~/&lt;project directory&gt;/downloaded files’) if you wish.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>DO NOT</strong> place the unzipped files into the <strong>/Assets</strong> <strong>/Packages</strong> <strong>/Library</strong> or <strong>/ProjectSettings</strong> directories of your project.</p>
+</div>
+</section>
+<section id="install-the-package-from-disk">
+<h3>Install the Package From Disk<a class="headerlink" href="#install-the-package-from-disk" title="Permalink to this headline"></a></h3>
+<p>In Unity, open your project and navigate to the ‘Package Manager’ (<em>via</em> <strong>Window -&gt; Package Manager</strong>).</p>
+<img alt="_images/package_manager.png" src="_images/package_manager.png" />
+<p>Now click the ‘Add’ button.</p>
+<img alt="_images/package_add_button.png" src="_images/package_add_button.png" />
+<p>And select ‘Add package from disk’.</p>
+<img alt="_images/add_from_disk.png" src="_images/add_from_disk.png" />
+<p>Navigate to the place where you unpacked the .zip file and select package.json.</p>
+<img alt="_images/package_select.png" src="_images/package_select.png" />
+<p>The package manager will now install the tool and will end up looking like this.</p>
+<img alt="_images/post_install_package.png" src="_images/post_install_package.png" />
+<p>The tool is fully installed and ready to be used.  Remember to keep the files you installed from safe.</p>
+</section>
+</section>
+<section id="installation-from-git-url">
+<h2>Installation from git URL<a class="headerlink" href="#installation-from-git-url" title="Permalink to this headline"></a></h2>
+<div class="youtube_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/SIBUuT3BfGs" style="border: 0; height: 345px; width: 560px">
+</iframe></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Pre-requisites</strong></p>
+<p>Packages can be installed into Unity directly from a git repository.</p>
+<p>The sole requirement for this is that Unity must be able to find the <strong>git.exe</strong> executable somewhere on your PATH.</p>
+<p>If you require a git executable you can install <a class="reference external" href="https://github.com/git-for-windows/git/releases/tag/v2.32.0.windows.2">git for windows</a> (download the 64bit windows installer and accept all the default options when installing).</p>
+<img alt="_images/git_for_win_ver.png" src="_images/git_for_win_ver.png" />
+<p>Please make sure you <strong>restart Unity and Unity Hub</strong> after installing git for windows otherwise you will encounter the following error.</p>
+<img alt="_images/no_git_exe.png" src="_images/no_git_exe.png" />
+<p><strong>Installing from Github</strong></p>
+<p>Open the Unity package manager <strong>Window -&gt; Package Manager</strong>, click the add (+) button and select ‘Add package from git URL’.</p>
+<img alt="_images/add_from_url.png" src="_images/add_from_url.png" />
+<p>Copy the URL from the green code dropdown box in the <a class="reference external" href="https://github.com/soupday/">git repository</a>.</p>
+<img alt="_images/copy_code_dropdown.png" src="_images/copy_code_dropdown.png" />
+<p>Paste this into the package manager and click ‘Add’.  The package manager will now install the tool.</p>
+</section>
+<section id="installation-using-the-github-desktop-advanced">
+<h2>Installation using the Github Desktop [Advanced]<a class="headerlink" href="#installation-using-the-github-desktop-advanced" title="Permalink to this headline"></a></h2>
+<p>Using the <a class="reference external" href="https://desktop.github.com/">Github Desktop</a> application to clone the repository is a very convenient means of keeping the addon installation up to date (it also allows easy switching between the main and dev branches if you want to test in-development features).</p>
+<p>The addon can be installed into your Unity project(s) from wherever you have cloned the repository and it can be updated by ‘Fetching’ the latest changes without the need to uninstall/reinstall.</p>
+<p><strong>Workflow</strong>:</p>
+<ul class="simple">
+<li><p>Download and install the application from the <a class="reference external" href="https://desktop.github.com/">Github Desktop</a> web page.</p></li>
+<li><p>You won’t need an Github account to proceed.</p></li>
+</ul>
+<ul>
+<li><p>Open the application and chose the menu option <em>File -&gt; Clone Repository…</em></p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/git-clone-menu.png"><img alt="cloneMenu" src="_images/git-clone-menu.png" style="width: 160px;" /></a></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p>Input the desired path to the repository and the local path where the cloned repository will be stored on your system.</p></li>
+<li><p>The Repo names are either:</p>
+<ul class="simple">
+<li><p>soupday/cc_unity_tools_3D</p></li>
+<li><p>soupday/cc_unity_tools_URP</p></li>
+<li><p>soupday/cc_unity_tools_HDRP</p></li>
+</ul>
+<p>(a repository URL can also be used)</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/git-clone-dia.png"><img alt="clonedia" src="_images/git-clone-dia.png" style="width: 300px;" /></a></div>
+</div>
+</li>
+</ul>
+<ul>
+<li><p>The application will clone the repository</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/git-cloning.png"><img alt="cloning" src="_images/git-cloning.png" style="width: 450px;" /></a></div>
+</div>
+</li>
+<li><p>Once complete, install the package <em>as per</em> <a class="reference internal" href="#install-the-package-from-disk"><span class="std std-ref">Install the Package From Disk</span></a> (open the Unity project then the package manager and select add package from disk.  Navigate to the cloned repository and select the package.JSON file).</p></li>
+</ul>
+<ul>
+<li><p>Keep the package up to date using the ‘<em>Fetch Origin</em>’ button.</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/git-fetch.png"><img alt="fetch" src="_images/git-fetch.png" style="width: 250px;" /></a></div>
+</div>
+<p>If there any changes then ‘Pull’ them with the ‘<em>Pull Origin</em>’ button.</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/git-pull.png"><img alt="pull" src="_images/git-pull.png" style="width: 250px;" /></a></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline"></a></h2>
+<p>The HDRP and URP versions of the tool require minimum versions of the following packages to also be installed in your project.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pipeline</p></th>
+<th class="head"><p>Package</p></th>
+<th class="head"><p>Min. Version</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HDRP</p></td>
+<td><p><a class="reference external" href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition&#64;10.5/manual/index.html">High Definition RP</a></p></td>
+<td><p>10.5.0 or above.</p></td>
+</tr>
+<tr class="row-odd"><td><p>URP</p></td>
+<td><p><a class="reference external" href="https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal&#64;10.5/manual/index.html">Universal RP</a></p></td>
+<td><p>10.5.0 or above.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="optional-installation">
+<h2>Optional Installation<a class="headerlink" href="#optional-installation" title="Permalink to this headline"></a></h2>
+<section id="post-processing-package">
+<h3>Post Processing Package<a class="headerlink" href="#post-processing-package" title="Permalink to this headline"></a></h3>
+<p>Users of the 3D (built in render pipeline) and URP (universal render pipeline) should consider the optional installation of the post processing package from the Unity Registry.  This will be utilized automatically to give excellent quality results comparable to Character Creator’s viewport.</p>
+<a class="reference internal image-reference" href="_images/linear_postprocess.png"><img alt="_images/linear_postprocess.png" class="align-center" src="_images/linear_postprocess.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To install the post processing package, go to the package manager window and use the ‘Packages’ dropdown to change the list show to ‘Unity Registry’.</p>
+<img alt="_images/package_registry.png" class="align-center" src="_images/package_registry.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Scroll down the list to find ‘Post Processing’.  Select the item in the list and click install.</p>
+<img alt="_images/package_postprocess.png" class="align-center" src="_images/package_postprocess.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>After installation the post processing stack will be added to the main camera and the custom settings automatically applied.</p>
+</section>
+<section id="alembic-package">
+<h3>Alembic Package<a class="headerlink" href="#alembic-package" title="Permalink to this headline"></a></h3>
+<p>Should you wish to use the Alembic file format for baked physics geometry (and indeed the Alembic functions from this tool), then the Alembic package is also required from the ‘Unity Registry’.</p>
+<p>Use the above method to navigate to the ‘Unity Registry’ and select the Alembic package and click install.</p>
+<img alt="_images/package_alembic.png" class="align-center" src="_images/package_alembic.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This will allow Unity to correctly import and animate Alembic files.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="removal">
+<h2>Removal<a class="headerlink" href="#removal" title="Permalink to this headline"></a></h2>
+<img alt="_images/remove.png" src="_images/remove.png" />
+<p>Open the Unity package manager (<strong>Window -&gt; Package Manager</strong>) highlight the package that you wish to remove and click the remove button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="about.html" class="btn btn-neutral float-left" title="About" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

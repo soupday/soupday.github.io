@@ -370,6 +370,9 @@ The options available in this panel are dependent on the pipeline version used; 
 .. |settxt1| replace::
     **Use Amplify Shaders** *(3D and URP pipelines ONLY)* Use shaders made with the *Amplify Shader Editor* for which has higher quality anisotropic lighting of the hair at a minimal performance cost.  Amplify shaders are capable of subsurface scattering effects, and anisotropic hair lighting in the URP and Build-in 3D pipelines.
 
+.. |settxt10| replace::
+    **Use Dual Specular Shaders** Use Dual Specular shaders where possible. Dual specular shaders use the stack lit master node which is forward only. The dual specular shader setups are based on principles used in the Heretic digital human shaders.
+
 .. |settxt2| replace::
     **Reconstruct Flow Map Normals** *(All pipelines)* Rebuild missing Normal maps from Flow Maps in hair materials. Reconstructed Normals add extra detail to the lighting models.
 
@@ -392,17 +395,23 @@ The options available in this panel are dependent on the pipeline version used; 
 .. |settxt8| replace::
     **Physics Collider Detection Threshold** The weight threshold (from the weight map + power/offset/scale) that must be reached before a collider can be assigned to the cloth when optimized colliders are being assigned to <Cloth> components by the physics Weight Mapper.  This is a global default value see :ref:`The <WeightMapper> component` documentation for details.
 
-
 .. |settxt6| replace::
     **Log Level** Here you can opt to change the console logging level to: Errors Only, Warnings & Errors (default) or Everything 
 
+.. |settxt11| replace::
+    **Use self collision** (Default OFF) This setting will allow the use of self collision data from the CC export in cloth and hair simulation. The importer will attempt to use the values from the Character Creator export and rescale them to work in Unity. How well this works is heavily dependent on the uniformity and vertex spacing of the cloth mesh. Self collision also has a significant performance overhead and should be used with caution in a real-time engine such as Unity.
+    
 - |settxt1|
+
+- |settxt10|
 
 - |settxt2|
 
 - |settxt3|
 
 - |settxt5|
+
+- |settxt11|
 
 - |settxt9|
 
@@ -471,6 +480,99 @@ Once the (High Quality) processing has been completed, a prefabs directory will 
     |-- <MODEL_NAME>.fbm
     |-- <MODEL_NAME>.fbx
     |-- <MODEL_NAME>.json
+
+|
+
+Batch Processing
+----------------
+
+Processing characters individually can be time consuming, since *version 1.5.0* a 'Batch Processing' utility has been created which allows the unattended processing of a user defined list of characters and processing settings.
+
+The utility can be opened from the top menu *Reallusion -> Processing Tools -> Batch Processing* (NB the batch processing window requires the main 'Importer Window' (the main windows of the import tool) to be open).
+
+.. figure:: images/batch_process_win_initial.png
+    :width: 242
+    :align: center
+
+    *Initial Batch Processing Window*
+
+.. |selected| image:: images/batch_process_selected.png
+
+.. |reorder| image:: images/batch_process_reorder.png
+                :width: 21
+
+.. |filter| image:: images/batch_process_filter.png
+                :width: 21
+
+.. |nofilter| image:: images/batch_process_no_filter.png
+                :width: 21
+
+.. |refresh_list| image:: images/batch_process_refresh.png
+                    :width: 21
+
+.. |char_settings| image:: images/batch_char_settings_but.png
+                    :width: 30
+
+.. |char_settings_cyan| image:: images/batch_char_settings_cyan.png
+                    :width: 30
+
+.. |char_settings_curr| image:: images/batch_char_settings_curr.png
+                    :width: 30
+
+.. |char_settings_curr_cyan| image:: images/batch_char_settings_curr_cyan.png
+                    :width: 30
+
+.. |search| image:: images/batch_search.png            
+
+.. |searchx| image:: images/batch_search_x.png
+
+.. |apply| image:: images/batch_apply.png
+            :width: 125
+
+.. |batch_start| image:: images/batch_start.png
+                    :width: 30
+
++ Characters can be *selected* for inclusion in the processing list by ticking the appropriate box on the character line |selected|.  |br2|
+
++ The list of characters can be sorted by ascending/descending name order with: |reorder| |br2|
+
++ The list can be filtered by processing status with: |filter| and can be cleared using: |nofilter| 
+
+.. image:: images/batch_process_filter_cat.png
+    :width: 242
+    :align: center  
+
+|
+
++ Filtering by text search can be done by typing into the search field |search| and cleared with |searchx|. |br2|
+
++ The character list can be completely refreshed and all filters and settings reset with: |refresh_list| This will pick up any new characters that have been added to the main importer window. |br2|
+
++ The processing settings for a character can be adjusted using the |char_settings| button.  This will extend the utility window to show a settings pane.
+
+.. figure:: images/batch_process_win_ext.png
+    :width: 390
+    :align: center
+
+    *Extended processing window*
+
+    The currently displayed character settings are denoted by the |char_settings_curr| icon on the character line. |br2|
+
++ If any settings have been changed, then the settings icon will be displayed in cyan: |char_settings_cyan|/|char_settings_curr_cyan|. |br2|
+
++ The currently displayed character settings can be copied to all the currently *selected* |selected| characters in the list using the |apply| button.
+
++ Processing of the selected characters can be started with the |batch_start| button.
+
+.. Admonition:: During Batch Processing
+    
+    Each of the selected characters in the list will be processed in order.  After a character has been fully processed, the utility will pause for a few seconds and give control back to the user.  This is done in order to allow memory to be freed up and to give an opportunity to interrupt the process if necessary.
+
+    If the batch processing window is closed, then the process will be halted and no further characters will be processed.  Should the main 'Importer Window' be closed then this will force a closure of the batch processing utility.
+
+    As processing proceeds, the processing status icon of the character in both the 'Batch Processing Window' and main 'Importer Window' will be updated.
+
+    At the end of the process, the character list will be fully reset.
 
 |
 
@@ -571,7 +673,7 @@ After processing has completed, the output character can be inspected in a previ
 
 This will open a new scene with neutral lighting; if your current scene is marked as changed then you will be prompted to save the current scene before changing to the preview scene.
 
-.. image:: images/preview_scene_2.png
+.. image:: images/preview_scene_new.png
 
 Several preview scene specific tools are included on the main button strip (of the main tool window) for user convenience:
 
@@ -586,6 +688,9 @@ Several preview scene specific tools are included on the main button strip (of t
 By default, the preview scene contains a small tool to allow you to preview animations and facial expressions on your character.  The previews are performed in **Edit Mode** only, so that the Unity project itself **doesn't have to enter Play Mode** (which, for complex projects is desireable).  The tool itself is controlled from an embedded pane in the SceneView window (In Unity versions below 2021.2.0 this will appear as a standard Gui window, above 2021.2.0 the tool will be contained in a more versatile (and moveable) overlay window).
 
 .. image:: images/char_preview_toolpane.png
+    :align: center
+
+|br|
 
 The tool pane has two sections (each can be minimized/revealed by clicking it's foldout button).
 
@@ -594,10 +699,77 @@ The tool pane has two sections (each can be minimized/revealed by clicking it's 
 .. |animplayer_s| image:: images/new_ui_anim_player.png
     :width: 28
 
+.. |anim_play_ctrls| image:: images/anim_player_ctrls.png
+
+.. |anim_play_time| image:: images/anim_player_time.png
+
+.. |anim_play_speed| image:: images/anim_player_speed.png
+
+.. |anim_play_ik| image:: images/anim_player_ik.png
+
+.. |anim_play_track| image:: images/anim_player_track.png
+
+.. |anim_play_track_cancel| image:: images/anim_player_track_cancel.png
+
+.. |anim_play_reset| image:: images/anim_player_reset.png
+
+.. |anim_play_options| image:: images/anim_player_options.png
+
+.. |anim_play_launch_play| image:: images/anim_player_launch_play.png
+
+.. |anim_play_launch_play_playing| image:: images/anim_player_launch_play_playing.png
+
 Animation player |animplayer|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The animation player can play any appropriate `Mechanim <https://docs.unity3d.com/Manual/AnimationOverview.html>`_ animation from your project on the character in the preview scene (by using the *'Animation'* selector).  The controls for this are standard (play/pause advance one frame back/forward and go to start/end) additionally dragging the 'Time' bar will allow you to spool manually through the animation.  Additionally, any model (with an animator component) may be dragged into the scene and selected in the *'Scene Model'* object selector to allow animations to be played on it.
+.. Note:: 
+    Since version 1.5.0 of the Unity Tools, the animator player has been changed from using UnityEditor.AnimationMode clip sampling for playback to using a custom AnimatorController. This allows the animation player to be used during 'Game Play Mode' and to also have such features as foot IK.
+
+.. image:: images/anim_animator_player.png
+    :align: center
+
+|br|
+
+The animation player can play any appropriate `Mechanim <https://docs.unity3d.com/Manual/AnimationOverview.html>`_ animation from your project on the character in the preview scene (by using the *'Animation'* selector).
+
+Any model (with an animator component) may be dragged into the scene and selected in the *'Scene Model'* object selector to allow animations to be played on it.
+
++ |anim_play_ctrls| The controls for this are standard (play/pause advance one frame back/forward and go to start/end) |br2|
+
++ The 'Time' bar |anim_play_time| can be 'scrubbed' to spool manually through the animation.  |br2|
+
++ Foot IK (inverse kinematics) can be toggled *ON/OFF* with |anim_play_ik| |br2|
+
++ Using the tracking dropdown |anim_play_track|, the scene camera can be made to track any of the (*mechanim*) bones that are present in the character avatar.  The scene view can be rotated about the tracked bone by using *Left Alt + Drag Mouse* and the scene panned with *Right Alt + Mouse Drag* or *Middle Mouse Button + Mouse Drag*. |br2|
+
++ During tracking, clicking anywhere in the application or using the |anim_play_track_cancel| 'x' will lose focus and tracking will be stopped. |br2|
+
++ The playback speed of the animation (*forwards and backwards*) can be controlled with the speed slider |anim_play_speed|. |br2|
+
++ The current animation can be removed and the character fully reset to its T-pose with |anim_play_reset|. |br2|
+
++ The options button |anim_play_options| is used to set some minor animator options: *Auto Loop* the animation (on by defult), *Animate on the spot* this does not allow the animation to modify the root transform of the character, *Show mirror image* will show the mirror image of the animation. |br2|
+
++ 'Game Play Mode' can be entered using the |anim_play_launch_play| button.  **Using this button will enter play mode and then refocus the application onto the scene window.** During play mode, the button icon will appear as blue |anim_play_launch_play_playing| - clicking this again can be used to exit from play mode. |br|
+
+.. Note::
+    This use of game mode animation preview can be used to evaluate run-time only effects such as cloth simulation.  Compare the 'Edit Mode' animation below, with its 'Play Mode' counterpart which has cloth simulation enabled.  **This allows the 'run-time' visualization of the interaction between the colliders on the character and the cloth being simulated, with complete control over the animation being played**.
+
+    .. |edit_vid| raw:: html
+
+        <video width="675" height="476" controls src="_static/edit_mode_colliders_player.mp4"></video> 
+
+    .. |play_vid| raw:: html
+
+        <video width="675" height="476" controls src="_static/play_mode_colliders_player.mp4"></video> 
+
+    + **Edit Mode**
+
+    |edit_vid|
+
+    + **Play Mode + Cloth Simulation**
+
+    |play_vid|
 
 The animation player/facial expression tool may be toggled on/off with the |animplayer_s| button.
 

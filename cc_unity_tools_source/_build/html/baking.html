@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Texture Baking &mdash; CC/iC Unity Tools 1.3.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Advanced Animation" href="adv-usage.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Unity Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Texture Baking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#texture-baking-workflow-bake-bakehair">Texture Baking Workflow  </a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-baking-workflow">Basic Baking Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hair-recoloring-bakehair-s">Hair Recoloring </a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-reference-legacy">Video Reference [Legacy]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Cloth Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lod.html">LOD Group Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Unity Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Texture Baking</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/baking.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="texture-baking">
+<h1>Texture Baking<a class="headerlink" href="#texture-baking" title="Permalink to this headline"></a></h1>
+<p>The texture baking process is used to create a somewhat simplified high performance version of an imported character for use in complex scenes to avoid performance issues.  This version of the character will maintain the highest possible visual quality.</p>
+<p>The baking process will produce a separate ‘Baked Prefab’ which incorporates any user changes made to the materials before baking.  This can be used identically to the prefab created by building the materials normally.</p>
+<p>Character textures (skin, eyes <em>etc</em>.) and hair textures are handled differently and are discussed in their own sections below:</p>
+<section id="texture-baking-workflow-bake-bakehair">
+<h2>Texture Baking Workflow <img alt="Bake" src="_images/new_ui_bake.png" /> <img alt="BakeHair" src="_images/new_ui_bake_hair.png" /><a class="headerlink" href="#texture-baking-workflow-bake-bakehair" title="Permalink to this headline"></a></h2>
+<section id="basic-baking-workflow">
+<h3>Basic Baking Workflow<a class="headerlink" href="#basic-baking-workflow" title="Permalink to this headline"></a></h3>
+<p>Firstly ensure that the character has been correctly imported and has had its materials built according to the steps in the <a class="reference internal" href="usage.html#importing-into-unity"><span class="std std-ref">Importing into Unity</span></a> section of the documentation.</p>
+<ul class="simple">
+<li><p>Open the character in a <a class="reference internal" href="usage.html#preview-scene-preview"><span class="std std-ref">Preview Scene </span></a> (see the link for details).</p></li>
+<li><p>Prepare the character by making any material changes deemed necessary in the <a class="reference internal" href="usage.html#materials-inspector"><span class="std std-ref">Materials Inspector</span></a> (see the link for details)</p></li>
+<li><p>Should you wish to modify the hair color see the section on <a class="reference internal" href="#hair-recoloring-bakehair-s"><span class="std std-ref">Hair Recoloring </span></a> for more details.</p></li>
+<li><p>These changes can be conveniently evaluated using the many lighting setups available with the <img alt="prev_light" src="_images/preview_lighting_model.png" /> icon, and also with the animation player and facial expression tools.</p></li>
+<li><p>Set the baking options from the two dropdown menus (only if needed)</p></li>
+</ul>
+<img alt="_images/new_ui_bake_options.png" class="align-center" src="_images/new_ui_bake_options.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="bksh" src="_images/new_ui_bake_shaders.png" /></p></td>
+<td><p><strong>Custom Shaders</strong> <em>(Default)</em>  Uses materials with a custom ShaderGraph shader for very high quality and very good performance (<em>Hair</em> and <em>Eyes</em> only - <em>Skin</em> will use the default shader eg. HDRP/Lit, URP/Lit or Standard shader).
+<br /><br />
+<strong>Default Shaders</strong> Uses the system default pbr shaders in the baked output, if performance is desired above all else, at the cost of visual quality. Hair, Eyes and Skin will all use HDRP/Lit, URP/Lit or Standard shader depending on render pipeline.</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="bkpre" src="_images/new_ui_bake_prefab.png" /></p></td>
+<td><p><strong>Separate Baked Prefab</strong> <em>(Default)</em> The baked output will be written to a new prefab &lt;name&gt;_baked (in the same directory as the initially created prefab).
+<br /><br />
+<strong>Overwrite Prefab</strong> This option will overwrite the initially (when the materials are built during initial processing) created prefab with new materials and textures.</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Once you are satisfied with the material settings and the desired options, then the process can be started with the <a class="reference internal" href="_images/new_ui_bake.png"><img alt="Bake_s" src="_images/new_ui_bake.png" style="width: 28px;" /></a> button.</p></li>
+<li><p>When baking is complete, a new prefab will be created in the ‘Prefabs’ sub-directory of the current model location as ‘&lt;MODEL_NAME&gt;_Baked.prefab’.  The materials and baked textures will be written to to the ‘Baked’ sub-directory (these should all be retained).</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Import</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="n">Prefabs</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">prefab</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span><span class="n">_Baked</span><span class="o">.</span><span class="n">prefab</span>
+  <span class="o">|</span>
+  <span class="o">|--</span> <span class="n">Baked</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="n">Materials</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="n">Textures</span>
+  <span class="o">|</span>
+  <span class="o">|--</span> <span class="n">Animations</span>
+  <span class="o">|--</span> <span class="n">materials</span>
+  <span class="o">|--</span> <span class="n">textures</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbx</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">json</span>
+</pre></div>
+</div>
+<div class="admonition-baking-is-the-final-step admonition">
+<p class="admonition-title">Baking is the Final Step</p>
+<p>Baking represents the <strong>final</strong> step, since no further material changes can be made to the baked prefab.  Should you wish to update the baked prefab, then you must start the baking workflow again.</p>
+</div>
+</section>
+<section id="hair-recoloring-bakehair-s">
+<h3>Hair Recoloring <a class="reference internal" href="_images/new_ui_bake_hair.png"><img alt="BakeHair_s" src="_images/new_ui_bake_hair.png" style="width: 28px;" /></a><a class="headerlink" href="#hair-recoloring-bakehair-s" title="Permalink to this headline"></a></h3>
+<p>If you wish to adjust the hair color of the character, take the following steps:</p>
+<ul>
+<li><p>Navigate to the hair material in the <a class="reference internal" href="usage.html#materials-inspector"><span class="std std-ref">Materials Inspector</span></a> treeview: it will be listed as ‘Hair_Transparency_Pbr’.</p>
+<blockquote>
+<div><figure class="align-center" id="id1">
+<img alt="_images/hair_materials_treeview.png" src="_images/hair_materials_treeview.png" />
+<figcaption>
+<p><span class="caption-text"><em>Linked Hair Materials Selected in the Treeview</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Selecting ‘Hair_Transparency_Pbr’ will <em>multiple select</em> all of the relevant materials.</p></li>
+<li><p>You can also manually navigate to hair materials by clicking on hair objects in the scene view window and opening up the materials in the inspector.  Please note that you will have to enable color on each material individually.</p></li>
+<li><p>In the (Standard) Inspector window, scroll to the very bottom and make sure the ‘Enable Color’ box is ticked.</p>
+<blockquote>
+<div><figure class="align-center" id="id2">
+<img alt="_images/hair_materials_color_inspector.png" src="_images/hair_materials_color_inspector.png" />
+<figcaption>
+<p><span class="caption-text"><em>Linked Hair Color Controls in the Inspector Window</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+<li><p>This is intended to present a similar interface to that used for hair recoloring in Character Creator (in Modify - Material - Shader Settings).</p>
+<blockquote>
+<div><figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/hair_recolor_cc4.png"><img alt="_images/hair_recolor_cc4.png" src="_images/hair_recolor_cc4.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Hair Recoloring in CC4 (click to enlarge)</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+</li>
+<li><p>Enable Color will allow use of the Color fields for <em>Root Color</em>, <em>End Color</em>, <em>Highlight A Color</em> and <em>Highlight B Color</em> along with all of the blend controls.</p></li>
+</ul>
+<div class="admonition-enabling-color-expected-behavior admonition">
+<p class="admonition-title"><em>Enabling Color - Expected Behavior</em></p>
+<p>The immediate result of ticking/activating ‘Enable Color’ is that you may see a degradation in quality of the hair (this is especially noticeable for lighter hair colors). <strong>This is expected behavior</strong>. <em>Illustrated below:</em></p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="_images/hair_color_enabled_X.png"><img alt="hair_color_enabled_X" src="_images/hair_color_enabled_X.png" style="width: 260px;" /></a></p></td>
+<td><p><a class="reference internal" href="_images/hair_color_enabled_O.png"><img alt="hair_color_enabled_O" src="_images/hair_color_enabled_O.png" style="width: 260px;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Hair appearance with ‘Enable Color’ <em>Active</em></p></td>
+<td><p>Hair appearance with ‘Enable Color’ <em>Inactive</em></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Please Note:</strong> At the end of the baking process, chosen hair settings will be incorporated into the hair texture and the ‘enable color’ flag disabled - this will return the hair to a high quality appearance (with new coloring).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To allow for the fact that with ‘Enable Color’ <em>active</em> may look different to the eventual result, a means of previewing the final result has been added.</p>
+<ul class="simple">
+<li><p>Once the re-color settings have been made use the <img alt="BakeHair" src="_images/new_ui_bake_hair.png" /> button to simulate baking of the hair and apply that to the scene model.</p></li>
+<li><p>Evaluate the settings to see if they are satisfactory.</p></li>
+<li><p>The bake simulation can be removed by clicking the <img alt="BakeHair_Yellow" src="_images/bake_hair_yellow.png" /> button. This will leave the settings as they were when the simulation was applied, allowing you to fine tune the settings and quickly re-simulate them.</p></li>
+<li><p>To reset the coloring to the original the re-build the materials.</p></li>
+</ul>
+</div>
+<p><em>Workflow continues…</em></p>
+<ul class="simple">
+<li><p>Adjust the color and blend controls to your preference.</p></li>
+<li><p>Simulate the final result with the <a class="reference internal" href="_images/new_ui_bake_hair.png"><img alt="BakeHair_s" src="_images/new_ui_bake_hair.png" style="width: 28px;" /></a> button.  If any refinement is needed, then remove the simulation with the <a class="reference internal" href="_images/bake_hair_yellow.png"><img alt="BakeHair_Yellow_s" src="_images/bake_hair_yellow.png" style="width: 28px;" /></a> button, then adjust the settings and try again.</p></li>
+<li><p>Once finished, remove the simulation (not needed but it will leave the hair simulation on the initial prefab - this can however be removed at any time.)</p></li>
+<li><p>Finalize any material settings as per <a class="reference internal" href="#basic-baking-workflow"><span class="std std-ref">Basic Baking Workflow</span></a></p></li>
+<li><p>Commit the current scene model to be baked with the <a class="reference internal" href="_images/new_ui_bake.png"><img alt="Bake_s" src="_images/new_ui_bake.png" style="width: 28px;" /></a> button.</p></li>
+</ul>
+<p>The outcome of the bake is detailed in the <a class="reference internal" href="#basic-baking-workflow"><span class="std std-ref">Basic Baking Workflow</span></a> section above.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="video-reference-legacy">
+<h3>Video Reference [Legacy]<a class="headerlink" href="#video-reference-legacy" title="Permalink to this headline"></a></h3>
+<p>The basic baking workflow is show in the video below:</p>
+<div class="youtube_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/9sCRM0hUkc4" style="border: 0; height: 345px; width: 560px">
+</iframe></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="adv-usage.html" class="btn btn-neutral float-right" title="Advanced Animation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

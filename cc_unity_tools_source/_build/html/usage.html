@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage &mdash; CC/iC Unity Tools 1.3.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Texture Baking" href="baking.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CC/iC Unity Tools
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-the-character-for-import-into-unity">Preparing the Character for Import into Unity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#export-from-character-creator">Export From Character Creator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#export-from-iclone">Export From iClone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#considerations-to-avoid-clipping">Considerations to Avoid Clipping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-into-unity">Importing into Unity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-the-import-tool">Opening The Import Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beginning-the-import">Beginning The Import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initial-processing">Initial Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quality-settings">Quality Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-settings">Further Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#batch-processing">Batch Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-processing">Further Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baking-bake-bakehair">Baking  </a></li>
+<li class="toctree-l3"><a class="reference internal" href="#animations-anim">Animations </a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#post-processing">Post Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preview-scene-preview">Preview Scene </a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#animation-player-animplayer">Animation player </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#facial-expression">Facial Expression</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#materials-inspector">Materials Inspector</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tesselation-options">Tesselation Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tools-menu">Tools Menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reverse-triangle-order">Reverse Triangle Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prune-blend-shapes">Prune Blend Shapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#auto-smooth-mesh">Auto Smooth mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#orbit-scene-view">Orbit Scene View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-or-close-character-s-mouth-eyes-legacy">Open or Close Character’s Mouth/Eyes [Legacy]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="baking.html">Texture Baking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adv-usage.html">Advanced Animation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="physics.html">Cloth Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lod.html">LOD Group Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expression-wrinkles.html">Expression Wrinkles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_Installation.html">TLDR Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tldr_usage.html">TLDR Quick Usage</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CC/iC Unity Tools</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Usage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h1>
+<div class="youtube_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/6VIH5eXCioQ" style="border: 0; height: 345px; width: 560px">
+</iframe></div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="preparing-the-character-for-import-into-unity">
+<h2>Preparing the Character for Import into Unity<a class="headerlink" href="#preparing-the-character-for-import-into-unity" title="Permalink to this headline"></a></h2>
+<p>Before a character can be imported into Unity, it must first be properly exported from the relevant software package.  This tool can accept exports from Character Creator 3/4, iClone 7/8 and Blender 2.8 and above (the Blender case requires a CC3/4 or iClone 7/8 character as the starting point).</p>
+<p>In <strong>Character Creator</strong>, or <strong>iClone</strong> prepare your character as you see fit.</p>
+<section id="export-from-character-creator">
+<h3>Export From Character Creator<a class="headerlink" href="#export-from-character-creator" title="Permalink to this headline"></a></h3>
+<p>In <strong>Character Creator</strong> export the character using <strong>Export -&gt; FBX -&gt; Clothed Character</strong>.</p>
+<a class="reference internal image-reference" href="_images/cc4-export-menu.png"><img alt="_images/cc4-export-menu.png" class="align-center" src="_images/cc4-export-menu.png" style="width: 400px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Select the following options in the export window (you may need to scroll down to see all options).</p>
+<p>Target tool preset: <strong>Unity 3D</strong>, select: <strong>Current Pose</strong>, <strong>Delete Hidden Faces</strong>,  <strong>Merge Beard and Brows into one object</strong> <em>(Optional)</em> and <strong>Bake Diffuse and Specular maps from Digital Human Hair Shader</strong>.</p>
+<a class="reference internal image-reference" href="_images/cc4-export-top.png"><img alt="_images/cc4-export-top.png" class="align-center" src="_images/cc4-export-top.png" style="width: 550px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Further settings are available by scrolling down. Please note <strong>Delete Hidden Faces</strong> is not currently selected by default.</p>
+<a class="reference internal image-reference" href="_images/cc4-export-bottom.png"><img alt="_images/cc4-export-bottom.png" class="align-center" src="_images/cc4-export-bottom.png" style="width: 550px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click <strong>Export</strong> to begin the export process.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the character is placed in its own folder then it can be easily removed or moved around.  Should you wish to export multiple characters into the same folder, they will co-exist safely without overwriting each other’s data and can be manipulated collectively.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are exporting directly into a Unity project, then <strong>please wait for the export process to complete before switching to the Unity application</strong>. Otherwise Unity will detect new files as they are being written and will lock them before they are completely exported - causing an inconsistent mess.</p>
+</div>
+</section>
+<section id="export-from-iclone">
+<h3>Export From iClone<a class="headerlink" href="#export-from-iclone" title="Permalink to this headline"></a></h3>
+<p>In <strong>iClone</strong> export the character using <strong>Export -&gt; Export FBX…</strong></p>
+<a class="reference internal image-reference" href="_images/e1-iClone.png"><img alt="_images/e1-iClone.png" class="align-center" src="_images/e1-iClone.png" style="width: 300px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Select the following options in the export window.</p>
+<p>Target tool preset: <strong>Unity 3D</strong>, select: <strong>Export Range = All</strong>, <strong>Delete Hidden Faces</strong>, <strong>Merge Face Hair to One Object</strong>.</p>
+<img alt="_images/ic8-export-main.png" class="align-center" src="_images/ic8-export-main.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If you are exporting facial animations, then enter the advanced export settings using the <img alt="advexp" src="_images/ic8-export-adv-button.png" /> button.  Ensure that <strong>Mouth Open as Morph</strong> is <em>un-ticked</em> (it is currently enabled by default) otherwise the facial animations will be incorrectly exported.</p>
+<img alt="_images/ic8-export-adv.png" class="align-center" src="_images/ic8-export-adv.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click <strong>Export</strong> to begin the export process.</p>
+</section>
+<section id="considerations-to-avoid-clipping">
+<h3>Considerations to Avoid Clipping<a class="headerlink" href="#considerations-to-avoid-clipping" title="Permalink to this headline"></a></h3>
+<p>Typically, to avoid the issue of meshes beneath clothing items penetrating through during animation, the <strong>Delete Hidden Faces</strong> is used to cull any parts of the model that cannot be seen directly.</p>
+<p>Whilst this is usually fine, there may be circumstances where it is not desireable to do this (or the clothing items are being clipped thorough in Character Creator itself).</p>
+<p>In such circumstances please see the <a class="reference external" href="https://manual.reallusion.com/Character-Creator-4/Content/ENU/4.0/08_Cloth/Conforming_Clothing.htm?Highlight=conform">conforming clothes in Character Creator</a> section of the Character Creator 4 documentation for a guide on eliminating clipping.</p>
+</section>
+</section>
+<section id="importing-into-unity">
+<h2>Importing into Unity<a class="headerlink" href="#importing-into-unity" title="Permalink to this headline"></a></h2>
+<p>In <strong>Microsoft Windows</strong> open the file explorer and navigate to the export directory. In your <strong>Unity 2020.3</strong> or above project browser, navigate to the folder in your project where you will be placing your imported character.</p>
+<p>Now drag the &lt;name&gt;.fbx and &lt;name&gt;.json files &amp; the textures and &lt;name&gt;.fbm (if present) folders from Windows file explorer into the project browser’s target folder of your Unity project.</p>
+<img alt="_images/initial_import.png" src="_images/initial_import.png" />
+</section>
+<section id="opening-the-import-tool">
+<h2>Opening The Import Tool<a class="headerlink" href="#opening-the-import-tool" title="Permalink to this headline"></a></h2>
+<p>To open the import tool, you can right click on the <strong>&lt;name&gt;.fbx avatar</strong></p>
+<img alt="_images/fbx_avatar_small.png" class="align-center" src="_images/fbx_avatar_small.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>From the right click menu select <strong>Reallusion → Import Character</strong></p></li>
+<li><p>Alternatively, you can open the import tool from the top menu bar (<strong>Reallusion → Import Characters</strong>)</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This will open the main tool window (by default this will be docked next to the Scene Hierarchy View window - it is shown here un-docked).</p>
+<img alt="_images/tool_new_ui.png" class="align-center" src="_images/tool_new_ui.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The import tool will actively detect all of the valid Character Creator or iClone characters that are contained in the Unity project and display them vertically on the left hand side of the tool window.</p>
+<p>With many characters, the default large icons in the character display list can quickly become congested. With version 1.4.1 and above the character display list can be resized and turned into a condensed readable list by dragging the edge of the display list (the cursor appearance will change over the draggable area).</p>
+<table class="colwidths-given docutils align-center">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="lgeIcon" src="_images/char_icon_list_large.png" /></p></td>
+<td><p><img alt="detIcon" src="_images/char_icon_list_detail.png" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>If your character is not displayed (or if no right click menu option is available to open the import tool) then <strong>please ensure that all of the exported data from Character Creator or iClone has been dragged into the Unity project browser</strong> (there must be at least the .fbx and .json files and a textures folder containing a subfolder with the same name as the .fbx asset).</p>
+<p>If you add a character to the project whilst the tool is open, you can refresh the available character list with the <a class="reference internal" href="_images/new_ui_refresh.png"><img alt="refresh" src="_images/new_ui_refresh.png" style="width: 28px;" /></a> button.</p>
+</section>
+<section id="beginning-the-import">
+<h2>Beginning The Import<a class="headerlink" href="#beginning-the-import" title="Permalink to this headline"></a></h2>
+<p>Firstly ensure the character you wish to process is currently selected by clicking on the character icon (on the left hand side).  The currently selected character will be shown as follows.</p>
+<img alt="_images/current_selection.png" class="align-center" src="_images/current_selection.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The selected character is now ready to be processed.  The following options will be initially available:</p>
+</section>
+<section id="initial-processing">
+<h2>Initial Processing<a class="headerlink" href="#initial-processing" title="Permalink to this headline"></a></h2>
+<section id="quality-settings">
+<h3>Quality Settings<a class="headerlink" href="#quality-settings" title="Permalink to this headline"></a></h3>
+<p>The three principal quality settings are presented as dropdown menus, with the defaults pre-selected as shown below.</p>
+<img alt="_images/new_ui_quality_settings.png" class="align-center" src="_images/new_ui_quality_settings.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The following dropdown options are available:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 38%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><img alt="mats" src="_images/new_material_settings.png" /></p></td>
+<td><p><strong>High Quality Materials</strong> <em>(Default)</em> processing will set up the character with materials using a custom ShaderGraph which replicates the visual quality of Character Creator as closely as possible.
+<br /><br />
+<strong>Basic Materials</strong> processing will set up the character with materials using the system default shaders that ship with Unity - This should only ever be used as a draft import.</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="eyes" src="_images/new_eye_settings.png" /></p></td>
+<td><p><strong>Basic Eyes</strong> This option will use a simpler shader for the eye, but will still offer good quality for a lower performance overhead.
+<br /><br />
+<strong>Parallax Eyes</strong> <em>(Default)</em> This option will apply a high quality shader to the eyes which attempts to properly simulate the refractive properties of the eye, offering excellent visual quality. this shader also allows control over eye attributes such as pupil size.
+<br /><br />
+<strong>Refractive (SSR) Eyes</strong> <em>(HDRP pipeline only)</em> Screen Space Refraction (SSR) is a “HDRP feature that uses the depth and color buffer of the screen to calculate refraction”.</p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="hair" src="_images/new_hair_settings.png" /></p></td>
+<td><p><strong>Single Pass Hair</strong> This option will apply a single pbr material to the hair meshes, whilst having lower performance this also offers lower visual fidelity (this should be used as the general use case).
+<br /><br />
+<strong>Two Pass Hair</strong> <em>(Default)</em> This option will apply two materials to the hair meshes (and thus use two material passes). Two pass hair is generally higher quality, where the hair is first drawn opaque with alpha cutout and the remaining edges drawn in softer alpha blending, but can come at a performance cost (whilst this is the default, it is best suited to close up shots).
+<br /><br />
+<strong>MSAA Coverage Hair</strong> <em>(Available only when amplify shaders are used - not available in HDRP)</em> This option is intended to be used when MSAA (Multi-Sample Anti-Aliasing) is enabled in post processing to provide low cost high quality results.</p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="shaderfeat" src="_images/new_shader_features.png" /></p></td>
+<td><p><strong>Features</strong> (Multiple features can be simultaneously selected)
+<br /><br />
+<strong>Tesselation</strong> <em>(HDRP v12)</em> For HDRP 12 (Unity 2021.2+) all shader graph shaders can have tessellation enabled.  If enabled, will add additional <a class="reference internal" href="#tesselation-options"><span class="std std-ref">Tesselation Options</span></a> in the <a class="reference internal" href="#materials-inspector"><span class="std std-ref">Materials Inspector</span></a>.
+<br /><br />
+<strong>Cloth Physics</strong> Will enable <a class="reference internal" href="physics.html#cloth-physics"><span class="std std-ref">Cloth Physics</span></a> - During ‘Build Materials’ This will construct colliders, constraint paint applicable clothing items and set them to use the character’s colliders with the Unity built in physics system.
+<br /><br />
+<strong>Hair Physics</strong> Will enable hair physics during ‘Build Materials’ in much the same way that cloth physics is enabled. <strong>Consider this to be highly experimental.</strong> <strong>Warning: this will be VERY detrimental to performance.</strong>
+<br /><br />
+<strong>Spring Bone Hair</strong> This will activate spring bone hair cards (created in Blender) for use with the Dynamic Bone Unity Store Asset package (this will discussed in the Spring Bone Hair section of the documentation.)
+<br /><br />
+<strong>Wrinkle Maps</strong> This flag is set automatically when an eligible character import with the ‘CC4 Expression Wrinkle’ system enabled, is detected. See the <a class="reference internal" href="expression-wrinkles.html#expression-wrinkles"><span class="std std-ref">Expression Wrinkles</span></a> section for more details.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="further-settings">
+<h3>Further Settings<a class="headerlink" href="#further-settings" title="Permalink to this headline"></a></h3>
+<p>Clicking on the settings icon <a class="reference internal" href="_images/additional_settings.png"><img alt="FurtherSettings_s" src="_images/additional_settings.png" style="width: 28px;" /></a> will show a secondary settings panel.</p>
+<figure class="align-center" id="id1">
+<img alt="_images/additional_settings_panel.png" src="_images/additional_settings_panel.png" />
+<figcaption>
+<p><span class="caption-text"><em>HDRP settings panel</em></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The options available in this panel are dependent on the pipeline version used; all available options are discussed below.</p>
+<ul class="simple">
+<li><p><strong>Use Amplify Shaders</strong> <em>(3D and URP pipelines ONLY)</em> Use shaders made with the <em>Amplify Shader Editor</em> for which has higher quality anisotropic lighting of the hair at a minimal performance cost.  Amplify shaders are capable of subsurface scattering effects, and anisotropic hair lighting in the URP and Build-in 3D pipelines.</p></li>
+<li><p><strong>Use Dual Specular Shaders</strong> Use Dual Specular shaders where possible. Dual specular shaders use the stack lit master node which is forward only. The dual specular shader setups are based on principles used in the Heretic digital human shaders.</p></li>
+<li><p><strong>Reconstruct Flow Map Normals</strong> <em>(All pipelines)</em> Rebuild missing Normal maps from Flow Maps in hair materials. Reconstructed Normals add extra detail to the lighting models.</p></li>
+<li><p><strong>Rebake Blender Unity Maps</strong> <em>(All pipelines)</em> When active will always re-bake the blender to unity Diffuse+Alpha, HDRP Mask and Metallic+Gloss maps. Otherwise subsequent material rebuilds will try to re-use existing bakes. Only needed if the source textures are changed.</p></li>
+<li><p><strong>Animation Player On</strong> <em>(All pipelines)</em> Always show the animation player when opening the preview scene.</p></li>
+<li><p><strong>Use self collision</strong> (Default OFF) This setting will allow the use of self collision data from the CC export in cloth and hair simulation. The importer will attempt to use the values from the Character Creator export and rescale them to work in Unity. How well this works is heavily dependent on the uniformity and vertex spacing of the cloth mesh. Self collision also has a significant performance overhead and should be used with caution in a real-time engine such as Unity.</p></li>
+<li><p><strong>Mip-map Bias</strong> Override the mipmap bias for all textures being set up for the character.  Use a (small) negative bias to sharpen textures and a positive bias to blur them.  For further details see Unity’s documentation on the <a class="reference external" href="https://docs.unity3d.com/ScriptReference/TextureImporter-mipMapBias.html">Texture Importer Mipmap Bias</a> setting which this value directly controls.</p></li>
+<li><p><strong>Physics Collider Shrink</strong> Coefficient to specify if the colliders should be reduced or enlarged: +ve numbers shrink the collders and -ve numbers enlarge them.</p></li>
+<li><p><strong>Physics Collider Detection Threshold</strong> The weight threshold (from the weight map + power/offset/scale) that must be reached before a collider can be assigned to the cloth when optimized colliders are being assigned to &lt;Cloth&gt; components by the physics Weight Mapper.  This is a global default value see <a class="reference internal" href="physics.html#the-weightmapper-component"><span class="std std-ref">The &lt;WeightMapper&gt; Component</span></a> documentation for details.</p></li>
+<li><p><strong>Log Level</strong> Here you can opt to change the console logging level to: Errors Only, Warnings &amp; Errors (default) or Everything</p></li>
+</ul>
+<p>You can return to the main tool window from the settings panel by clicking the back button. <a class="reference internal" href="_images/settings_back.png"><img alt="settingsback" src="_images/settings_back.png" style="width: 28px;" /></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once you have set your options  then the model can be processed by clicking the ‘Build Materials’ button, Unity will then process the character and write a log file in the same directory as the .fbx file.</p>
+<img alt="_images/build_button.png" class="align-center" src="_images/build_button.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once processing is complete the tool window will be updated to reflect that.. The processed character icon will change color (Grey for Default processing, Green for HQ processing and  Orange for Baked processing).</p>
+<p>All of the animations (with the exception of the T-Pose) will also be extracted from the imported fbx, and have all of the Blend Shapes in those animations retargeted to animate all of the objects in the processed model.</p>
+<p>This processing is necessary since two-pass hair processing adds new hair objects which would otherwise require manual Blend Shape retargeting in order to animate properly.  This allows the animations to be used ‘out of the box’.</p>
+<p>The animation is placed in a subfolder of the folder containing the fbx file and renamed to &lt;MODEL_NAME&gt;_Imported_&lt;Animation_Name&gt;.anim</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Import</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="n">Animations</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span>
+  <span class="o">|</span>           <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span><span class="n">_Imported_</span><span class="o">&lt;</span><span class="n">Animation_Name_1</span><span class="o">&gt;.</span><span class="n">anim</span>
+  <span class="o">|</span>           <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;</span><span class="n">_Imported_</span><span class="o">&lt;</span><span class="n">Animation_Name_2</span><span class="o">&gt;.</span><span class="n">anim</span>
+  <span class="o">|</span>
+  <span class="o">|--</span> <span class="n">materials</span>
+  <span class="o">|--</span> <span class="n">textures</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbx</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>The first animation in the list will also be the default animation in the preview scene animation player.</p>
+<p>Additionally, the status text will be updated with the type of processing that has been performed (highlighted below).</p>
+<img alt="_images/post_hq_processing.png" class="align-center" src="_images/post_hq_processing.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once the (High Quality) processing has been completed, a prefabs directory will be created in the same directory as the imported character .fbx file and a unity prefab of the imported character will be placed into it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Import</span> <span class="n">Folder</span><span class="o">&gt;</span>
+  <span class="o">|--</span> <span class="n">Prefabs</span>
+  <span class="o">|</span>     <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">prefab</span>
+  <span class="o">|</span>
+  <span class="o">|--</span> <span class="n">Animations</span>
+  <span class="o">|--</span> <span class="n">materials</span>
+  <span class="o">|--</span> <span class="n">textures</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbm</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">fbx</span>
+  <span class="o">|--</span> <span class="o">&lt;</span><span class="n">MODEL_NAME</span><span class="o">&gt;.</span><span class="n">json</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="batch-processing">
+<h3>Batch Processing<a class="headerlink" href="#batch-processing" title="Permalink to this headline"></a></h3>
+<p>Processing characters individually can be time consuming, since <em>version 1.5.0</em> a ‘Batch Processing’ utility has been created which allows the unattended processing of a user defined list of characters and processing settings.</p>
+<p>The utility can be opened from the top menu <em>Reallusion -&gt; Processing Tools -&gt; Batch Processing</em> (NB the batch processing window requires the main ‘Importer Window’ (the main windows of the import tool) to be open).</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/batch_process_win_initial.png"><img alt="_images/batch_process_win_initial.png" src="_images/batch_process_win_initial.png" style="width: 242px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Initial Batch Processing Window</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Characters can be <em>selected</em> for inclusion in the processing list by ticking the appropriate box on the character line <img alt="selected" src="_images/batch_process_selected.png" />.  <br /><br /></p></li>
+<li><p>The list of characters can be sorted by ascending/descending name order with: <a class="reference internal" href="_images/batch_process_reorder.png"><img alt="reorder" src="_images/batch_process_reorder.png" style="width: 21px;" /></a> <br /><br /></p></li>
+<li><p>The list can be filtered by processing status with: <a class="reference internal" href="_images/batch_process_filter.png"><img alt="filter" src="_images/batch_process_filter.png" style="width: 21px;" /></a> and can be cleared using: <a class="reference internal" href="_images/batch_process_no_filter.png"><img alt="nofilter" src="_images/batch_process_no_filter.png" style="width: 21px;" /></a></p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/batch_process_filter_cat.png"><img alt="_images/batch_process_filter_cat.png" class="align-center" src="_images/batch_process_filter_cat.png" style="width: 242px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Filtering by text search can be done by typing into the search field <img alt="search" src="_images/batch_search.png" /> and cleared with <img alt="searchx" src="_images/batch_search_x.png" />. <br /><br /></p></li>
+<li><p>The character list can be completely refreshed and all filters and settings reset with: <a class="reference internal" href="_images/batch_process_refresh.png"><img alt="refresh_list" src="_images/batch_process_refresh.png" style="width: 21px;" /></a> This will pick up any new characters that have been added to the main importer window. <br /><br /></p></li>
+<li><p>The processing settings for a character can be adjusted using the <a class="reference internal" href="_images/batch_char_settings_but.png"><img alt="char_settings" src="_images/batch_char_settings_but.png" style="width: 30px;" /></a> button.  This will extend the utility window to show a settings pane.</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/batch_process_win_ext.png"><img alt="_images/batch_process_win_ext.png" src="_images/batch_process_win_ext.png" style="width: 390px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Extended processing window</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<div class="legend">
+<p>The currently displayed character settings are denoted by the <a class="reference internal" href="_images/batch_char_settings_curr.png"><img alt="char_settings_curr" src="_images/batch_char_settings_curr.png" style="width: 30px;" /></a> icon on the character line. <br /><br /></p>
+</div>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>If any settings have been changed, then the settings icon will be displayed in cyan: <a class="reference internal" href="_images/batch_char_settings_cyan.png"><img alt="char_settings_cyan" src="_images/batch_char_settings_cyan.png" style="width: 30px;" /></a>/<a class="reference internal" href="_images/batch_char_settings_curr_cyan.png"><img alt="char_settings_curr_cyan" src="_images/batch_char_settings_curr_cyan.png" style="width: 30px;" /></a>. <br /><br /></p></li>
+<li><p>The currently displayed character settings can be copied to all the currently <em>selected</em> <img alt="selected" src="_images/batch_process_selected.png" /> characters in the list using the <a class="reference internal" href="_images/batch_apply.png"><img alt="apply" src="_images/batch_apply.png" style="width: 125px;" /></a> button.</p></li>
+<li><p>Processing of the selected characters can be started with the <a class="reference internal" href="_images/batch_start.png"><img alt="batch_start" src="_images/batch_start.png" style="width: 30px;" /></a> button.</p></li>
+</ul>
+<div class="admonition-during-batch-processing admonition">
+<p class="admonition-title">During Batch Processing</p>
+<p>Each of the selected characters in the list will be processed in order.  After a character has been fully processed, the utility will pause for a few seconds and give control back to the user.  This is done in order to allow memory to be freed up and to give an opportunity to interrupt the process if necessary.</p>
+<p>If the batch processing window is closed, then the process will be halted and no further characters will be processed.  Should the main ‘Importer Window’ be closed then this will force a closure of the batch processing utility.</p>
+<p>As processing proceeds, the processing status icon of the character in both the ‘Batch Processing Window’ and main ‘Importer Window’ will be updated.</p>
+<p>At the end of the process, the character list will be fully reset.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="further-processing">
+<h3>Further Processing<a class="headerlink" href="#further-processing" title="Permalink to this headline"></a></h3>
+<p>After initial processing further options will become available.</p>
+</section>
+<section id="baking-bake-bakehair">
+<h3>Baking <img alt="Bake" src="_images/new_ui_bake.png" /> <img alt="BakeHair" src="_images/new_ui_bake_hair.png" /><a class="headerlink" href="#baking-bake-bakehair" title="Permalink to this headline"></a></h3>
+<p>The baking workflow is a process of consolidating the texture influences from the original imported and processed character into a simple set of textures that can be used in a simpler and faster shader, whilst maintaining high visual quality.  This will also incorporate any user changes made to the materials.</p>
+<p>The baking process will output a prefab; using this in your scenes will be much more performance friendly.</p>
+<p>Baking is discussed in more detail in the <a class="reference internal" href="baking.html#texture-baking"><span class="std std-ref">Texture Baking</span></a> section of this documentation.</p>
+</section>
+<section id="animations-anim">
+<h3>Animations <img alt="anim" src="_images/new_ui_anim.png" /><a class="headerlink" href="#animations-anim" title="Permalink to this headline"></a></h3>
+<p>The animation button <a class="reference internal" href="_images/new_ui_anim.png"><img alt="anim_s" src="_images/new_ui_anim.png" style="width: 28px;" /></a> will re-process all of the animations contained in the fbx, and re-create the same default output as the build process did.</p>
+<p>This will also create a default animator controller will all the fbx’s animations in it as states.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="post-processing">
+<h2>Post Processing<a class="headerlink" href="#post-processing" title="Permalink to this headline"></a></h2>
+<section id="preview-scene-preview">
+<h3>Preview Scene <img alt="preview" src="_images/new_ui_preview.png" /><a class="headerlink" href="#preview-scene-preview" title="Permalink to this headline"></a></h3>
+<p>After processing has completed, the output character can be inspected in a preview scene by pressing the <strong>‘Preview Scene’</strong> button <a class="reference internal" href="_images/new_ui_preview.png"><img alt="preview_s" src="_images/new_ui_preview.png" style="width: 28px;" /></a>.</p>
+<p>This will open a new scene with neutral lighting; if your current scene is marked as changed then you will be prompted to save the current scene before changing to the preview scene.</p>
+<img alt="_images/preview_scene_new.png" src="_images/preview_scene_new.png" />
+<p>Several preview scene specific tools are included on the main button strip (of the main tool window) for user convenience:</p>
+<ul class="simple">
+<li><p><img alt="prev_light" src="_images/preview_lighting_model.png" /> <em>Preview Scene Lighting</em> This will cycle through several pre defined lighting setups to allow you to rapidly assess the character under a range of lighting conditions.</p></li>
+<li><p><img alt="pref_cam_align" src="_images/preview_camera_align.png" /> <em>Align main camera with current scene view</em> This will align the main camera in the preview scene with the current orientation of the view in the <em>Scene Window</em> (i.e. it will align the <em>Game window</em> with what you are seeing in the <em>Scene Window</em>).</p></li>
+</ul>
+<p>By default, the preview scene contains a small tool to allow you to preview animations and facial expressions on your character.  The previews are performed in <strong>Edit Mode</strong> only, so that the Unity project itself <strong>doesn’t have to enter Play Mode</strong> (which, for complex projects is desireable).  The tool itself is controlled from an embedded pane in the SceneView window (In Unity versions below 2021.2.0 this will appear as a standard Gui window, above 2021.2.0 the tool will be contained in a more versatile (and moveable) overlay window).</p>
+<img alt="_images/char_preview_toolpane.png" class="align-center" src="_images/char_preview_toolpane.png" />
+<p><br /></p>
+<p>The tool pane has two sections (each can be minimized/revealed by clicking it’s foldout button).</p>
+<section id="animation-player-animplayer">
+<h4>Animation player <img alt="animplayer" src="_images/new_ui_anim_player.png" /><a class="headerlink" href="#animation-player-animplayer" title="Permalink to this headline"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since version 1.5.0 of the Unity Tools, the animator player has been changed from using UnityEditor.AnimationMode clip sampling for playback to using a custom AnimatorController. This allows the animation player to be used during ‘Game Play Mode’ and to also have such features as foot IK.</p>
+</div>
+<img alt="_images/anim_animator_player.png" class="align-center" src="_images/anim_animator_player.png" />
+<p><br /></p>
+<p>The animation player can play any appropriate <a class="reference external" href="https://docs.unity3d.com/Manual/AnimationOverview.html">Mechanim</a> animation from your project on the character in the preview scene (by using the <em>‘Animation’</em> selector).</p>
+<p>Any model (with an animator component) may be dragged into the scene and selected in the <em>‘Scene Model’</em> object selector to allow animations to be played on it.</p>
+<ul class="simple">
+<li><p><img alt="anim_play_ctrls" src="_images/anim_player_ctrls.png" /> The controls for this are standard (play/pause advance one frame back/forward and go to start/end) <br /><br /></p></li>
+<li><p>The ‘Time’ bar <img alt="anim_play_time" src="_images/anim_player_time.png" /> can be ‘scrubbed’ to spool manually through the animation.  <br /><br /></p></li>
+<li><p>Foot IK (inverse kinematics) can be toggled <em>ON/OFF</em> with <img alt="anim_play_ik" src="_images/anim_player_ik.png" /> <br /><br /></p></li>
+<li><p>Using the tracking dropdown <img alt="anim_play_track" src="_images/anim_player_track.png" />, the scene camera can be made to track any of the (<em>mechanim</em>) bones that are present in the character avatar.  The scene view can be rotated about the tracked bone by using <em>Left Alt + Drag Mouse</em> and the scene panned with <em>Right Alt + Mouse Drag</em> or <em>Middle Mouse Button + Mouse Drag</em>. <br /><br /></p></li>
+<li><p>During tracking, clicking anywhere in the application or using the <img alt="anim_play_track_cancel" src="_images/anim_player_track_cancel.png" /> ‘x’ will lose focus and tracking will be stopped. <br /><br /></p></li>
+<li><p>The playback speed of the animation (<em>forwards and backwards</em>) can be controlled with the speed slider <img alt="anim_play_speed" src="_images/anim_player_speed.png" />. <br /><br /></p></li>
+<li><p>The current animation can be removed and the character fully reset to its T-pose with <img alt="anim_play_reset" src="_images/anim_player_reset.png" />. <br /><br /></p></li>
+<li><p>The options button <img alt="anim_play_options" src="_images/anim_player_options.png" /> is used to set some minor animator options: <em>Auto Loop</em> the animation (on by defult), <em>Animate on the spot</em> this does not allow the animation to modify the root transform of the character, <em>Show mirror image</em> will show the mirror image of the animation. <br /><br /></p></li>
+<li><p>‘Game Play Mode’ can be entered using the <img alt="anim_play_launch_play" src="_images/anim_player_launch_play.png" /> button.  <strong>Using this button will enter play mode and then refocus the application onto the scene window.</strong> During play mode, the button icon will appear as blue <img alt="anim_play_launch_play_playing" src="_images/anim_player_launch_play_playing.png" /> - clicking this again can be used to exit from play mode. <br /></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This use of game mode animation preview can be used to evaluate run-time only effects such as cloth simulation.  Compare the ‘Edit Mode’ animation below, with its ‘Play Mode’ counterpart which has cloth simulation enabled.  <strong>This allows the ‘run-time’ visualization of the interaction between the colliders on the character and the cloth being simulated, with complete control over the animation being played</strong>.</p>
+<ul class="simple">
+<li><p><strong>Edit Mode</strong></p></li>
+</ul>
+<p><video width="675" height="476" controls src="_static/edit_mode_colliders_player.mp4"></video></p>
+<ul class="simple">
+<li><p><strong>Play Mode + Cloth Simulation</strong></p></li>
+</ul>
+<p><video width="675" height="476" controls src="_static/play_mode_colliders_player.mp4"></video></p>
+</div>
+<p>The animation player/facial expression tool may be toggled on/off with the <a class="reference internal" href="_images/new_ui_anim_player.png"><img alt="animplayer_s" src="_images/new_ui_anim_player.png" style="width: 28px;" /></a> button.</p>
+<p>NB:  When an animation is playing, the facial expression controls are locked out.</p>
+</section>
+<section id="facial-expression">
+<h4>Facial Expression<a class="headerlink" href="#facial-expression" title="Permalink to this headline"></a></h4>
+<p>This section controls numerous aspects of facial manipulation it was introduced to replace the older menu driven facial manipulation and contains some useful features.  The tool is included as part of the animation player window.</p>
+<img alt="_images/eye_2d_slider.png" class="align-left" src="_images/eye_2d_slider.png" />
+<p>The eye control tool is used to ‘zoom in’ on the face (double click anywhere on the ‘eye’ graphic).  This will change the scene view to look directly at the face of the character no matter what the position of the head is (this may result in unusual camera angles - this can be rectified by double clicking on the <img alt="reset-face" src="_images/reset_face_button.png" /> icon to return to a neutral angle).</p>
+<p>Dragging the handle in the centre of the eye control tool will move the rotation of the eyes allowing detailed inspection of the eyes and the area of the face around the eyes are they are moved in real time.</p>
+<img alt="_images/eye_control_tool.gif" src="_images/eye_control_tool.gif" />
+<p>Eye blink and mouth open/close can be controlled using the sliders:</p>
+<img alt="_images/mouth_blink_sliders.png" src="_images/mouth_blink_sliders.png" />
+<p>As above these manipulate the character model in real time with no (as previous) menu usage.</p>
+<img alt="_images/mouth_blink_control.gif" src="_images/mouth_blink_control.gif" />
+<p>A predefined set of facial expressions have been added so that these can be quickly previewed on the character with minimal effort.</p>
+<img alt="_images/face_button_strip.png" src="_images/face_button_strip.png" />
+<p>Repeatedly clicking on a button will increase the strength of the expression applied to the character.</p>
+<img alt="_images/expression_control.gif" src="_images/expression_control.gif" />
+<p>At any time, clicking on the <img alt="reset-face" src="_images/reset_face_button.png" /> icon will reset the face of the character (and double clicking will reset the camera).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+</section>
+<section id="materials-inspector">
+<h3>Materials Inspector<a class="headerlink" href="#materials-inspector" title="Permalink to this headline"></a></h3>
+<p>The objects, materials and textures used in the model can be easily inspected from the hierarchical tree view.  Selecting any of the items in the tree viewer will select them within your Unity project and display them in the inspector.</p>
+<img alt="_images/material_explorer.png" src="_images/material_explorer.png" />
+<p>If  <strong>‘Select Linked’</strong> is checked (by default this is checked) then when a material is selected then all others with common properties are also selected, displaying all members of the selected group in the inspector.</p>
+<img alt="_images/select_linked.png" src="_images/select_linked.png" />
+<p>The <strong>‘selectable groups’</strong> are <strong>‘Skin materials’</strong>, <strong>‘Eye materials’</strong>, <strong>‘Eye occlusion’</strong> and <strong>‘Teeth materials’</strong>
+This will multiple select all of the materials associated with the ‘selectable group’  and present all of the common attributes in the inspector window.</p>
+<img alt="_images/multi_material_selected.png" src="_images/multi_material_selected.png" />
+<p>This allows the simultaneous property adjustment of ‘like’ materials. For example selecting eye materials will allow the simultaneous adjustment of both left and right eyes.</p>
+<img alt="_images/selected_eyes.png" src="_images/selected_eyes.png" />
+<p>Example adjustment – working zoomed in on one eye will also update the other eye for consistency:</p>
+<img alt="_images/pupil_manipulation.gif" src="_images/pupil_manipulation.gif" />
+<section id="tesselation-options">
+<h4>Tesselation Options<a class="headerlink" href="#tesselation-options" title="Permalink to this headline"></a></h4>
+<p>If the materials have been built with the ‘Tesselation’ feature enabled (HDRP 12+), then a tesselation options section becomes available in the materials inspector.</p>
+<figure class="align-center" id="id4">
+<img alt="_images/tess_options.png" src="_images/tess_options.png" />
+<figcaption>
+<p><span class="caption-text"><em>Enabled Tesselation Options</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The shaded wireframe gif below shows the effect of ramping the ‘Tesselation Factor’ from 0 to 32:</p>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="_images/face_tesselation_s.gif"><img alt="_images/face_tesselation_s.gif" src="_images/face_tesselation_s.gif" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Tesselation Factor Changes</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>This allows a higher density mesh to be simulated by the shader.</p>
+</section>
+</section>
+</section>
+<section id="tools-menu">
+<h2>Tools Menu<a class="headerlink" href="#tools-menu" title="Permalink to this headline"></a></h2>
+<p>The <strong>Reallusion → Tools</strong> menu can be used to further manipulate the character.  Before using any option here make sure the character you wish to manipulate is selected in the scene (blue outline)</p>
+<img alt="_images/face_menu.png" src="_images/face_menu.png" />
+<section id="reverse-triangle-order">
+<h3>Reverse Triangle Order<a class="headerlink" href="#reverse-triangle-order" title="Permalink to this headline"></a></h3>
+<p>This option is occasionally needed to correct any anomalies with alpha blended materials.  This principal use of this is to ensure that hair materials are rendered in the proper order i.e. from inside to out.  To use this, select the <strong>hair mesh</strong> of a model in the scene and use the menu option <strong>Reallusion -&gt; Tools -&gt; Reverse Triangle Order</strong>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="prune-blend-shapes">
+<h3>Prune Blend Shapes<a class="headerlink" href="#prune-blend-shapes" title="Permalink to this headline"></a></h3>
+<p>If a large number of blend shapes are exported with the character, then this option will cull those blend shapes which make a negligible contribution to the deformation of the model, leaving only those with a tangible effect.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="auto-smooth-mesh">
+<h3>Auto Smooth mesh<a class="headerlink" href="#auto-smooth-mesh" title="Permalink to this headline"></a></h3>
+<p>If Unity encounters a mesh that has differing vertex data (e.g. from split normals) then unity will split that mesh into separate faces and it will give the appearance of being flat shaded.</p>
+<p>Usage:  with the object selected use the menu option <strong>Reallusion -&gt; Tools -&gt; Auto Smooth Mesh</strong></p>
+<p>Illustrated below: <strong>Left</strong> Apparent flat shading. <strong>Right</strong> Smooth shading after ‘auto smooth’</p>
+<p><a class="reference internal" href="_images/mesh_flat_shaded.png"><img alt="Before auto smooth" src="_images/mesh_flat_shaded.png" style="width: 300px;" /></a> <a class="reference internal" href="_images/mesh_smooth_shaded.png"><img alt="After auto smooth" src="_images/mesh_smooth_shaded.png" style="width: 300px;" /></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="orbit-scene-view">
+<h3>Orbit Scene View<a class="headerlink" href="#orbit-scene-view" title="Permalink to this headline"></a></h3>
+<p>The scene camera can be made to slowly orbit the character by using <strong>Reallusion -&gt; Tools -&gt; Orbit Scene View</strong> (to stop the orbit select this menu option again).  If the character is animating and moving around then the rotation can track the character using <strong>Reallusion -&gt; Tools -&gt; Orbit Scene View (Tracking)</strong> (again this cn be stopped by selecting the menu item again).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="open-or-close-character-s-mouth-eyes-legacy">
+<h3>Open or Close Character’s Mouth/Eyes [Legacy]<a class="headerlink" href="#open-or-close-character-s-mouth-eyes-legacy" title="Permalink to this headline"></a></h3>
+<p>This is useful for inspecting the character to ensure there are no hidden problems with the mouth and eyes.</p>
+<img alt="_images/face_manipulation.gif" src="_images/face_manipulation.gif" />
+<p>The eye menu <strong>Reallusion → Tools → Eye</strong> enables movement of the eye direction for a detailed inspection of the eye.</p>
+<img alt="_images/eye_manipulation.gif" src="_images/eye_manipulation.gif" />
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="baking.html" class="btn btn-neutral float-right" title="Texture Baking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2022, Victor Soupday.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

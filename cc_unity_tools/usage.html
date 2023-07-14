@@ -55,6 +55,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#initial-processing">Initial Processing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#quality-settings">Quality Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#further-settings">Further Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#batch-processing">Batch Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#further-processing">Further Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#baking-bake-bakehair">Baking  </a></li>
 <li class="toctree-l3"><a class="reference internal" href="#animations-anim">Animations </a></li>
@@ -297,9 +298,11 @@
 <p>The options available in this panel are dependent on the pipeline version used; all available options are discussed below.</p>
 <ul class="simple">
 <li><p><strong>Use Amplify Shaders</strong> <em>(3D and URP pipelines ONLY)</em> Use shaders made with the <em>Amplify Shader Editor</em> for which has higher quality anisotropic lighting of the hair at a minimal performance cost.  Amplify shaders are capable of subsurface scattering effects, and anisotropic hair lighting in the URP and Build-in 3D pipelines.</p></li>
+<li><p><strong>Use Dual Specular Shaders</strong> Use Dual Specular shaders where possible. Dual specular shaders use the stack lit master node which is forward only. The dual specular shader setups are based on principles used in the Heretic digital human shaders.</p></li>
 <li><p><strong>Reconstruct Flow Map Normals</strong> <em>(All pipelines)</em> Rebuild missing Normal maps from Flow Maps in hair materials. Reconstructed Normals add extra detail to the lighting models.</p></li>
 <li><p><strong>Rebake Blender Unity Maps</strong> <em>(All pipelines)</em> When active will always re-bake the blender to unity Diffuse+Alpha, HDRP Mask and Metallic+Gloss maps. Otherwise subsequent material rebuilds will try to re-use existing bakes. Only needed if the source textures are changed.</p></li>
 <li><p><strong>Animation Player On</strong> <em>(All pipelines)</em> Always show the animation player when opening the preview scene.</p></li>
+<li><p><strong>Use self collision</strong> (Default OFF) This setting will allow the use of self collision data from the CC export in cloth and hair simulation. The importer will attempt to use the values from the Character Creator export and rescale them to work in Unity. How well this works is heavily dependent on the uniformity and vertex spacing of the cloth mesh. Self collision also has a significant performance overhead and should be used with caution in a real-time engine such as Unity.</p></li>
 <li><p><strong>Mip-map Bias</strong> Override the mipmap bias for all textures being set up for the character.  Use a (small) negative bias to sharpen textures and a positive bias to blur them.  For further details see Unity’s documentation on the <a class="reference external" href="https://docs.unity3d.com/ScriptReference/TextureImporter-mipMapBias.html">Texture Importer Mipmap Bias</a> setting which this value directly controls.</p></li>
 <li><p><strong>Physics Collider Shrink</strong> Coefficient to specify if the colliders should be reduced or enlarged: +ve numbers shrink the collders and -ve numbers enlarge them.</p></li>
 <li><p><strong>Physics Collider Detection Threshold</strong> The weight threshold (from the weight map + power/offset/scale) that must be reached before a collider can be assigned to the cloth when optimized colliders are being assigned to &lt;Cloth&gt; components by the physics Weight Mapper.  This is a global default value see <a class="reference internal" href="physics.html#the-weightmapper-component"><span class="std std-ref">The &lt;WeightMapper&gt; Component</span></a> documentation for details.</p></li>
@@ -354,6 +357,55 @@
 <div class="line"><br /></div>
 </div>
 </section>
+<section id="batch-processing">
+<h3>Batch Processing<a class="headerlink" href="#batch-processing" title="Permalink to this headline"></a></h3>
+<p>Processing characters individually can be time consuming, since <em>version 1.5.0</em> a ‘Batch Processing’ utility has been created which allows the unattended processing of a user defined list of characters and processing settings.</p>
+<p>The utility can be opened from the top menu <em>Reallusion -&gt; Processing Tools -&gt; Batch Processing</em> (NB the batch processing window requires the main ‘Importer Window’ (the main windows of the import tool) to be open).</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/batch_process_win_initial.png"><img alt="_images/batch_process_win_initial.png" src="_images/batch_process_win_initial.png" style="width: 242px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Initial Batch Processing Window</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Characters can be <em>selected</em> for inclusion in the processing list by ticking the appropriate box on the character line <img alt="selected" src="_images/batch_process_selected.png" />.  <br /><br /></p></li>
+<li><p>The list of characters can be sorted by ascending/descending name order with: <a class="reference internal" href="_images/batch_process_reorder.png"><img alt="reorder" src="_images/batch_process_reorder.png" style="width: 21px;" /></a> <br /><br /></p></li>
+<li><p>The list can be filtered by processing status with: <a class="reference internal" href="_images/batch_process_filter.png"><img alt="filter" src="_images/batch_process_filter.png" style="width: 21px;" /></a> and can be cleared using: <a class="reference internal" href="_images/batch_process_no_filter.png"><img alt="nofilter" src="_images/batch_process_no_filter.png" style="width: 21px;" /></a></p></li>
+</ul>
+<a class="reference internal image-reference" href="_images/batch_process_filter_cat.png"><img alt="_images/batch_process_filter_cat.png" class="align-center" src="_images/batch_process_filter_cat.png" style="width: 242px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Filtering by text search can be done by typing into the search field <img alt="search" src="_images/batch_search.png" /> and cleared with <img alt="searchx" src="_images/batch_search_x.png" />. <br /><br /></p></li>
+<li><p>The character list can be completely refreshed and all filters and settings reset with: <a class="reference internal" href="_images/batch_process_refresh.png"><img alt="refresh_list" src="_images/batch_process_refresh.png" style="width: 21px;" /></a> This will pick up any new characters that have been added to the main importer window. <br /><br /></p></li>
+<li><p>The processing settings for a character can be adjusted using the <a class="reference internal" href="_images/batch_char_settings_but.png"><img alt="char_settings" src="_images/batch_char_settings_but.png" style="width: 30px;" /></a> button.  This will extend the utility window to show a settings pane.</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/batch_process_win_ext.png"><img alt="_images/batch_process_win_ext.png" src="_images/batch_process_win_ext.png" style="width: 390px;" /></a>
+<figcaption>
+<p><span class="caption-text"><em>Extended processing window</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<div class="legend">
+<p>The currently displayed character settings are denoted by the <a class="reference internal" href="_images/batch_char_settings_curr.png"><img alt="char_settings_curr" src="_images/batch_char_settings_curr.png" style="width: 30px;" /></a> icon on the character line. <br /><br /></p>
+</div>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>If any settings have been changed, then the settings icon will be displayed in cyan: <a class="reference internal" href="_images/batch_char_settings_cyan.png"><img alt="char_settings_cyan" src="_images/batch_char_settings_cyan.png" style="width: 30px;" /></a>/<a class="reference internal" href="_images/batch_char_settings_curr_cyan.png"><img alt="char_settings_curr_cyan" src="_images/batch_char_settings_curr_cyan.png" style="width: 30px;" /></a>. <br /><br /></p></li>
+<li><p>The currently displayed character settings can be copied to all the currently <em>selected</em> <img alt="selected" src="_images/batch_process_selected.png" /> characters in the list using the <a class="reference internal" href="_images/batch_apply.png"><img alt="apply" src="_images/batch_apply.png" style="width: 125px;" /></a> button.</p></li>
+<li><p>Processing of the selected characters can be started with the <a class="reference internal" href="_images/batch_start.png"><img alt="batch_start" src="_images/batch_start.png" style="width: 30px;" /></a> button.</p></li>
+</ul>
+<div class="admonition-during-batch-processing admonition">
+<p class="admonition-title">During Batch Processing</p>
+<p>Each of the selected characters in the list will be processed in order.  After a character has been fully processed, the utility will pause for a few seconds and give control back to the user.  This is done in order to allow memory to be freed up and to give an opportunity to interrupt the process if necessary.</p>
+<p>If the batch processing window is closed, then the process will be halted and no further characters will be processed.  Should the main ‘Importer Window’ be closed then this will force a closure of the batch processing utility.</p>
+<p>As processing proceeds, the processing status icon of the character in both the ‘Batch Processing Window’ and main ‘Importer Window’ will be updated.</p>
+<p>At the end of the process, the character list will be fully reset.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
 <section id="further-processing">
 <h3>Further Processing<a class="headerlink" href="#further-processing" title="Permalink to this headline"></a></h3>
 <p>After initial processing further options will become available.</p>
@@ -379,18 +431,49 @@
 <h3>Preview Scene <img alt="preview" src="_images/new_ui_preview.png" /><a class="headerlink" href="#preview-scene-preview" title="Permalink to this headline"></a></h3>
 <p>After processing has completed, the output character can be inspected in a preview scene by pressing the <strong>‘Preview Scene’</strong> button <a class="reference internal" href="_images/new_ui_preview.png"><img alt="preview_s" src="_images/new_ui_preview.png" style="width: 28px;" /></a>.</p>
 <p>This will open a new scene with neutral lighting; if your current scene is marked as changed then you will be prompted to save the current scene before changing to the preview scene.</p>
-<img alt="_images/preview_scene_2.png" src="_images/preview_scene_2.png" />
+<img alt="_images/preview_scene_new.png" src="_images/preview_scene_new.png" />
 <p>Several preview scene specific tools are included on the main button strip (of the main tool window) for user convenience:</p>
 <ul class="simple">
 <li><p><img alt="prev_light" src="_images/preview_lighting_model.png" /> <em>Preview Scene Lighting</em> This will cycle through several pre defined lighting setups to allow you to rapidly assess the character under a range of lighting conditions.</p></li>
 <li><p><img alt="pref_cam_align" src="_images/preview_camera_align.png" /> <em>Align main camera with current scene view</em> This will align the main camera in the preview scene with the current orientation of the view in the <em>Scene Window</em> (i.e. it will align the <em>Game window</em> with what you are seeing in the <em>Scene Window</em>).</p></li>
 </ul>
 <p>By default, the preview scene contains a small tool to allow you to preview animations and facial expressions on your character.  The previews are performed in <strong>Edit Mode</strong> only, so that the Unity project itself <strong>doesn’t have to enter Play Mode</strong> (which, for complex projects is desireable).  The tool itself is controlled from an embedded pane in the SceneView window (In Unity versions below 2021.2.0 this will appear as a standard Gui window, above 2021.2.0 the tool will be contained in a more versatile (and moveable) overlay window).</p>
-<img alt="_images/char_preview_toolpane.png" src="_images/char_preview_toolpane.png" />
+<img alt="_images/char_preview_toolpane.png" class="align-center" src="_images/char_preview_toolpane.png" />
+<p><br /></p>
 <p>The tool pane has two sections (each can be minimized/revealed by clicking it’s foldout button).</p>
 <section id="animation-player-animplayer">
 <h4>Animation player <img alt="animplayer" src="_images/new_ui_anim_player.png" /><a class="headerlink" href="#animation-player-animplayer" title="Permalink to this headline"></a></h4>
-<p>The animation player can play any appropriate <a class="reference external" href="https://docs.unity3d.com/Manual/AnimationOverview.html">Mechanim</a> animation from your project on the character in the preview scene (by using the <em>‘Animation’</em> selector).  The controls for this are standard (play/pause advance one frame back/forward and go to start/end) additionally dragging the ‘Time’ bar will allow you to spool manually through the animation.  Additionally, any model (with an animator component) may be dragged into the scene and selected in the <em>‘Scene Model’</em> object selector to allow animations to be played on it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since version 1.5.0 of the Unity Tools, the animator player has been changed from using UnityEditor.AnimationMode clip sampling for playback to using a custom AnimatorController. This allows the animation player to be used during ‘Game Play Mode’ and to also have such features as foot IK.</p>
+</div>
+<img alt="_images/anim_animator_player.png" class="align-center" src="_images/anim_animator_player.png" />
+<p><br /></p>
+<p>The animation player can play any appropriate <a class="reference external" href="https://docs.unity3d.com/Manual/AnimationOverview.html">Mechanim</a> animation from your project on the character in the preview scene (by using the <em>‘Animation’</em> selector).</p>
+<p>Any model (with an animator component) may be dragged into the scene and selected in the <em>‘Scene Model’</em> object selector to allow animations to be played on it.</p>
+<ul class="simple">
+<li><p><img alt="anim_play_ctrls" src="_images/anim_player_ctrls.png" /> The controls for this are standard (play/pause advance one frame back/forward and go to start/end) <br /><br /></p></li>
+<li><p>The ‘Time’ bar <img alt="anim_play_time" src="_images/anim_player_time.png" /> can be ‘scrubbed’ to spool manually through the animation.  <br /><br /></p></li>
+<li><p>Foot IK (inverse kinematics) can be toggled <em>ON/OFF</em> with <img alt="anim_play_ik" src="_images/anim_player_ik.png" /> <br /><br /></p></li>
+<li><p>Using the tracking dropdown <img alt="anim_play_track" src="_images/anim_player_track.png" />, the scene camera can be made to track any of the (<em>mechanim</em>) bones that are present in the character avatar.  The scene view can be rotated about the tracked bone by using <em>Left Alt + Drag Mouse</em> and the scene panned with <em>Right Alt + Mouse Drag</em> or <em>Middle Mouse Button + Mouse Drag</em>. <br /><br /></p></li>
+<li><p>During tracking, clicking anywhere in the application or using the <img alt="anim_play_track_cancel" src="_images/anim_player_track_cancel.png" /> ‘x’ will lose focus and tracking will be stopped. <br /><br /></p></li>
+<li><p>The playback speed of the animation (<em>forwards and backwards</em>) can be controlled with the speed slider <img alt="anim_play_speed" src="_images/anim_player_speed.png" />. <br /><br /></p></li>
+<li><p>The current animation can be removed and the character fully reset to its T-pose with <img alt="anim_play_reset" src="_images/anim_player_reset.png" />. <br /><br /></p></li>
+<li><p>The options button <img alt="anim_play_options" src="_images/anim_player_options.png" /> is used to set some minor animator options: <em>Auto Loop</em> the animation (on by defult), <em>Animate on the spot</em> this does not allow the animation to modify the root transform of the character, <em>Show mirror image</em> will show the mirror image of the animation. <br /><br /></p></li>
+<li><p>‘Game Play Mode’ can be entered using the <img alt="anim_play_launch_play" src="_images/anim_player_launch_play.png" /> button.  <strong>Using this button will enter play mode and then refocus the application onto the scene window.</strong> During play mode, the button icon will appear as blue <img alt="anim_play_launch_play_playing" src="_images/anim_player_launch_play_playing.png" /> - clicking this again can be used to exit from play mode. <br /></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This use of game mode animation preview can be used to evaluate run-time only effects such as cloth simulation.  Compare the ‘Edit Mode’ animation below, with its ‘Play Mode’ counterpart which has cloth simulation enabled.  <strong>This allows the ‘run-time’ visualization of the interaction between the colliders on the character and the cloth being simulated, with complete control over the animation being played</strong>.</p>
+<ul class="simple">
+<li><p><strong>Edit Mode</strong></p></li>
+</ul>
+<p><video width="675" height="476" controls src="_static/edit_mode_colliders_player.mp4"></video></p>
+<ul class="simple">
+<li><p><strong>Play Mode + Cloth Simulation</strong></p></li>
+</ul>
+<p><video width="675" height="476" controls src="_static/play_mode_colliders_player.mp4"></video></p>
+</div>
 <p>The animation player/facial expression tool may be toggled on/off with the <a class="reference internal" href="_images/new_ui_anim_player.png"><img alt="animplayer_s" src="_images/new_ui_anim_player.png" style="width: 28px;" /></a> button.</p>
 <p>NB:  When an animation is playing, the facial expression controls are locked out.</p>
 </section>
@@ -431,17 +514,17 @@ This will multiple select all of the materials associated with the ‘selectable
 <section id="tesselation-options">
 <h4>Tesselation Options<a class="headerlink" href="#tesselation-options" title="Permalink to this headline"></a></h4>
 <p>If the materials have been built with the ‘Tesselation’ feature enabled (HDRP 12+), then a tesselation options section becomes available in the materials inspector.</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id4">
 <img alt="_images/tess_options.png" src="_images/tess_options.png" />
 <figcaption>
-<p><span class="caption-text"><em>Enabled Tesselation Options</em></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-text"><em>Enabled Tesselation Options</em></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>The shaded wireframe gif below shows the effect of ramping the ‘Tesselation Factor’ from 0 to 32:</p>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id5">
 <a class="reference internal image-reference" href="_images/face_tesselation_s.gif"><img alt="_images/face_tesselation_s.gif" src="_images/face_tesselation_s.gif" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text"><em>Tesselation Factor Changes</em></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-text"><em>Tesselation Factor Changes</em></span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>This allows a higher density mesh to be simulated by the shader.</p>

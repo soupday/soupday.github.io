@@ -1,0 +1,286 @@
+..
+    all external links referenced here
+.. _git repository: https://github.com/soupday/
+.. _git URL: https://github.com/soupday/cc_unity_tools_HDRP.git
+.. _latest release: https://github.com/soupday/cc_unity_tools_HDRP/releases/
+.. _Unity: https://unity.com/
+.. _Reallusion: https://www.reallusion.com/
+.. _7zip: https://www.7-zip.org/
+.. _git for windows: https://github.com/git-for-windows/git/releases/tag/v2.32.0.windows.2
+
+.. _HDRP Repository: https://github.com/soupday/cc_unity_tools_HDRP/
+.. _HDRP Latest Release: https://github.com/soupday/cc_unity_tools_HDRP/releases/
+.. _URP Repository: https://github.com/soupday/cc_unity_tools_URP
+.. _URP Latest Release: https://github.com/soupday/cc_unity_tools_URP/releases/
+.. _3D Repository: https://github.com/soupday/cc_unity_tools_3D
+.. _3D Latest Release: https://github.com/soupday/cc_unity_tools_3D/releases/
+
+
+~~~~~~~~~~~~~~
+ Installation
+~~~~~~~~~~~~~~
+
+Hosting at Github
+=================
+
+The tool is hosted in separate Github repositories for the *HDRP*, *URP* and *3D (Built in render pipeline)* render pipelines. It is intended to be installed into **Unity 2020.3 or above** for *HDRP* and *URP* pipelines or **Unity 2019.4.11f1 or above** for the *Built in 3D* pipeline using Unity's internal package manager.  The available repositories are shown below.
+
+.. _HDRP Repository: https://github.com/soupday/cc_unity_tools_HDRP/
+.. _HDRP Latest Release: https://github.com/soupday/cc_unity_tools_HDRP/releases/
+.. _URP Repository: https://github.com/soupday/cc_unity_tools_URP
+.. _URP Latest Release: https://github.com/soupday/cc_unity_tools_URP/releases/
+.. _3D Repository: https://github.com/soupday/cc_unity_tools_3D
+.. _3D Latest Release: https://github.com/soupday/cc_unity_tools_3D/releases/
+
+.. warning:: 
+
+    Only install **one version** of the tool at a time.  Only use the **package manager** for installation.
+
+.. list-table::
+   :widths: 3 3 3
+   :header-rows: 1
+
+   * - Pipeline
+     - Repository
+     - Latest Release  
+   * - HDRP
+     - `HDRP Repository`_
+     - `HDRP Latest Release`_
+   * - URP
+     - `URP Repository`_
+     - `URP Latest Release`_
+   * - 3D
+     - `3D Repository`_
+     - `3D Latest Release`_
+
+To obtain most recent stable version follow the above link to the latest release, and download the **source code.zip** file from there.
+
+Alternatively, you visit the appropriate repository to obtain the latest commit to the main branch by pressing the green 'Code' button and then 'Download Zip' from the dropdown window. Alternatively the code can be cloned directly from github via HTTPS using the 'git URL' which can be copied from the dropdown window (discussed later).
+
+.. image:: images/code_dropdown.png
+
+
+Installation from .zip file
+===========================
+
+.. youtube:: 2CUHkz29X3I
+
+| 
+
+Download and Unpack .zip file
+-----------------------------
+
+Download the appropriate latest release or latest stable commit (from the code dropdown box). Unpack the .zip file into a **safe + non volatile** directory where you'll be able to store the package files (`7zip`_ is a suitable tool for this, should you lack one).
+
+.. note:: 
+
+    **You must store the package files in a safe place**.  You can make a *directory* inside your project *directory* (eg '<drive>:/~~/<project directory>/downloaded files') if you wish. 
+
+.. warning::
+      
+    **DO NOT** place the unzipped files into the **/Assets** **/Packages** **/Library** or **/ProjectSettings** directories of your project.
+
+Install the Package From Disk
+-----------------------------
+
+In Unity, open your project and navigate to the 'Package Manager' (*via* **Window -> Package Manager**).
+
+.. image:: images/package_manager.png
+
+Now click the 'Add' button.
+
+.. image:: images/package_add_button.png
+
+And select 'Add package from disk'.
+
+.. image:: images/add_from_disk.png
+
+Navigate to the place where you unpacked the .zip file and select package.json.
+
+.. image:: images/package_select.png
+
+The package manager will now install the tool and will end up looking like this.
+
+.. image:: images/post_install_package.png
+
+The tool is fully installed and ready to be used.  Remember to keep the files you installed from safe. 
+
+
+Installation from git URL
+=========================
+
+.. youtube:: SIBUuT3BfGs
+
+| 
+
+**Pre-requisites**
+
+Packages can be installed into Unity directly from a git repository.
+
+The sole requirement for this is that Unity must be able to find the **git.exe** executable somewhere on your PATH.
+
+If you require a git executable you can install `git for windows`_ (download the 64bit windows installer and accept all the default options when installing).
+
+.. image:: images/git_for_win_ver.png
+
+Please make sure you **restart Unity and Unity Hub** after installing git for windows otherwise you will encounter the following error.
+
+.. image:: images/no_git_exe.png
+
+
+**Installing from Github**
+
+Open the Unity package manager **Window -> Package Manager**, click the add (+) button and select 'Add package from git URL'.
+
+.. image:: images/add_from_url.png
+
+Copy the URL from the green code dropdown box in the `git repository`_.
+
+.. image:: images/copy_code_dropdown.png
+
+Paste this into the package manager and click 'Add'.  The package manager will now install the tool.
+
+
+Installation using the Github Desktop [Advanced]
+================================================
+
+.. _Github Desktop: https://desktop.github.com/
+
+Using the `Github Desktop`_ application to clone the repository is a very convenient means of keeping the addon installation up to date (it also allows easy switching between the main and dev branches if you want to test in-development features).
+
+The addon can be installed into your Unity project(s) from wherever you have cloned the repository and it can be updated by 'Fetching' the latest changes without the need to uninstall/reinstall.
+
+**Workflow**:
+
+- Download and install the application from the `Github Desktop`_ web page.
+
+- You won't need an Github account to proceed.
+
+.. |cloneMenu| image:: images/git-clone-menu.png
+                  :width: 160
+
+- Open the application and chose the menu option *File -> Clone Repository...* 
+
+  | |cloneMenu|
+
+
+.. |clonedia| image:: images/git-clone-dia.png
+                :width: 300
+
+- Input the desired path to the repository and the local path where the cloned repository will be stored on your system.
+
+- The Repo names are either:
+
+  - soupday/cc_unity_tools_3D
+    
+  - soupday/cc_unity_tools_URP
+
+  - soupday/cc_unity_tools_HDRP
+
+  (a repository URL can also be used)
+
+  | |clonedia|
+
+
+.. |cloning| image:: images/git-cloning.png
+              :width: 450
+
+- The application will clone the repository
+
+  | |cloning|
+
+- Once complete, install the package *as per* :ref:`Install the Package From Disk` (open the Unity project then the package manager and select add package from disk.  Navigate to the cloned repository and select the package.JSON file).
+
+.. |fetch| image:: images/git-fetch.png
+            :width: 250
+
+.. |pull| image:: images/git-pull.png
+            :width: 250
+
+- Keep the package up to date using the '*Fetch Origin*' button.
+
+
+  | |fetch|
+
+  If there any changes then 'Pull' them with the '*Pull Origin*' button.
+
+
+
+  | |pull|
+
+
+
+Dependencies
+============
+
+The HDRP and URP versions of the tool require minimum versions of the following packages to also be installed in your project.
+
+.. _High Definition RP: https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@10.5/manual/index.html
+.. _Universal RP: https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@10.5/manual/index.html
+
+.. list-table::
+   :widths: 3 3 3
+   :header-rows: 1
+
+   * - Pipeline
+     - Package
+     - Min. Version  
+   * - HDRP
+     - `High Definition RP`_
+     - 10.5.0 or above.
+   * - URP
+     - `Universal RP`_
+     - 10.5.0 or above.
+
+Optional Installation
+=====================
+
+Post Processing Package
+-----------------------
+
+Users of the 3D (built in render pipeline) and URP (universal render pipeline) should consider the optional installation of the post processing package from the Unity Registry.  This will be utilized automatically to give excellent quality results comparable to Character Creator's viewport.
+
+.. image:: images/linear_postprocess.png
+    :width: 300
+    :align: center
+
+|
+
+To install the post processing package, go to the package manager window and use the 'Packages' dropdown to change the list show to 'Unity Registry'.
+
+.. image:: images/package_registry.png
+    :align: center
+
+|
+
+Scroll down the list to find 'Post Processing'.  Select the item in the list and click install.
+
+.. image:: images/package_postprocess.png
+    :align: center
+
+|
+
+After installation the post processing stack will be added to the main camera and the custom settings automatically applied.
+
+Alembic Package
+---------------
+
+Should you wish to use the Alembic file format for baked physics geometry (and indeed the Alembic functions from this tool), then the Alembic package is also required from the 'Unity Registry'.
+
+Use the above method to navigate to the 'Unity Registry' and select the Alembic package and click install.
+
+.. image:: images/package_alembic.png
+    :align: center
+
+|
+
+This will allow Unity to correctly import and animate Alembic files.
+
+|
+
+Removal
+=======
+
+.. image:: images/remove.png
+
+Open the Unity package manager (**Window -> Package Manager**) highlight the package that you wish to remove and click the remove button.
